@@ -1,0 +1,11 @@
+﻿Current local 3D model: Stone 01
+Source: Poly Haven
+URL: https://polyhaven.com/a/stone_01
+License: CC0 / public domain style license from Poly Haven
+Files used: 1k glTF package copied into public/models/stone_01
+Production note: Replace with the company's actual manganese-bearing limestone 3D scan/model when available.
+
+Previous reference model: Limestone with manganese dendrites
+Source: Sketchfab
+URL: https://sketchfab.com/3d-models/limestone-with-manganese-dendrites-1718378c8b08471f9c19e9e18615d886
+Note: Not used in the current clean in-page 3D viewer.
