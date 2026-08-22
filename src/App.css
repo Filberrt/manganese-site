@@ -3124,6 +3124,151 @@ nav {
   color: #cbd4cc;
 }
 
+.routeBand .sectionIntro {
+  width: min(1120px, 100%);
+}
+
+.routeBand .routeMap {
+  width: min(1520px, 100%);
+  margin-top: 48px;
+}
+
+.routeMap {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.routeMap::before {
+  top: 96px;
+}
+
+.routeMap article {
+  min-height: 410px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.routeVisual {
+  min-height: 190px;
+  background-image:
+    linear-gradient(180deg, rgba(8, 13, 12, 0.04) 0%, rgba(8, 13, 12, 0.62) 100%),
+    var(--route-image);
+  background-repeat: no-repeat;
+  background-size: 500% 100%;
+  background-position: var(--stage-position, center);
+  filter: none;
+}
+
+.routeMap article:nth-child(2) .routeVisual,
+.routeMap article:nth-child(3) .routeVisual,
+.routeMap article:nth-child(4) .routeVisual,
+.routeMap article:nth-child(5) .routeVisual {
+  background-position: var(--stage-position, center);
+  filter: none;
+}
+
+.routeMap article span {
+  width: 56px;
+  height: 56px;
+  margin-top: -28px;
+  margin-bottom: 22px;
+  font-size: 15px;
+}
+
+.routeMap article h3 {
+  font-size: 22px;
+}
+
+.routeMap article p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.articleModal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 26px;
+  overflow-y: auto;
+  background: rgba(5, 8, 7, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.articleModalInner {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: min(780px, 88vh);
+  overflow-y: auto;
+  padding: clamp(30px, 5vw, 64px);
+  color: #e8e5d7;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%),
+    #111815;
+  border: 1px solid rgba(245, 242, 232, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.46);
+}
+
+.articleModalInner > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #c8bb83;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.articleModalInner h2 {
+  max-width: 760px;
+  color: #fffdf5;
+}
+
+.articleModalInner p {
+  max-width: 760px;
+  color: #cbd4cc;
+  font-size: 18px;
+  line-height: 1.72;
+}
+
+.articleModalInner .articleLead {
+  color: #f3f0e5;
+  font-size: clamp(20px, 2vw, 25px);
+}
+
+.articleModalInner .primaryButton {
+  width: fit-content;
+  margin-top: 12px;
+}
+
+.articleClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: #111917;
+  background: #c8bb83;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.articleBack {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 0;
+  color: #c8bb83;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-weight: 900;
+}
+
 @media (min-width: 1800px) {
   .hero {
     padding-left: max(72px, calc((100vw - 1500px) / 2));
@@ -3138,6 +3283,10 @@ nav {
 
   .routeMap {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .routeVisual {
+    min-height: 180px;
   }
 }
 
@@ -3161,5 +3310,21 @@ nav {
 
   .rockStage {
     min-height: 320px;
+  }
+
+  .routeMap article {
+    min-height: auto;
+  }
+
+  .routeVisual {
+    min-height: 170px;
+  }
+
+  .articleModal {
+    padding: 14px;
+  }
+
+  .articleModalInner {
+    padding: 24px;
   }
 }

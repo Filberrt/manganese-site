@@ -13,6 +13,7 @@ import {
   Phone,
   Play,
   ShieldCheck,
+  X,
 } from 'lucide-react'
 import './App.css'
 
@@ -58,6 +59,8 @@ const routeSteps = [
   ['04', 'Подготовка партии', 'согласуются фракция, объем и график отгрузки'],
   ['05', 'Авто / ЖД', 'поставка на предприятие по выбранной логистической схеме'],
 ]
+
+const routeStagePositions = ['0% center', '25% center', '50% center', '75% center', '100% center']
 
 const articlePlan = [
   {
@@ -220,12 +223,7 @@ function App() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
-  const openArticle = (index: number) => {
-    setActiveArticle(index)
-    window.setTimeout(() => {
-      document.getElementById('article-page')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 60)
-  }
+  const openArticle = (index: number) => setActiveArticle(index)
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-reveal]')
@@ -283,10 +281,28 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!openedArticle && !isVideoOpen) return
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+
+      setActiveArticle(null)
+      setIsVideoOpen(false)
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [openedArticle, isVideoOpen])
+
   return (
     <main
       className="slideDeck"
-      style={{ '--hero-image': `url("${asset('hero-quarry.png')}")` } as CSSProperties}
+      style={{
+        '--hero-image': `url("${asset('hero-quarry.png')}")`,
+        '--route-image': `url("${asset('route-stages.png')}")`,
+      } as CSSProperties}
     >
       <header className="topbar">
         <a className="brand" href="#top" aria-label="На главную">
@@ -424,7 +440,14 @@ function App() {
         </div>
         <div className="routeMap supplyRoute">
           {routeSteps.map(([number, title, text], index) => (
-            <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
+            <article
+              data-reveal
+              style={{
+                '--delay': `${index * 80}ms`,
+                '--stage-position': routeStagePositions[index],
+              } as CSSProperties}
+              key={title}
+            >
               <div className="routeVisual" aria-hidden="true" />
               <span>{number}</span>
               <h3>{title}</h3>
@@ -544,21 +567,32 @@ function App() {
       </section>
 
       {openedArticle && (
-        <section className="section articlePage snapSlide darkSlide" id="article-page">
-          <article className="articlePageInner">
-            <a className="articleBack" href="#articles">Все статьи</a>
+        <div
+          className="articleModal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="article-title"
+          onClick={() => setActiveArticle(null)}
+        >
+          <article className="articleModalInner" onClick={(event) => event.stopPropagation()}>
+            <button className="articleClose" type="button" onClick={() => setActiveArticle(null)} aria-label="Закрыть статью">
+              <X size={22} aria-hidden="true" />
+            </button>
+            <button className="articleBack" type="button" onClick={() => setActiveArticle(null)}>
+              Все статьи
+            </button>
             <span>Статья</span>
-            <h2>{openedArticle.title}</h2>
+            <h2 id="article-title">{openedArticle.title}</h2>
             <p className="articleLead">{openedArticle.lead}</p>
             {openedArticle.sections.map((section) => (
               <p key={section}>{section}</p>
             ))}
-            <a className="primaryButton" href="#contacts">
+            <a className="primaryButton" href="#contacts" onClick={() => setActiveArticle(null)}>
               Запросить протокол и КП
               <ArrowRight size={18} aria-hidden="true" />
             </a>
           </article>
-        </section>
+        </div>
       )}
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
