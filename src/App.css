@@ -2907,6 +2907,7 @@ nav {
   width: 100%;
   min-height: 100svh;
   align-content: end;
+  justify-items: start;
   padding-top: 112px;
   padding-bottom: clamp(36px, 4.5vh, 54px);
   overflow: hidden;
@@ -2926,10 +2927,11 @@ nav {
 .heroInner {
   display: block;
   width: min(1040px, 100%);
+  justify-self: start;
 }
 
 .heroKicker {
-  margin-bottom: 18px;
+  display: none;
 }
 
 .hero h1 {
@@ -3271,7 +3273,7 @@ nav {
 
 @media (min-width: 1800px) {
   .hero {
-    padding-left: max(72px, calc((100vw - 1500px) / 2));
+    padding-left: clamp(44px, 5vw, 92px);
   }
 }
 

@@ -349,7 +349,6 @@ function App() {
         <img className="heroPhoto" src={asset('hero-quarry.png')} alt="Карьер и железнодорожная отгрузка минерального сырья" />
         <div className="heroShade" />
         <div className="heroInner">
-          <p className="heroKicker" data-reveal>{company.legalName}</p>
           <h1 data-reveal>Марганцовистый известняк для металлургических предприятий</h1>
           <p className="lead" data-reveal>
             Сырье с проверяемым химическим составом, документами по партии и понятной
