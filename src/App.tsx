@@ -44,13 +44,6 @@ const facts = [
   ['Лицензии и документы', 'предоставляем подтверждающие материалы по сырью и поставке'],
 ]
 
-const quickTasks = [
-  ['Состав', 'посмотреть ориентиры и запросить протокол', '#analysis'],
-  ['Документы', 'понять комплект для проверки поставщика', '#documents'],
-  ['Логистика', 'увидеть путь партии до предприятия', '#route'],
-  ['Пробная партия', 'оставить заявку на расчет', '#contacts'],
-]
-
 const documentCards = [
   ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели'],
   ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо'],
@@ -129,35 +122,35 @@ function RockSample() {
     if (!mount) return
 
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#090d0b')
+    scene.background = new THREE.Color('#101613')
 
     const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
-    camera.position.set(0.2, 0.18, 4.25)
+    camera.position.set(0.08, 0.08, 4.25)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.15
+    renderer.toneMappingExposure = 1.32
     mount.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true
     controls.enablePan = false
     controls.enableZoom = true
-    controls.minDistance = 2.1
+    controls.minDistance = 2.3
     controls.maxDistance = 7
     controls.target.set(0, 0, 0)
     controls.autoRotate = true
     controls.autoRotateSpeed = 0.9
 
-    scene.add(new THREE.HemisphereLight('#f4f0df', '#162019', 2.3))
+    scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
 
-    const keyLight = new THREE.DirectionalLight('#fff1be', 3.4)
+    const keyLight = new THREE.DirectionalLight('#fff1be', 4.2)
     keyLight.position.set(3, 4, 5)
     scene.add(keyLight)
 
-    const fillLight = new THREE.DirectionalLight('#8fa59a', 1.1)
+    const fillLight = new THREE.DirectionalLight('#a9b8ad', 1.8)
     fillLight.position.set(-4, 1.5, -2)
     scene.add(fillLight)
 
@@ -174,7 +167,7 @@ function RockSample() {
       const maxAxis = Math.max(size.x, size.y, size.z) || 1
 
       model.position.sub(center)
-      model.scale.setScalar(1.62 / maxAxis)
+      model.scale.setScalar(1.45 / maxAxis)
       model.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.castShadow = true
@@ -346,19 +339,13 @@ function App() {
             Сырье с проверяемым химическим составом, документами по партии и понятной
             логистикой. Пробные отгрузки от 100 тонн, автомобильная и железнодорожная поставка.
           </p>
-          <aside className="heroTaskPanel" data-reveal aria-label="Основные действия на сайте">
-            <strong>Что нужно проверить?</strong>
-            {quickTasks.map(([title, text, href]) => (
-              <a href={href} key={title}>
-                <span>{title}</span>
-                <small>{text}</small>
-              </a>
-            ))}
-          </aside>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#analysis">
               Смотреть состав
               <ArrowRight size={18} aria-hidden="true" />
+            </a>
+            <a className="secondaryButton" href="#documents">
+              Документы
             </a>
             <a className="secondaryButton" href="#contacts">
               Запросить пробную партию
@@ -450,16 +437,10 @@ function App() {
       <section className="section sampleSlide snapSlide darkSlide" id="sample" data-slide>
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
-          <h2>3D-модель образца сырья</h2>
+          <h2>Образец сырья в 3D</h2>
           <p>
-            Интерактивная модель помогает рассмотреть форму и фактуру образца до запроса
-            пробной партии. Модель можно вращать, приближать и отдалять прямо на странице.
+            Модель можно вращать, приближать и отдалять прямо на странице.
           </p>
-          <div className="sampleLabels">
-            <span>вращение мышью или касанием</span>
-            <span>приближение колесом или жестом</span>
-            <span>образец крупным планом</span>
-          </div>
         </div>
         <div className="rockStage cleanModel" data-reveal>
           <RockSample />

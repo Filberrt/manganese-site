@@ -2897,3 +2897,269 @@ nav {
     padding: 16px;
   }
 }
+
+/* Wide-screen layout repair. */
+.slideDeck {
+  background: #101614;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100svh;
+  align-content: end;
+  padding-top: 112px;
+  padding-bottom: clamp(36px, 4.5vh, 54px);
+  overflow: hidden;
+}
+
+.heroPhoto {
+  height: 100%;
+  min-height: 100%;
+}
+
+.heroShade {
+  background:
+    linear-gradient(90deg, rgba(8, 13, 12, 0.95) 0%, rgba(12, 18, 16, 0.72) 38%, rgba(12, 18, 16, 0.24) 100%),
+    linear-gradient(0deg, rgba(8, 13, 12, 0.98) 0%, rgba(8, 13, 12, 0.18) 56%, rgba(8, 13, 12, 0.16) 100%);
+}
+
+.heroInner {
+  display: block;
+  width: min(1040px, 100%);
+}
+
+.heroKicker {
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  max-width: 960px;
+  margin-bottom: 20px;
+  font-size: clamp(42px, 4.8vw, 72px);
+}
+
+.hero .lead {
+  max-width: 660px;
+  font-size: clamp(17px, 1.45vw, 21px);
+  line-height: 1.48;
+}
+
+.heroActions {
+  margin: 26px 0 30px;
+}
+
+.heroTaskPanel,
+.sampleLabels {
+  display: none;
+}
+
+.factGrid {
+  width: min(100%, 1040px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.fact {
+  min-height: 104px;
+  padding: 18px 20px;
+}
+
+.fact strong {
+  font-size: clamp(22px, 1.45vw, 29px);
+}
+
+.fact span {
+  margin-top: 9px;
+}
+
+.routeBand {
+  overflow: hidden;
+}
+
+.routeBand .sectionIntro {
+  width: min(980px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.routeBand .sectionIntro h2 {
+  max-width: 740px;
+}
+
+.routeBand .routeMap {
+  width: min(1320px, 100%);
+  margin: 38px auto 0;
+}
+
+.routeMap {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.routeMap article {
+  min-height: 278px;
+}
+
+.routeVisual {
+  min-height: 92px;
+  background-size: 135% auto;
+}
+
+.routeMap article span {
+  margin-bottom: 14px;
+}
+
+.routeMap article h3 {
+  font-size: 18px;
+}
+
+.routeMap article p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.sampleSlide {
+  width: min(1500px, 100%);
+  margin: 0 auto;
+  grid-template-columns: minmax(300px, 0.58fr) minmax(560px, 1.42fr);
+  gap: clamp(28px, 4vw, 62px);
+}
+
+.sampleCopy {
+  max-width: 520px;
+}
+
+.sampleCopy p {
+  max-width: 420px;
+}
+
+.rockStage {
+  min-height: clamp(460px, 54vh, 650px);
+  aspect-ratio: 16 / 8.4;
+  background: #101613;
+}
+
+.rockStage::before,
+.rockStage::after {
+  display: none;
+}
+
+.localModelViewer {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(200, 187, 131, 0.24), transparent 40%),
+    linear-gradient(180deg, #151d19 0%, #060807 100%);
+}
+
+.localModelViewer span {
+  color: #d5ceb0;
+}
+
+.localModelViewer canvas {
+  filter: saturate(0.86) contrast(1.12) brightness(1.14);
+}
+
+.analysisBand {
+  background: #e7e7dc;
+  color: #17201d;
+}
+
+.analysisLayout {
+  width: min(1280px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.analysisBand .sectionIntro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.analysisBand .eyebrow {
+  color: #6f6a45;
+}
+
+.analysisBand h2 {
+  color: #17201d;
+}
+
+.analysisBand p {
+  color: #4f5b54;
+}
+
+.analysisBand .tableWrap,
+.techPassport,
+.techPassport table {
+  background: #fffdf5;
+}
+
+.techPassport th {
+  color: #121917;
+  background: #d2c689;
+}
+
+.techPassport td,
+.techPassport td:first-child,
+.techPassport table td:nth-child(2) {
+  color: #15201c;
+  background: #fffdf5;
+}
+
+.techPassport tbody tr:nth-child(even) td {
+  background: #f0ece0;
+}
+
+.techPassport tbody tr:hover td {
+  background: #e7dfc3;
+}
+
+.analysisBand .documentStack div {
+  background: #111917;
+  border-color: rgba(17, 25, 23, 0.18);
+}
+
+.analysisBand .documentStack strong {
+  color: #fffdf5;
+}
+
+.analysisBand .documentStack span {
+  color: #cbd4cc;
+}
+
+@media (min-width: 1800px) {
+  .hero {
+    padding-left: max(72px, calc((100vw - 1500px) / 2));
+  }
+}
+
+@media (max-width: 1180px) {
+  .sampleSlide {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .routeMap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding-top: 108px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 12vw, 54px);
+  }
+
+  .factGrid,
+  .routeMap {
+    grid-template-columns: 1fr;
+  }
+
+  .sampleSlide {
+    gap: 24px;
+  }
+
+  .rockStage {
+    min-height: 320px;
+  }
+}
