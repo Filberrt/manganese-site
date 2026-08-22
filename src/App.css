@@ -3594,3 +3594,31 @@ nav {
     min-height: 310px;
   }
 }
+
+/* Final polish: centered document CTAs and lighter analysis side cards. */
+.trustGrid a {
+  justify-self: center;
+}
+
+.analysisBand .documentStack div {
+  background:
+    linear-gradient(145deg, rgba(255, 253, 245, 0.96), rgba(235, 231, 214, 0.92));
+  border: 1px solid rgba(23, 32, 29, 0.12);
+  box-shadow: 0 18px 50px rgba(17, 25, 23, 0.1);
+}
+
+.analysisBand .documentStack div:hover {
+  box-shadow: 0 24px 66px rgba(17, 25, 23, 0.14);
+}
+
+.analysisBand .documentStack svg {
+  color: #766c42;
+}
+
+.analysisBand .documentStack strong {
+  color: #17201d;
+}
+
+.analysisBand .documentStack span {
+  color: #4f5b54;
+}
