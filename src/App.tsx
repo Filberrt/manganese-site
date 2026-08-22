@@ -60,7 +60,13 @@ const routeSteps = [
   ['05', 'Авто / ЖД', 'поставка на предприятие по выбранной логистической схеме'],
 ]
 
-const routeStagePositions = ['0% center', '25% center', '50% center', '75% center', '100% center']
+const routeStageImages = [
+  'route-stage-01.png',
+  'route-stage-02.png',
+  'route-stage-03.png',
+  'route-stage-04.png',
+  'route-stage-05.png',
+]
 
 const articlePlan = [
   {
@@ -301,7 +307,6 @@ function App() {
       className="slideDeck"
       style={{
         '--hero-image': `url("${asset('hero-quarry.png')}")`,
-        '--route-image': `url("${asset('route-stages.png')}")`,
       } as CSSProperties}
     >
       <header className="topbar">
@@ -443,7 +448,7 @@ function App() {
               data-reveal
               style={{
                 '--delay': `${index * 80}ms`,
-                '--stage-position': routeStagePositions[index],
+                '--stage-image': `url("${asset(routeStageImages[index])}")`,
               } as CSSProperties}
               key={title}
             >
