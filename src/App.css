@@ -3629,3 +3629,23 @@ nav {
 .analysisBand .documentStack span {
   color: #4f5b54;
 }
+
+/* Keep the 3D slide as one continuous dark surface without side seams. */
+#sample.sampleSlide {
+  width: 100%;
+  margin: 0;
+  justify-content: center;
+  background: #101613;
+  background-image: none;
+  grid-template-columns: minmax(300px, 520px) minmax(560px, 920px);
+}
+
+#sample.sampleSlide::before,
+#sample.sampleSlide::after {
+  display: none;
+}
+
+#sample .rockStage,
+#sample .localModelViewer {
+  background: #050807;
+}
