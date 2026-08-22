@@ -3567,8 +3567,15 @@ nav {
 .trustGrid button,
 .trustGrid a,
 .readableArticles button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   align-self: end;
+  min-height: 0;
+  height: 42px;
   margin-top: 0;
+  padding: 3px 16px 0;
+  line-height: 1;
   white-space: nowrap;
 }
 
