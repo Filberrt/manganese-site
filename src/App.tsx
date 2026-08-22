@@ -44,6 +44,13 @@ const facts = [
   ['Лицензии и документы', 'предоставляем подтверждающие материалы по сырью и поставке'],
 ]
 
+const quickTasks = [
+  ['Состав', 'посмотреть ориентиры и запросить протокол', '#analysis'],
+  ['Документы', 'понять комплект для проверки поставщика', '#documents'],
+  ['Логистика', 'увидеть путь партии до предприятия', '#route'],
+  ['Пробная партия', 'оставить заявку на расчет', '#contacts'],
+]
+
 const documentCards = [
   ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели'],
   ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо'],
@@ -105,8 +112,8 @@ const articlePlan = [
 const slideItems = [
   ['top', 'Старт'],
   ['video', 'Ролик'],
-  ['product', 'Сырье'],
-  ['route', 'Маршрут'],
+  ['product', 'Продукт'],
+  ['route', 'Логистика'],
   ['sample', '3D'],
   ['analysis', 'Состав'],
   ['documents', 'Документы'],
@@ -299,11 +306,11 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#video">Ролик</a>
-          <a href="#product">Сырье</a>
-          <a href="#route">Маршрут</a>
-          <a href="#sample">3D</a>
+          <a href="#product">Продукт</a>
           <a href="#analysis">Состав</a>
+          <a href="#documents">Документы</a>
+          <a href="#route">Логистика</a>
+          <a href="#sample">3D</a>
           <a href="#articles">Статьи</a>
           <a href="#contacts">Контакты</a>
         </nav>
@@ -339,13 +346,22 @@ function App() {
             Сырье с проверяемым химическим составом, документами по партии и понятной
             логистикой. Пробные отгрузки от 100 тонн, автомобильная и железнодорожная поставка.
           </p>
+          <aside className="heroTaskPanel" data-reveal aria-label="Основные действия на сайте">
+            <strong>Что нужно проверить?</strong>
+            {quickTasks.map(([title, text, href]) => (
+              <a href={href} key={title}>
+                <span>{title}</span>
+                <small>{text}</small>
+              </a>
+            ))}
+          </aside>
           <div className="heroActions" data-reveal>
-            <a className="primaryButton magnetButton" href="#contacts">
-              Запросить анализ и КП
+            <a className="primaryButton magnetButton" href="#analysis">
+              Смотреть состав
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="secondaryButton" href="#video">
-              Смотреть ролик
+            <a className="secondaryButton" href="#contacts">
+              Запросить пробную партию
             </a>
           </div>
           <div className="factGrid" aria-label="Ключевые факты" data-reveal>
@@ -357,7 +373,7 @@ function App() {
             ))}
           </div>
         </div>
-        <a className="scrollCue" href="#video" aria-label="Перейти к ролику" />
+        <a className="scrollCue" href="#product" aria-label="Перейти к продукту" />
       </section>
 
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
@@ -518,7 +534,7 @@ function App() {
               <FileText size={24} aria-hidden="true" />
               <h3>{title}</h3>
               <p>{text}</p>
-              <button type="button">Запросить файл</button>
+              <a href="#contacts">Запросить файл</a>
             </article>
           ))}
         </div>
@@ -557,7 +573,7 @@ function App() {
               <p key={section}>{section}</p>
             ))}
             <a className="primaryButton" href="#contacts">
-              Запросить анализ и КП
+              Запросить протокол и КП
               <ArrowRight size={18} aria-hidden="true" />
             </a>
           </article>
@@ -581,18 +597,18 @@ function App() {
         <form data-reveal>
           <label>
             Имя и компания
-            <input placeholder="АО Металлургический завод" />
+            <input placeholder="Компания, имя, должность" />
           </label>
           <label>
             Телефон
-            <input placeholder="+7" />
+            <input placeholder="+7 ___ ___-__-__" />
           </label>
           <label>
-            Что нужно оценить
-            <textarea placeholder="Объем, фракция, станция назначения, требования по составу" />
+            Что нужно получить
+            <textarea placeholder="Протокол анализа, паспорт качества, расчет отгрузки, пробная партия" />
           </label>
           <button className="primaryButton" type="submit">
-            Отправить заявку
+            Получить данные по поставке
             <ArrowRight size={18} aria-hidden="true" />
           </button>
         </form>
@@ -604,7 +620,7 @@ function App() {
           <div className="modalFilm">
             <span>Видео о поставке</span>
             <h2>Добыча. Контроль. Документы. Отгрузка.</h2>
-            <p>Ролик должен показать реальную производственную цепочку и снять первичные вопросы технолога и закупки.</p>
+            <p>Ролик показывает производственную цепочку и снимает первичные вопросы технолога и закупки.</p>
           </div>
         </div>
       )}

@@ -474,6 +474,55 @@ h3 {
   font-size: clamp(18px, 2vw, 23px);
 }
 
+.heroTaskPanel {
+  grid-column: 2;
+  grid-row: 2 / 5;
+  align-self: stretch;
+  display: grid;
+  gap: 10px;
+  min-width: 280px;
+  padding: 22px;
+  color: #f8f5ec;
+  background: rgba(17, 25, 23, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+}
+
+.heroTaskPanel strong {
+  color: var(--acid);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.heroTaskPanel a {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  color: #fffdf5;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.heroTaskPanel a:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(216, 228, 95, 0.36);
+  transform: translateY(-2px);
+}
+
+.heroTaskPanel span {
+  font-weight: 950;
+}
+
+.heroTaskPanel small {
+  color: #cbd4cc;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
 .heroActions {
   display: flex;
   flex-wrap: wrap;
@@ -854,7 +903,8 @@ h3 {
   font-size: 16px;
 }
 
-.trustGrid button {
+.trustGrid button,
+.trustGrid a {
   position: relative;
   z-index: 1;
   width: fit-content;
@@ -1791,7 +1841,8 @@ nav a::after {
 .primaryButton,
 .videoFrame button,
 .routeMap article span,
-.trustGrid button {
+.trustGrid button,
+.trustGrid a {
   color: #ffffff;
   background: #45584f;
   box-shadow: none;
@@ -1978,7 +2029,8 @@ nav {
 .primaryButton,
 .videoFrame button,
 .routeMap article span,
-.trustGrid button {
+.trustGrid button,
+.trustGrid a {
   color: #101513;
   background: #c8bb83;
   box-shadow: none;
@@ -2604,7 +2656,8 @@ nav {
   content: "DOC";
 }
 
-.trustGrid button {
+.trustGrid button,
+.trustGrid a {
   min-width: 112px;
 }
 
@@ -2810,6 +2863,13 @@ nav {
     max-width: 100%;
   }
 
+  .heroTaskPanel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+    margin: 22px 0 0;
+  }
+
   .routeMap {
     grid-template-columns: 1fr;
   }
@@ -2830,5 +2890,10 @@ nav {
 
   .topContacts {
     justify-items: end;
+  }
+
+  .heroTaskPanel {
+    grid-template-columns: 1fr;
+    padding: 16px;
   }
 }
