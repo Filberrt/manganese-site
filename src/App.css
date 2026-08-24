@@ -4145,3 +4145,413 @@ footer span {
     overflow-wrap: anywhere;
   }
 }
+
+/* Client review pass: stable premium cards, darker product block, stronger CTA/footer. */
+.topbar {
+  grid-template-columns: minmax(360px, auto) 1fr minmax(500px, auto);
+}
+
+.topContacts {
+  grid-template-columns: repeat(2, 230px);
+  justify-content: end;
+}
+
+.topCall,
+.topMail {
+  width: 230px;
+}
+
+.factGrid {
+  background: rgba(210, 198, 137, 0.16);
+}
+
+.fact {
+  background:
+    linear-gradient(145deg, rgba(255, 253, 245, 0.085), rgba(255, 253, 245, 0.02)),
+    #121a17;
+}
+
+#product.elevatedSection {
+  background:
+    radial-gradient(circle at 86% 22%, rgba(210, 198, 137, 0.13), transparent 34%),
+    linear-gradient(135deg, #111916 0%, #0b100e 100%);
+}
+
+#product .eyebrow,
+#product h2,
+#product p {
+  color: inherit;
+}
+
+#product h2 {
+  color: #fffdf5;
+}
+
+#product p {
+  color: #cbd4cc;
+}
+
+#product .checkList span {
+  background: rgba(245, 242, 232, 0.07);
+  border-color: rgba(210, 198, 137, 0.22);
+  box-shadow: none;
+}
+
+#product .checkList svg {
+  color: #d2c689;
+}
+
+#product .productMatrix {
+  background:
+    linear-gradient(145deg, rgba(255, 253, 245, 0.08), rgba(255, 253, 245, 0.035)),
+    #141d19;
+  border: 1px solid rgba(210, 198, 137, 0.26);
+  box-shadow: 0 36px 100px rgba(0, 0, 0, 0.34);
+}
+
+#product .productMatrix h3 {
+  color: #fffdf5;
+}
+
+.productCards article {
+  min-height: 126px;
+  background: rgba(8, 13, 12, 0.72);
+  border-color: rgba(245, 242, 232, 0.14);
+  color: #fffdf5;
+}
+
+.productCards strong {
+  color: #fffdf5;
+}
+
+.productCards span {
+  color: #cbd4cc;
+}
+
+#route .routeMap,
+.galleryGrid {
+  width: min(1580px, calc(100vw - 128px));
+}
+
+#route .routeMap {
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+#route .routeMap article,
+#route .routeMap article:nth-child(4),
+#route .routeMap article:nth-child(5) {
+  min-height: clamp(430px, 48vh, 540px);
+  padding: 34px;
+  transform: none;
+}
+
+.routeMap article,
+.galleryGrid article {
+  animation: none;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.supplyRoute article::before {
+  display: none;
+}
+
+.routeMap article::after {
+  background:
+    linear-gradient(180deg, rgba(8, 13, 12, 0.06) 0%, rgba(8, 13, 12, 0.32) 42%, rgba(8, 13, 12, 0.92) 100%);
+}
+
+.routeMap article:hover,
+.galleryGrid article:hover {
+  transform: none;
+  border-color: rgba(210, 198, 137, 0.36);
+  box-shadow: 0 34px 92px rgba(0, 0, 0, 0.38);
+}
+
+.routeMap article:hover .routeVisual {
+  filter: saturate(0.82) contrast(1.08) brightness(0.84);
+  transform: scale(1.025);
+}
+
+#route .routeMap article span {
+  width: 58px;
+  height: 58px;
+  margin-bottom: auto;
+}
+
+#route .routeMap article h3 {
+  margin-top: 160px;
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.galleryGrid article,
+.galleryGrid article:nth-child(4),
+.galleryGrid article:nth-child(5) {
+  grid-column: auto;
+  min-height: clamp(430px, 48vh, 540px);
+  padding: 34px;
+}
+
+.galleryGrid article::before {
+  background-position: center;
+  filter: saturate(0.7) contrast(1.08) brightness(0.72);
+  transform: scale(1.01);
+}
+
+.galleryGrid article::after {
+  background:
+    linear-gradient(180deg, rgba(8, 13, 12, 0.04) 0%, rgba(8, 13, 12, 0.34) 42%, rgba(8, 13, 12, 0.93) 100%);
+}
+
+.galleryGrid span {
+  width: 58px;
+  height: 58px;
+  margin-bottom: auto;
+}
+
+.galleryGrid h3 {
+  margin-top: 160px;
+}
+
+#sample.sampleSlide {
+  grid-template-columns: minmax(320px, 420px) minmax(720px, 1180px);
+  gap: clamp(36px, 5vw, 72px);
+}
+
+.sampleModels {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+  gap: 20px;
+}
+
+.modelCard {
+  position: relative;
+  min-height: clamp(420px, 56vh, 620px);
+  overflow: hidden;
+  background: #050807;
+  border: 1px solid rgba(245, 242, 232, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 34px 100px rgba(0, 0, 0, 0.36);
+}
+
+.modelCardMain {
+  min-height: clamp(520px, 62vh, 700px);
+}
+
+.modelHeader {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  background: rgba(10, 15, 14, 0.76);
+  border: 1px solid rgba(210, 198, 137, 0.24);
+  border-radius: 6px;
+}
+
+.modelHeader strong {
+  color: #fffdf5;
+  font-size: 14px;
+  opacity: 1;
+}
+
+.modelHeader span {
+  color: #cbd4cc;
+  font-size: 12px;
+  opacity: 1;
+}
+
+.modelCard .localModelViewer {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  border: 0;
+  border-radius: 0;
+}
+
+.contacts {
+  grid-template-columns: minmax(420px, 0.9fr) minmax(620px, 1.1fr);
+  gap: clamp(48px, 7vw, 112px);
+  background:
+    radial-gradient(circle at 80% 24%, rgba(210, 198, 137, 0.11), transparent 34%),
+    linear-gradient(135deg, #0f1714 0%, #0b100e 100%);
+}
+
+.contacts > div:first-child {
+  max-width: 680px;
+}
+
+.contactChecklist {
+  display: grid;
+  gap: 10px;
+  margin: 30px 0;
+}
+
+.contactChecklist span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 12px 14px;
+  color: #dfe5dc;
+  background: rgba(245, 242, 232, 0.07);
+  border: 1px solid rgba(210, 198, 137, 0.22);
+  border-radius: 6px;
+  font-weight: 850;
+}
+
+.contactChecklist svg {
+  color: #d2c689;
+}
+
+.contactPanel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.contactPanel a {
+  width: 100%;
+  min-height: 54px;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.contacts form {
+  min-height: 430px;
+  padding: clamp(28px, 4vw, 42px);
+  background:
+    linear-gradient(145deg, rgba(255, 253, 245, 0.085), rgba(255, 253, 245, 0.035)),
+    #151d19;
+  border: 1px solid rgba(210, 198, 137, 0.22);
+  box-shadow: 0 40px 110px rgba(0, 0, 0, 0.36);
+}
+
+footer {
+  position: relative;
+  grid-template-columns: minmax(380px, 1.15fr) minmax(360px, 0.9fr) minmax(260px, 0.58fr);
+  padding-top: 44px;
+  padding-bottom: 44px;
+  background:
+    linear-gradient(180deg, #111916 0%, #070b0a 100%);
+}
+
+footer::before {
+  position: absolute;
+  top: 0;
+  left: clamp(20px, 5vw, 72px);
+  right: clamp(20px, 5vw, 72px);
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(210, 198, 137, 0.72), transparent);
+}
+
+footer .footerBrand strong {
+  color: #fffdf5;
+  font-size: 22px;
+}
+
+footer .footerContacts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+footer .footerContacts a,
+footer .footerContacts span,
+footer .footerDocs a {
+  width: 100%;
+  min-height: 42px;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(245, 242, 232, 0.055);
+  border: 1px solid rgba(245, 242, 232, 0.1);
+  border-radius: 6px;
+}
+
+footer .footerDocs a {
+  display: flex;
+}
+
+@media (max-width: 1180px) {
+  .topbar,
+  .contacts,
+  #sample.sampleSlide {
+    grid-template-columns: 1fr;
+  }
+
+  .topContacts {
+    grid-template-columns: repeat(2, minmax(0, 230px));
+    justify-content: start;
+  }
+
+  #route .routeMap,
+  .galleryGrid {
+    width: min(100%, 860px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #route .routeMap article,
+  #route .routeMap article:nth-child(4),
+  #route .routeMap article:nth-child(5),
+  .galleryGrid article,
+  .galleryGrid article:nth-child(4),
+  .galleryGrid article:nth-child(5) {
+    min-height: 410px;
+  }
+
+  .sampleModels {
+    grid-template-columns: 1fr;
+  }
+
+  .contactPanel {
+    grid-template-columns: 1fr;
+  }
+
+  footer,
+  footer .footerContacts {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .topContacts {
+    display: flex;
+  }
+
+  .topCall {
+    width: auto;
+  }
+
+  #route .routeMap,
+  .galleryGrid {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  #route .routeMap article,
+  #route .routeMap article:nth-child(4),
+  #route .routeMap article:nth-child(5),
+  .galleryGrid article,
+  .galleryGrid article:nth-child(4),
+  .galleryGrid article:nth-child(5),
+  .modelCard,
+  .modelCardMain {
+    min-height: 360px;
+  }
+
+  #route .routeMap article h3,
+  .galleryGrid h3 {
+    margin-top: 120px;
+  }
+
+  .contactChecklist span {
+    width: 100%;
+  }
+}

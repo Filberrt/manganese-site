@@ -61,15 +61,9 @@ const routeSteps = [
 ]
 
 const productCards = [
-  ['Марганцовистый известняк', 'Основной продукт для металлургических предприятий. Для оценки важны Mn, CaO, SiO2, фракция, влажность и протокол партии.'],
-  ['Манганокальцитовый флюс', 'Флюсовое сырье с марганцевой составляющей. Показатели уточняются по лабораторному анализу и паспорту качества.'],
-  ['Гипсовый и гипсоангидритовый камень', 'Дополнительная продукция компании. Данные по применению и составу нужно привязать к актуальным материалам поставщика.'],
-]
-
-const sampleOptions = [
-  ['Фракция сырья', 'Отдельная 3D-модель типовой фракции после дробления покажет размер и форму материала.'],
-  ['Гипсовый камень', 'Если продукт подтвержден к продаже, можно добавить второй образец рядом с известняком.'],
-  ['Партия после подготовки', 'Модель или фото-слой подготовленной партии поможет показать сырье перед отгрузкой.'],
+  ['Марганцовистый известняк', 'Основной продукт для металлургических предприятий. По партии предоставляются состав, фракция, влажность и паспорт качества.'],
+  ['Манганокальцитовый флюс', 'Флюсовое сырье с марганцевой составляющей для задач, где важны стабильная партия и подтвержденные показатели.'],
+  ['Гипсовый и гипсоангидритовый камень', 'Отдельная продуктовая группа компании. Условия поставки и характеристики уточняются под заявку предприятия.'],
 ]
 
 const routeStageImages = [
@@ -144,7 +138,9 @@ const slideItems = [
   ['contacts', 'Заявка'],
 ]
 
-function RockSample() {
+type RockVariant = 'limestone' | 'gypsum'
+
+function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
   const mountRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -161,7 +157,7 @@ function RockSample() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = 1.32
+    renderer.toneMappingExposure = variant === 'gypsum' ? 0.82 : 1.32
     mount.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -176,7 +172,7 @@ function RockSample() {
 
     scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
 
-    const keyLight = new THREE.DirectionalLight('#fff1be', 4.2)
+    const keyLight = new THREE.DirectionalLight(variant === 'gypsum' ? '#fff9df' : '#fff1be', 4.2)
     keyLight.position.set(3, 4, 5)
     scene.add(keyLight)
 
@@ -197,11 +193,29 @@ function RockSample() {
       const maxAxis = Math.max(size.x, size.y, size.z) || 1
 
       model.position.sub(center)
-      model.scale.setScalar(1.45 / maxAxis)
+      model.scale.setScalar((variant === 'gypsum' ? 1.32 : 1.45) / maxAxis)
       model.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.castShadow = true
           child.receiveShadow = true
+
+          if (variant === 'gypsum') {
+            const materials = Array.isArray(child.material) ? child.material : [child.material]
+            const updatedMaterials = materials.map((material) => {
+              const cloned = material.clone()
+              if ('color' in cloned && cloned.color instanceof THREE.Color) {
+                cloned.color.set('#bfb8a6')
+              }
+              if ('map' in cloned) cloned.map = null
+              if ('normalMap' in cloned) cloned.normalMap = null
+              if ('roughness' in cloned) cloned.roughness = 0.96
+              if ('metalness' in cloned) cloned.metalness = 0
+              cloned.needsUpdate = true
+              return cloned
+            })
+
+            child.material = Array.isArray(child.material) ? updatedMaterials : updatedMaterials[0]
+          }
         }
       })
 
@@ -236,7 +250,7 @@ function RockSample() {
       mount.classList.remove('is-loaded')
       mount.replaceChildren()
     }
-  }, [])
+  }, [variant])
 
   return (
     <div className="localModelViewer" ref={mountRef} data-testid="rock-viewer">
@@ -427,8 +441,8 @@ function App() {
           <p className="eyebrow">Наш продукт</p>
           <h2>Промышленное сырье с проверяемыми показателями</h2>
           <p>
-            Основной фокус сайта — марганцовистый известняк для металлургии. Дополнительно
-            в продуктовой линейке нужно учесть флюсовое сырье и гипсовый камень по данным компании.
+            Основной продукт — марганцовистый известняк для металлургических предприятий.
+            Дополнительно в линейке выделены флюсовое сырье и гипсовый камень.
           </p>
           <div className="checkList">
             <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
@@ -482,9 +496,7 @@ function App() {
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Фотогалерея</p>
           <h2>Как выглядит карьер и подготовка сырья</h2>
-          <p>
-            Визуальный блок показывает производственную площадку, сырье, контроль партии и логистику.
-          </p>
+          <p>Фото показывают путь партии без лишних пояснений: добыча, проба, контроль, подготовка и отгрузка.</p>
         </div>
         <div className="galleryGrid">
           {galleryItems.map(([title, text, image], index) => (
@@ -508,25 +520,23 @@ function App() {
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
           <h2>Образец сырья в 3D</h2>
-          <p>
-            Модель можно вращать, приближать и отдалять прямо на странице.
-          </p>
-          <div className="sampleHints" aria-label="Что можно добавить в 3D-блок">
-            {sampleOptions.map(([title, text]) => (
-              <article key={title}>
-                <strong>{title}</strong>
-                <span>{text}</span>
-              </article>
-            ))}
-          </div>
+          <p>Два образца можно вращать, приближать и отдалять прямо на странице.</p>
         </div>
-        <div className="rockStage cleanModel" data-reveal>
-          <RockSample />
-          <div className="rockTips" aria-label="Управление моделью">
-            <span>вращение мышью или касанием</span>
-            <span>приближение колесом или жестом</span>
-            <span>один реальный образец сейчас</span>
-          </div>
+        <div className="sampleModels" data-reveal>
+          <article className="modelCard modelCardMain">
+            <div className="modelHeader">
+              <strong>Марганцовистый известняк</strong>
+              <span>основной продукт</span>
+            </div>
+            <RockSample variant="limestone" />
+          </article>
+          <article className="modelCard">
+            <div className="modelHeader">
+              <strong>Гипсоангидритовый камень</strong>
+              <span>дополнительная продукция</span>
+            </div>
+            <RockSample variant="gypsum" />
+          </article>
         </div>
       </section>
 
@@ -663,6 +673,11 @@ function App() {
             После обращения специалисты уточнят задачу и подготовят данные по составу,
             комплекту документов, варианту отгрузки и пробной партии.
           </p>
+          <div className="contactChecklist" aria-label="Что подготовим">
+            <span><CheckCircle2 size={18} /> протокол анализа по партии</span>
+            <span><CheckCircle2 size={18} /> паспорт качества и документы</span>
+            <span><CheckCircle2 size={18} /> расчет авто или железнодорожной отгрузки</span>
+          </div>
           <div className="contactPanel">
             <a href="tel:+73472463913"><Phone size={18} /> {company.phonePrimary}</a>
             <a href="tel:+73472463914"><Phone size={18} /> {company.phoneSecondary}</a>
