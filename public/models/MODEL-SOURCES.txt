@@ -5,6 +5,20 @@ License: CC0 / public domain style license from Poly Haven
 Files used: 1k glTF package copied into public/models/stone_01
 Production note: Replace with the company's actual manganese-bearing limestone 3D scan/model when available.
 
+Additional local 3D model: Rock 07
+Source: Poly Haven
+URL: https://polyhaven.com/a/rock_07
+License: CC0 / public domain style license from Poly Haven
+Files used: 1k glTF package copied into public/models/rock_07
+Production note: Used as a separate visual sample for the additional flux raw material block.
+
+Additional local 3D model: Namaqualand Boulder 03
+Source: Poly Haven
+URL: https://polyhaven.com/a/namaqualand_boulder_03
+License: CC0 / public domain style license from Poly Haven
+Files used: 1k glTF package copied into public/models/namaqualand_boulder_03
+Production note: Used as a separate visual sample for the gypsum / gypsum-anhydrite stone block.
+
 Previous reference model: Limestone with manganese dendrites
 Source: Sketchfab
 URL: https://sketchfab.com/3d-models/limestone-with-manganese-dendrites-1718378c8b08471f9c19e9e18615d886

@@ -12,6 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Local QA and source probing artifacts
+qa-shots/
+live-index.html
+bash-*.html
+bash-*.xml
+polyhaven-*.json
+*_files.json
+public/models/namaqualand_stones_01/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

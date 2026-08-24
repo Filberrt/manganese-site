@@ -62,8 +62,8 @@ const routeSteps = [
 
 const productCards = [
   ['Марганцовистый известняк', 'Основной продукт для металлургических предприятий. По партии предоставляются состав, фракция, влажность и паспорт качества.'],
-  ['Манганокальцитовый флюс', 'Флюсовое сырье с марганцевой составляющей для задач, где важны стабильная партия и подтвержденные показатели.'],
-  ['Гипсовый и гипсоангидритовый камень', 'Отдельная продуктовая группа компании. Условия поставки и характеристики уточняются под заявку предприятия.'],
+  ['Флюсовое сырье', 'Дополнительная позиция по актуальному перечню компании. Наличие, показатели и объем подтверждаются при запросе.'],
+  ['Гипсовый и гипсоангидритовый камень', 'Отдельная продуктовая группа. Условия поставки, фракция и характеристики уточняются под задачу предприятия.'],
 ]
 
 const routeStageImages = [
@@ -75,17 +75,38 @@ const routeStageImages = [
 ]
 
 const galleryItems = [
-  ['Карьер', 'Добыча и первичная подготовка сырья', 'route-stage-01.png'],
-  ['Сырье', 'Фактура и фракция материала до отгрузки', 'route-stage-02.png'],
-  ['Контроль', 'Подготовка данных для паспорта партии', 'route-stage-03.png'],
-  ['Площадка', 'Накопление и подготовка партии', 'route-stage-04.png'],
-  ['Отгрузка', 'Автомобильная и железнодорожная логистика', 'route-stage-05.png'],
+  ['Карьер и добыча сырья', 'route-stage-01.png'],
+  ['Фракция материала', 'route-stage-02.png'],
+  ['Лабораторный контроль', 'route-stage-03.png'],
+  ['Подготовка партии', 'route-stage-04.png'],
+  ['Авто и железнодорожная отгрузка', 'route-stage-05.png'],
+]
+
+const sampleModels = [
+  {
+    title: 'Марганцовистый известняк',
+    subtitle: 'основной продукт',
+    model: 'models/stone_01/stone_01_1k.gltf',
+    variant: 'limestone',
+  },
+  {
+    title: 'Флюсовое сырье',
+    subtitle: 'отдельная 3D-модель',
+    model: 'models/rock_07/rock_07_1k.gltf',
+    variant: 'flux',
+  },
+  {
+    title: 'Гипсоангидритовый камень',
+    subtitle: 'отдельная 3D-модель',
+    model: 'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf',
+    variant: 'gypsum',
+  },
 ]
 
 const articlePlan = [
   {
-    title: 'Марганцовистый известняк для металлургии: где он может быть полезен',
-    note: 'Состав, флюсующая роль, пробная партия и документы для первичной оценки.',
+    title: 'Как оценить марганцовистый известняк перед пробной партией',
+    note: 'Состав, фракция, влажность, документы и минимальный объем для проверки.',
     lead: 'Марганцовистый известняк рассматривается как промышленное сырье с измеримыми показателями состава, фракции и влажности.',
     sections: [
       'Для первичной оценки нужны протокол лабораторного анализа, фракция, влажность и условия отгрузки.',
@@ -94,8 +115,8 @@ const articlePlan = [
     ],
   },
   {
-    title: 'Как выбрать поставщика флюсового сырья',
-    note: 'Документы, логистика, объемы, стабильность партии и опыт регулярных отгрузок.',
+    title: 'Какие документы запросить у поставщика сырья',
+    note: 'Протокол анализа, паспорт качества, лицензии, происхождение партии.',
     lead: 'Для металлургического предприятия поставщик должен подтверждать сырье цифрами, документами и понятной логистикой.',
     sections: [
       'До договора проверяют химический анализ, паспорт качества, лицензионные документы и происхождение сырья.',
@@ -104,8 +125,8 @@ const articlePlan = [
     ],
   },
   {
-    title: 'Химический состав: какие данные запросить у поставщика',
-    note: 'Что должно быть в протоколе анализа и паспорте качества партии.',
+    title: 'Что смотреть в протоколе лабораторного анализа',
+    note: 'Mn, CaO, SiO2, MgO, Fe, P, S, фракция и влажность партии.',
     lead: 'Коммерческое предложение по сырью должно сопровождаться реальными показателями из лабораторного протокола.',
     sections: [
       'В запрос включают Mn, CaO/CaCO3, SiO2, MgO, Fe, P, S, фракцию и влажность.',
@@ -114,8 +135,8 @@ const articlePlan = [
     ],
   },
   {
-    title: 'Поставка от карьера до предприятия: что должно быть понятно заранее',
-    note: 'Партии, станция, автомобильная отгрузка, железная дорога и документы.',
+    title: 'Как согласовать отгрузку автомобильным и железнодорожным транспортом',
+    note: 'Объем партии, станция назначения, график, документы и ответственность сторон.',
     lead: 'Поставка должна быть понятной до первого рейса: объем, маршрут, документы и ответственные стороны фиксируются заранее.',
     sections: [
       'Для старта согласуется пробная партия, требования к фракции и комплект документов.',
@@ -138,9 +159,9 @@ const slideItems = [
   ['contacts', 'Заявка'],
 ]
 
-type RockVariant = 'limestone' | 'gypsum'
+type RockVariant = 'limestone' | 'flux' | 'gypsum'
 
-function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
+function RockSample({ model, variant = 'limestone' }: { model: string; variant?: RockVariant }) {
   const mountRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -157,7 +178,7 @@ function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = variant === 'gypsum' ? 0.82 : 1.32
+    renderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
     mount.appendChild(renderer.domElement)
 
     const controls = new OrbitControls(camera, renderer.domElement)
@@ -185,16 +206,19 @@ function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
     scene.add(modelRoot)
 
     const loader = new GLTFLoader()
-    loader.load(asset('models/stone_01/stone_01_1k.gltf'), (gltf) => {
-      const model = gltf.scene
-      const box = new THREE.Box3().setFromObject(model)
+    loader.load(asset(model), (gltf) => {
+      const loadedModel = gltf.scene
+      const box = new THREE.Box3().setFromObject(loadedModel)
       const center = box.getCenter(new THREE.Vector3())
       const size = box.getSize(new THREE.Vector3())
       const maxAxis = Math.max(size.x, size.y, size.z) || 1
+      const modelScale = variant === 'flux' ? 1.28 : variant === 'gypsum' ? 1.18 : 1.45
 
-      model.position.sub(center)
-      model.scale.setScalar((variant === 'gypsum' ? 1.32 : 1.45) / maxAxis)
-      model.traverse((child) => {
+      loadedModel.position.sub(center)
+      if (variant === 'gypsum') loadedModel.position.y += 0.34
+      if (variant === 'flux') loadedModel.position.y += 0.08
+      loadedModel.scale.setScalar(modelScale / maxAxis)
+      loadedModel.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.castShadow = true
           child.receiveShadow = true
@@ -204,10 +228,8 @@ function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
             const updatedMaterials = materials.map((material) => {
               const cloned = material.clone()
               if ('color' in cloned && cloned.color instanceof THREE.Color) {
-                cloned.color.set('#bfb8a6')
+                cloned.color.lerp(new THREE.Color('#ddd6c4'), 0.28)
               }
-              if ('map' in cloned) cloned.map = null
-              if ('normalMap' in cloned) cloned.normalMap = null
               if ('roughness' in cloned) cloned.roughness = 0.96
               if ('metalness' in cloned) cloned.metalness = 0
               cloned.needsUpdate = true
@@ -219,7 +241,7 @@ function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
         }
       })
 
-      modelRoot.add(model)
+      modelRoot.add(loadedModel)
       mount.classList.add('is-loaded')
     })
 
@@ -250,7 +272,7 @@ function RockSample({ variant = 'limestone' }: { variant?: RockVariant }) {
       mount.classList.remove('is-loaded')
       mount.replaceChildren()
     }
-  }, [variant])
+  }, [model, variant])
 
   return (
     <div className="localModelViewer" ref={mountRef} data-testid="rock-viewer">
@@ -441,8 +463,8 @@ function App() {
           <p className="eyebrow">Наш продукт</p>
           <h2>Промышленное сырье с проверяемыми показателями</h2>
           <p>
-            Основной продукт — марганцовистый известняк для металлургических предприятий.
-            Дополнительно в линейке выделены флюсовое сырье и гипсовый камень.
+            Основной продукт сайта — марганцовистый известняк для металлургических предприятий.
+            Дополнительные позиции показываем отдельно и подтверждаем по актуальному перечню компании.
           </p>
           <div className="checkList">
             <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
@@ -495,11 +517,10 @@ function App() {
       <section className="section gallerySlide snapSlide darkSlide" id="gallery" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Фотогалерея</p>
-          <h2>Как выглядит карьер и подготовка сырья</h2>
-          <p>Фото показывают путь партии без лишних пояснений: добыча, проба, контроль, подготовка и отгрузка.</p>
+          <h2>Производство, сырье и отгрузка</h2>
         </div>
         <div className="galleryGrid">
-          {galleryItems.map(([title, text, image], index) => (
+          {galleryItems.map(([title, image], index) => (
             <article
               data-reveal
               style={{
@@ -508,9 +529,7 @@ function App() {
               } as CSSProperties}
               key={title}
             >
-              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{title}</h3>
-              <p>{text}</p>
             </article>
           ))}
         </div>
@@ -520,23 +539,18 @@ function App() {
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
           <h2>Образец сырья в 3D</h2>
-          <p>Два образца можно вращать, приближать и отдалять прямо на странице.</p>
+          <p>Три интерактивных образца можно вращать, приближать и отдалять прямо на странице.</p>
         </div>
         <div className="sampleModels" data-reveal>
-          <article className="modelCard modelCardMain">
-            <div className="modelHeader">
-              <strong>Марганцовистый известняк</strong>
-              <span>основной продукт</span>
-            </div>
-            <RockSample variant="limestone" />
-          </article>
-          <article className="modelCard">
-            <div className="modelHeader">
-              <strong>Гипсоангидритовый камень</strong>
-              <span>дополнительная продукция</span>
-            </div>
-            <RockSample variant="gypsum" />
-          </article>
+          {sampleModels.map((item, index) => (
+            <article className={index === 0 ? 'modelCard modelCardMain' : 'modelCard'} key={item.title}>
+              <div className="modelHeader">
+                <strong>{item.title}</strong>
+                <span>{item.subtitle}</span>
+              </div>
+              <RockSample model={item.model} variant={item.variant as RockVariant} />
+            </article>
+          ))}
         </div>
       </section>
 
@@ -616,11 +630,11 @@ function App() {
 
       <section className="section articlesBand snapSlide" id="articles" data-slide>
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Материалы о сырье и поставке</p>
-          <h2>Практические материалы для выбора поставщика</h2>
+          <p className="eyebrow">Материалы для первичной оценки</p>
+          <h2>Что проверить до запроса партии</h2>
           <p>
-            Короткие материалы закрывают основные вопросы перед первым запросом:
-            продукт, химический состав, документы и маршрут поставки.
+            Короткие разборы для технолога и снабжения: состав, документы,
+            применимость сырья и схема отгрузки.
           </p>
         </div>
         <div className="articleGrid readableArticles">
@@ -667,16 +681,16 @@ function App() {
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Следующий шаг</p>
-          <h2>Запросить состав, документы и условия поставки</h2>
+          <p className="eyebrow">Заявка на поставку</p>
+          <h2>Получить расчет пробной партии</h2>
           <p>
-            После обращения специалисты уточнят задачу и подготовят данные по составу,
-            комплекту документов, варианту отгрузки и пробной партии.
+            Укажите задачу, ориентировочный объем, фракцию и станцию назначения.
+            В ответ подготовим состав документов, вариант отгрузки и условия старта.
           </p>
           <div className="contactChecklist" aria-label="Что подготовим">
-            <span><CheckCircle2 size={18} /> протокол анализа по партии</span>
-            <span><CheckCircle2 size={18} /> паспорт качества и документы</span>
-            <span><CheckCircle2 size={18} /> расчет авто или железнодорожной отгрузки</span>
+            <span><CheckCircle2 size={18} /> подтвердим актуальный продукт и фракцию</span>
+            <span><CheckCircle2 size={18} /> обозначим комплект документов по партии</span>
+            <span><CheckCircle2 size={18} /> предложим авто или железнодорожную схему</span>
           </div>
           <div className="contactPanel">
             <a href="tel:+73472463913"><Phone size={18} /> {company.phonePrimary}</a>

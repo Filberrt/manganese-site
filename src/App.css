@@ -4159,6 +4159,16 @@ footer span {
 .topCall,
 .topMail {
   width: 230px;
+  height: 46px;
+  min-width: 230px;
+  max-width: 230px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.topCall:hover,
+.topMail:hover {
+  transform: none;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22);
 }
 
 .factGrid {
@@ -4284,53 +4294,71 @@ footer span {
 }
 
 .galleryGrid {
-  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 18px;
 }
 
 .galleryGrid article,
 .galleryGrid article:nth-child(4),
 .galleryGrid article:nth-child(5) {
-  grid-column: auto;
-  min-height: clamp(430px, 48vh, 540px);
+  grid-column: span 4;
+  min-height: clamp(340px, 44vh, 500px);
   padding: 34px;
+}
+
+.galleryGrid article:nth-child(1),
+.galleryGrid article:nth-child(4) {
+  grid-column: span 5;
+}
+
+.galleryGrid article:nth-child(2),
+.galleryGrid article:nth-child(5) {
+  grid-column: span 7;
+}
+
+.galleryGrid article:nth-child(3) {
+  grid-column: span 12;
+  min-height: clamp(300px, 38vh, 420px);
 }
 
 .galleryGrid article::before {
   background-position: center;
-  filter: saturate(0.7) contrast(1.08) brightness(0.72);
-  transform: scale(1.01);
+  filter: saturate(0.78) contrast(1.06) brightness(0.8);
+  transform: scale(1);
 }
 
 .galleryGrid article::after {
   background:
-    linear-gradient(180deg, rgba(8, 13, 12, 0.04) 0%, rgba(8, 13, 12, 0.34) 42%, rgba(8, 13, 12, 0.93) 100%);
-}
-
-.galleryGrid span {
-  width: 58px;
-  height: 58px;
-  margin-bottom: auto;
+    linear-gradient(180deg, rgba(8, 13, 12, 0) 0%, rgba(8, 13, 12, 0.24) 52%, rgba(8, 13, 12, 0.86) 100%);
 }
 
 .galleryGrid h3 {
-  margin-top: 160px;
+  display: inline-flex;
+  width: fit-content;
+  max-width: min(420px, 100%);
+  margin: auto 0 0;
+  padding: 12px 14px;
+  color: #fffdf5;
+  background: rgba(9, 13, 11, 0.72);
+  border: 1px solid rgba(210, 198, 137, 0.24);
+  border-radius: 6px;
+  font-size: clamp(18px, 1.25vw, 23px);
 }
 
 #sample.sampleSlide {
-  grid-template-columns: minmax(320px, 420px) minmax(720px, 1180px);
-  gap: clamp(36px, 5vw, 72px);
+  grid-template-columns: minmax(280px, 360px) minmax(780px, 1220px);
+  gap: clamp(28px, 4vw, 56px);
 }
 
 .sampleModels {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
 .modelCard {
   position: relative;
-  min-height: clamp(420px, 56vh, 620px);
+  min-height: clamp(420px, 58vh, 650px);
   overflow: hidden;
   background: #050807;
   border: 1px solid rgba(245, 242, 232, 0.16);
@@ -4339,7 +4367,7 @@ footer span {
 }
 
 .modelCardMain {
-  min-height: clamp(520px, 62vh, 700px);
+  min-height: clamp(420px, 58vh, 650px);
 }
 
 .modelHeader {
@@ -4541,13 +4569,16 @@ footer .footerDocs a {
   .galleryGrid article,
   .galleryGrid article:nth-child(4),
   .galleryGrid article:nth-child(5),
+  .galleryGrid article:nth-child(1),
+  .galleryGrid article:nth-child(2),
+  .galleryGrid article:nth-child(3),
   .modelCard,
   .modelCardMain {
+    grid-column: auto;
     min-height: 360px;
   }
 
-  #route .routeMap article h3,
-  .galleryGrid h3 {
+  #route .routeMap article h3 {
     margin-top: 120px;
   }
 
