@@ -39,25 +39,37 @@ const compositionRows = [
 ]
 
 const facts = [
-  ['7 000 тонн в месяц', 'действующий график поставки для промышленного клиента'],
+  ['от 7 000 тонн в месяц', 'действующий график поставки для промышленного клиента'],
   ['Пробные партии от 100 тонн', 'можно проверить сырье до регулярного контракта'],
-  ['Авто и железная дорога', 'подбираем схему отгрузки под станцию и объем клиента'],
+  ['Свои авто и железная дорога', 'подбираем схему отгрузки под станцию и объем клиента'],
   ['Лицензии и документы', 'предоставляем подтверждающие материалы по сырью и поставке'],
 ]
 
 const documentCards = [
-  ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели'],
-  ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо'],
-  ['Лицензии и сведения по запасам', 'документы, подтверждающие право добычи и происхождение сырья'],
-  ['Условия отгрузки', 'порядок поставки автомобильным и железнодорожным транспортом'],
+  ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
+  ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
+  ['Лицензии и сведения по запасам', 'документы, подтверждающие право добычи и происхождение сырья', 'documents/license-info.html'],
+  ['Условия отгрузки', 'порядок поставки автомобильным и железнодорожным транспортом', 'documents/shipping-terms.html'],
 ]
 
 const routeSteps = [
-  ['01', 'Карьер', 'добыча и первичная подготовка сырья'],
-  ['02', 'Отбор пробы', 'партия фиксируется для лабораторного контроля'],
-  ['03', 'Проверка качества', 'оформляется протокол анализа и паспорт партии'],
-  ['04', 'Подготовка партии', 'согласуются фракция, объем и график отгрузки'],
-  ['05', 'Авто / ЖД', 'поставка на предприятие по выбранной логистической схеме'],
+  ['01', 'Карьер', 'добыча и первичная подготовка сырья с фиксацией партии для дальнейшего контроля качества'],
+  ['02', 'Отбор пробы', 'образец отбирается до отгрузки, чтобы подтвердить состав, фракцию и влажность по партии'],
+  ['03', 'Проверка качества', 'лабораторный протокол и паспорт качества готовятся до передачи сырья клиенту'],
+  ['04', 'Подготовка партии', 'согласуются фракция, объем, график и комплект документов под требования предприятия'],
+  ['05', 'Свои авто / ЖД', 'поставка выполняется автомобильным транспортом или по железной дороге под станцию клиента'],
+]
+
+const productCards = [
+  ['Марганцовистый известняк', 'Основной продукт для металлургических предприятий. Для оценки важны Mn, CaO, SiO2, фракция, влажность и протокол партии.'],
+  ['Манганокальцитовый флюс', 'Флюсовое сырье с марганцевой составляющей. Показатели уточняются по лабораторному анализу и паспорту качества.'],
+  ['Гипсовый и гипсоангидритовый камень', 'Дополнительная продукция компании. Данные по применению и составу нужно привязать к актуальным материалам поставщика.'],
+]
+
+const sampleOptions = [
+  ['Фракция сырья', 'Отдельная 3D-модель типовой фракции после дробления покажет размер и форму материала.'],
+  ['Гипсовый камень', 'Если продукт подтвержден к продаже, можно добавить второй образец рядом с известняком.'],
+  ['Партия после подготовки', 'Модель или фото-слой подготовленной партии поможет показать сырье перед отгрузкой.'],
 ]
 
 const routeStageImages = [
@@ -66,6 +78,14 @@ const routeStageImages = [
   'route-stage-03.png',
   'route-stage-04.png',
   'route-stage-05.png',
+]
+
+const galleryItems = [
+  ['Карьер', 'Добыча и первичная подготовка сырья', 'route-stage-01.png'],
+  ['Сырье', 'Фактура и фракция материала до отгрузки', 'route-stage-02.png'],
+  ['Контроль', 'Подготовка данных для паспорта партии', 'route-stage-03.png'],
+  ['Площадка', 'Накопление и подготовка партии', 'route-stage-04.png'],
+  ['Отгрузка', 'Автомобильная и железнодорожная логистика', 'route-stage-05.png'],
 ]
 
 const articlePlan = [
@@ -116,6 +136,7 @@ const slideItems = [
   ['video', 'Ролик'],
   ['product', 'Продукт'],
   ['route', 'Логистика'],
+  ['gallery', 'Фото'],
   ['sample', '3D'],
   ['analysis', 'Состав'],
   ['documents', 'Документы'],
@@ -333,7 +354,10 @@ function App() {
             <Phone size={18} aria-hidden="true" />
             {company.phonePrimary}
           </a>
-          <a href={`mailto:${company.email}`}>{company.email}</a>
+          <a className="topMail" href={`mailto:${company.email}`}>
+            <Mail size={18} aria-hidden="true" />
+            {company.email}
+          </a>
         </div>
       </header>
 
@@ -355,10 +379,6 @@ function App() {
         <div className="heroShade" />
         <div className="heroInner">
           <h1 data-reveal>Марганцовистый известняк для металлургических предприятий</h1>
-          <p className="lead" data-reveal>
-            Сырье с проверяемым химическим составом, документами по партии и понятной
-            логистикой. Пробные отгрузки от 100 тонн, автомобильная и железнодорожная поставка.
-          </p>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#analysis">
               Смотреть состав
@@ -387,10 +407,6 @@ function App() {
         <div data-reveal>
           <p className="eyebrow">Видеоролик о компании</p>
           <h2>Сырье, контроль качества и отгрузка в одном коротком ролике</h2>
-          <p>
-            Ролик показывает производственную цепочку: добычу сырья, подготовку партии,
-            лабораторный контроль, комплект документов и отгрузку клиенту.
-          </p>
           <div className="videoPlan">
             <span>Карьер и производственная площадка</span>
             <span>Образец сырья и подготовка партии</span>
@@ -408,27 +424,28 @@ function App() {
 
       <section className="section split elevatedSection snapSlide" id="product" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Марганцовистый известняк</p>
+          <p className="eyebrow">Наш продукт</p>
           <h2>Промышленное сырье с проверяемыми показателями</h2>
           <p>
-            Для первичной оценки предоставляются данные по составу, фракции, влажности,
-            условиям отгрузки и комплекту документов. Поставка может начинаться с пробной партии.
+            Основной фокус сайта — марганцовистый известняк для металлургии. Дополнительно
+            в продуктовой линейке нужно учесть флюсовое сырье и гипсовый камень по данным компании.
           </p>
           <div className="checkList">
             <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
-            <span><CheckCircle2 size={20} /> регулярный график поставки до 7 000 тонн в месяц и выше после согласования</span>
-            <span><CheckCircle2 size={20} /> автомобильная и железнодорожная логистика</span>
+            <span><CheckCircle2 size={20} /> регулярный график поставки от 7 000 тонн в месяц после согласования</span>
+            <span><CheckCircle2 size={20} /> свои авто и железнодорожная логистика</span>
             <span><CheckCircle2 size={20} /> протокол анализа, паспорт качества и лицензионные документы по запросу</span>
           </div>
         </div>
-        <aside className="quietPanel deliveryPanel" data-reveal>
-          <h3>Условия поставки</h3>
-          <div className="deliveryRows">
-            <span><b>Продукт</b> марганцовистый известняк</span>
-            <span><b>Пробная партия</b> от 100 тонн</span>
-            <span><b>Регулярный объем</b> 7 000 тонн в месяц по действующему графику</span>
-            <span><b>Отгрузка</b> автомобильная и железнодорожная</span>
-            <span><b>Документы</b> протокол анализа, паспорт качества, лицензии</span>
+        <aside className="quietPanel productMatrix" data-reveal>
+          <h3>Продуктовая линейка</h3>
+          <div className="productCards">
+            {productCards.map(([title, text]) => (
+              <article key={title}>
+                <strong>{title}</strong>
+                <span>{text}</span>
+              </article>
+            ))}
           </div>
         </aside>
       </section>
@@ -461,6 +478,32 @@ function App() {
         </div>
       </section>
 
+      <section className="section gallerySlide snapSlide darkSlide" id="gallery" data-slide>
+        <div className="sectionIntro" data-reveal>
+          <p className="eyebrow">Фотогалерея</p>
+          <h2>Как выглядит карьер и подготовка сырья</h2>
+          <p>
+            Визуальный блок показывает производственную площадку, сырье, контроль партии и логистику.
+          </p>
+        </div>
+        <div className="galleryGrid">
+          {galleryItems.map(([title, text, image], index) => (
+            <article
+              data-reveal
+              style={{
+                '--delay': `${index * 70}ms`,
+                '--gallery-image': `url("${asset(image)}")`,
+              } as CSSProperties}
+              key={title}
+            >
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="section sampleSlide snapSlide darkSlide" id="sample" data-slide>
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
@@ -468,19 +511,32 @@ function App() {
           <p>
             Модель можно вращать, приближать и отдалять прямо на странице.
           </p>
+          <div className="sampleHints" aria-label="Что можно добавить в 3D-блок">
+            {sampleOptions.map(([title, text]) => (
+              <article key={title}>
+                <strong>{title}</strong>
+                <span>{text}</span>
+              </article>
+            ))}
+          </div>
         </div>
         <div className="rockStage cleanModel" data-reveal>
           <RockSample />
+          <div className="rockTips" aria-label="Управление моделью">
+            <span>вращение мышью или касанием</span>
+            <span>приближение колесом или жестом</span>
+            <span>один реальный образец сейчас</span>
+          </div>
         </div>
       </section>
 
       <section className="section analysisBand snapSlide" id="analysis" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Химический состав</p>
-          <h2>«Паспорт» сырья для технолога</h2>
+          <h2>Паспорт сырья для технолога</h2>
           <p>
-            Ориентиры по опубликованным данным. Значения конкретной партии подтверждаются
-            лабораторным протоколом и паспортом качества.
+            Ориентиры по составу и партии. Конкретные значения подтверждаются лабораторным
+            протоколом и паспортом качества.
           </p>
         </div>
         <div className="analysisLayout">
@@ -508,21 +564,21 @@ function App() {
             </table>
           </div>
           <div className="documentStack" data-reveal>
-            <div>
+            <a href={asset('documents/protocol-analysis.html')} target="_blank" rel="noreferrer">
               <FlaskConical size={22} aria-hidden="true" />
               <strong>Протокол анализа</strong>
-              <span>нужен реальный файл по партии</span>
-            </div>
-            <div>
+              <span>открыть структуру документа</span>
+            </a>
+            <a href={asset('documents/quality-passport.html')} target="_blank" rel="noreferrer">
               <ClipboardCheck size={22} aria-hidden="true" />
               <strong>Паспорт качества</strong>
               <span>фракция, влажность, партия, дата</span>
-            </div>
-            <div>
+            </a>
+            <a href={asset('documents/license-info.html')} target="_blank" rel="noreferrer">
               <ShieldCheck size={22} aria-hidden="true" />
               <strong>Документы</strong>
               <span>лицензии, запасы, условия отгрузки</span>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -537,12 +593,12 @@ function App() {
           </p>
         </div>
         <div className="trustGrid">
-          {documentCards.map(([title, text], index) => (
+          {documentCards.map(([title, text, href], index) => (
             <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
               <FileText size={24} aria-hidden="true" />
               <h3>{title}</h3>
               <p>{text}</p>
-              <a href="#contacts">Запросить файл</a>
+              <a href={asset(href)} target="_blank" rel="noreferrer">Открыть документ</a>
             </article>
           ))}
         </div>
@@ -551,10 +607,10 @@ function App() {
       <section className="section articlesBand snapSlide" id="articles" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Материалы о сырье и поставке</p>
-          <h2>Статьи для технологов и закупки</h2>
+          <h2>Практические материалы для выбора поставщика</h2>
           <p>
-            Раздел оставлен без дублирующих чек-листов. Материалы ведут к продукту,
-            документам, качеству и логистике.
+            Короткие материалы закрывают основные вопросы перед первым запросом:
+            продукт, химический состав, документы и маршрут поставки.
           </p>
         </div>
         <div className="articleGrid readableArticles">
@@ -645,14 +701,22 @@ function App() {
       )}
 
       <footer>
-        <div>
+        <div className="footerBrand">
           <strong>{company.name}</strong>
           <span>{company.subtitle}</span>
+          <small>Марганцовистый известняк, флюсовое сырье, гипсовый и гипсоангидритовый камень.</small>
         </div>
-        <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
-        <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
-        <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
-        <span><MapPin size={16} /> {company.location}</span>
+        <div className="footerContacts">
+          <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
+          <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
+          <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
+          <span><MapPin size={16} /> {company.location}</span>
+        </div>
+        <div className="footerDocs">
+          <a href="#documents">Документы</a>
+          <a href="#analysis">Химический состав</a>
+          <a href="#contacts">Запрос поставки</a>
+        </div>
       </footer>
     </main>
   )
