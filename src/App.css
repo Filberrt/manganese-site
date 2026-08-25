@@ -5702,6 +5702,8 @@ footer .footerDocs a {
 
 #gallery.gallerySlide .sectionIntro .eyebrow,
 #gallery.gallerySlide .sectionIntro h2 {
+  width: fit-content;
+  max-width: 100%;
   margin-left: 0;
   margin-right: 0;
 }
@@ -5709,6 +5711,7 @@ footer .footerDocs a {
 #gallery.gallerySlide .sectionIntro h2 {
   font-size: clamp(42px, 4.2vw, 62px);
   line-height: 1.02;
+  padding-left: 0;
 }
 
 #sample.sampleSlide {
