@@ -5532,6 +5532,7 @@ footer .footerDocs a {
 
 .heroFactStrip article {
   display: grid;
+  grid-template-rows: 14px minmax(42px, auto);
   min-height: 86px;
   align-content: center;
   gap: 7px;
@@ -5544,6 +5545,7 @@ footer .footerDocs a {
 }
 
 .heroFactStrip span {
+  align-self: end;
   color: #d2c689;
   font-size: 11px;
   font-weight: 950;
@@ -5553,6 +5555,7 @@ footer .footerDocs a {
 }
 
 .heroFactStrip strong {
+  align-self: start;
   color: #fffdf5;
   font-size: clamp(15px, 1.15vw, 19px);
   font-weight: 950;
@@ -5683,9 +5686,9 @@ footer .footerDocs a {
 #gallery.gallerySlide .sectionIntro,
 #gallery.gallerySlide .sectionIntro h2,
 #gallery.gallerySlide .sectionIntro .eyebrow {
-  width: min(1320px, calc(100vw - 136px));
+  width: min(1500px, calc(100vw - 120px));
   max-width: none;
-  margin-left: 0;
+  margin-left: auto;
   margin-right: auto;
   justify-items: start;
   text-align: left;
@@ -5945,6 +5948,29 @@ footer .footerDocs a {
   font-size: 11px;
   font-weight: 950;
   text-transform: uppercase;
+}
+
+/* Latest screenshot pass: align hero facts and make gallery captions read as captions. */
+.galleryGrid article {
+  padding: 20px;
+}
+
+.galleryGrid h3 {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  width: fit-content;
+  max-width: min(320px, calc(100% - 36px));
+  margin: 0;
+  padding: 6px 9px;
+  color: #fffdf5;
+  background: rgba(5, 8, 7, 0.58);
+  border: 1px solid rgba(245, 242, 232, 0.12);
+  border-radius: 4px;
+  box-shadow: none;
+  font-size: clamp(13px, 0.82vw, 15px);
+  font-weight: 900;
+  line-height: 1.18;
 }
 
 @media (max-width: 1180px) {

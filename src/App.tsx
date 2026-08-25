@@ -26,7 +26,7 @@ const company = {
   phonePrimary: '+7 (347) 246-39-13',
   phoneSecondary: '+7 (347) 246-39-14',
   email: 'info@bashmineral.ru',
-  location: 'Республика Башкортостан, Россия',
+  location: 'Башкортостане',
 }
 
 const compositionRows = [
@@ -1090,7 +1090,7 @@ function App() {
           <div className="footerLocation">
             <MapPin size={18} aria-hidden="true" />
             <div>
-              <small>Регион поставки</small>
+              <small>Работаем в</small>
               <span>{company.location}</span>
             </div>
           </div>
