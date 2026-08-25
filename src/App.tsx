@@ -2,10 +2,12 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { Object3D } from 'three'
 import {
   ArrowRight,
+  Check,
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
   ClipboardCheck,
+  Copy,
   FileText,
   FlaskConical,
   Mail,
@@ -474,6 +476,7 @@ function App() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
+  const [copiedContact, setCopiedContact] = useState<string | null>(null)
   const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
@@ -485,6 +488,34 @@ function App() {
   const selectedModel = sampleModels[activeModel]
   const selectPreviousModel = () => setActiveModel((current) => (current + sampleModels.length - 1) % sampleModels.length)
   const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
+  const copyWithTextarea = (value: string) => {
+    const textarea = document.createElement('textarea')
+    textarea.value = value
+    textarea.setAttribute('readonly', '')
+    textarea.style.position = 'fixed'
+    textarea.style.opacity = '0'
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    textarea.remove()
+  }
+  const copyContact = async (value: string) => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(value)
+        } catch {
+          copyWithTextarea(value)
+        }
+      } else {
+        copyWithTextarea(value)
+      }
+      setCopiedContact(value)
+      window.setTimeout(() => setCopiedContact((current) => (current === value ? null : current)), 1300)
+    } catch (error) {
+      console.warn('Failed to copy contact', error)
+    }
+  }
 
   useEffect(() => {
     void heroVideoRef.current?.play().catch(() => undefined)
@@ -944,8 +975,7 @@ function App() {
           <p className="eyebrow">Материалы для первичной оценки</p>
           <h2>Что проверить<br />до запроса партии</h2>
           <p>
-            Короткие разборы для технолога и снабжения: состав, документы,
-            применимость сырья и схема отгрузки.
+            Кратко: состав, документы, применимость сырья и отгрузка.
           </p>
         </div>
         <div className="articleGrid readableArticles">
@@ -1062,9 +1092,24 @@ function App() {
         <div className="footerRails">
           <div className="footerBlock">
             <small>Связь</small>
-            <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
-            <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
-            <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
+            <div className="footerContactItem">
+              <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
+              <button type="button" className="copyContactButton" onClick={() => void copyContact(company.phonePrimary)} aria-label="Скопировать телефон" title="Скопировать">
+                {copiedContact === company.phonePrimary ? <Check size={15} /> : <Copy size={15} />}
+              </button>
+            </div>
+            <div className="footerContactItem">
+              <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
+              <button type="button" className="copyContactButton" onClick={() => void copyContact(company.phoneSecondary)} aria-label="Скопировать телефон" title="Скопировать">
+                {copiedContact === company.phoneSecondary ? <Check size={15} /> : <Copy size={15} />}
+              </button>
+            </div>
+            <div className="footerContactItem">
+              <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
+              <button type="button" className="copyContactButton" onClick={() => void copyContact(company.email)} aria-label="Скопировать email" title="Скопировать">
+                {copiedContact === company.email ? <Check size={15} /> : <Copy size={15} />}
+              </button>
+            </div>
           </div>
           <div className="footerBlock">
             <small>Сырье</small>

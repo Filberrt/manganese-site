@@ -5778,7 +5778,7 @@ footer .footerDocs a {
 }
 
 #analysis .sectionIntro p {
-  max-width: 760px;
+  max-width: 460px;
   margin-left: 0;
   margin-right: 0;
 }
@@ -5939,6 +5939,37 @@ footer .footerDocs a {
   justify-content: flex-start;
 }
 
+.footerContactItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  gap: 7px;
+  width: 100%;
+}
+
+.footerContactItem a {
+  min-width: 0;
+}
+
+.copyContactButton {
+  display: inline-grid;
+  width: 40px;
+  min-height: 40px;
+  place-items: center;
+  color: #d2c689;
+  background: rgba(245, 242, 232, 0.055);
+  border: 1px solid rgba(245, 242, 232, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.copyContactButton:hover,
+.copyContactButton:focus-visible {
+  color: #101513;
+  background: #d2c689;
+  border-color: #d2c689;
+}
+
 .footerLocation {
   justify-self: stretch;
   align-self: start;
@@ -5978,6 +6009,40 @@ footer .footerDocs a {
   font-size: clamp(10px, 0.62vw, 12px);
   font-weight: 900;
   line-height: 1.18;
+}
+
+/* Keep section descriptions shorter than their headings. */
+.sectionIntro p:not(.eyebrow),
+.sampleCopy p:not(.eyebrow),
+.split > div[data-reveal] > p,
+.contactLead p {
+  max-width: min(560px, 100%);
+  font-size: clamp(14px, 0.92vw, 16px);
+  line-height: 1.45;
+}
+
+.sectionIntro p:not(.eyebrow),
+.sampleCopy p:not(.eyebrow) {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.sampleCopy,
+.sampleCopy p:not(.eyebrow) {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.articlesBand .sectionIntro p:not(.eyebrow) {
+  max-width: 500px;
+  font-size: clamp(13px, 0.86vw, 15px);
+}
+
+@media (max-width: 700px) {
+  #analysis .sectionIntro p:not(.eyebrow) {
+    max-width: 275px;
+  }
 }
 
 @media (max-width: 1180px) {

@@ -13,6 +13,9 @@ Checked against the latest user screenshots:
 - Footer location is split into a separate "Работаем в" footer column with a "Башкортостан" plaque below.
 - Hero fact slogans share the same baseline.
 - Gallery eyebrow and title start on the same left line; captions are 12px and placed in the lower-left corner.
+- Section descriptions are constrained so the text below each heading does not run wider than the heading.
+- Articles intro copy is shorter and set smaller.
+- Footer contact rows now include right-side copy buttons with copied-state feedback.
 - The route intro sentence requested by the user was removed.
 - Mobile header fits at 390px wide with a compact call button.
 - First 3D sample is preloaded from HTML and pre-initialized in the background after page start.
@@ -23,6 +26,7 @@ Verification:
 - `npm run build` passed.
 - `npm run lint` passed.
 - Browser preview check passed with no failed network requests.
+- Desktop and mobile Playwright checks confirmed heading/description width rules and working footer copy buttons.
 - Desktop Playwright check: after normal landing-page entry, 3D was already loaded before the click and canvas appeared in 15 ms on `#sample`.
 - Cold direct `#sample` preview entry reached visible WebGL rendering in 444 ms and loaded the first GLB in 551 ms.
 - With the first GLB artificially delayed by 12 seconds, the procedural WebGL fallback stayed visible instead of a blank theater.
