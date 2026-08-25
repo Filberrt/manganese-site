@@ -547,7 +547,7 @@ function App() {
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
           <h2>3D-модель</h2>
-          <p>Марганцовистый известняк, флюсовое сырье и гипсоангидритовый камень показаны как отдельные образцы с читаемой фактурой и массой материала.</p>
+          <p>Марганцовистый известняк, флюсовое сырье и гипсоангидритовый камень показаны как отдельные образцы с читаемой фактурой поверхности.</p>
         </div>
         <div className="sampleShowcase" data-reveal>
           <div className="modelSwitch" aria-label="Выбор 3D-образца">
@@ -579,18 +579,10 @@ function App() {
               <ChevronRight size={24} aria-hidden="true" />
             </button>
           </div>
-          <div className="modelStrip" aria-label="Список 3D-образцов">
-            {sampleModels.map((item, index) => (
-              <button
-                aria-current={activeModel === index ? 'true' : undefined}
-                key={item.title}
-                onClick={() => setActiveModel(index)}
-                type="button"
-              >
-                <span>{item.subtitle}</span>
-                <strong>{item.title}</strong>
-              </button>
-            ))}
+          <div className="modelHints" aria-label="Управление 3D-моделью">
+            <span><CheckCircle2 size={18} aria-hidden="true" /> Вращайте модель мышью или пальцем</span>
+            <span><CheckCircle2 size={18} aria-hidden="true" /> Приближайте колесом или жестом</span>
+            <span><CheckCircle2 size={18} aria-hidden="true" /> Переключайте образцы кнопками и стрелками</span>
           </div>
         </div>
       </section>
