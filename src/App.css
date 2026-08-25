@@ -5513,54 +5513,47 @@ footer .footerDocs a {
   margin-bottom: 0;
 }
 
-.heroFactOptions {
+.heroFactStrip {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  width: min(840px, 100%);
-  margin-top: clamp(26px, 4vh, 42px);
-}
-
-.heroFactOptions article {
-  display: grid;
-  gap: 10px;
-  padding: 16px;
-  background: rgba(7, 10, 9, 0.58);
-  border: 1px solid rgba(245, 242, 232, 0.18);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: min(1040px, 100%);
+  margin-top: clamp(30px, 4.4vh, 48px);
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(7, 10, 9, 0.74), rgba(23, 32, 29, 0.54));
+  border: 1px solid rgba(210, 198, 137, 0.28);
   border-radius: 8px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(14px);
 }
 
-.heroFactOptions article > span {
+.heroFactStrip article {
+  display: grid;
+  min-height: 86px;
+  align-content: center;
+  gap: 7px;
+  padding: 17px 20px;
+  border-left: 1px solid rgba(245, 242, 232, 0.12);
+}
+
+.heroFactStrip article:first-child {
+  border-left: 0;
+}
+
+.heroFactStrip span {
   color: #d2c689;
   font-size: 11px;
   font-weight: 950;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: uppercase;
 }
 
-.heroFactOptions article > strong {
+.heroFactStrip strong {
   color: #fffdf5;
-  font-size: 16px;
-  line-height: 1.15;
-}
-
-.heroFactOptions article > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-.heroFactOptions small {
-  display: inline-flex;
-  min-height: 30px;
-  align-items: center;
-  padding: 7px 10px;
-  color: #101513;
-  background: #d2c689;
-  border-radius: 999px;
-  font-size: 12px;
+  font-size: clamp(15px, 1.15vw, 19px);
   font-weight: 950;
-  line-height: 1;
+  line-height: 1.16;
+  overflow-wrap: anywhere;
 }
 
 #product.elevatedSection {
@@ -5602,6 +5595,7 @@ footer .footerDocs a {
   display: grid;
   grid-template-rows: auto 1fr;
   padding: clamp(22px, 3vw, 30px);
+  overflow: hidden;
 }
 
 #product .productCards {
@@ -5610,16 +5604,16 @@ footer .footerDocs a {
 }
 
 #product .productCards article {
-  grid-template-columns: clamp(180px, 16vw, 260px) minmax(0, 1fr);
-  gap: clamp(18px, 2vw, 28px);
+  grid-template-columns: clamp(230px, 19vw, 320px) minmax(0, 1fr);
+  gap: clamp(22px, 2.6vw, 34px);
   align-items: center;
-  min-height: 148px;
+  min-height: 174px;
   overflow: hidden;
 }
 
 #product .productCards img {
   width: 100%;
-  height: clamp(120px, 14vh, 160px);
+  height: clamp(148px, 17vh, 194px);
   object-fit: cover;
   padding: 0;
   background: #08100d;
@@ -5632,6 +5626,13 @@ footer .footerDocs a {
   display: grid;
   gap: 7px;
   min-width: 0;
+}
+
+#product .productCards strong,
+#product .productCards span {
+  min-width: 0;
+  max-width: 680px;
+  overflow-wrap: anywhere;
 }
 
 #route.routeBand {
@@ -5675,9 +5676,9 @@ footer .footerDocs a {
   font-size: 14px;
 }
 
-.gallerySlide .sectionIntro,
-.gallerySlide .sectionIntro h2,
-.gallerySlide .sectionIntro .eyebrow {
+#gallery.gallerySlide .sectionIntro,
+#gallery.gallerySlide .sectionIntro h2,
+#gallery.gallerySlide .sectionIntro .eyebrow {
   width: min(1320px, calc(100vw - 136px));
   max-width: none;
   margin-left: 0;
@@ -5686,9 +5687,14 @@ footer .footerDocs a {
   text-align: left;
 }
 
-.gallerySlide .sectionIntro h2 {
-  font-size: clamp(48px, 5vw, 72px);
-  line-height: 1;
+#gallery.gallerySlide .sectionIntro {
+  gap: 8px;
+  padding-top: clamp(34px, 5vh, 64px);
+}
+
+#gallery.gallerySlide .sectionIntro h2 {
+  font-size: clamp(42px, 4.2vw, 62px);
+  line-height: 1.02;
 }
 
 #sample.sampleSlide {
@@ -5921,6 +5927,8 @@ footer .footerDocs a {
 
 .footerLocation {
   justify-self: stretch;
+  align-self: start;
+  margin-top: 31px;
 }
 
 .footerLocation div {
@@ -5956,6 +5964,10 @@ footer .footerDocs a {
   .footerRails {
     grid-template-columns: 1fr;
   }
+
+  .footerLocation {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 760px) {
@@ -5973,6 +5985,15 @@ footer .footerDocs a {
 
   #product .productCards img {
     height: 190px;
+  }
+
+  .heroFactStrip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .heroFactStrip article {
+    min-height: 76px;
+    padding: 14px;
   }
 
   #route .routeMap {
@@ -6074,24 +6095,66 @@ footer .footerDocs a {
 }
 
 @media (max-height: 760px) and (min-width: 761px) {
-  .heroFactOptions {
-    grid-template-columns: 1fr;
-    width: min(620px, 100%);
-    gap: 8px;
+  .heroFactStrip {
+    width: min(920px, 100%);
     margin-top: 18px;
   }
 
-  .heroFactOptions article {
-    gap: 7px;
-    padding: 12px 14px;
+  .heroFactStrip article {
+    min-height: 64px;
+    gap: 5px;
+    padding: 11px 14px;
   }
 
-  .heroFactOptions article > strong {
+  .heroFactStrip strong {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-width: calc(100vw - 40px);
+  }
+
+  .topbar nav,
+  .topContacts > a:not(.topCall) {
     display: none;
   }
 
-  .heroFactOptions small {
-    min-height: 26px;
-    padding: 6px 9px;
+  .brand {
+    min-width: 0;
+  }
+
+  .brand strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .topContacts {
+    display: flex;
+    grid-template-columns: none;
+    width: auto;
+    min-width: 0;
+  }
+
+  .topCall {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    min-height: 48px;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0;
   }
 }

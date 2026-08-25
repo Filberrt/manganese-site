@@ -38,17 +38,11 @@ const compositionRows = [
   ['Примеси', 'по протоколу лаборатории', 'P, S, Fe, MgO и другие показатели'],
 ]
 
-const heroFactOptions = [
-  {
-    title: 'Поставка',
-    subtitle: 'объем и логистика',
-    facts: ['от 100 тонн', 'от 7 000 тонн в месяц', 'авто и ЖД', 'документы по партии'],
-  },
-  {
-    title: 'Контроль партии',
-    subtitle: 'короткая цепочка',
-    facts: ['проба', 'паспорт', 'отгрузка', 'регулярный график'],
-  },
+const heroFacts = [
+  ['Пробная партия', 'от 100 тонн'],
+  ['Регулярная поставка', 'от 7 000 тонн в месяц'],
+  ['Логистика', 'авто и железная дорога'],
+  ['Контроль', 'паспорт и протокол партии'],
 ]
 
 const documentCards = [
@@ -70,17 +64,17 @@ const productCards = [
   {
     title: 'Марганцовистый известняк',
     text: 'Основная продукция для металлургических предприятий: состав, фракция, влажность и паспорт качества фиксируются по партии.',
-    image: 'route-stage-02.webp',
+    image: 'product/manganese-limestone.webp',
   },
   {
     title: 'Флюсовое сырье',
     text: 'Поставляется отдельной позицией: наличие, показатели и объем подтверждаются перед расчетом партии.',
-    image: 'gallery/gallery-manganese-flux-ore.webp',
+    image: 'product/flux-limestone.webp',
   },
   {
     title: 'Гипсовый и гипсоангидритовый камень',
     text: 'Отдельная продуктовая группа: фракция, характеристики и условия отгрузки подбираются под задачу предприятия.',
-    image: 'gallery/gallery-gypsum-crushing.webp',
+    image: 'product/gypsum-anhydrite.webp',
   },
 ]
 
@@ -654,16 +648,11 @@ function App() {
               Запросить пробную партию
             </a>
           </div>
-          <div className="heroFactOptions" aria-label="Ключевые факты о поставке" data-reveal>
-            {heroFactOptions.map((option) => (
-              <article key={option.title}>
-                <span>{option.title}</span>
-                <strong>{option.subtitle}</strong>
-                <div>
-                  {option.facts.map((fact) => (
-                    <small key={fact}>{fact}</small>
-                  ))}
-                </div>
+          <div className="heroFactStrip" aria-label="Ключевые факты о поставке" data-reveal>
+            {heroFacts.map(([label, value]) => (
+              <article key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
               </article>
             ))}
           </div>
@@ -725,10 +714,6 @@ function App() {
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Маршрут поставки</p>
           <h2>Маршрут поставки<br />до предприятия клиента</h2>
-          <p>
-            С нами легко работать: маршрут партии понятен до отгрузки, документы готовятся
-            заранее, формат логистики выбирается под объем и станцию клиента.
-          </p>
         </div>
         <div className="routeMap supplyRoute">
           {routeSteps.map(([number, title, text], index) => (
