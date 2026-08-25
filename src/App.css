@@ -2613,6 +2613,7 @@ label {
   left: 50%;
   bottom: 28px;
   z-index: 3;
+  display: none;
   padding: 8px 12px;
   color: rgba(245, 242, 232, 0.62);
   background: rgba(5, 8, 7, 0.68);
@@ -2637,6 +2638,7 @@ label {
 }
 
 .localModelViewer.has-error span {
+  display: block;
   color: #ffb4a8;
 }
 
