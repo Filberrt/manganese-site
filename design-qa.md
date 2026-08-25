@@ -10,9 +10,9 @@ Checked against the latest user screenshots:
 - Footer region is shown as "Республика Башкортостан, Россия" in a structured location block.
 - Footer location block is lowered into the footer grid, aligned with the materials column.
 - Gallery heading is left-aligned with the same eyebrow/title structure as the other slides.
-- Footer location copy changed to "Работаем в / Башкортостане".
+- Footer location is split into a separate "Работаем в" footer column with a "Башкортостан" plaque below.
 - Hero fact slogans share the same baseline.
-- Gallery is aligned to the card grid on wide screens, and captions are smaller in the lower-left corner.
+- Gallery eyebrow and title start on the same left line; captions are 12px and placed in the lower-left corner.
 - The route intro sentence requested by the user was removed.
 - Mobile header fits at 390px wide with a compact call button.
 - First 3D sample is preloaded from HTML and pre-initialized in the background after page start.

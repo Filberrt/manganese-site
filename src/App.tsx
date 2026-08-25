@@ -26,7 +26,7 @@ const company = {
   phonePrimary: '+7 (347) 246-39-13',
   phoneSecondary: '+7 (347) 246-39-14',
   email: 'info@bashmineral.ru',
-  location: 'Башкортостане',
+  location: 'Башкортостан',
 }
 
 const compositionRows = [
@@ -1087,10 +1087,10 @@ function App() {
             <a href="#route">Логистика</a>
             <a href="#contacts">Заявка</a>
           </div>
-          <div className="footerLocation">
-            <MapPin size={18} aria-hidden="true" />
-            <div>
-              <small>Работаем в</small>
+          <div className="footerBlock footerRegion">
+            <small>Работаем в</small>
+            <div className="footerLocation">
+              <MapPin size={18} aria-hidden="true" />
               <span>{company.location}</span>
             </div>
           </div>
