@@ -26,7 +26,7 @@ const company = {
   phonePrimary: '+7 (347) 246-39-13',
   phoneSecondary: '+7 (347) 246-39-14',
   email: 'info@bashmineral.ru',
-  location: 'Республика Башкортостан',
+  location: 'Республика Башкортостан, Россия',
 }
 
 const compositionRows = [
@@ -36,6 +36,19 @@ const compositionRows = [
   ['Фракция', 'по паспорту партии', 'уточняется под заявку'],
   ['Влажность', 'по паспорту партии', 'фиксируется при отгрузке'],
   ['Примеси', 'по протоколу лаборатории', 'P, S, Fe, MgO и другие показатели'],
+]
+
+const heroFactOptions = [
+  {
+    title: 'Поставка',
+    subtitle: 'объем и логистика',
+    facts: ['от 100 тонн', 'от 7 000 тонн в месяц', 'авто и ЖД', 'документы по партии'],
+  },
+  {
+    title: 'Контроль партии',
+    subtitle: 'короткая цепочка',
+    facts: ['проба', 'паспорт', 'отгрузка', 'регулярный график'],
+  },
 ]
 
 const documentCards = [
@@ -57,17 +70,17 @@ const productCards = [
   {
     title: 'Марганцовистый известняк',
     text: 'Основная продукция для металлургических предприятий: состав, фракция, влажность и паспорт качества фиксируются по партии.',
-    image: 'models/posters/limestone.webp',
+    image: 'route-stage-02.webp',
   },
   {
     title: 'Флюсовое сырье',
     text: 'Поставляется отдельной позицией: наличие, показатели и объем подтверждаются перед расчетом партии.',
-    image: 'models/posters/flux.webp',
+    image: 'gallery/gallery-manganese-flux-ore.webp',
   },
   {
     title: 'Гипсовый и гипсоангидритовый камень',
     text: 'Отдельная продуктовая группа: фракция, характеристики и условия отгрузки подбираются под задачу предприятия.',
-    image: 'models/posters/gypsum.webp',
+    image: 'gallery/gallery-gypsum-crushing.webp',
   },
 ]
 
@@ -92,48 +105,30 @@ const sampleModels = [
   {
     title: 'Марганцовистый известняк',
     subtitle: 'основной продукт',
-    model: 'models/stone_01/stone_01_1k.gltf',
+    model: 'models/fast/limestone.glb',
     poster: 'models/posters/limestone.webp',
     variant: 'limestone',
   },
   {
     title: 'Флюсовое сырье',
     subtitle: 'отдельная 3D-модель',
-    model: 'models/rock_07/rock_07_1k.gltf',
+    model: 'models/fast/flux.glb',
     poster: 'models/posters/flux.webp',
     variant: 'flux',
   },
   {
     title: 'Гипсоангидритовый камень',
     subtitle: 'отдельная 3D-модель',
-    model: 'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf',
+    model: 'models/fast/gypsum.glb',
     poster: 'models/posters/gypsum.webp',
     variant: 'gypsum',
   },
 ]
 
 const modelAssetManifest: Record<string, string[]> = {
-  'models/stone_01/stone_01_1k.gltf': [
-    'models/stone_01/stone_01_1k.gltf',
-    'models/stone_01/stone_01.bin',
-    'models/stone_01/textures/stone_01_diff_1k.jpg',
-    'models/stone_01/textures/stone_01_arm_1k.jpg',
-    'models/stone_01/textures/stone_01_nor_gl_1k.jpg',
-  ],
-  'models/rock_07/rock_07_1k.gltf': [
-    'models/rock_07/rock_07_1k.gltf',
-    'models/rock_07/rock_07.bin',
-    'models/rock_07/textures/rock_07_diff_1k.jpg',
-    'models/rock_07/textures/rock_07_arm_1k.jpg',
-    'models/rock_07/textures/rock_07_nor_gl_1k.jpg',
-  ],
-  'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf': [
-    'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf',
-    'models/namaqualand_boulder_03/namaqualand_boulder_03.bin',
-    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_diff_1k.jpg',
-    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_arm_1k.jpg',
-    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_nor_gl_1k.jpg',
-  ],
+  'models/fast/limestone.glb': ['models/fast/limestone.glb'],
+  'models/fast/flux.glb': ['models/fast/flux.glb'],
+  'models/fast/gypsum.glb': ['models/fast/gypsum.glb'],
 }
 
 let firstModelWarmupPromise: Promise<void> | null = null
@@ -440,6 +435,7 @@ function App() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const openArticle = (index: number) => setActiveArticle(index)
@@ -452,6 +448,14 @@ function App() {
   const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
 
   useEffect(() => {
+    const heroPreload = document.createElement('link')
+    heroPreload.rel = 'preload'
+    heroPreload.as = 'video'
+    heroPreload.href = asset('hero-drone.mp4')
+    heroPreload.type = 'video/mp4'
+    document.head.append(heroPreload)
+    void heroVideoRef.current?.play().catch(() => undefined)
+
     const elements = document.querySelectorAll('[data-reveal]')
     const observer = new IntersectionObserver(
       (entries) => {
@@ -547,6 +551,7 @@ function App() {
       window.removeEventListener('hashchange', scrollToHash)
       window.clearTimeout(warmupTimer)
       window.clearTimeout(warmupAllTimer)
+      heroPreload.remove()
     }
   }, [])
 
@@ -629,6 +634,7 @@ function App() {
 
       <section className="hero snapSlide darkSlide" id="top" data-slide>
         <video
+          ref={heroVideoRef}
           className="heroPhoto heroVideo"
           autoPlay
           muted
@@ -637,6 +643,7 @@ function App() {
           preload="auto"
           poster={asset('hero-drone-poster.webp')}
           aria-label="Аэровидеосъемка промышленной площадки"
+          onLoadedData={(event) => void event.currentTarget.play().catch(() => undefined)}
         >
           <source src={asset('hero-drone.mp4')} type="video/mp4" />
         </video>
@@ -654,6 +661,19 @@ function App() {
             <a className="secondaryButton" href="#contacts">
               Запросить пробную партию
             </a>
+          </div>
+          <div className="heroFactOptions" aria-label="Ключевые факты о поставке" data-reveal>
+            {heroFactOptions.map((option) => (
+              <article key={option.title}>
+                <span>{option.title}</span>
+                <strong>{option.subtitle}</strong>
+                <div>
+                  {option.facts.map((fact) => (
+                    <small key={fact}>{fact}</small>
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
         <a className="scrollCue" href="#product" aria-label="Перейти к продукту" />
@@ -812,23 +832,23 @@ function App() {
       <section className="section analysisBand snapSlide" id="analysis" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Химический состав</p>
-          <h2>Паспорт сырья<br />для технолога предприятия</h2>
+          <h2>Паспорт партии<br />с составом сырья</h2>
           <p>
-            Ориентиры по составу и партии. Конкретные значения подтверждаются лабораторным
-            протоколом и паспортом качества.
+            Вынесены показатели, которые технолог запрашивает в первую очередь:
+            состав, фракция, влажность и примеси по конкретной партии.
           </p>
         </div>
         <div className="analysisLayout">
           <div className="tableWrap techPassport" data-reveal>
             <div className="passportHead">
-              <span>Для поставки предоставляется протокол лабораторного анализа по партии</span>
+              <span>Паспорт показывает состав партии, протокол подтверждает значения лабораторно</span>
             </div>
             <table>
               <thead>
                 <tr>
                   <th>Показатель</th>
-                  <th>Значение</th>
-                  <th>Статус</th>
+                  <th>Диапазон</th>
+                  <th>Что подтверждает</th>
                 </tr>
               </thead>
               <tbody>
@@ -1052,7 +1072,10 @@ function App() {
           </div>
           <div className="footerLocation">
             <MapPin size={18} aria-hidden="true" />
-            <span>{company.location}</span>
+            <div>
+              <small>Регион поставки</small>
+              <span>{company.location}</span>
+            </div>
           </div>
         </div>
       </footer>
