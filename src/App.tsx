@@ -448,14 +448,7 @@ function App() {
   const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
 
   useEffect(() => {
-    const heroPreload = document.createElement('link')
-    heroPreload.rel = 'preload'
-    heroPreload.as = 'video'
-    heroPreload.href = asset('hero-drone.mp4')
-    heroPreload.type = 'video/mp4'
-    document.head.append(heroPreload)
     void heroVideoRef.current?.play().catch(() => undefined)
-
     const elements = document.querySelectorAll('[data-reveal]')
     const observer = new IntersectionObserver(
       (entries) => {
@@ -551,7 +544,6 @@ function App() {
       window.removeEventListener('hashchange', scrollToHash)
       window.clearTimeout(warmupTimer)
       window.clearTimeout(warmupAllTimer)
-      heroPreload.remove()
     }
   }, [])
 
