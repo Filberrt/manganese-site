@@ -13,6 +13,7 @@ Checked against the latest user screenshots:
 - Footer location is split into a separate "Работаем в" footer column with a "Башкортостан" plaque below.
 - Hero fact slogans share the same baseline.
 - Gallery eyebrow and title start on the same left line; captions are 12px and placed in the lower-left corner.
+- Gallery title uses an optical left offset under the eyebrow, and the header menu includes the gallery link.
 - Section descriptions are constrained so the text below each heading does not run wider than the heading.
 - Product and request sections now use the same heading/description width rule.
 - Product section naming is plural: "Наши продукты" / "Продукты".

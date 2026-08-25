@@ -650,6 +650,7 @@ function App() {
           <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">Логистика</a>
+          <a href="#gallery">Фотогалерея</a>
           <a
             href="#sample"
             onClick={() => void warmup3DAssets('all')}
