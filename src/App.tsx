@@ -524,8 +524,8 @@ function App() {
 
       <section className="section gallerySlide snapSlide darkSlide" id="gallery" data-slide>
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Фотогалерея</p>
-          <h2>Производство, сырье и отгрузка</h2>
+          <p className="eyebrow">Производство и карьеры</p>
+          <h2>Фотогалерея</h2>
         </div>
         <div className="galleryGrid">
           {galleryItems.map(([title, image], index) => (
@@ -546,7 +546,7 @@ function App() {
       <section className="section sampleSlide snapSlide darkSlide" id="sample" data-slide>
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
-          <h2>Объемное представление образцов</h2>
+          <h2>3D-модель</h2>
           <p>Марганцовистый известняк, флюсовое сырье и гипсоангидритовый камень показаны как отдельные образцы с читаемой фактурой и массой материала.</p>
         </div>
         <div className="sampleShowcase" data-reveal>
