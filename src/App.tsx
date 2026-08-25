@@ -88,18 +88,21 @@ const sampleModels = [
     title: 'Марганцовистый известняк',
     subtitle: 'основной продукт',
     model: 'models/stone_01/stone_01_1k.gltf',
+    poster: 'models/posters/limestone.webp',
     variant: 'limestone',
   },
   {
     title: 'Флюсовое сырье',
     subtitle: 'отдельная 3D-модель',
     model: 'models/rock_07/rock_07_1k.gltf',
+    poster: 'models/posters/flux.webp',
     variant: 'flux',
   },
   {
     title: 'Гипсоангидритовый камень',
     subtitle: 'отдельная 3D-модель',
     model: 'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf',
+    poster: 'models/posters/gypsum.webp',
     variant: 'gypsum',
   },
 ]
@@ -208,7 +211,7 @@ const slideItems = [
 
 type RockVariant = 'limestone' | 'flux' | 'gypsum'
 
-function RockSample({ model, variant = 'limestone' }: { model: string; variant?: RockVariant }) {
+function RockSample({ model, poster, variant = 'limestone' }: { model: string; poster: string; variant?: RockVariant }) {
   const mountRef = useRef<HTMLDivElement>(null)
   const [loadLabel, setLoadLabel] = useState('Загрузка 3D-модели')
 
@@ -406,6 +409,7 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
 
   return (
     <div className="localModelViewer" ref={mountRef} data-testid="rock-viewer">
+      <img className="sampleModelPoster" src={asset(poster)} alt="" decoding="async" />
       <span>{loadLabel}</span>
     </div>
   )
@@ -749,7 +753,12 @@ function App() {
                 <span>{selectedModel.subtitle}</span>
                 <strong>{selectedModel.title}</strong>
               </div>
-              <RockSample key={selectedModel.model} model={selectedModel.model} variant={selectedModel.variant as RockVariant} />
+              <RockSample
+                key={selectedModel.model}
+                model={selectedModel.model}
+                poster={selectedModel.poster}
+                variant={selectedModel.variant as RockVariant}
+              />
             </article>
             <button className="modelArrow modelArrowNext" type="button" onClick={selectNextModel} aria-label="Следующий образец">
               <ChevronRight size={24} aria-hidden="true" />
