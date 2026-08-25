@@ -393,6 +393,14 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
     loadObserver.observe(mount)
 
+    const eagerStartTimer = window.setTimeout(() => {
+      void startViewer().catch((error) => {
+        if (isDisposed) return
+
+        console.error('Failed to pre-initialize 3D viewer', error)
+      })
+    }, window.location.hash === '#sample' ? 0 : 700)
+
     const startForSampleHash = () => {
       if (window.location.hash === '#sample') void startViewer()
     }
@@ -402,6 +410,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
     return () => {
       isDisposed = true
+      window.clearTimeout(eagerStartTimer)
       window.cancelAnimationFrame(frameId)
       loadObserver.disconnect()
       window.removeEventListener('hashchange', startForSampleHash)
@@ -524,12 +533,8 @@ function App() {
     window.addEventListener('hashchange', scrollToHash)
 
     const warmupTimer = window.setTimeout(() => {
-      void warmup3DAssets()
-    }, 900)
-
-    const warmupAllTimer = window.setTimeout(() => {
       void warmup3DAssets('all')
-    }, 2600)
+    }, 120)
 
     return () => {
       observer.disconnect()
@@ -537,7 +542,6 @@ function App() {
       slideObserver.disconnect()
       window.removeEventListener('hashchange', scrollToHash)
       window.clearTimeout(warmupTimer)
-      window.clearTimeout(warmupAllTimer)
     }
   }, [])
 

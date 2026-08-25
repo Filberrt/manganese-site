@@ -12,11 +12,13 @@ Checked against the latest user screenshots:
 - Gallery heading is left-aligned with the same eyebrow/title structure as the other slides.
 - The route intro sentence requested by the user was removed.
 - Mobile header fits at 390px wide with a compact call button.
+- First 3D sample is preloaded from HTML and pre-initialized in the background after page start.
 - Passport section has visible copy/table changes, not just alignment tweaks.
 
 Verification:
 - `npm run build` passed.
 - `npm run lint` passed.
 - Browser preview check passed with no failed network requests.
-- Desktop Playwright check: 3D canvas appeared in 238 ms on direct `#sample` entry.
+- Desktop Playwright check: after normal landing-page entry, 3D was already loaded before the click and canvas appeared in 33 ms on `#sample`.
+- Cold direct `#sample` preview entry loaded the first model in 1281 ms.
 - Product images verified as loaded 900x540 WebP assets.
