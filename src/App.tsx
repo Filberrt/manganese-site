@@ -209,7 +209,7 @@ const articlePlan = [
 const slideItems = [
   ['top', 'Старт'],
   ['video', 'Ролик'],
-  ['product', 'Продукт'],
+  ['product', 'Продукты'],
   ['route', 'Логистика'],
   ['gallery', 'Фото'],
   ['sample', '3D'],
@@ -646,7 +646,7 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#product">Продукт</a>
+          <a href="#product">Продукты</a>
           <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">Логистика</a>
@@ -752,7 +752,7 @@ function App() {
 
       <section className="section split elevatedSection snapSlide" id="product" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Наш продукт</p>
+          <p className="eyebrow">Наши продукты</p>
           <h2>Сырье<br />с паспортом партии</h2>
           <p>
             Наша основная продукция — марганцовистый известняк для металлургических предприятий.
@@ -1113,7 +1113,7 @@ function App() {
           </div>
           <div className="footerBlock">
             <small>Сырье</small>
-            <a href="#product">Продукт</a>
+            <a href="#product">Продукты</a>
             <a href="#gallery">Фотогалерея</a>
             <a
               href="#sample"

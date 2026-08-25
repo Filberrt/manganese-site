@@ -5584,7 +5584,7 @@ footer .footerDocs a {
 }
 
 #product p {
-  max-width: 700px;
+  max-width: 480px;
 }
 
 #product .checkList {
@@ -5879,7 +5879,7 @@ footer .footerDocs a {
 }
 
 .contactLead p {
-  max-width: 690px;
+  max-width: 470px;
 }
 
 .requestSummary {
@@ -6039,9 +6039,18 @@ footer .footerDocs a {
   font-size: clamp(13px, 0.86vw, 15px);
 }
 
+#contacts .contactLead p:not(.eyebrow) {
+  max-width: 470px;
+}
+
 @media (max-width: 700px) {
   #analysis .sectionIntro p:not(.eyebrow) {
     max-width: 275px;
+  }
+
+  #product p:not(.eyebrow),
+  #contacts .contactLead p:not(.eyebrow) {
+    max-width: 320px;
   }
 }
 

@@ -14,6 +14,8 @@ Checked against the latest user screenshots:
 - Hero fact slogans share the same baseline.
 - Gallery eyebrow and title start on the same left line; captions are 12px and placed in the lower-left corner.
 - Section descriptions are constrained so the text below each heading does not run wider than the heading.
+- Product and request sections now use the same heading/description width rule.
+- Product section naming is plural: "Наши продукты" / "Продукты".
 - Articles intro copy is shorter and set smaller.
 - Footer contact rows now include right-side copy buttons with copied-state feedback.
 - The route intro sentence requested by the user was removed.
