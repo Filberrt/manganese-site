@@ -5,6 +5,8 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import {
   ArrowRight,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   ClipboardCheck,
   FileText,
   FlaskConical,
@@ -75,11 +77,12 @@ const routeStageImages = [
 ]
 
 const galleryItems = [
-  ['Карьер и добыча сырья', 'route-stage-01.png'],
-  ['Фракция материала', 'route-stage-02.png'],
-  ['Лабораторный контроль', 'route-stage-03.png'],
-  ['Подготовка партии', 'route-stage-04.png'],
-  ['Авто и железнодорожная отгрузка', 'route-stage-05.png'],
+  ['Дробление гипсового камня', 'gallery/gallery-gypsum-crushing.png'],
+  ['Переработка гипсового камня', 'gallery/gallery-gypsum-processing.png'],
+  ['Добыча гипсового камня', 'gallery/gallery-gypsum-mining.png'],
+  ['Добыча марганцовистых флюсовых руд', 'gallery/gallery-manganese-flux-ore.png'],
+  ['Карьер Ново-Северный', 'gallery/gallery-novo-severny.png'],
+  ['Карьер Северный', 'gallery/gallery-severny-v2.png'],
 ]
 
 const sampleModels = [
@@ -172,9 +175,9 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
     scene.background = new THREE.Color('#101613')
 
     const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
-    camera.position.set(0.08, 0.08, 4.25)
+    camera.position.set(0.08, 0.1, 3.55)
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true })
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping
@@ -185,8 +188,8 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
     controls.enableDamping = true
     controls.enablePan = false
     controls.enableZoom = true
-    controls.minDistance = 2.3
-    controls.maxDistance = 7
+    controls.minDistance = 1.85
+    controls.maxDistance = 6.4
     controls.target.set(0, 0, 0)
     controls.autoRotate = true
     controls.autoRotateSpeed = 0.9
@@ -248,6 +251,7 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
     const resize = () => {
       const { width, height } = mount.getBoundingClientRect()
       camera.aspect = width / Math.max(height, 1)
+      camera.position.z = width < 640 ? 5.2 : 3.55
       camera.updateProjectionMatrix()
       renderer.setSize(width, height, false)
     }
@@ -283,10 +287,14 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
 
 function App() {
   const [activeSlide, setActiveSlide] = useState('top')
+  const [activeModel, setActiveModel] = useState(0)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openArticle = (index: number) => setActiveArticle(index)
+  const selectedModel = sampleModels[activeModel]
+  const selectPreviousModel = () => setActiveModel((current) => (current + sampleModels.length - 1) % sampleModels.length)
+  const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
 
   useEffect(() => {
     const elements = document.querySelectorAll('[data-reveal]')
@@ -538,19 +546,52 @@ function App() {
       <section className="section sampleSlide snapSlide darkSlide" id="sample" data-slide>
         <div className="sampleCopy" data-reveal>
           <p className="eyebrow">3D-модель сырья</p>
-          <h2>Образец сырья в 3D</h2>
-          <p>Три интерактивных образца можно вращать, приближать и отдалять прямо на странице.</p>
+          <h2>Объемное представление образцов</h2>
+          <p>Марганцовистый известняк, флюсовое сырье и гипсоангидритовый камень показаны как отдельные образцы с читаемой фактурой и массой материала.</p>
         </div>
-        <div className="sampleModels" data-reveal>
-          {sampleModels.map((item, index) => (
-            <article className={index === 0 ? 'modelCard modelCardMain' : 'modelCard'} key={item.title}>
-              <div className="modelHeader">
-                <strong>{item.title}</strong>
-                <span>{item.subtitle}</span>
+        <div className="sampleShowcase" data-reveal>
+          <div className="modelSwitch" aria-label="Выбор 3D-образца">
+            {sampleModels.map((item, index) => (
+              <button
+                aria-pressed={activeModel === index}
+                className={activeModel === index ? 'is-active' : ''}
+                key={item.title}
+                onClick={() => setActiveModel(index)}
+                type="button"
+              >
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                {item.title}
+              </button>
+            ))}
+          </div>
+          <div className="modelTheater">
+            <button className="modelArrow modelArrowPrev" type="button" onClick={selectPreviousModel} aria-label="Предыдущий образец">
+              <ChevronLeft size={24} aria-hidden="true" />
+            </button>
+            <article className={`modelHero modelHero-${selectedModel.variant}`}>
+              <div className="modelHeroHeader">
+                <span>{selectedModel.subtitle}</span>
+                <strong>{selectedModel.title}</strong>
               </div>
-              <RockSample model={item.model} variant={item.variant as RockVariant} />
+              <RockSample key={selectedModel.model} model={selectedModel.model} variant={selectedModel.variant as RockVariant} />
             </article>
-          ))}
+            <button className="modelArrow modelArrowNext" type="button" onClick={selectNextModel} aria-label="Следующий образец">
+              <ChevronRight size={24} aria-hidden="true" />
+            </button>
+          </div>
+          <div className="modelStrip" aria-label="Список 3D-образцов">
+            {sampleModels.map((item, index) => (
+              <button
+                aria-current={activeModel === index ? 'true' : undefined}
+                key={item.title}
+                onClick={() => setActiveModel(index)}
+                type="button"
+              >
+                <span>{item.subtitle}</span>
+                <strong>{item.title}</strong>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -680,17 +721,19 @@ function App() {
       )}
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
-        <div data-reveal>
-          <p className="eyebrow">Заявка на поставку</p>
-          <h2>Получить расчет пробной партии</h2>
-          <p>
-            Укажите задачу, ориентировочный объем, фракцию и станцию назначения.
-            В ответ подготовим состав документов, вариант отгрузки и условия старта.
-          </p>
-          <div className="contactChecklist" aria-label="Что подготовим">
-            <span><CheckCircle2 size={18} /> подтвердим актуальный продукт и фракцию</span>
-            <span><CheckCircle2 size={18} /> обозначим комплект документов по партии</span>
-            <span><CheckCircle2 size={18} /> предложим авто или железнодорожную схему</span>
+        <div className="contactLead" data-reveal>
+          <div>
+            <p className="eyebrow">Заявка на поставку</p>
+            <h2>Расчет пробной партии и условий отгрузки</h2>
+            <p>
+              Оставьте параметры задачи: продукт, ориентировочный объем, фракцию и станцию
+              назначения. Подготовим ответ по составу документов, варианту логистики и стартовой партии.
+            </p>
+          </div>
+          <div className="requestSummary" aria-label="Что подготовим">
+            <span><CheckCircle2 size={18} /> актуальный продукт и фракция</span>
+            <span><CheckCircle2 size={18} /> комплект документов по партии</span>
+            <span><CheckCircle2 size={18} /> авто или железнодорожная схема</span>
           </div>
           <div className="contactPanel">
             <a href="tel:+73472463913"><Phone size={18} /> {company.phonePrimary}</a>
@@ -729,22 +772,48 @@ function App() {
         </div>
       )}
 
-      <footer>
-        <div className="footerBrand">
-          <strong>{company.name}</strong>
-          <span>{company.subtitle}</span>
-          <small>Марганцовистый известняк, флюсовое сырье, гипсовый и гипсоангидритовый камень.</small>
+      <footer className="siteFooter">
+        <div className="footerMain">
+          <div className="footerBrand">
+            <span className="footerLogo">
+              <img src={asset('logo-bashmineral.png')} alt="" />
+            </span>
+            <div>
+              <strong>{company.name}</strong>
+              <span>{company.legalName}</span>
+              <p>{company.subtitle}</p>
+            </div>
+          </div>
+          <a className="footerAction" href="#contacts">
+            Запросить расчет партии
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </div>
-        <div className="footerContacts">
-          <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
-          <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
-          <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
-          <span><MapPin size={16} /> {company.location}</span>
-        </div>
-        <div className="footerDocs">
-          <a href="#documents">Документы</a>
-          <a href="#analysis">Химический состав</a>
-          <a href="#contacts">Запрос поставки</a>
+        <div className="footerRails">
+          <div className="footerBlock">
+            <small>Связь</small>
+            <a href="tel:+73472463913"><Phone size={16} /> {company.phonePrimary}</a>
+            <a href="tel:+73472463914"><Phone size={16} /> {company.phoneSecondary}</a>
+            <a href={`mailto:${company.email}`}><Mail size={16} /> {company.email}</a>
+          </div>
+          <div className="footerBlock">
+            <small>Сырье</small>
+            <a href="#product">Продукт</a>
+            <a href="#gallery">Фотогалерея</a>
+            <a href="#sample">3D-образцы</a>
+            <a href="#analysis">Состав</a>
+          </div>
+          <div className="footerBlock">
+            <small>Материалы</small>
+            <a href="#documents">Документы</a>
+            <a href="#articles">Статьи</a>
+            <a href="#route">Логистика</a>
+            <a href="#contacts">Заявка</a>
+          </div>
+          <div className="footerLocation">
+            <MapPin size={18} aria-hidden="true" />
+            <span>{company.location}</span>
+          </div>
         </div>
       </footer>
     </main>
