@@ -67,20 +67,20 @@ const productCards = [
 ]
 
 const routeStageImages = [
-  'route-stage-01.png',
-  'route-stage-02.png',
-  'route-stage-03.png',
-  'route-stage-04.png',
-  'route-stage-05.png',
+  'route-stage-01.webp',
+  'route-stage-02.webp',
+  'route-stage-03.webp',
+  'route-stage-04.webp',
+  'route-stage-05.webp',
 ]
 
 const galleryItems = [
-  ['Дробление гипсового камня', 'gallery/gallery-gypsum-crushing.png'],
-  ['Переработка гипсового камня', 'gallery/gallery-gypsum-processing.png'],
-  ['Добыча гипсового камня', 'gallery/gallery-gypsum-mining.png'],
-  ['Добыча марганцовистых флюсовых руд', 'gallery/gallery-manganese-flux-ore.png'],
-  ['Карьер Ново-Северный', 'gallery/gallery-novo-severny.png'],
-  ['Карьер Северный', 'gallery/gallery-severny-v2.png'],
+  ['Дробление гипсового камня', 'gallery/gallery-gypsum-crushing.webp'],
+  ['Переработка гипсового камня', 'gallery/gallery-gypsum-processing.webp'],
+  ['Добыча гипсового камня', 'gallery/gallery-gypsum-mining.webp'],
+  ['Добыча марганцовистых флюсовых руд', 'gallery/gallery-manganese-flux-ore.webp'],
+  ['Карьер Ново-Северный', 'gallery/gallery-novo-severny.webp'],
+  ['Карьер Северный', 'gallery/gallery-severny-v2.webp'],
 ]
 
 const sampleModels = [
@@ -103,6 +103,52 @@ const sampleModels = [
     variant: 'gypsum',
   },
 ]
+
+const modelAssetManifest: Record<string, string[]> = {
+  'models/stone_01/stone_01_1k.gltf': [
+    'models/stone_01/stone_01_1k.gltf',
+    'models/stone_01/stone_01.bin',
+    'models/stone_01/textures/stone_01_diff_1k.jpg',
+    'models/stone_01/textures/stone_01_arm_1k.jpg',
+    'models/stone_01/textures/stone_01_nor_gl_1k.jpg',
+  ],
+  'models/rock_07/rock_07_1k.gltf': [
+    'models/rock_07/rock_07_1k.gltf',
+    'models/rock_07/rock_07.bin',
+    'models/rock_07/textures/rock_07_diff_1k.jpg',
+    'models/rock_07/textures/rock_07_arm_1k.jpg',
+    'models/rock_07/textures/rock_07_nor_gl_1k.jpg',
+  ],
+  'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf': [
+    'models/namaqualand_boulder_03/namaqualand_boulder_03_1k.gltf',
+    'models/namaqualand_boulder_03/namaqualand_boulder_03.bin',
+    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_diff_1k.jpg',
+    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_arm_1k.jpg',
+    'models/namaqualand_boulder_03/textures/namaqualand_boulder_03_nor_gl_1k.jpg',
+  ],
+}
+
+let modelWarmupPromise: Promise<void> | null = null
+
+const warmup3DAssets = () => {
+  if (modelWarmupPromise) return modelWarmupPromise
+
+  const firstModel = sampleModels[0]
+  const modelUrls = modelAssetManifest[firstModel.model] ?? [firstModel.model]
+
+  modelWarmupPromise = Promise.all([
+    import('three'),
+    import('three/examples/jsm/controls/OrbitControls.js'),
+    import('three/examples/jsm/loaders/GLTFLoader.js'),
+    ...modelUrls.map((url) => fetch(asset(url), { cache: 'force-cache' }).catch(() => null)),
+  ])
+    .then(() => undefined)
+    .catch((error) => {
+      console.warn('3D warmup failed', error)
+    })
+
+  return modelWarmupPromise
+}
 
 const articlePlan = [
   {
@@ -336,10 +382,18 @@ function RockSample({ model, variant = 'limestone' }: { model: string; variant?:
 
     loadObserver.observe(mount)
 
+    const startForSampleHash = () => {
+      if (window.location.hash === '#sample') void startViewer()
+    }
+
+    startForSampleHash()
+    window.addEventListener('hashchange', startForSampleHash)
+
     return () => {
       isDisposed = true
       window.cancelAnimationFrame(frameId)
       loadObserver.disconnect()
+      window.removeEventListener('hashchange', startForSampleHash)
       resizeObserver?.disconnect()
       controls?.dispose()
       disposeLoadedModel()
@@ -384,6 +438,38 @@ function App() {
 
     elements.forEach((element) => observer.observe(element))
 
+    const lazyBackgrounds = document.querySelectorAll<HTMLElement>('[data-lazy-bg-url]')
+    const showLazyBackground = (element: HTMLElement) => {
+      const url = element.dataset.lazyBgUrl
+      const cssVar = element.dataset.lazyBgVar
+      if (!url || !cssVar || element.style.getPropertyValue(cssVar)) return
+
+      element.style.setProperty(cssVar, `url("${url}")`)
+      element.removeAttribute('data-lazy-bg-url')
+    }
+
+    const lazyBgObserver = 'IntersectionObserver' in window
+      ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return
+
+            showLazyBackground(entry.target as HTMLElement)
+            lazyBgObserver?.unobserve(entry.target)
+          })
+        },
+        { rootMargin: '720px 0px' },
+      )
+      : null
+
+    lazyBackgrounds.forEach((element) => {
+      if (lazyBgObserver) {
+        lazyBgObserver.observe(element)
+      } else {
+        showLazyBackground(element)
+      }
+    })
+
     const slides = document.querySelectorAll('[data-slide]')
     const slideObserver = new IntersectionObserver(
       (entries) => {
@@ -417,10 +503,16 @@ function App() {
     scrollToHash()
     window.addEventListener('hashchange', scrollToHash)
 
+    const warmupTimer = window.setTimeout(() => {
+      void warmup3DAssets()
+    }, 1300)
+
     return () => {
       observer.disconnect()
+      lazyBgObserver?.disconnect()
       slideObserver.disconnect()
       window.removeEventListener('hashchange', scrollToHash)
+      window.clearTimeout(warmupTimer)
     }
   }, [])
 
@@ -443,7 +535,7 @@ function App() {
     <main
       className="slideDeck"
       style={{
-        '--hero-image': `url("${asset('hero-quarry.png')}")`,
+        '--hero-image': `url("${asset('hero-quarry.webp')}")`,
       } as CSSProperties}
     >
       <header className="topbar">
@@ -461,7 +553,14 @@ function App() {
           <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">Логистика</a>
-          <a href="#sample">3D</a>
+          <a
+            href="#sample"
+            onClick={() => void warmup3DAssets()}
+            onFocus={() => void warmup3DAssets()}
+            onPointerEnter={() => void warmup3DAssets()}
+          >
+            3D
+          </a>
           <a href="#articles">Статьи</a>
           <a href="#contacts">Контакты</a>
         </nav>
@@ -484,6 +583,9 @@ function App() {
             href={`#${id}`}
             key={id}
             aria-label={label}
+            onClick={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onFocus={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onPointerEnter={id === 'sample' ? () => void warmup3DAssets() : undefined}
           >
             <span>{label}</span>
           </a>
@@ -491,7 +593,7 @@ function App() {
       </div>
 
       <section className="hero snapSlide darkSlide" id="top" data-slide>
-        <img className="heroPhoto" src={asset('hero-quarry.png')} alt="Карьер и железнодорожная отгрузка минерального сырья" />
+        <img className="heroPhoto" src={asset('hero-quarry.webp')} alt="Карьер и железнодорожная отгрузка минерального сырья" decoding="async" fetchPriority="high" />
         <div className="heroShade" />
         <div className="heroInner">
           <h1 data-reveal>Марганцовистый известняк для металлургических предприятий</h1>
@@ -550,7 +652,7 @@ function App() {
             <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
             <span><CheckCircle2 size={20} /> регулярный график поставки от 7 000 тонн в месяц после согласования</span>
             <span><CheckCircle2 size={20} /> свои авто и железнодорожная логистика</span>
-            <span><CheckCircle2 size={20} /> протокол анализа, паспорт качества и лицензионные документы по запросу</span>
+            <span><CheckCircle2 size={20} /> протокол анализа, паспорт качества и лицензионные документы</span>
           </div>
         </div>
         <aside className="quietPanel productMatrix" data-reveal>
@@ -581,8 +683,9 @@ function App() {
               data-reveal
               style={{
                 '--delay': `${index * 80}ms`,
-                '--stage-image': `url("${asset(routeStageImages[index])}")`,
               } as CSSProperties}
+              data-lazy-bg-url={asset(routeStageImages[index])}
+              data-lazy-bg-var="--stage-image"
               key={title}
             >
               <div className="routeVisual" aria-hidden="true" />
@@ -605,8 +708,9 @@ function App() {
               data-reveal
               style={{
                 '--delay': `${index * 70}ms`,
-                '--gallery-image': `url("${asset(image)}")`,
               } as CSSProperties}
+              data-lazy-bg-url={asset(image)}
+              data-lazy-bg-var="--gallery-image"
               key={title}
             >
               <h3>{title}</h3>
@@ -864,7 +968,14 @@ function App() {
             <small>Сырье</small>
             <a href="#product">Продукт</a>
             <a href="#gallery">Фотогалерея</a>
-            <a href="#sample">3D-образцы</a>
+            <a
+              href="#sample"
+              onClick={() => void warmup3DAssets()}
+              onFocus={() => void warmup3DAssets()}
+              onPointerEnter={() => void warmup3DAssets()}
+            >
+              3D-образцы
+            </a>
             <a href="#analysis">Состав</a>
           </div>
           <div className="footerBlock">

@@ -61,7 +61,7 @@ main {
 }
 
 .slideDeck {
-  --hero-image: url('/hero-quarry.png');
+  --hero-image: url('/hero-quarry.webp');
   height: 100svh;
   overflow-x: hidden;
   overflow-y: auto;
