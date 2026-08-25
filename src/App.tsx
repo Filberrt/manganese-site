@@ -38,13 +38,6 @@ const compositionRows = [
   ['Примеси', 'по протоколу лаборатории', 'P, S, Fe, MgO и другие показатели'],
 ]
 
-const facts = [
-  ['от 7 000 тонн в месяц', 'действующий график поставки для промышленного клиента'],
-  ['Пробные партии от 100 тонн', 'можно проверить сырье до регулярного контракта'],
-  ['Свои авто и железная дорога', 'подбираем схему отгрузки под станцию и объем клиента'],
-  ['Лицензии и документы', 'предоставляем подтверждающие материалы по сырью и поставке'],
-]
-
 const documentCards = [
   ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
   ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
@@ -61,9 +54,21 @@ const routeSteps = [
 ]
 
 const productCards = [
-  ['Марганцовистый известняк', 'Основной продукт для металлургических предприятий. По партии предоставляются состав, фракция, влажность и паспорт качества.'],
-  ['Флюсовое сырье', 'Дополнительная позиция по актуальному перечню компании. Наличие, показатели и объем подтверждаются при запросе.'],
-  ['Гипсовый и гипсоангидритовый камень', 'Отдельная продуктовая группа. Условия поставки, фракция и характеристики уточняются под задачу предприятия.'],
+  {
+    title: 'Марганцовистый известняк',
+    text: 'Основная продукция для металлургических предприятий: состав, фракция, влажность и паспорт качества фиксируются по партии.',
+    image: 'models/posters/limestone.webp',
+  },
+  {
+    title: 'Флюсовое сырье',
+    text: 'Поставляется отдельной позицией: наличие, показатели и объем подтверждаются перед расчетом партии.',
+    image: 'models/posters/flux.webp',
+  },
+  {
+    title: 'Гипсовый и гипсоангидритовый камень',
+    text: 'Отдельная продуктовая группа: фракция, характеристики и условия отгрузки подбираются под задачу предприятия.',
+    image: 'models/posters/gypsum.webp',
+  },
 ]
 
 const routeStageImages = [
@@ -131,15 +136,13 @@ const modelAssetManifest: Record<string, string[]> = {
   ],
 }
 
-let modelWarmupPromise: Promise<void> | null = null
+let firstModelWarmupPromise: Promise<void> | null = null
+let allModelsWarmupPromise: Promise<void> | null = null
 
-const warmup3DAssets = () => {
-  if (modelWarmupPromise) return modelWarmupPromise
+const preloadModelAssets = (models: typeof sampleModels) => {
+  const modelUrls = Array.from(new Set(models.flatMap((model) => modelAssetManifest[model.model] ?? [model.model])))
 
-  const firstModel = sampleModels[0]
-  const modelUrls = modelAssetManifest[firstModel.model] ?? [firstModel.model]
-
-  modelWarmupPromise = Promise.all([
+  return Promise.all([
     import('three'),
     import('three/examples/jsm/controls/OrbitControls.js'),
     import('three/examples/jsm/loaders/GLTFLoader.js'),
@@ -150,7 +153,23 @@ const warmup3DAssets = () => {
       console.warn('3D warmup failed', error)
     })
 
-  return modelWarmupPromise
+}
+
+const warmup3DAssets = (scope: 'first' | 'all' = 'first') => {
+  if (scope === 'all') {
+    if (!allModelsWarmupPromise) {
+      allModelsWarmupPromise = preloadModelAssets(sampleModels)
+      firstModelWarmupPromise = firstModelWarmupPromise ?? allModelsWarmupPromise
+    }
+
+    return allModelsWarmupPromise
+  }
+
+  if (!firstModelWarmupPromise) {
+    firstModelWarmupPromise = preloadModelAssets([sampleModels[0]])
+  }
+
+  return firstModelWarmupPromise
 }
 
 const articlePlan = [
@@ -420,8 +439,14 @@ function App() {
   const [activeModel, setActiveModel] = useState(0)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
+  const [activeDocument, setActiveDocument] = useState<number | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
+  const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const openArticle = (index: number) => setActiveArticle(index)
+  const openDocument = (href: string) => {
+    const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
+    setActiveDocument(documentIndex >= 0 ? documentIndex : 0)
+  }
   const selectedModel = sampleModels[activeModel]
   const selectPreviousModel = () => setActiveModel((current) => (current + sampleModels.length - 1) % sampleModels.length)
   const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
@@ -509,7 +534,11 @@ function App() {
 
     const warmupTimer = window.setTimeout(() => {
       void warmup3DAssets()
-    }, 1300)
+    }, 900)
+
+    const warmupAllTimer = window.setTimeout(() => {
+      void warmup3DAssets('all')
+    }, 2600)
 
     return () => {
       observer.disconnect()
@@ -517,23 +546,25 @@ function App() {
       slideObserver.disconnect()
       window.removeEventListener('hashchange', scrollToHash)
       window.clearTimeout(warmupTimer)
+      window.clearTimeout(warmupAllTimer)
     }
   }, [])
 
   useEffect(() => {
-    if (!openedArticle && !isVideoOpen) return
+    if (!openedArticle && !openedDocument && !isVideoOpen) return
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return
 
       setActiveArticle(null)
+      setActiveDocument(null)
       setIsVideoOpen(false)
     }
 
     window.addEventListener('keydown', closeOnEscape)
 
     return () => window.removeEventListener('keydown', closeOnEscape)
-  }, [openedArticle, isVideoOpen])
+  }, [openedArticle, openedDocument, isVideoOpen])
 
   return (
     <main
@@ -559,9 +590,9 @@ function App() {
           <a href="#route">Логистика</a>
           <a
             href="#sample"
-            onClick={() => void warmup3DAssets()}
-            onFocus={() => void warmup3DAssets()}
-            onPointerEnter={() => void warmup3DAssets()}
+            onClick={() => void warmup3DAssets('all')}
+            onFocus={() => void warmup3DAssets('all')}
+            onPointerEnter={() => void warmup3DAssets('all')}
           >
             3D
           </a>
@@ -587,9 +618,9 @@ function App() {
             href={`#${id}`}
             key={id}
             aria-label={label}
-            onClick={id === 'sample' ? () => void warmup3DAssets() : undefined}
-            onFocus={id === 'sample' ? () => void warmup3DAssets() : undefined}
-            onPointerEnter={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onClick={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
+            onFocus={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
+            onPointerEnter={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
           >
             <span>{label}</span>
           </a>
@@ -597,10 +628,21 @@ function App() {
       </div>
 
       <section className="hero snapSlide darkSlide" id="top" data-slide>
-        <img className="heroPhoto" src={asset('hero-quarry.webp')} alt="Карьер и железнодорожная отгрузка минерального сырья" decoding="async" fetchPriority="high" />
+        <video
+          className="heroPhoto heroVideo"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={asset('hero-drone-poster.webp')}
+          aria-label="Аэровидеосъемка промышленной площадки"
+        >
+          <source src={asset('hero-drone.mp4')} type="video/mp4" />
+        </video>
         <div className="heroShade" />
         <div className="heroInner">
-          <h1 data-reveal>Марганцовистый известняк для металлургических предприятий</h1>
+          <h1 data-reveal>Марганцовистый<br />известняк для металлургии</h1>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#analysis">
               Смотреть состав
@@ -613,14 +655,6 @@ function App() {
               Запросить пробную партию
             </a>
           </div>
-          <div className="factGrid" aria-label="Ключевые факты" data-reveal>
-            {facts.map(([value, label], index) => (
-              <div className="fact" style={{ '--delay': `${index * 90}ms` } as CSSProperties} key={value}>
-                <strong>{value}</strong>
-                <span>{label}</span>
-              </div>
-            ))}
-          </div>
         </div>
         <a className="scrollCue" href="#product" aria-label="Перейти к продукту" />
       </section>
@@ -628,7 +662,7 @@ function App() {
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
           <p className="eyebrow">Видеоролик о компании</p>
-          <h2>Сырье, контроль качества и отгрузка в одном коротком ролике</h2>
+          <h2>Сырье и контроль качества<br />в одном коротком ролике</h2>
           <div className="videoPlan">
             <span>Карьер и производственная площадка</span>
             <span>Образец сырья и подготовка партии</span>
@@ -647,14 +681,14 @@ function App() {
       <section className="section split elevatedSection snapSlide" id="product" data-slide>
         <div data-reveal>
           <p className="eyebrow">Наш продукт</p>
-          <h2>Промышленное сырье с проверяемыми показателями</h2>
+          <h2>Сырье<br />с паспортом партии</h2>
           <p>
-            Основной продукт сайта — марганцовистый известняк для металлургических предприятий.
-            Дополнительные позиции показываем отдельно и подтверждаем по актуальному перечню компании.
+            Наша основная продукция — марганцовистый известняк для металлургических предприятий.
+            Флюсовое сырье и гипсовый камень показываем как отдельные позиции с понятными характеристиками поставки.
           </p>
           <div className="checkList">
             <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
-            <span><CheckCircle2 size={20} /> регулярный график поставки от 7 000 тонн в месяц после согласования</span>
+            <span><CheckCircle2 size={20} /> регулярный график поставки после согласования</span>
             <span><CheckCircle2 size={20} /> свои авто и железнодорожная логистика</span>
             <span><CheckCircle2 size={20} /> протокол анализа, паспорт качества и лицензионные документы</span>
           </div>
@@ -662,10 +696,13 @@ function App() {
         <aside className="quietPanel productMatrix" data-reveal>
           <h3>Продуктовая линейка</h3>
           <div className="productCards">
-            {productCards.map(([title, text]) => (
+            {productCards.map(({ title, text, image }) => (
               <article key={title}>
-                <strong>{title}</strong>
-                <span>{text}</span>
+                <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+                <div>
+                  <strong>{title}</strong>
+                  <span>{text}</span>
+                </div>
               </article>
             ))}
           </div>
@@ -675,7 +712,7 @@ function App() {
       <section className="section routeBand snapSlide darkSlide" id="route" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Маршрут поставки</p>
-          <h2>От карьера до металлургического предприятия</h2>
+          <h2>Маршрут поставки<br />до предприятия клиента</h2>
           <p>
             С нами легко работать: маршрут партии понятен до отгрузки, документы готовятся
             заранее, формат логистики выбирается под объем и станцию клиента.
@@ -775,7 +812,7 @@ function App() {
       <section className="section analysisBand snapSlide" id="analysis" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Химический состав</p>
-          <h2>Паспорт сырья для технолога</h2>
+          <h2>Паспорт сырья<br />для технолога предприятия</h2>
           <p>
             Ориентиры по составу и партии. Конкретные значения подтверждаются лабораторным
             протоколом и паспортом качества.
@@ -806,21 +843,21 @@ function App() {
             </table>
           </div>
           <div className="documentStack" data-reveal>
-            <a href={asset('documents/protocol-analysis.html')} target="_blank" rel="noreferrer">
+            <button type="button" onClick={() => openDocument('documents/protocol-analysis.html')}>
               <FlaskConical size={22} aria-hidden="true" />
               <strong>Протокол анализа</strong>
               <span>открыть структуру документа</span>
-            </a>
-            <a href={asset('documents/quality-passport.html')} target="_blank" rel="noreferrer">
+            </button>
+            <button type="button" onClick={() => openDocument('documents/quality-passport.html')}>
               <ClipboardCheck size={22} aria-hidden="true" />
               <strong>Паспорт качества</strong>
               <span>фракция, влажность, партия, дата</span>
-            </a>
-            <a href={asset('documents/license-info.html')} target="_blank" rel="noreferrer">
+            </button>
+            <button type="button" onClick={() => openDocument('documents/license-info.html')}>
               <ShieldCheck size={22} aria-hidden="true" />
               <strong>Документы</strong>
               <span>лицензии, запасы, условия отгрузки</span>
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -828,28 +865,47 @@ function App() {
       <section className="section documentsSlide snapSlide darkSlide" id="documents" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Документы</p>
-          <h2>Документы по сырью и поставке</h2>
+          <h2>Комплект документов<br />по сырью и поставке</h2>
           <p>
-            По запросу предоставляется комплект материалов для первичной проверки сырья,
+            Предоставляем комплект материалов для первичной проверки сырья,
             условий поставки и происхождения партии.
           </p>
         </div>
         <div className="trustGrid">
-          {documentCards.map(([title, text, href], index) => (
+          {documentCards.map(([title, text], index) => (
             <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
               <FileText size={24} aria-hidden="true" />
               <h3>{title}</h3>
               <p>{text}</p>
-              <a href={asset(href)} target="_blank" rel="noreferrer">Открыть документ</a>
+              <button type="button" onClick={() => setActiveDocument(index)}>Открыть документ</button>
             </article>
           ))}
         </div>
       </section>
 
+      {openedDocument && (
+        <div
+          className="documentModal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="document-title"
+          onClick={() => setActiveDocument(null)}
+        >
+          <article className="documentModalInner" onClick={(event) => event.stopPropagation()}>
+            <button className="articleClose" type="button" onClick={() => setActiveDocument(null)} aria-label="Закрыть документ">
+              <X size={22} aria-hidden="true" />
+            </button>
+            <span>Документ</span>
+            <h2 id="document-title">{openedDocument[0]}</h2>
+            <iframe src={asset(openedDocument[2])} title={openedDocument[0]} />
+          </article>
+        </div>
+      )}
+
       <section className="section articlesBand snapSlide" id="articles" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Материалы для первичной оценки</p>
-          <h2>Что проверить до запроса партии</h2>
+          <h2>Что проверить<br />до запроса партии</h2>
           <p>
             Короткие разборы для технолога и снабжения: состав, документы,
             применимость сырья и схема отгрузки.
@@ -901,16 +957,16 @@ function App() {
         <div className="contactLead" data-reveal>
           <div>
             <p className="eyebrow">Заявка на поставку</p>
-            <h2>Расчет пробной партии и условий отгрузки</h2>
+            <h2>Запросить<br />расчет партии</h2>
             <p>
-              Оставьте параметры задачи: продукт, ориентировочный объем, фракцию и станцию
-              назначения. Подготовим ответ по составу документов, варианту логистики и стартовой партии.
+              Позвоните или напишите: подберем продукт, фракцию и удобную схему отгрузки.
+              Для старта достаточно объема и станции назначения.
             </p>
           </div>
           <div className="requestSummary" aria-label="Что подготовим">
-            <span><CheckCircle2 size={18} /> актуальный продукт и фракция</span>
-            <span><CheckCircle2 size={18} /> комплект документов по партии</span>
-            <span><CheckCircle2 size={18} /> авто или железнодорожная схема</span>
+            <span><CheckCircle2 size={18} /> подобрать продукт и фракцию</span>
+            <span><CheckCircle2 size={18} /> запросить документы по партии</span>
+            <span><CheckCircle2 size={18} /> согласовать авто или ЖД</span>
           </div>
           <div className="contactPanel">
             <a href="tel:+73472463913"><Phone size={18} /> {company.phonePrimary}</a>
@@ -929,10 +985,10 @@ function App() {
           </label>
           <label>
             Что нужно получить
-            <textarea placeholder="Протокол анализа, паспорт качества, расчет отгрузки, пробная партия" />
+            <textarea placeholder="Хочу запросить расчет партии, документы или схему отгрузки" />
           </label>
           <button className="primaryButton" type="submit">
-            Получить данные по поставке
+            Запросить расчет партии
             <ArrowRight size={18} aria-hidden="true" />
           </button>
         </form>
@@ -979,9 +1035,9 @@ function App() {
             <a href="#gallery">Фотогалерея</a>
             <a
               href="#sample"
-              onClick={() => void warmup3DAssets()}
-              onFocus={() => void warmup3DAssets()}
-              onPointerEnter={() => void warmup3DAssets()}
+              onClick={() => void warmup3DAssets('all')}
+              onFocus={() => void warmup3DAssets('all')}
+              onPointerEnter={() => void warmup3DAssets('all')}
             >
               3D-образцы
             </a>

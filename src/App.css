@@ -5494,3 +5494,510 @@ footer .footerDocs a {
     padding: 10px 12px;
   }
 }
+
+/* Call review pass: faster first screen, steadier responsive layout, quieter footer. */
+.heroVideo {
+  object-fit: cover;
+  background: #050807;
+}
+
+.heroInner {
+  max-width: 1180px;
+}
+
+.heroInner h1 {
+  max-width: 1080px;
+}
+
+.heroActions {
+  margin-bottom: 0;
+}
+
+#product.elevatedSection {
+  align-items: stretch;
+  grid-template-columns: minmax(420px, 0.92fr) minmax(560px, 1.08fr);
+  gap: clamp(48px, 7vw, 96px);
+}
+
+#product.elevatedSection > div[data-reveal],
+#product .productMatrix {
+  align-self: stretch;
+}
+
+#product.elevatedSection > div[data-reveal] {
+  display: grid;
+  align-content: center;
+}
+
+#product h2 {
+  max-width: 760px;
+}
+
+#product p {
+  max-width: 700px;
+}
+
+#product .checkList {
+  display: grid;
+  gap: 12px;
+  max-width: 720px;
+  margin-top: clamp(26px, 4vh, 42px);
+}
+
+#product .checkList span {
+  min-height: 52px;
+}
+
+#product .productMatrix {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: clamp(22px, 3vw, 30px);
+}
+
+#product .productCards {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  height: 100%;
+}
+
+#product .productCards article {
+  grid-template-columns: clamp(90px, 8vw, 122px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 128px;
+}
+
+#product .productCards img {
+  width: 100%;
+  height: 92px;
+  object-fit: contain;
+  padding: 10px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(210, 198, 137, 0.18), transparent 64%),
+    #08100d;
+  border: 1px solid rgba(23, 32, 29, 0.16);
+  border-radius: 6px;
+}
+
+#product .productCards div {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+#route.routeBand {
+  align-content: center;
+}
+
+#route .routeMap {
+  gap: 16px;
+}
+
+#route .routeMap article,
+#route .routeMap article:nth-child(4),
+#route .routeMap article:nth-child(5) {
+  display: grid;
+  align-content: end;
+  min-height: clamp(340px, 43vh, 460px);
+  padding: clamp(20px, 2.2vw, 28px);
+}
+
+#route .routeMap article span {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  margin: 0;
+}
+
+#route .routeMap article h3,
+#route .routeMap article p {
+  position: relative;
+  z-index: 2;
+  max-width: 96%;
+}
+
+#route .routeMap article h3 {
+  margin-top: clamp(150px, 22vh, 210px);
+}
+
+#route .routeMap article p {
+  margin-top: 9px;
+  font-size: 14px;
+}
+
+.gallerySlide .sectionIntro,
+.gallerySlide .sectionIntro h2,
+.gallerySlide .sectionIntro .eyebrow {
+  justify-items: start;
+  text-align: left;
+}
+
+#sample.sampleSlide {
+  align-content: center;
+  gap: clamp(14px, 2vh, 22px);
+  min-height: 100svh;
+  padding-top: clamp(82px, 9vh, 110px);
+  padding-bottom: clamp(28px, 4vh, 46px);
+}
+
+#sample .sampleCopy {
+  gap: 8px;
+}
+
+#sample .sampleCopy h2 {
+  font-size: clamp(40px, 5vw, 68px);
+}
+
+#sample .sampleCopy p:not(.eyebrow) {
+  max-width: 760px;
+}
+
+.sampleShowcase {
+  gap: 12px;
+}
+
+.modelSwitch button {
+  min-height: 44px;
+}
+
+.modelTheater {
+  min-height: clamp(300px, 38vh, 470px);
+}
+
+.modelTheater::before {
+  top: 72px;
+}
+
+.modelTheater::after {
+  bottom: 42px;
+}
+
+.modelHeroHeader {
+  padding-top: clamp(16px, 2vh, 24px);
+}
+
+#sample .localModelViewer {
+  min-height: clamp(245px, 31vh, 385px);
+}
+
+#sample .modelHints span {
+  min-height: 46px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+#analysis .sectionIntro {
+  width: min(1180px, 100%);
+  max-width: none;
+  margin: 0 auto 28px;
+  justify-items: start;
+  text-align: left;
+}
+
+#analysis .sectionIntro h2 {
+  max-width: 760px;
+}
+
+#analysis .sectionIntro p {
+  max-width: 760px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.analysisBand .documentStack button,
+.trustGrid article button {
+  display: grid;
+  width: 100%;
+  min-height: 118px;
+  align-content: center;
+  justify-items: start;
+  gap: 10px;
+  padding: 20px;
+  color: inherit;
+  text-align: left;
+  background: rgba(23, 32, 29, 0.07);
+  border: 1px solid rgba(23, 32, 29, 0.09);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.analysisBand .documentStack button:is(:hover, :focus-visible),
+.trustGrid article button:is(:hover, :focus-visible) {
+  transform: translateY(-2px);
+  border-color: rgba(118, 108, 66, 0.36);
+  box-shadow: 0 18px 44px rgba(23, 32, 29, 0.12);
+}
+
+.analysisBand .documentStack button svg {
+  color: #766c42;
+}
+
+.analysisBand .documentStack button strong,
+.analysisBand .documentStack button span {
+  color: #17201d;
+}
+
+.trustGrid article button {
+  min-height: 46px;
+  margin-top: auto;
+  align-content: center;
+  justify-items: center;
+  color: #101513;
+  background: #d2c689;
+  border-color: #d2c689;
+  font-weight: 950;
+}
+
+.documentModal {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 34px);
+  background: rgba(3, 5, 4, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.documentModalInner {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  width: min(1120px, 100%);
+  max-height: min(900px, calc(100svh - 32px));
+  padding: clamp(22px, 3vw, 34px);
+  overflow: hidden;
+  color: #17201d;
+  background: #eeece2;
+  border: 1px solid rgba(210, 198, 137, 0.42);
+  border-radius: 8px;
+  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.46);
+}
+
+.documentModalInner > span {
+  color: #766c42;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.documentModalInner h2 {
+  margin: 0;
+  color: #17201d;
+  font-size: clamp(28px, 4vw, 48px);
+}
+
+.documentModalInner iframe {
+  width: 100%;
+  height: min(640px, 68svh);
+  background: #fffdf5;
+  border: 1px solid rgba(23, 32, 29, 0.12);
+  border-radius: 6px;
+}
+
+.contactLead h2 {
+  max-width: 690px;
+}
+
+.contactLead p {
+  max-width: 690px;
+}
+
+.requestSummary {
+  display: grid;
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.requestSummary span {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  color: #dfe5dc;
+  background: rgba(245, 242, 232, 0.07);
+  border: 1px solid rgba(210, 198, 137, 0.22);
+  border-radius: 6px;
+  font-weight: 850;
+}
+
+.requestSummary svg {
+  color: #d2c689;
+}
+
+.siteFooter {
+  gap: 22px;
+  padding: clamp(34px, 4.6vw, 58px) clamp(22px, 5vw, 72px);
+}
+
+.footerMain {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(245, 242, 232, 0.1);
+}
+
+.siteFooter .footerAction {
+  color: #101513;
+}
+
+.footerRails {
+  grid-template-columns: minmax(260px, 1.25fr) minmax(170px, 0.75fr) minmax(170px, 0.75fr) minmax(220px, 0.85fr);
+  gap: 18px;
+}
+
+.footerBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+.footerBlock a,
+.footerLocation {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.footerLocation {
+  justify-self: stretch;
+}
+
+@media (max-width: 1180px) {
+  #product.elevatedSection {
+    grid-template-columns: 1fr;
+  }
+
+  #product.elevatedSection > div[data-reveal] {
+    align-content: start;
+  }
+
+  #product .productMatrix {
+    min-height: auto;
+  }
+
+  #route .routeMap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footerMain,
+  .footerRails {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .heroInner h1,
+  #product h2,
+  #route .sectionIntro h2,
+  #analysis .sectionIntro h2,
+  .contactLead h2 {
+    overflow-wrap: anywhere;
+  }
+
+  #product .productCards article {
+    grid-template-columns: 1fr;
+  }
+
+  #product .productCards img {
+    height: 118px;
+  }
+
+  #route .routeMap {
+    grid-template-columns: 1fr;
+  }
+
+  #sample.sampleSlide {
+    min-height: auto;
+  }
+
+  .modelTheater {
+    min-height: 420px;
+  }
+
+  #sample .localModelViewer {
+    min-height: 320px;
+  }
+
+  .documentModalInner iframe {
+    height: 62svh;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 761px) {
+  #sample.sampleSlide {
+    gap: 10px;
+    padding-top: 66px;
+    padding-bottom: 18px;
+  }
+
+  #sample .sampleCopy {
+    gap: 4px;
+  }
+
+  #sample .sampleCopy h2 {
+    margin: 0;
+    font-size: clamp(34px, 4vw, 52px);
+  }
+
+  #sample .sampleCopy p:not(.eyebrow) {
+    max-width: 700px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .modelSwitch button {
+    min-height: 40px;
+  }
+
+  .modelTheater {
+    min-height: 276px;
+  }
+
+  .modelTheater::before {
+    top: 60px;
+  }
+
+  .modelTheater::after {
+    bottom: 32px;
+  }
+
+  .modelHeroHeader {
+    padding-top: 12px;
+  }
+
+  .modelHeroHeader strong {
+    font-size: 30px;
+  }
+
+  #sample .localModelViewer {
+    min-height: 218px;
+  }
+
+  #sample .modelHints span {
+    min-height: 40px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 1500px) {
+  .topbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 18px;
+  }
+
+  .mainNav {
+    min-width: 0;
+  }
+
+  .topContacts {
+    grid-template-columns: minmax(210px, 230px);
+    width: auto;
+    min-width: 0;
+  }
+
+  .topContacts > a:not(.topCall) {
+    display: none;
+  }
+}
