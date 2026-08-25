@@ -2624,11 +2624,13 @@ label {
   transform: translateX(-50%);
 }
 
+.localModelViewer.is-rendering canvas,
 .localModelViewer.is-loaded canvas {
   opacity: 1;
   pointer-events: auto;
 }
 
+.localModelViewer.is-rendering .sampleModelPoster,
 .localModelViewer.is-loaded .sampleModelPoster {
   opacity: 0;
 }
@@ -5076,11 +5078,13 @@ footer .footerDocs a {
   pointer-events: none;
 }
 
+#sample .localModelViewer.is-rendering canvas,
 #sample .localModelViewer.is-loaded canvas {
   opacity: 1;
   pointer-events: auto;
 }
 
+#sample .localModelViewer.is-rendering .sampleModelPoster,
 #sample .localModelViewer.is-loaded .sampleModelPoster {
   opacity: 0;
 }

@@ -13,12 +13,14 @@ Checked against the latest user screenshots:
 - The route intro sentence requested by the user was removed.
 - Mobile header fits at 390px wide with a compact call button.
 - First 3D sample is preloaded from HTML and pre-initialized in the background after page start.
+- A lightweight procedural WebGL rock appears while the exact GLB file is still downloading.
 - Passport section has visible copy/table changes, not just alignment tweaks.
 
 Verification:
 - `npm run build` passed.
 - `npm run lint` passed.
 - Browser preview check passed with no failed network requests.
-- Desktop Playwright check: after normal landing-page entry, 3D was already loaded before the click and canvas appeared in 33 ms on `#sample`.
-- Cold direct `#sample` preview entry loaded the first model in 1281 ms.
+- Desktop Playwright check: after normal landing-page entry, 3D was already loaded before the click and canvas appeared in 15 ms on `#sample`.
+- Cold direct `#sample` preview entry reached visible WebGL rendering in 444 ms and loaded the first GLB in 551 ms.
+- With the first GLB artificially delayed by 12 seconds, the procedural WebGL fallback stayed visible instead of a blank theater.
 - Product images verified as loaded 900x540 WebP assets.
