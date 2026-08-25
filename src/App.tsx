@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import type { Object3D } from 'three'
 import {
   ArrowRight,
   CheckCircle2,
@@ -166,121 +164,195 @@ type RockVariant = 'limestone' | 'flux' | 'gypsum'
 
 function RockSample({ model, variant = 'limestone' }: { model: string; variant?: RockVariant }) {
   const mountRef = useRef<HTMLDivElement>(null)
+  const [loadLabel, setLoadLabel] = useState('Загрузка 3D-модели')
 
   useEffect(() => {
     const mount = mountRef.current
     if (!mount) return
+    let isDisposed = false
+    let hasStarted = false
+    let frameId = 0
+    let resizeObserver: ResizeObserver | null = null
+    let controls: { dispose: () => void; update: () => void } | null = null
+    let renderer: { dispose: () => void } | null = null
+    let disposeLoadedModel = () => {}
 
-    const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#101613')
+    const startViewer = async () => {
+      if (hasStarted || isDisposed) return
+      hasStarted = true
+      setLoadLabel('Загрузка 3D-модели')
 
-    const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
-    camera.position.set(0.08, 0.1, 3.55)
+      const [THREE, { OrbitControls }, { GLTFLoader }] = await Promise.all([
+        import('three'),
+        import('three/examples/jsm/controls/OrbitControls.js'),
+        import('three/examples/jsm/loaders/GLTFLoader.js'),
+      ])
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.outputColorSpace = THREE.SRGBColorSpace
-    renderer.toneMapping = THREE.ACESFilmicToneMapping
-    renderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
-    mount.appendChild(renderer.domElement)
+      if (isDisposed) return
 
-    const controls = new OrbitControls(camera, renderer.domElement)
-    controls.enableDamping = true
-    controls.enablePan = false
-    controls.enableZoom = true
-    controls.minDistance = 1.85
-    controls.maxDistance = 6.4
-    controls.target.set(0, 0, 0)
-    controls.autoRotate = true
-    controls.autoRotateSpeed = 0.9
+      const scene = new THREE.Scene()
+      scene.background = new THREE.Color('#101613')
 
-    scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
+      const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
+      camera.position.set(0.08, 0.1, 3.55)
 
-    const keyLight = new THREE.DirectionalLight(variant === 'gypsum' ? '#fff9df' : '#fff1be', 4.2)
-    keyLight.position.set(3, 4, 5)
-    scene.add(keyLight)
+      const webglRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' })
+      renderer = webglRenderer
+      webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+      webglRenderer.outputColorSpace = THREE.SRGBColorSpace
+      webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
+      webglRenderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
+      mount.appendChild(webglRenderer.domElement)
 
-    const fillLight = new THREE.DirectionalLight('#a9b8ad', 1.8)
-    fillLight.position.set(-4, 1.5, -2)
-    scene.add(fillLight)
+      const orbitControls = new OrbitControls(camera, webglRenderer.domElement)
+      controls = orbitControls
+      orbitControls.enableDamping = true
+      orbitControls.enablePan = false
+      orbitControls.enableZoom = true
+      orbitControls.minDistance = 1.85
+      orbitControls.maxDistance = 6.4
+      orbitControls.target.set(0, 0, 0)
+      orbitControls.autoRotate = true
+      orbitControls.autoRotateSpeed = 0.9
 
-    const modelRoot = new THREE.Group()
-    modelRoot.rotation.set(-0.16, -0.24, 0.05)
-    scene.add(modelRoot)
+      scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
 
-    const loader = new GLTFLoader()
-    loader.load(asset(model), (gltf) => {
-      const loadedModel = gltf.scene
-      const box = new THREE.Box3().setFromObject(loadedModel)
-      const center = box.getCenter(new THREE.Vector3())
-      const size = box.getSize(new THREE.Vector3())
-      const maxAxis = Math.max(size.x, size.y, size.z) || 1
-      const modelScale = variant === 'flux' ? 1.28 : variant === 'gypsum' ? 1.18 : 1.45
+      const keyLight = new THREE.DirectionalLight(variant === 'gypsum' ? '#fff9df' : '#fff1be', 4.2)
+      keyLight.position.set(3, 4, 5)
+      scene.add(keyLight)
 
-      loadedModel.position.sub(center)
-      if (variant === 'gypsum') loadedModel.position.y += 0.34
-      if (variant === 'flux') loadedModel.position.y += 0.08
-      loadedModel.scale.setScalar(modelScale / maxAxis)
-      loadedModel.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true
-          child.receiveShadow = true
+      const fillLight = new THREE.DirectionalLight('#a9b8ad', 1.8)
+      fillLight.position.set(-4, 1.5, -2)
+      scene.add(fillLight)
 
-          if (variant === 'gypsum') {
-            const materials = Array.isArray(child.material) ? child.material : [child.material]
-            const updatedMaterials = materials.map((material) => {
-              const cloned = material.clone()
-              if ('color' in cloned && cloned.color instanceof THREE.Color) {
-                cloned.color.lerp(new THREE.Color('#ddd6c4'), 0.28)
-              }
-              if ('roughness' in cloned) cloned.roughness = 0.96
-              if ('metalness' in cloned) cloned.metalness = 0
-              cloned.needsUpdate = true
-              return cloned
+      const modelRoot = new THREE.Group()
+      modelRoot.rotation.set(-0.16, -0.24, 0.05)
+      scene.add(modelRoot)
+
+      let loadedModel: Object3D | null = null
+      disposeLoadedModel = () => {
+        loadedModel?.traverse((child: Object3D) => {
+          if (!(child instanceof THREE.Mesh)) return
+
+          child.geometry.dispose()
+          const materials = Array.isArray(child.material) ? child.material : [child.material]
+          materials.forEach((material) => {
+            Object.values(material).forEach((value) => {
+              if (value instanceof THREE.Texture) value.dispose()
             })
+            material.dispose()
+          })
+        })
+      }
 
-            child.material = Array.isArray(child.material) ? updatedMaterials : updatedMaterials[0]
+      const loader = new GLTFLoader()
+      loader.load(asset(model), (gltf) => {
+        if (isDisposed) return
+
+        loadedModel = gltf.scene
+        const box = new THREE.Box3().setFromObject(loadedModel)
+        const center = box.getCenter(new THREE.Vector3())
+        const size = box.getSize(new THREE.Vector3())
+        const maxAxis = Math.max(size.x, size.y, size.z) || 1
+        const modelScale = variant === 'flux' ? 1.28 : variant === 'gypsum' ? 1.18 : 1.45
+
+        loadedModel.position.sub(center)
+        if (variant === 'gypsum') loadedModel.position.y += 0.34
+        if (variant === 'flux') loadedModel.position.y += 0.08
+        loadedModel.scale.setScalar(modelScale / maxAxis)
+        loadedModel.traverse((child: Object3D) => {
+          if (child instanceof THREE.Mesh) {
+            child.castShadow = true
+            child.receiveShadow = true
+
+            if (variant === 'gypsum') {
+              const materials = Array.isArray(child.material) ? child.material : [child.material]
+              const updatedMaterials = materials.map((material) => {
+                const cloned = material.clone()
+                if ('color' in cloned && cloned.color instanceof THREE.Color) {
+                  cloned.color.lerp(new THREE.Color('#ddd6c4'), 0.28)
+                }
+                if ('roughness' in cloned) cloned.roughness = 0.96
+                if ('metalness' in cloned) cloned.metalness = 0
+                cloned.needsUpdate = true
+                return cloned
+              })
+
+              child.material = Array.isArray(child.material) ? updatedMaterials : updatedMaterials[0]
+            }
           }
-        }
+        })
+
+        modelRoot.add(loadedModel)
+        mount.classList.add('is-loaded')
+      }, (event) => {
+        if (isDisposed || !event.lengthComputable || !event.total) return
+
+        const progress = Math.min(99, Math.round((event.loaded / event.total) * 100))
+        setLoadLabel(`Загрузка 3D-модели ${progress}%`)
+      }, (error) => {
+        if (isDisposed) return
+
+        console.error('Failed to load 3D model', error)
+        mount.classList.add('has-error')
+        setLoadLabel('Не удалось загрузить 3D-модель')
       })
 
-      modelRoot.add(loadedModel)
-      mount.classList.add('is-loaded')
-    })
+      const resize = () => {
+        const { width, height } = mount.getBoundingClientRect()
+        camera.aspect = width / Math.max(height, 1)
+        camera.position.z = width < 640 ? 5.2 : 3.55
+        camera.updateProjectionMatrix()
+        webglRenderer.setSize(width, height, false)
+      }
 
-    const resize = () => {
-      const { width, height } = mount.getBoundingClientRect()
-      camera.aspect = width / Math.max(height, 1)
-      camera.position.z = width < 640 ? 5.2 : 3.55
-      camera.updateProjectionMatrix()
-      renderer.setSize(width, height, false)
+      resizeObserver = new ResizeObserver(resize)
+      resizeObserver.observe(mount)
+      resize()
+
+      const render = () => {
+        orbitControls.update()
+        webglRenderer.render(scene, camera)
+        frameId = window.requestAnimationFrame(render)
+      }
+      render()
     }
 
-    const resizeObserver = new ResizeObserver(resize)
-    resizeObserver.observe(mount)
-    resize()
+    const loadObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          loadObserver.disconnect()
+          void startViewer().catch((error) => {
+            if (isDisposed) return
 
-    let frameId = 0
-    const render = () => {
-      controls.update()
-      renderer.render(scene, camera)
-      frameId = window.requestAnimationFrame(render)
-    }
-    render()
+            console.error('Failed to initialize 3D viewer', error)
+            mount.classList.add('has-error')
+            setLoadLabel('Не удалось запустить 3D-просмотр')
+          })
+        }
+      },
+      { rootMargin: '420px 0px' },
+    )
+
+    loadObserver.observe(mount)
 
     return () => {
+      isDisposed = true
       window.cancelAnimationFrame(frameId)
-      resizeObserver.disconnect()
-      controls.dispose()
-      renderer.dispose()
+      loadObserver.disconnect()
+      resizeObserver?.disconnect()
+      controls?.dispose()
+      disposeLoadedModel()
+      renderer?.dispose()
       mount.classList.remove('is-loaded')
+      mount.classList.remove('has-error')
       mount.replaceChildren()
     }
   }, [model, variant])
 
   return (
     <div className="localModelViewer" ref={mountRef} data-testid="rock-viewer">
-      <span>Загрузка 3D-модели</span>
+      <span>{loadLabel}</span>
     </div>
   )
 }

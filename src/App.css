@@ -2604,6 +2604,10 @@ label {
   display: none;
 }
 
+.localModelViewer.has-error span {
+  color: #ffb4a8;
+}
+
 @media (max-width: 680px) {
   .deliveryRows span {
     min-height: auto;
