@@ -5347,3 +5347,40 @@ footer .footerDocs a {
     padding: 8px;
   }
 }
+
+/* Final title alignment and unified slide eyebrow color. */
+.eyebrow,
+.darkSlide .eyebrow,
+.hero .eyebrow,
+#product .eyebrow,
+#route .eyebrow,
+#gallery .eyebrow,
+#sample .eyebrow,
+#analysis .eyebrow,
+#documents .eyebrow,
+#articles .eyebrow,
+#contacts .eyebrow {
+  color: #b8a567;
+}
+
+.gallerySlide .sectionIntro,
+#sample .sampleCopy {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.gallerySlide .sectionIntro h2,
+#sample .sampleCopy h2 {
+  width: 100%;
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.gallerySlide .sectionIntro .eyebrow,
+#sample .sampleCopy .eyebrow {
+  width: 100%;
+  text-align: center;
+}
