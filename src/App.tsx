@@ -235,8 +235,8 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
     let resizeObserver: ResizeObserver | null = null
     let controls: { dispose: () => void; update: () => void } | null = null
     let renderer: { dispose: () => void } | null = null
+    let rendererCanvas: HTMLCanvasElement | null = null
     let disposeLoadedModel = () => {}
-    let disposePlaceholderModel = () => {}
 
     const startViewer = async () => {
       if (hasStarted || isDisposed) return
@@ -259,6 +259,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
       const webglRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' })
       renderer = webglRenderer
+      rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
@@ -290,37 +291,6 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       modelRoot.rotation.set(-0.16, -0.24, 0.05)
       scene.add(modelRoot)
 
-      const placeholderGeometry = new THREE.IcosahedronGeometry(0.76, 3)
-      const placeholderPosition = placeholderGeometry.attributes.position
-      const vertex = new THREE.Vector3()
-      for (let index = 0; index < placeholderPosition.count; index += 1) {
-        vertex.fromBufferAttribute(placeholderPosition, index)
-        const ripple =
-          1 +
-          0.12 * Math.sin(vertex.x * 7.2 + vertex.y * 3.4) +
-          0.08 * Math.cos(vertex.z * 8.8 - vertex.x * 2.1)
-        vertex.multiplyScalar(ripple)
-        placeholderPosition.setXYZ(index, vertex.x, vertex.y * 0.72, vertex.z * 0.84)
-      }
-      placeholderGeometry.computeVertexNormals()
-
-      const placeholderMaterial = new THREE.MeshStandardMaterial({
-        color: variant === 'gypsum' ? '#d8d1bd' : variant === 'flux' ? '#9f9278' : '#8a6f58',
-        roughness: 0.96,
-        metalness: 0,
-      })
-      const placeholderRock = new THREE.Mesh(placeholderGeometry, placeholderMaterial)
-      placeholderRock.castShadow = true
-      placeholderRock.receiveShadow = true
-      placeholderRock.rotation.set(0.12, -0.18, 0.05)
-      modelRoot.add(placeholderRock)
-      mount.classList.add('is-rendering')
-      disposePlaceholderModel = () => {
-        modelRoot.remove(placeholderRock)
-        placeholderGeometry.dispose()
-        placeholderMaterial.dispose()
-      }
-
       let loadedModel: Object3D | null = null
       disposeLoadedModel = () => {
         loadedModel?.traverse((child: Object3D) => {
@@ -341,8 +311,6 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       loader.load(asset(model), (gltf) => {
         if (isDisposed) return
 
-        disposePlaceholderModel()
-        disposePlaceholderModel = () => {}
         loadedModel = gltf.scene
         const box = new THREE.Box3().setFromObject(loadedModel)
         const center = box.getCenter(new THREE.Vector3())
@@ -453,13 +421,11 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       window.removeEventListener('hashchange', startForSampleHash)
       resizeObserver?.disconnect()
       controls?.dispose()
-      disposePlaceholderModel()
       disposeLoadedModel()
       renderer?.dispose()
+      rendererCanvas?.remove()
       mount.classList.remove('is-loaded')
-      mount.classList.remove('is-rendering')
       mount.classList.remove('has-error')
-      mount.replaceChildren()
     }
   }, [model, variant])
 

@@ -2632,13 +2632,11 @@ label {
   transform: translateX(-50%);
 }
 
-.localModelViewer.is-rendering canvas,
 .localModelViewer.is-loaded canvas {
   opacity: 1;
   pointer-events: auto;
 }
 
-.localModelViewer.is-rendering .sampleModelPoster,
 .localModelViewer.is-loaded .sampleModelPoster {
   opacity: 0;
 }
@@ -5090,13 +5088,11 @@ footer .footerDocs a {
   pointer-events: none;
 }
 
-#sample .localModelViewer.is-rendering canvas,
 #sample .localModelViewer.is-loaded canvas {
   opacity: 1;
   pointer-events: auto;
 }
 
-#sample .localModelViewer.is-rendering .sampleModelPoster,
 #sample .localModelViewer.is-loaded .sampleModelPoster {
   opacity: 0;
 }
@@ -5576,6 +5572,8 @@ footer .footerDocs a {
 }
 
 .heroFactStrip,
+.topCall,
+.topMail,
 .contactPanel a,
 .footerAction,
 .trustGrid article button,
@@ -5585,6 +5583,8 @@ footer .footerDocs a {
 }
 
 .heroFactStrip::after,
+.topCall::after,
+.topMail::after,
 .contactPanel a::after,
 .footerAction::after,
 .trustGrid article button::after,
@@ -5599,6 +5599,7 @@ footer .footerDocs a {
 }
 
 .contactPanel a:nth-child(2)::after,
+.topMail::after,
 .trustGrid article:nth-child(2) button::after {
   animation-delay: 0.7s;
 }
