@@ -2632,6 +2632,11 @@ label {
   transform: translateX(-50%);
 }
 
+.localModelViewer:not(.is-loaded) span,
+.localModelViewer.has-error span {
+  display: block;
+}
+
 .localModelViewer.is-loaded canvas {
   opacity: 1;
   pointer-events: auto;
