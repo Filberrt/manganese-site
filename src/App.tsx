@@ -67,17 +67,17 @@ const productCards = [
   {
     title: 'Марганцовистый известняк',
     text: 'Основная продукция для металлургических предприятий: состав, фракция, влажность и паспорт качества фиксируются по партии.',
-    image: 'product/manganese-limestone.webp',
+    image: 'gallery/gallery-severny-v2.webp',
   },
   {
     title: 'Флюсовое сырье',
     text: 'Поставляется отдельной позицией: наличие, показатели и объем подтверждаются перед расчетом партии.',
-    image: 'product/flux-limestone.webp',
+    image: 'gallery/gallery-manganese-flux-ore.webp',
   },
   {
     title: 'Гипсовый и гипсоангидритовый камень',
     text: 'Отдельная продуктовая группа: фракция, характеристики и условия отгрузки подбираются под задачу предприятия.',
-    image: 'product/gypsum-anhydrite.webp',
+    image: 'gallery/gallery-gypsum-crushing.webp',
   },
 ]
 
@@ -235,7 +235,6 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
     let resizeObserver: ResizeObserver | null = null
     let controls: { dispose: () => void; update: () => void } | null = null
     let renderer: { dispose: () => void } | null = null
-    let rendererCanvas: HTMLCanvasElement | null = null
     let disposeLoadedModel = () => {}
     let disposePlaceholderModel = () => {}
 
@@ -260,7 +259,6 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
       const webglRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' })
       renderer = webglRenderer
-      rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
@@ -458,10 +456,10 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       disposePlaceholderModel()
       disposeLoadedModel()
       renderer?.dispose()
-      rendererCanvas?.remove()
       mount.classList.remove('is-loaded')
       mount.classList.remove('is-rendering')
       mount.classList.remove('has-error')
+      mount.replaceChildren()
     }
   }, [model, variant])
 
@@ -703,7 +701,7 @@ function App() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={asset('hero-drone-poster.webp')}
           aria-label="Аэровидеосъемка промышленной площадки"
           onLoadedData={(event) => void event.currentTarget.play().catch(() => undefined)}
