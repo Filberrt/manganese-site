@@ -1,5 +1,21 @@
 Product section imagery sources:
 
+Current product cards:
+
+1. flux-material.webp
+Source: user-provided image, codex-clipboard-c8b56cd7-4de0-491f-8200-de4dbdea7692.png
+Used for: Флюсовое сырье
+
+2. manganese-limestone-material.webp
+Source: user-provided image, codex-clipboard-1690994d-096c-49d5-8bff-c2ef577a92e6.png
+Used for: Марганцовистый известняк
+
+3. gypsum-anhydrite-material.webp
+Source: user-provided image, codex-clipboard-4c171a5c-e8a7-4561-b1f6-37b42849ff5e.png
+Used for: Гипсовый и гипсоангидритовый камень
+
+Previous product images:
+
 1. manganese-limestone.webp
 Source: Wikimedia Commons, "Manganese oxide rock (manganese ore) ..."
 Author: James St. John
