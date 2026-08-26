@@ -123,6 +123,8 @@ const sampleModels = [
 ]
 
 let viewerBundleWarmupPromise: Promise<void> | null = null
+let allModelsWarmupPromise: Promise<void> | null = null
+const modelAssetUrls = sampleModels.map((model) => model.model)
 
 const warmup3DViewer = () => {
   viewerBundleWarmupPromise = viewerBundleWarmupPromise ?? Promise.all([
@@ -137,6 +139,20 @@ const warmup3DViewer = () => {
     })
 
   return viewerBundleWarmupPromise
+}
+
+const warmup3DAssets = () => {
+  allModelsWarmupPromise = allModelsWarmupPromise ?? Promise.all([
+    warmup3DViewer(),
+    ...modelAssetUrls.map((url) => fetch(asset(url), { cache: 'force-cache' }).catch(() => null)),
+  ])
+    .then(() => undefined)
+    .catch((error) => {
+      console.warn('3D assets warmup failed', error)
+      allModelsWarmupPromise = null
+    })
+
+  return allModelsWarmupPromise
 }
 
 const articlePlan = [
@@ -532,11 +548,16 @@ function App() {
     scrollToHash()
     window.addEventListener('hashchange', scrollToHash)
 
+    const warmupTimer = window.setTimeout(() => {
+      void warmup3DAssets()
+    }, 0)
+
     return () => {
       observer.disconnect()
       lazyBgObserver?.disconnect()
       slideObserver.disconnect()
       window.removeEventListener('hashchange', scrollToHash)
+      window.clearTimeout(warmupTimer)
     }
   }, [])
 
@@ -583,9 +604,9 @@ function App() {
           <a href="#gallery">Фотогалерея</a>
           <a
             href="#sample"
-            onClick={() => void warmup3DViewer()}
-            onFocus={() => void warmup3DViewer()}
-            onPointerEnter={() => void warmup3DViewer()}
+            onClick={() => void warmup3DAssets()}
+            onFocus={() => void warmup3DAssets()}
+            onPointerEnter={() => void warmup3DAssets()}
           >
             3D
           </a>
@@ -611,9 +632,9 @@ function App() {
             href={`#${id}`}
             key={id}
             aria-label={label}
-            onClick={id === 'sample' ? () => void warmup3DViewer() : undefined}
-            onFocus={id === 'sample' ? () => void warmup3DViewer() : undefined}
-            onPointerEnter={id === 'sample' ? () => void warmup3DViewer() : undefined}
+            onClick={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onFocus={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onPointerEnter={id === 'sample' ? () => void warmup3DAssets() : undefined}
           >
             <span>{label}</span>
           </a>
@@ -1056,9 +1077,9 @@ function App() {
             <a href="#gallery">Фотогалерея</a>
             <a
               href="#sample"
-              onClick={() => void warmup3DViewer()}
-              onFocus={() => void warmup3DViewer()}
-              onPointerEnter={() => void warmup3DViewer()}
+              onClick={() => void warmup3DAssets()}
+              onFocus={() => void warmup3DAssets()}
+              onPointerEnter={() => void warmup3DAssets()}
             >
               3D-образцы
             </a>
