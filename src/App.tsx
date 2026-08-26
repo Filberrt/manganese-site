@@ -672,7 +672,8 @@ function App() {
           aria-label="Аэровидеосъемка промышленной площадки"
           onLoadedData={(event) => void event.currentTarget.play().catch(() => undefined)}
         >
-          <source src={asset('hero-drone.mp4')} type="video/mp4" />
+          <source src={asset('hero-drone.mp4')} type="video/mp4" media="(min-width: 900px)" />
+          <source src={asset('hero-drone-mobile.mp4')} type="video/mp4" />
         </video>
         <div className="heroShade" />
         <div className="heroInner">

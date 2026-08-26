@@ -5511,6 +5511,8 @@ footer .footerDocs a {
 .heroVideo {
   object-fit: cover;
   background: #050807;
+  transform: none;
+  animation: none;
 }
 
 .heroInner {
