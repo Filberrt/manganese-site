@@ -5576,6 +5576,8 @@ footer .footerDocs a {
 }
 
 .heroFactStrip,
+.topCall,
+.topMail,
 .contactPanel a,
 .footerAction,
 .trustGrid article button,
@@ -5585,6 +5587,8 @@ footer .footerDocs a {
 }
 
 .heroFactStrip::after,
+.topCall::after,
+.topMail::after,
 .contactPanel a::after,
 .footerAction::after,
 .trustGrid article button::after,
@@ -5599,6 +5603,7 @@ footer .footerDocs a {
 }
 
 .contactPanel a:nth-child(2)::after,
+.topMail::after,
 .trustGrid article:nth-child(2) button::after {
   animation-delay: 0.7s;
 }

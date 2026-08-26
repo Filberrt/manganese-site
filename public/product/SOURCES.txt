@@ -1,16 +1,16 @@
 Product section imagery sources:
 
 1. manganese-limestone.webp
-Source: Wikimedia Commons, "Pseudofossil dendrites of manganese in limestone.jpg"
-Author: Rosser1954
-License: CC BY-SA 4.0
-URL: https://commons.wikimedia.org/wiki/File:Pseudofossil_dendrites_of_manganese_in_limestone.jpg
+Source: Wikimedia Commons, "Manganese oxide rock (manganese ore) ..."
+Author: James St. John
+License: CC BY 2.0
+URL: https://commons.wikimedia.org/wiki/File:Manganese_oxide_rock_(manganese_ore)_(Hotazel_Formation,_Paleoproterozoic,_2.05_Ga;_N%27Chwaning_II_Mine,_Kalahari_Manganese_Field,_Northern_Cape_Province,_South_Africa).jpg
 
 2. flux-limestone.webp
-Source: Wikimedia Commons, "Limestone Quarry.JPG"
-Author: Dr Peter Tzeferis
-License: CC BY-SA 4.0
-URL: https://commons.wikimedia.org/wiki/File:Limestone_Quarry.JPG
+Source: Wikimedia Commons, "Limestone, Nagyharsany.jpg"
+Author: Szilas
+License: Public domain
+URL: https://commons.wikimedia.org/wiki/File:Limestone,_Nagyhars%C3%A1ny.jpg
 
 3. gypsum-anhydrite.webp
 Source: Wikimedia Commons, "Rock gypsum (gyprock) 2.jpg"
