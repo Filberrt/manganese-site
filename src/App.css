@@ -5752,6 +5752,17 @@ footer .footerDocs a {
 
 #route .routeMap article h3 {
   margin-top: clamp(150px, 22vh, 210px);
+  min-height: 2.36em;
+  line-height: 1.18;
+}
+
+#route .routeMap article:nth-child(5) h3 {
+  margin-top: calc(clamp(150px, 22vh, 210px) + 21px);
+}
+
+#route .routeMap article:nth-child(5) h3,
+#route .routeMap article:nth-child(5) p {
+  transform: translateY(21px);
 }
 
 #route .routeMap article p {
