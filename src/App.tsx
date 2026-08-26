@@ -122,37 +122,46 @@ const sampleModels = [
   },
 ]
 
-let viewerBundleWarmupPromise: Promise<void> | null = null
-let allModelsWarmupPromise: Promise<void> | null = null
-const modelAssetUrls = sampleModels.map((model) => model.model)
+const modelAssetManifest: Record<string, string[]> = {
+  'models/fast/limestone.glb': ['models/fast/limestone.glb'],
+  'models/fast/flux.glb': ['models/fast/flux.glb'],
+  'models/fast/gypsum.glb': ['models/fast/gypsum.glb'],
+}
 
-const warmup3DViewer = () => {
-  viewerBundleWarmupPromise = viewerBundleWarmupPromise ?? Promise.all([
+let firstModelWarmupPromise: Promise<void> | null = null
+let allModelsWarmupPromise: Promise<void> | null = null
+
+const preloadModelAssets = (models: typeof sampleModels) => {
+  const modelUrls = Array.from(new Set(models.flatMap((model) => modelAssetManifest[model.model] ?? [model.model])))
+
+  return Promise.all([
     import('three'),
     import('three/examples/jsm/controls/OrbitControls.js'),
     import('three/examples/jsm/loaders/GLTFLoader.js'),
+    ...modelUrls.map((url) => fetch(asset(url), { cache: 'force-cache' }).catch(() => null)),
   ])
     .then(() => undefined)
     .catch((error) => {
       console.warn('3D warmup failed', error)
-      viewerBundleWarmupPromise = null
     })
 
-  return viewerBundleWarmupPromise
 }
 
-const warmup3DAssets = () => {
-  allModelsWarmupPromise = allModelsWarmupPromise ?? Promise.all([
-    warmup3DViewer(),
-    ...modelAssetUrls.map((url) => fetch(asset(url), { cache: 'force-cache' }).catch(() => null)),
-  ])
-    .then(() => undefined)
-    .catch((error) => {
-      console.warn('3D assets warmup failed', error)
-      allModelsWarmupPromise = null
-    })
+const warmup3DAssets = (scope: 'first' | 'all' = 'first') => {
+  if (scope === 'all') {
+    if (!allModelsWarmupPromise) {
+      allModelsWarmupPromise = preloadModelAssets(sampleModels)
+      firstModelWarmupPromise = firstModelWarmupPromise ?? allModelsWarmupPromise
+    }
 
-  return allModelsWarmupPromise
+    return allModelsWarmupPromise
+  }
+
+  if (!firstModelWarmupPromise) {
+    firstModelWarmupPromise = preloadModelAssets([sampleModels[0]])
+  }
+
+  return firstModelWarmupPromise
 }
 
 const articlePlan = [
@@ -228,6 +237,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
     let renderer: { dispose: () => void } | null = null
     let rendererCanvas: HTMLCanvasElement | null = null
     let disposeLoadedModel = () => {}
+    let disposePlaceholderModel = () => {}
 
     const startViewer = async () => {
       if (hasStarted || isDisposed) return
@@ -282,6 +292,37 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       modelRoot.rotation.set(-0.16, -0.24, 0.05)
       scene.add(modelRoot)
 
+      const placeholderGeometry = new THREE.IcosahedronGeometry(0.76, 3)
+      const placeholderPosition = placeholderGeometry.attributes.position
+      const vertex = new THREE.Vector3()
+      for (let index = 0; index < placeholderPosition.count; index += 1) {
+        vertex.fromBufferAttribute(placeholderPosition, index)
+        const ripple =
+          1 +
+          0.12 * Math.sin(vertex.x * 7.2 + vertex.y * 3.4) +
+          0.08 * Math.cos(vertex.z * 8.8 - vertex.x * 2.1)
+        vertex.multiplyScalar(ripple)
+        placeholderPosition.setXYZ(index, vertex.x, vertex.y * 0.72, vertex.z * 0.84)
+      }
+      placeholderGeometry.computeVertexNormals()
+
+      const placeholderMaterial = new THREE.MeshStandardMaterial({
+        color: variant === 'gypsum' ? '#d8d1bd' : variant === 'flux' ? '#9f9278' : '#8a6f58',
+        roughness: 0.96,
+        metalness: 0,
+      })
+      const placeholderRock = new THREE.Mesh(placeholderGeometry, placeholderMaterial)
+      placeholderRock.castShadow = true
+      placeholderRock.receiveShadow = true
+      placeholderRock.rotation.set(0.12, -0.18, 0.05)
+      modelRoot.add(placeholderRock)
+      mount.classList.add('is-rendering')
+      disposePlaceholderModel = () => {
+        modelRoot.remove(placeholderRock)
+        placeholderGeometry.dispose()
+        placeholderMaterial.dispose()
+      }
+
       let loadedModel: Object3D | null = null
       disposeLoadedModel = () => {
         loadedModel?.traverse((child: Object3D) => {
@@ -302,6 +343,8 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       loader.load(asset(model), (gltf) => {
         if (isDisposed) return
 
+        disposePlaceholderModel()
+        disposePlaceholderModel = () => {}
         loadedModel = gltf.scene
         const box = new THREE.Box3().setFromObject(loadedModel)
         const center = box.getCenter(new THREE.Vector3())
@@ -389,6 +432,14 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
     loadObserver.observe(mount)
 
+    const eagerStartTimer = window.setTimeout(() => {
+      void startViewer().catch((error) => {
+        if (isDisposed) return
+
+        console.error('Failed to pre-initialize 3D viewer', error)
+      })
+    }, window.location.hash === '#sample' ? 0 : 700)
+
     const startForSampleHash = () => {
       if (window.location.hash === '#sample') void startViewer()
     }
@@ -398,15 +449,18 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
     return () => {
       isDisposed = true
+      window.clearTimeout(eagerStartTimer)
       window.cancelAnimationFrame(frameId)
       loadObserver.disconnect()
       window.removeEventListener('hashchange', startForSampleHash)
       resizeObserver?.disconnect()
       controls?.dispose()
+      disposePlaceholderModel()
       disposeLoadedModel()
       renderer?.dispose()
       rendererCanvas?.remove()
       mount.classList.remove('is-loaded')
+      mount.classList.remove('is-rendering')
       mount.classList.remove('has-error')
     }
   }, [model, variant])
@@ -549,8 +603,8 @@ function App() {
     window.addEventListener('hashchange', scrollToHash)
 
     const warmupTimer = window.setTimeout(() => {
-      void warmup3DAssets()
-    }, 0)
+      void warmup3DAssets('all')
+    }, 120)
 
     return () => {
       observer.disconnect()
@@ -604,9 +658,9 @@ function App() {
           <a href="#gallery">Фотогалерея</a>
           <a
             href="#sample"
-            onClick={() => void warmup3DAssets()}
-            onFocus={() => void warmup3DAssets()}
-            onPointerEnter={() => void warmup3DAssets()}
+            onClick={() => void warmup3DAssets('all')}
+            onFocus={() => void warmup3DAssets('all')}
+            onPointerEnter={() => void warmup3DAssets('all')}
           >
             3D
           </a>
@@ -632,9 +686,9 @@ function App() {
             href={`#${id}`}
             key={id}
             aria-label={label}
-            onClick={id === 'sample' ? () => void warmup3DAssets() : undefined}
-            onFocus={id === 'sample' ? () => void warmup3DAssets() : undefined}
-            onPointerEnter={id === 'sample' ? () => void warmup3DAssets() : undefined}
+            onClick={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
+            onFocus={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
+            onPointerEnter={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
           >
             <span>{label}</span>
           </a>
@@ -1077,9 +1131,9 @@ function App() {
             <a href="#gallery">Фотогалерея</a>
             <a
               href="#sample"
-              onClick={() => void warmup3DAssets()}
-              onFocus={() => void warmup3DAssets()}
-              onPointerEnter={() => void warmup3DAssets()}
+              onClick={() => void warmup3DAssets('all')}
+              onFocus={() => void warmup3DAssets('all')}
+              onPointerEnter={() => void warmup3DAssets('all')}
             >
               3D-образцы
             </a>
