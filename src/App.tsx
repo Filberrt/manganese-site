@@ -24,59 +24,60 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+
 const company = {
   name: 'БашМинералРесурс',
   legalName: 'ООО «БашМинералРесурс»',
-  subtitle: 'добыча марганцевых руд и гипсового камня',
+  subtitle: 'Добыча марганцевых руд и гипсового камня',
+  subtitleLines: ['Добыча марганцевых', 'руд и гипсового камня'],
   phonePrimary: '+7 (347) 246-39-13',
   phoneSecondary: '+7 (347) 246-39-14',
   email: 'info@bashmineral.ru',
-  location: 'Башкортостан',
+  location: 'Республика Башкортостан, Иглинский район, восточная часть: Улу-Телякское и Тюлько-Тюбинское месторождения',
 }
 
 const compositionRows = [
-  ['Mn', '7,6-7,9%', 'справочно по открытым публикациям'],
-  ['CaO', '32,7-34,5%', 'справочно по открытым публикациям'],
-  ['SiO2', '14,9-17,0%', 'справочно по открытым публикациям'],
-  ['Фракция', 'по паспорту партии', 'уточняется под заявку'],
-  ['Влажность', 'по паспорту партии', 'фиксируется при отгрузке'],
+  ['Mn', '7,6-7,9%', 'Справочно по открытым публикациям'],
+  ['CaO', '32,7-34,5%', 'Справочно по открытым публикациям'],
+  ['SiO2', '14,9-17,0%', 'Справочно по открытым публикациям'],
+  ['Фракция', 'по паспорту партии', 'Уточняется под заявку'],
+  ['Влажность', 'по паспорту партии', 'Фиксируется при отгрузке'],
   ['Примеси', 'по протоколу лаборатории', 'P, S, Fe, MgO и другие показатели'],
 ]
 
 const heroFacts = [
-  ['Пробная партия', 'от 100 тонн'],
-  ['Регулярная поставка', 'от 7 000 тонн в месяц'],
-  ['Логистика', 'авто и железная дорога'],
-  ['Контроль', 'паспорт и протокол партии'],
+  ['Пробная партия', 'От 100 тонн'],
+  ['Регулярная поставка', 'От 7 000 тонн в месяц'],
+  ['Логистика', 'Свои авто и железная дорога'],
+  ['Контроль', 'Паспорт и протокол партии'],
 ]
 
 const documentCards = [
-  ['Протокол лабораторного анализа', 'химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
-  ['Паспорт качества партии', 'фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
-  ['Лицензии и сведения по запасам', 'документы, подтверждающие право добычи и происхождение сырья', 'documents/license-info.html'],
-  ['Условия отгрузки', 'порядок поставки автомобильным и железнодорожным транспортом', 'documents/shipping-terms.html'],
+  ['Протокол лабораторного анализа', 'Химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
+  ['Паспорт качества партии', 'Фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
+  ['Лицензии и сведения по запасам', 'Документы, подтверждающие право добычи и происхождение сырья', 'documents/license-info.html'],
+  ['Условия отгрузки', 'Порядок поставки автомобильным и железнодорожным транспортом', 'documents/shipping-terms.html'],
 ]
 
 const routeSteps = [
-  ['01', 'Карьер', 'добыча и первичная подготовка сырья с фиксацией партии для дальнейшего контроля качества'],
-  ['02', 'Отбор пробы', 'образец отбирается до отгрузки, чтобы подтвердить состав, фракцию и влажность по партии'],
-  ['03', 'Проверка качества', 'лабораторный протокол и паспорт качества готовятся до передачи сырья клиенту'],
-  ['04', 'Подготовка партии', 'согласуются фракция, объем, график и комплект документов под требования предприятия'],
-  ['05', 'Свои авто / ЖД', 'поставка выполняется автомобильным транспортом или по железной дороге под станцию клиента'],
+  ['01', 'Карьер', 'Добыча и первичная подготовка сырья с фиксацией партии для дальнейшего контроля качества'],
+  ['02', 'Отбор пробы', 'Образец отбирается до отгрузки, чтобы подтвердить состав, фракцию и влажность по партии'],
+  ['03', 'Проверка качества', 'Лабораторный протокол и паспорт качества готовятся до передачи сырья клиенту'],
+  ['04', 'Подготовка партии', 'Согласуются фракция, объем, график и комплект документов под требования предприятия'],
+  ['05', 'Свои авто и железная дорога', 'Поставка выполняется автомобильным транспортом или по железной дороге под станцию клиента'],
 ]
 
 const productCards = [
   {
     title: 'Марганцовистый известняк',
     text: 'Основная продукция для металлургических предприятий: состав, фракция, влажность и паспорт качества фиксируются по партии.',
-    image: 'product/manganese-limestone.webp',
+    image: 'gallery/gallery-severny-v2.webp',
   },
   {
     title: 'Флюсовое сырье',
     text: 'Поставляется отдельной позицией: наличие, показатели и объем подтверждаются перед расчетом партии.',
-    image: 'product/flux-limestone.webp',
+    image: 'gallery/gallery-manganese-flux-ore.webp',
   },
   {
     title: 'Гипсовый и гипсоангидритовый камень',
     text: 'Отдельная продуктовая группа: фракция, характеристики и условия отгрузки подбираются под задачу предприятия.',
-    image: 'product/gypsum-anhydrite.webp',
+    image: 'gallery/gallery-gypsum-crushing.webp',
   },
 ]
 
@@ -642,7 +643,9 @@ function App() {
           </span>
           <span>
             <strong>{company.name}</strong>
-            <small>{company.subtitle}</small>
+            <small className="brandSubtitle">
+              {company.subtitleLines.map((line) => <span key={line}>{line}</span>)}
+            </small>
           </span>
         </a>
         <nav aria-label="Основная навигация">
@@ -760,10 +763,10 @@ function App() {
             Флюсовое сырье и гипсовый камень показываем как отдельные позиции с понятными характеристиками поставки.
           </p>
           <div className="checkList">
-            <span><CheckCircle2 size={20} /> пробные партии от 100 тонн</span>
-            <span><CheckCircle2 size={20} /> регулярный график поставки после согласования</span>
-            <span><CheckCircle2 size={20} /> свои авто и железнодорожная логистика</span>
-            <span><CheckCircle2 size={20} /> протокол анализа, паспорт качества и лицензионные документы</span>
+            <span><CheckCircle2 size={20} /> Пробные партии от 100 тонн</span>
+            <span><CheckCircle2 size={20} /> Регулярный график поставки после согласования</span>
+            <span><CheckCircle2 size={20} /> Свои авто и железнодорожная логистика</span>
+            <span><CheckCircle2 size={20} /> Протокол анализа, паспорт качества и лицензионные документы</span>
           </div>
         </div>
         <aside className="quietPanel productMatrix" data-reveal>
@@ -915,17 +918,20 @@ function App() {
             <button type="button" onClick={() => openDocument('documents/protocol-analysis.html')}>
               <FlaskConical size={22} aria-hidden="true" />
               <strong>Протокол анализа</strong>
-              <span>открыть структуру документа</span>
+              <span>Открыть структуру документа</span>
+              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
             </button>
             <button type="button" onClick={() => openDocument('documents/quality-passport.html')}>
               <ClipboardCheck size={22} aria-hidden="true" />
               <strong>Паспорт качества</strong>
-              <span>фракция, влажность, партия, дата</span>
+              <span>Фракция, влажность, партия, дата</span>
+              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
             </button>
             <button type="button" onClick={() => openDocument('documents/license-info.html')}>
               <ShieldCheck size={22} aria-hidden="true" />
               <strong>Документы</strong>
-              <span>лицензии, запасы, условия отгрузки</span>
+              <span>Лицензии, запасы, условия отгрузки</span>
+              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
             </button>
           </div>
         </div>
@@ -946,7 +952,10 @@ function App() {
               <FileText size={24} aria-hidden="true" />
               <h3>{title}</h3>
               <p>{text}</p>
-              <button type="button" onClick={() => setActiveDocument(index)}>Открыть документ</button>
+              <button type="button" onClick={() => setActiveDocument(index)}>
+                Открыть документ
+                <ArrowRight size={16} aria-hidden="true" />
+              </button>
             </article>
           ))}
         </div>
@@ -1032,9 +1041,9 @@ function App() {
             </p>
           </div>
           <div className="requestSummary" aria-label="Что подготовим">
-            <span><CheckCircle2 size={18} /> подобрать продукт и фракцию</span>
-            <span><CheckCircle2 size={18} /> запросить документы по партии</span>
-            <span><CheckCircle2 size={18} /> согласовать авто или ЖД</span>
+            <span><CheckCircle2 size={18} /> Подобрать продукт и фракцию</span>
+            <span><CheckCircle2 size={18} /> Запросить документы по партии</span>
+            <span><CheckCircle2 size={18} /> Согласовать авто или ЖД</span>
           </div>
           <div className="contactPanel">
             <a href="tel:+73472463913"><Phone size={18} /> {company.phonePrimary}</a>
@@ -1082,7 +1091,9 @@ function App() {
             <div>
               <strong>{company.name}</strong>
               <span>{company.legalName}</span>
-              <p>{company.subtitle}</p>
+              <p className="footerSubtitle">
+                {company.subtitleLines.map((line) => <span key={line}>{line}</span>)}
+              </p>
             </div>
           </div>
           <a className="footerAction" href="#contacts">

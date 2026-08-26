@@ -201,6 +201,11 @@ footer span {
   font-size: 12px;
 }
 
+.brandSubtitle span,
+.footerSubtitle span {
+  display: block;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -533,6 +538,7 @@ h3 {
 
 .primaryButton,
 .secondaryButton {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -548,6 +554,7 @@ h3 {
     box-shadow 180ms ease,
     background 180ms ease,
     border-color 180ms ease;
+  overflow: hidden;
 }
 
 .primaryButton {
@@ -1189,7 +1196,8 @@ h3 {
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 24px;
   align-items: stretch;
-  margin-top: 38px;
+  width: min(1180px, 100%);
+  margin: 38px auto 0;
 }
 
 .tableWrap {
@@ -4488,9 +4496,13 @@ footer span {
   width: 100%;
   min-height: 54px;
   justify-content: center;
+  color: #101513;
+  background: #d2c689;
+  border-color: rgba(210, 198, 137, 0.86);
   border-radius: 6px;
   font-size: 14px;
   white-space: nowrap;
+  box-shadow: 0 16px 42px rgba(210, 198, 137, 0.16);
 }
 
 .contacts form {
@@ -5563,6 +5575,51 @@ footer .footerDocs a {
   overflow-wrap: anywhere;
 }
 
+.heroFactStrip,
+.contactPanel a,
+.footerAction,
+.trustGrid article button,
+.documentOpenCta {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroFactStrip::after,
+.contactPanel a::after,
+.footerAction::after,
+.trustGrid article button::after,
+.documentOpenCta::after {
+  position: absolute;
+  inset: -70% -35%;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 34%, rgba(255, 255, 255, 0.28) 48%, transparent 62%);
+  transform: translateX(-120%) rotate(8deg);
+  animation: diagonalShine 5.8s ease-in-out infinite;
+}
+
+.contactPanel a:nth-child(2)::after,
+.trustGrid article:nth-child(2) button::after {
+  animation-delay: 0.7s;
+}
+
+.contactPanel a:nth-child(3)::after,
+.trustGrid article:nth-child(3) button::after {
+  animation-delay: 1.4s;
+}
+
+@keyframes diagonalShine {
+  0%,
+  58% {
+    transform: translateX(-120%) rotate(8deg);
+  }
+
+  76%,
+  100% {
+    transform: translateX(120%) rotate(8deg);
+  }
+}
+
 #product.elevatedSection {
   align-items: stretch;
   grid-template-columns: minmax(420px, 0.92fr) minmax(560px, 1.08fr);
@@ -5611,8 +5668,8 @@ footer .footerDocs a {
 }
 
 #product .productCards article {
-  grid-template-columns: clamp(230px, 19vw, 320px) minmax(0, 1fr);
-  gap: clamp(22px, 2.6vw, 34px);
+  grid-template-columns: clamp(250px, 34%, 360px) minmax(0, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
   align-items: center;
   min-height: 174px;
   overflow: hidden;
@@ -5620,8 +5677,10 @@ footer .footerDocs a {
 
 #product .productCards img {
   width: 100%;
-  height: clamp(148px, 17vh, 194px);
+  height: clamp(140px, 15vh, 180px);
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  object-position: center;
   padding: 0;
   background: #08100d;
   border: 1px solid rgba(23, 32, 29, 0.16);
@@ -5631,8 +5690,10 @@ footer .footerDocs a {
 
 #product .productCards div {
   display: grid;
-  gap: 7px;
+  gap: 4px;
   min-width: 0;
+  justify-items: start;
+  text-align: left;
 }
 
 #product .productCards strong,
@@ -5697,7 +5758,7 @@ footer .footerDocs a {
 #gallery.gallerySlide .sectionIntro {
   display: block;
   gap: 8px;
-  padding-top: clamp(34px, 5vh, 64px);
+  padding-top: clamp(24px, 3.6vh, 42px);
 }
 
 #gallery.gallerySlide .sectionIntro .eyebrow,
@@ -5709,10 +5770,20 @@ footer .footerDocs a {
 }
 
 #gallery.gallerySlide .sectionIntro h2 {
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: clamp(42px, 4.2vw, 62px);
   line-height: 1.02;
-  margin-left: 8px;
+  margin-left: 0;
   padding-left: 0;
+}
+
+#gallery.gallerySlide .sectionIntro .eyebrow {
+  margin-bottom: 6px;
+}
+
+#gallery.gallerySlide .galleryGrid {
+  margin-top: clamp(16px, 2.2vh, 24px);
 }
 
 #sample.sampleSlide {
@@ -5770,7 +5841,7 @@ footer .footerDocs a {
 }
 
 #analysis .sectionIntro {
-  width: min(1180px, 100%);
+  width: min(1280px, 100%);
   max-width: none;
   margin: 0 auto 28px;
   justify-items: start;
@@ -5789,6 +5860,7 @@ footer .footerDocs a {
 
 .analysisBand .documentStack button,
 .trustGrid article button {
+  position: relative;
   display: grid;
   width: 100%;
   min-height: 118px;
@@ -5802,6 +5874,7 @@ footer .footerDocs a {
   border: 1px solid rgba(23, 32, 29, 0.09);
   border-radius: 7px;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .analysisBand .documentStack button:is(:hover, :focus-visible),
@@ -5820,11 +5893,41 @@ footer .footerDocs a {
   color: #17201d;
 }
 
+.analysisBand .documentStack button .documentOpenCta {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 32px;
+  align-items: center;
+  gap: 7px;
+  margin-top: 2px;
+  padding: 7px 10px;
+  color: #101513;
+  background: #d2c689;
+  border: 1px solid rgba(118, 108, 66, 0.24);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.analysisBand .documentStack button .documentOpenCta svg,
+.trustGrid article button svg {
+  transition: transform 180ms ease;
+}
+
+.analysisBand .documentStack button:hover .documentOpenCta svg,
+.analysisBand .documentStack button:focus-visible .documentOpenCta svg,
+.trustGrid article button:hover svg,
+.trustGrid article button:focus-visible svg {
+  transform: translateX(3px);
+}
+
 .trustGrid article button {
+  display: inline-flex;
   min-height: 46px;
   margin-top: auto;
-  align-content: center;
-  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   color: #101513;
   background: #d2c689;
   border-color: #d2c689;
@@ -5927,7 +6030,7 @@ footer .footerDocs a {
 }
 
 .footerRails {
-  grid-template-columns: minmax(260px, 1.25fr) minmax(170px, 0.75fr) minmax(170px, 0.75fr) minmax(220px, 0.85fr);
+  grid-template-columns: minmax(260px, 1.05fr) minmax(170px, 0.65fr) minmax(170px, 0.65fr) minmax(320px, 1.05fr);
   gap: 18px;
 }
 
@@ -5990,6 +6093,8 @@ footer .footerDocs a {
 
 .footerLocation span {
   font-weight: 850;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 /* Latest screenshot pass: align hero facts and make gallery captions read as captions. */
