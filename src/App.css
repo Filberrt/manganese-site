@@ -1194,7 +1194,7 @@ h3 {
 .analysisLayout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 340px;
-  gap: 24px;
+  gap: clamp(10px, 1.1vw, 14px);
   align-items: stretch;
   width: min(1180px, 100%);
   margin: 38px auto 0;
