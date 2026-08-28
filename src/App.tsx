@@ -21,6 +21,18 @@ import './App.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
+const productRouteMap = {
+  '/manganese-flux': 'manganese-flux',
+  '/gypsum-stone': 'gypsum-stone',
+} as const
+
+const getProductRouteId = () => {
+  if (typeof window === 'undefined') return null
+
+  const hash = window.location.hash.replace('#', '')
+  return productRouteMap[hash as keyof typeof productRouteMap] ?? null
+}
+
 const company = {
   name: 'БашМинералРесурс',
   legalName: 'ООО «БашМинералРесурс»',
@@ -129,10 +141,10 @@ const productPageCards = [
 ]
 
 const benefitCards = [
-  ['01', 'Расход топлива', 'На пробной партии можно оценить влияние сырья на расход газа или коксового угля в процессе плавки.'],
-  ['02', 'Себестоимость', 'Экономический эффект считается через режим плавки, расход материалов и стабильность технологической цепочки.'],
-  ['03', 'Режим плавления', 'Для клиента важно показать, как продукт влияет на горизонт и продолжительность плавления.'],
-  ['04', 'Десульфурация', 'Отдельно выносится влияние на десульфирующую способность, если это подтверждается испытаниями и документами.'],
+  ['01', 'Быстрый старт', 'Клиент сразу видит продукт, фракцию и список документов, которые нужны для первичной оценки партии.'],
+  ['02', 'Понятный расчет', 'Заявка собирается вокруг объема, станции назначения и формата отгрузки, без лишней переписки.'],
+  ['03', 'Контроль партии', 'Паспорт качества и протокол анализа помогают быстрее согласовать сырье внутри предприятия.'],
+  ['04', 'Удобная поставка', 'Можно заранее выбрать автомобильную или железнодорожную схему под объем и логистику клиента.'],
 ]
 
 const routeStageImages = [
@@ -494,8 +506,94 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
   )
 }
 
+type ProductPageCard = (typeof productPageCards)[number]
+
+function ProductDetailCard({ product }: { product: ProductPageCard }) {
+  const { eyebrow, title, lead, image, badges, specs, useCases, documents } = product
+
+  return (
+    <article className="productDetailCard" data-reveal>
+      <div className="productDetailMedia">
+        <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+        <div className="productDetailPhotoCaption">
+          <span>{eyebrow}</span>
+          <strong>{title}</strong>
+        </div>
+      </div>
+
+      <div className="productDetailBody">
+        <div className="productDetailHeader">
+          <p className="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+          <p>{lead}</p>
+        </div>
+
+        <div className="productDetailBadges" aria-label="Ключевые параметры">
+          {badges.map((badge) => (
+            <span key={badge}>{badge}</span>
+          ))}
+        </div>
+
+        <div className="productDetailContent">
+          <div className="productSpecTable" aria-label="Характеристики продукта">
+            {specs.map(([label, value]) => (
+              <div className="productSpecRow" key={label}>
+                <span>{label}</span>
+                <strong>{value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="productDetailList">
+            <small>Применение</small>
+            {useCases.map((item) => (
+              <span key={item}><CheckCircle2 size={17} aria-hidden="true" /> {item}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="productDocumentStrip">
+          {documents.map((document) => (
+            <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
+          ))}
+        </div>
+
+        <div className="productDetailActions">
+          <a className="primaryAction shineAction" href="#contacts">
+            Написать нам
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
+          <a className="ghostAction" href="#analysis">Уточнить состав</a>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function ProductStandalonePage({ product }: { product: ProductPageCard }) {
+  return (
+    <section className="section productStandalonePage darkSlide" id={`${product.id}-page`} data-slide>
+      <div className="productStandaloneIntro" data-reveal>
+        <a href="#top">Главная</a>
+        <span>/</span>
+        <strong>{product.title}</strong>
+      </div>
+      <ProductDetailCard product={product} />
+      <div className="productStandaloneBottom" data-reveal>
+        <div>
+          <small>Преимущество для клиента</small>
+          <strong>Быстро понять, подходит ли партия под задачу</strong>
+          <p>Параметры, документы и логистика собраны рядом, поэтому технолог и снабжение сразу видят, что уточнить перед расчетом.</p>
+        </div>
+        <a className="secondaryButton" href="#product">Все продукты</a>
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const [activeSlide, setActiveSlide] = useState('top')
+  const [activeProductPageId, setActiveProductPageId] = useState<string | null>(() => getProductRouteId())
   const [activeModel, setActiveModel] = useState(0)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
@@ -504,6 +602,7 @@ function App() {
   const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
+  const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
   const openDocument = (href: string) => {
     const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
@@ -540,6 +639,37 @@ function App() {
       console.warn('Failed to copy contact', error)
     }
   }
+
+  useEffect(() => {
+    const syncProductRoute = () => {
+      const productRouteId = getProductRouteId()
+      setActiveProductPageId(productRouteId)
+
+      if (productRouteId) {
+        const resetProductScroll = () => {
+          document.querySelector('.slideDeck')?.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+        }
+
+        window.setTimeout(resetProductScroll, 0)
+        window.setTimeout(resetProductScroll, 120)
+      }
+    }
+
+    syncProductRoute()
+    window.addEventListener('hashchange', syncProductRoute)
+
+    return () => window.removeEventListener('hashchange', syncProductRoute)
+  }, [])
+
+  useEffect(() => {
+    if (!activeProductPageId) return
+
+    window.setTimeout(() => {
+      document
+        .querySelectorAll('.productStandalonePage [data-reveal]')
+        .forEach((element) => element.classList.add('is-visible'))
+    }, 40)
+  }, [activeProductPageId])
 
   useEffect(() => {
     void heroVideoRef.current?.play().catch(() => undefined)
@@ -610,6 +740,8 @@ function App() {
     slides.forEach((slide) => slideObserver.observe(slide))
 
     const scrollToHash = () => {
+      if (window.location.hash.startsWith('#/')) return
+
       const targetId = window.location.hash.replace('#', '')
       if (!targetId) return
 
@@ -654,7 +786,7 @@ function App() {
 
   return (
     <main
-      className="slideDeck"
+      className={`slideDeck${activeProductPage ? ' productRouteDeck' : ''}`}
       style={{
         '--hero-image': `url("${asset('hero-quarry.webp')}")`,
       } as CSSProperties}
@@ -672,8 +804,8 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#manganese-flux">Марганцовистый флюс</a>
-          <a href="#gypsum-stone">Гипсовый камень</a>
+          <a href="#/manganese-flux">Марганцовистый флюс</a>
+          <a href="#/gypsum-stone">Гипсовый камень</a>
           <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
@@ -704,6 +836,13 @@ function App() {
           </span>
         </div>
       </header>
+
+      <a className="floatingWriteCta shineAction" href="#contacts">
+        Написать нам
+        <ArrowRight size={16} aria-hidden="true" />
+      </a>
+
+      {activeProductPage && <ProductStandalonePage product={activeProductPage} />}
 
       <div className="slideNav" aria-label="Навигация по слайдам">
         {slideItems.map(([id, label]) => (
@@ -814,63 +953,9 @@ function App() {
         </aside>
       </section>
 
-      {productPageCards.map(({ id, eyebrow, title, lead, image, badges, specs, useCases, documents }) => (
-        <section className="section productPageSlide snapSlide darkSlide" id={id} data-slide key={id}>
-          <article className="productDetailCard" data-reveal>
-            <div className="productDetailMedia">
-              <img src={asset(image)} alt="" loading="lazy" decoding="async" />
-              <div className="productDetailPhotoCaption">
-                <span>{eyebrow}</span>
-                <strong>{title}</strong>
-              </div>
-            </div>
-
-            <div className="productDetailBody">
-              <div className="productDetailHeader">
-                <p className="eyebrow">{eyebrow}</p>
-                <h2>{title}</h2>
-                <p>{lead}</p>
-              </div>
-
-              <div className="productDetailBadges" aria-label="Ключевые параметры">
-                {badges.map((badge) => (
-                  <span key={badge}>{badge}</span>
-                ))}
-              </div>
-
-              <div className="productDetailContent">
-                <div className="productSpecTable" aria-label="Характеристики продукта">
-                  {specs.map(([label, value]) => (
-                    <div className="productSpecRow" key={label}>
-                      <span>{label}</span>
-                      <strong>{value}</strong>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="productDetailList">
-                  <small>Применение</small>
-                  {useCases.map((item) => (
-                    <span key={item}><CheckCircle2 size={17} aria-hidden="true" /> {item}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="productDocumentStrip">
-                {documents.map((document) => (
-                  <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
-                ))}
-              </div>
-
-              <div className="productDetailActions">
-                <a className="primaryAction shineAction" href="#contacts">
-                  Запросить расчет партии
-                  <ArrowRight size={18} aria-hidden="true" />
-                </a>
-                <a className="ghostAction" href="#composition">Смотреть состав</a>
-              </div>
-            </div>
-          </article>
+      {productPageCards.map((product) => (
+        <section className="section productPageSlide snapSlide darkSlide" id={product.id} data-slide key={product.id}>
+          <ProductDetailCard product={product} />
         </section>
       ))}
 
@@ -1231,8 +1316,8 @@ function App() {
           </div>
           <div className="footerBlock">
             <small>Сырье</small>
-            <a href="#manganese-flux">Марганцовистый флюс</a>
-            <a href="#gypsum-stone">Гипсовый камень</a>
+            <a href="#/manganese-flux">Марганцовистый флюс</a>
+            <a href="#/gypsum-stone">Гипсовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
             <a

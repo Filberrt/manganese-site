@@ -6815,6 +6815,111 @@ footer .footerDocs a {
   animation: diagonalShine 5.8s ease-in-out infinite;
 }
 
+.productRouteDeck > section:not(.productStandalonePage),
+.productRouteDeck .slideNav {
+  display: none !important;
+}
+
+.productRouteDeck {
+  scroll-snap-type: none;
+}
+
+.productStandalonePage {
+  min-height: 100vh;
+  align-content: start;
+  gap: clamp(22px, 2.6vh, 32px);
+  padding-top: clamp(124px, 12vh, 150px);
+  padding-bottom: clamp(44px, 5vw, 72px);
+}
+
+.productStandalonePage .productDetailCard {
+  min-height: min(560px, calc(100vh - 260px));
+}
+
+.productStandaloneIntro,
+.productStandaloneBottom {
+  width: min(1280px, calc(100vw - 120px));
+  margin: 0 auto;
+}
+
+.productStandaloneIntro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding-left: 4px;
+  color: rgba(232, 234, 223, 0.72);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.productStandaloneIntro a {
+  color: #d2c689;
+}
+
+.productStandaloneIntro strong {
+  color: #fffdf5;
+}
+
+.productStandaloneBottom {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: rgba(255, 253, 245, 0.045);
+  border: 1px solid rgba(210, 198, 137, 0.2);
+  border-radius: 8px;
+}
+
+.productStandaloneBottom div {
+  display: grid;
+  max-width: 760px;
+  gap: 6px;
+}
+
+.productStandaloneBottom small {
+  color: #d2c689;
+  font-size: 12px;
+  font-weight: 950;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.productStandaloneBottom strong {
+  color: #fffdf5;
+  font-size: clamp(18px, 1.5vw, 24px);
+  line-height: 1.08;
+}
+
+.productStandaloneBottom p {
+  max-width: 680px;
+  margin: 0;
+  color: #d8e0d7;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.floatingWriteCta {
+  position: fixed;
+  right: clamp(18px, 3vw, 42px);
+  bottom: clamp(18px, 3vw, 36px);
+  z-index: 60;
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  color: #101817;
+  background: linear-gradient(135deg, #d9ce93, #b7aa71);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 950;
+  line-height: 1;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26), 0 18px 46px rgba(210, 198, 137, 0.18);
+}
+
 .benefitGrid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -6866,6 +6971,8 @@ footer .footerDocs a {
   .productPageSlide .sectionIntro,
   .benefitsSlide .sectionIntro,
   .productDetailCard,
+  .productStandaloneIntro,
+  .productStandaloneBottom,
   .benefitGrid {
     width: min(100%, calc(100vw - 40px));
   }
@@ -6889,5 +6996,21 @@ footer .footerDocs a {
   .productSpecRow {
     grid-template-columns: 1fr;
     gap: 5px;
+  }
+
+  .productStandalonePage {
+    padding-top: 176px;
+  }
+
+  .productStandaloneBottom {
+    display: grid;
+  }
+
+  .floatingWriteCta {
+    right: 16px;
+    bottom: 16px;
+    min-height: 42px;
+    padding: 0 13px;
+    font-size: 12px;
   }
 }
