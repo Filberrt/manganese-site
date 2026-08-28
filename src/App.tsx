@@ -77,6 +77,38 @@ const productCards = [
   },
 ]
 
+const productPageCards = [
+  {
+    id: 'manganese-flux',
+    eyebrow: 'Марганцовистый флюс',
+    title: 'Страница для металлургии',
+    lead: 'Отдельная страница под продвижение марганцовистого флюса: состав, документы, выгоды и быстрый запрос партии собраны в одной логике.',
+    points: [
+      'Марганцовистый известняк для изготовления в агломерационной печи, фракция 0-6.',
+      'Обожженные окатыши из марганцовистого известняка для доменных печей и сталеплавильного производства.',
+      'Партия согласуется по фракции, объему, протоколу анализа и паспорту качества.',
+    ],
+  },
+  {
+    id: 'gypsum-stone',
+    eyebrow: 'Гипсовый и ангидритовый камень',
+    title: 'Отдельная страница для камня',
+    lead: 'Направление вынесено отдельно, чтобы рекламу и заявки можно было вести не на общий сайт, а сразу на нужный продукт.',
+    points: [
+      'Добыча связана с Тюлько-Тюбинским месторождением гипсов в Иглинском районе Республики Башкортостан.',
+      'Фракция, объем партии и условия отгрузки уточняются под задачу предприятия.',
+      'Фото готового продукта, паспорт и 3D-модель нужно заменить после получения материалов по этой позиции.',
+    ],
+  },
+]
+
+const benefitCards = [
+  ['01', 'Расход топлива', 'На пробной партии можно оценить влияние сырья на расход газа или коксового угля в процессе плавки.'],
+  ['02', 'Себестоимость', 'Экономический эффект считается через режим плавки, расход материалов и стабильность технологической цепочки.'],
+  ['03', 'Режим плавления', 'Для клиента важно показать, как продукт влияет на горизонт и продолжительность плавления.'],
+  ['04', 'Десульфурация', 'Отдельно выносится влияние на десульфирующую способность, если это подтверждается испытаниями и документами.'],
+]
+
 const routeStageImages = [
   'route-stage-01.webp',
   'route-stage-02.webp',
@@ -207,6 +239,9 @@ const slideItems = [
   ['top', 'Старт'],
   ['video', 'Ролик'],
   ['product', 'Наши продукты'],
+  ['manganese-flux', 'Флюс'],
+  ['gypsum-stone', 'Гипс'],
+  ['benefits', 'Выгоды'],
   ['route', 'О компании'],
   ['gallery', 'Фото'],
   ['sample', '3D'],
@@ -611,7 +646,8 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#product">Наши продукты</a>
+          <a href="#manganese-flux">Марганцовистый флюс</a>
+          <a href="#gypsum-stone">Гипсовый камень</a>
           <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
@@ -705,10 +741,10 @@ function App() {
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
           <p className="eyebrow">Видеоролик о компании</p>
-          <h2>Сырье и контроль качества<br />в одном коротком ролике</h2>
+          <h2>Марганцовистый флюс:<br />производство и контроль</h2>
           <div className="videoPlan">
             <span>Карьер и производственная площадка</span>
-            <span>Образец сырья и подготовка партии</span>
+            <span>Оборудование и подготовка партии</span>
             <span>Протокол анализа и паспорт качества</span>
             <span>Автомобильная и железнодорожная отгрузка</span>
           </div>
@@ -750,6 +786,51 @@ function App() {
             ))}
           </div>
         </aside>
+      </section>
+
+      {productPageCards.map(({ id, eyebrow, title, lead, points }) => (
+        <section className="section productPageSlide snapSlide darkSlide" id={id} data-slide key={id}>
+          <div className="sectionIntro" data-reveal>
+            <p className="eyebrow">{eyebrow}</p>
+            <h2>{title}</h2>
+            <p>{lead}</p>
+          </div>
+          <div className="productPageGrid">
+            <article className="productPageCard" data-reveal>
+              <small>Продукт</small>
+              {points.map((point) => (
+                <span key={point}><CheckCircle2 size={18} aria-hidden="true" /> {point}</span>
+              ))}
+            </article>
+            <article className="productPageCard" data-reveal>
+              <small>Что показать клиенту</small>
+              <span><CheckCircle2 size={18} aria-hidden="true" /> Состав и фракцию партии</span>
+              <span><CheckCircle2 size={18} aria-hidden="true" /> Паспорт качества и протокол анализа</span>
+              <span><CheckCircle2 size={18} aria-hidden="true" /> Условия автомобильной или железнодорожной отгрузки</span>
+            </article>
+            <a className="productPageCta" href="#contacts" data-reveal>
+              Запросить расчет партии
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </section>
+      ))}
+
+      <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
+        <div className="sectionIntro" data-reveal>
+          <p className="eyebrow">Преимущества продукта</p>
+          <h2>Выгода для потребителя</h2>
+          <p>Формулировки вынесены как рабочая основа: точные проценты и подтверждения нужно добавить после данных от ИП или презентации.</p>
+        </div>
+        <div className="benefitGrid">
+          {benefitCards.map(([number, title, text], index) => (
+            <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section routeBand snapSlide darkSlide" id="route" data-slide>
@@ -1092,6 +1173,8 @@ function App() {
           </div>
           <div className="footerBlock">
             <small>Сырье</small>
+            <a href="#manganese-flux">Марганцовистый флюс</a>
+            <a href="#gypsum-stone">Гипсовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
             <a
@@ -1107,6 +1190,7 @@ function App() {
           <div className="footerBlock">
             <small>Материалы</small>
             <a href="#documents">Документы</a>
+            <a href="#benefits">Преимущества</a>
             <a href="#articles">Статьи</a>
             <a href="#route">О компании</a>
             <a href="#contacts">Заявка</a>

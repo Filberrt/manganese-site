@@ -6463,6 +6463,11 @@ footer .footerDocs a {
     font-size: 13px;
   }
 
+  .topbar nav a[href="#articles"],
+  .topbar nav a[href="#contacts"] {
+    display: none;
+  }
+
   .topContacts {
     grid-template-columns: repeat(2, minmax(210px, 1fr));
   }
@@ -6501,6 +6506,165 @@ footer .footerDocs a {
 
   #route .routeMap,
   .routeMap {
+    grid-template-columns: 1fr;
+  }
+}
+
+.productPageSlide,
+.benefitsSlide {
+  align-content: center;
+  gap: clamp(28px, 4vh, 48px);
+  padding-top: clamp(112px, 14vh, 150px);
+}
+
+.productPageSlide .sectionIntro,
+.benefitsSlide .sectionIntro {
+  width: min(1280px, calc(100vw - 120px));
+  max-width: none;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.productPageSlide .sectionIntro h2,
+.benefitsSlide .sectionIntro h2 {
+  max-width: 760px;
+}
+
+.productPageSlide .sectionIntro p:not(.eyebrow),
+.benefitsSlide .sectionIntro p:not(.eyebrow) {
+  max-width: 680px;
+}
+
+.productPageGrid,
+.benefitGrid {
+  display: grid;
+  width: min(1280px, calc(100vw - 120px));
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.productPageGrid {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(250px, 0.42fr);
+  align-items: stretch;
+}
+
+.productPageCard,
+.benefitGrid article {
+  display: grid;
+  min-height: 250px;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(22px, 2.4vw, 30px);
+  background:
+    linear-gradient(145deg, rgba(255, 253, 245, 0.075), rgba(255, 253, 245, 0.025)),
+    rgba(12, 18, 16, 0.76);
+  border: 1px solid rgba(210, 198, 137, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+}
+
+.productPageCard small,
+.benefitGrid article span {
+  color: #d2c689;
+  font-size: 12px;
+  font-weight: 950;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.productPageCard span {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  color: #f8f5ec;
+  font-size: clamp(15px, 1.15vw, 18px);
+  font-weight: 850;
+  line-height: 1.42;
+}
+
+.productPageCard svg {
+  margin-top: 2px;
+  color: #d2c689;
+}
+
+.productPageCta {
+  position: relative;
+  display: inline-flex;
+  min-height: 250px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  overflow: hidden;
+  color: #111917;
+  background: linear-gradient(135deg, #d9ce93, #b7aa71);
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 950;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(210, 198, 137, 0.22);
+}
+
+.productPageCta::after {
+  position: absolute;
+  inset: -70% -35%;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(120deg, transparent 34%, rgba(255, 255, 255, 0.28) 48%, transparent 62%);
+  transform: translateX(-120%) rotate(8deg);
+  animation: diagonalShine 5.8s ease-in-out infinite;
+}
+
+.benefitGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.benefitGrid article {
+  min-height: 310px;
+}
+
+.benefitGrid h3 {
+  margin: clamp(42px, 7vh, 72px) 0 0;
+  color: #fffdf5;
+  font-size: clamp(22px, 1.7vw, 30px);
+  line-height: 1.08;
+}
+
+.benefitGrid p {
+  max-width: 100%;
+  margin: 0;
+  color: #d5ded5;
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+@media (max-width: 1180px) {
+  .productPageGrid,
+  .benefitGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .productPageCta {
+    min-height: 120px;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .productPageSlide,
+  .benefitsSlide {
+    padding-top: 104px;
+  }
+
+  .productPageSlide .sectionIntro,
+  .benefitsSlide .sectionIntro,
+  .productPageGrid,
+  .benefitGrid {
+    width: min(100%, calc(100vw - 40px));
+  }
+
+  .productPageGrid,
+  .benefitGrid {
     grid-template-columns: 1fr;
   }
 }
