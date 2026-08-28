@@ -81,23 +81,49 @@ const productPageCards = [
   {
     id: 'manganese-flux',
     eyebrow: 'Марганцовистый флюс',
-    title: 'Страница для металлургии',
-    lead: 'Отдельная страница под продвижение марганцовистого флюса: состав, документы, выгоды и быстрый запрос партии собраны в одной логике.',
-    points: [
-      'Марганцовистый известняк для изготовления в агломерационной печи, фракция 0-6.',
-      'Обожженные окатыши из марганцовистого известняка для доменных печей и сталеплавильного производства.',
-      'Партия согласуется по фракции, объему, протоколу анализа и паспорту качества.',
+    title: 'Марганцовистый флюс для металлургии',
+    lead: 'Подробная карточка продукта для первичной оценки партии технологом и снабжением.',
+    image: 'product/manganese-limestone-material.webp',
+    badges: ['Фракция 0-6', 'Паспорт партии', 'Протокол анализа'],
+    specs: [
+      ['Материал', 'Марганцовистый известняк'],
+      ['Назначение', 'Агломерационная печь'],
+      ['Формат поставки', 'Пробная партия от 100 тонн'],
+      ['Логистика', 'Свои авто и железная дорога'],
+    ],
+    useCases: [
+      'Изготовление в агломерационной печи.',
+      'Основа для обожженных окатышей под доменные печи и сталеплавильное производство.',
+      'Состав, фракция и влажность фиксируются по конкретной партии.',
+    ],
+    documents: [
+      'Паспорт качества партии',
+      'Протокол лабораторного анализа',
+      'Условия автомобильной или железнодорожной отгрузки',
     ],
   },
   {
     id: 'gypsum-stone',
     eyebrow: 'Гипсовый и ангидритовый камень',
-    title: 'Отдельная страница для камня',
-    lead: 'Направление вынесено отдельно, чтобы рекламу и заявки можно было вести не на общий сайт, а сразу на нужный продукт.',
-    points: [
-      'Добыча связана с Тюлько-Тюбинским месторождением гипсов в Иглинском районе Республики Башкортостан.',
-      'Фракция, объем партии и условия отгрузки уточняются под задачу предприятия.',
-      'Фото готового продукта, паспорт и 3D-модель нужно заменить после получения материалов по этой позиции.',
+    title: 'Гипсовый и ангидритовый камень',
+    lead: 'Отдельная карточка направления для заявок по камню с понятными условиями поставки.',
+    image: 'product/gypsum-anhydrite-material.webp',
+    badges: ['Фракция под заявку', 'Паспорт партии', 'Отгрузка под станцию'],
+    specs: [
+      ['Материал', 'Гипсовый и ангидритовый камень'],
+      ['Месторождение', 'Тюлько-Тюбинское'],
+      ['Регион', 'Иглинский район, Башкортостан'],
+      ['Логистика', 'Авто или железная дорога'],
+    ],
+    useCases: [
+      'Поставка камня под задачу предприятия.',
+      'Фракция, объем партии и условия отгрузки согласуются перед расчетом.',
+      'Фото готового продукта и новые 3D-образцы нужно заменить после получения материалов.',
+    ],
+    documents: [
+      'Паспорт качества партии',
+      'Документы по происхождению сырья',
+      'Схема отгрузки под объем и станцию клиента',
     ],
   },
 ]
@@ -788,31 +814,63 @@ function App() {
         </aside>
       </section>
 
-      {productPageCards.map(({ id, eyebrow, title, lead, points }) => (
+      {productPageCards.map(({ id, eyebrow, title, lead, image, badges, specs, useCases, documents }) => (
         <section className="section productPageSlide snapSlide darkSlide" id={id} data-slide key={id}>
-          <div className="sectionIntro" data-reveal>
-            <p className="eyebrow">{eyebrow}</p>
-            <h2>{title}</h2>
-            <p>{lead}</p>
-          </div>
-          <div className="productPageGrid">
-            <article className="productPageCard" data-reveal>
-              <small>Продукт</small>
-              {points.map((point) => (
-                <span key={point}><CheckCircle2 size={18} aria-hidden="true" /> {point}</span>
-              ))}
-            </article>
-            <article className="productPageCard" data-reveal>
-              <small>Что показать клиенту</small>
-              <span><CheckCircle2 size={18} aria-hidden="true" /> Состав и фракцию партии</span>
-              <span><CheckCircle2 size={18} aria-hidden="true" /> Паспорт качества и протокол анализа</span>
-              <span><CheckCircle2 size={18} aria-hidden="true" /> Условия автомобильной или железнодорожной отгрузки</span>
-            </article>
-            <a className="productPageCta" href="#contacts" data-reveal>
-              Запросить расчет партии
-              <ArrowRight size={18} aria-hidden="true" />
-            </a>
-          </div>
+          <article className="productDetailCard" data-reveal>
+            <div className="productDetailMedia">
+              <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+              <div className="productDetailPhotoCaption">
+                <span>{eyebrow}</span>
+                <strong>{title}</strong>
+              </div>
+            </div>
+
+            <div className="productDetailBody">
+              <div className="productDetailHeader">
+                <p className="eyebrow">{eyebrow}</p>
+                <h2>{title}</h2>
+                <p>{lead}</p>
+              </div>
+
+              <div className="productDetailBadges" aria-label="Ключевые параметры">
+                {badges.map((badge) => (
+                  <span key={badge}>{badge}</span>
+                ))}
+              </div>
+
+              <div className="productDetailContent">
+                <div className="productSpecTable" aria-label="Характеристики продукта">
+                  {specs.map(([label, value]) => (
+                    <div className="productSpecRow" key={label}>
+                      <span>{label}</span>
+                      <strong>{value}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="productDetailList">
+                  <small>Применение</small>
+                  {useCases.map((item) => (
+                    <span key={item}><CheckCircle2 size={17} aria-hidden="true" /> {item}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="productDocumentStrip">
+                {documents.map((document) => (
+                  <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
+                ))}
+              </div>
+
+              <div className="productDetailActions">
+                <a className="primaryAction shineAction" href="#contacts">
+                  Запросить расчет партии
+                  <ArrowRight size={18} aria-hidden="true" />
+                </a>
+                <a className="ghostAction" href="#composition">Смотреть состав</a>
+              </div>
+            </div>
+          </article>
         </section>
       ))}
 
