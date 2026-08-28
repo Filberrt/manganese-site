@@ -78,14 +78,16 @@ const routeSteps = [
 
 const productCards = [
   {
-    title: 'Марганцовистый известняк для агломерационной печи',
-    text: 'Фракция 0-6. Партия поставляется с паспортом качества и подтверждением основных показателей.',
+    productId: 'manganese-flux',
+    title: 'Марганцовистый флюс и известняк',
+    text: 'Фракция 0-6, паспорт партии, протокол анализа и отгрузка под задачу металлургического предприятия.',
     image: 'product/manganese-limestone-material.webp',
   },
   {
-    title: 'Обожженные окатыши из марганцовистого известняка',
-    text: 'Для доменных печей и сталеплавильного производства. Параметры партии уточняются под задачу предприятия.',
-    image: 'product/flux-material.webp',
+    productId: 'gypsum-stone',
+    title: 'Гипсовый и ангидритовый камень',
+    text: 'Отдельное направление поставки камня: фракция, объем и схема отгрузки уточняются перед расчетом.',
+    image: 'product/gypsum-anhydrite-material.webp',
   },
 ]
 
@@ -508,7 +510,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
 type ProductPageCard = (typeof productPageCards)[number]
 
-function ProductDetailCard({ product }: { product: ProductPageCard }) {
+function ProductDetailCard({ product, titleId }: { product: ProductPageCard; titleId?: string }) {
   const { eyebrow, title, lead, image, badges, specs, useCases, documents } = product
 
   return (
@@ -524,7 +526,7 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
       <div className="productDetailBody">
         <div className="productDetailHeader">
           <p className="eyebrow">{eyebrow}</p>
-          <h2>{title}</h2>
+          <h2 id={titleId}>{title}</h2>
           <p>{lead}</p>
         </div>
 
@@ -599,10 +601,12 @@ function App() {
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
   const [copiedContact, setCopiedContact] = useState<string | null>(null)
+  const [activeProductDetailId, setActiveProductDetailId] = useState<string | null>(null)
   const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
+  const openedProductDetail = productPageCards.find((product) => product.id === activeProductDetailId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
   const openDocument = (href: string) => {
     const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
@@ -769,20 +773,21 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (!openedArticle && !openedDocument && !isVideoOpen) return
+    if (!openedArticle && !openedDocument && !openedProductDetail && !isVideoOpen) return
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return
 
       setActiveArticle(null)
       setActiveDocument(null)
+      setActiveProductDetailId(null)
       setIsVideoOpen(false)
     }
 
     window.addEventListener('keydown', closeOnEscape)
 
     return () => window.removeEventListener('keydown', closeOnEscape)
-  }, [openedArticle, openedDocument, isVideoOpen])
+  }, [openedArticle, openedDocument, openedProductDetail, isVideoOpen])
 
   return (
     <main
@@ -940,12 +945,16 @@ function App() {
         <aside className="quietPanel productMatrix" data-reveal>
           <h3>Продуктовая линейка</h3>
           <div className="productCards">
-            {productCards.map(({ title, text, image }) => (
+            {productCards.map(({ productId, title, text, image }) => (
               <article key={title}>
                 <img src={asset(image)} alt="" loading="lazy" decoding="async" />
                 <div>
                   <strong>{title}</strong>
                   <span>{text}</span>
+                  <button type="button" onClick={() => setActiveProductDetailId(productId)}>
+                    Открыть подробнее
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </button>
                 </div>
               </article>
             ))}
@@ -1168,6 +1177,23 @@ function App() {
             <h2 id="document-title">{openedDocument[0]}</h2>
             <iframe src={asset(openedDocument[2])} title={openedDocument[0]} />
           </article>
+        </div>
+      )}
+
+      {openedProductDetail && (
+        <div
+          className="productDetailModal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="product-detail-title"
+          onClick={() => setActiveProductDetailId(null)}
+        >
+          <div className="productDetailModalInner" onClick={(event) => event.stopPropagation()}>
+            <button className="articleClose" type="button" onClick={() => setActiveProductDetailId(null)} aria-label="Закрыть карточку продукта">
+              <X size={22} aria-hidden="true" />
+            </button>
+            <ProductDetailCard product={openedProductDetail} titleId="product-detail-title" />
+          </div>
         </div>
       )}
 
