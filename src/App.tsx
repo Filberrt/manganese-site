@@ -27,7 +27,8 @@ const getProductRouteId = () => {
   if (typeof window === 'undefined') return null
 
   const hash = window.location.hash.replace('#', '')
-  return productRouteMap[hash as keyof typeof productRouteMap] ?? null
+  const route = Object.entries(productRouteMap).find(([path]) => hash === path || hash.startsWith(`${path}/`))
+  return route?.[1] ?? null
 }
 
 const company = {
@@ -52,6 +53,14 @@ const compositionRows = [
   ['Фракция', 'по паспорту партии', 'Подбирается под оборудование и способ подачи'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дозирования'],
   ['Примеси', 'по протоколу лаборатории', 'Al2O3, Fe2O3, MgO и другие показатели'],
+]
+
+const gypsumCompositionRows = [
+  ['CaSO4', 'по ГОСТ 4013-2019', 'Основной показатель для гипсового камня'],
+  ['Фракция', 'по паспорту партии', 'Подбирается под производство цемента, смесей или гипсовых материалов'],
+  ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дальнейшей переработки'],
+  ['Примеси', 'по протоколу лаборатории', 'Контролируются для подтверждения применимости партии'],
+  ['Происхождение', 'Тюлько-Тюбинское месторождение', 'Фиксируется в документах по партии'],
 ]
 
 const heroFacts = [
@@ -248,7 +257,6 @@ const slideItems = [
   ['benefits', 'Выгоды'],
   ['route', 'О компании'],
   ['gallery', 'Фото'],
-  ['analysis', 'Состав'],
   ['documents', 'Документы'],
   ['articles', 'Статьи'],
   ['contacts', 'Заявка'],
@@ -618,7 +626,7 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
               Написать нам
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="ghostAction" href="#analysis">Уточнить состав</a>
+            <a className="ghostAction" href={`#/${product.id}/passport`}>Уточнить состав</a>
           </div>
         </div>
       </div>
@@ -657,6 +665,58 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
   )
 }
 
+function ProductPassportSlide({ product }: { product: ProductPageCard }) {
+  const rows = product.id === 'gypsum-stone' ? gypsumCompositionRows : compositionRows
+  const isGypsum = product.id === 'gypsum-stone'
+
+  return (
+    <section className="section productPassportPage analysisBand snapSlide" id={`/${product.id}/passport`} data-slide>
+      <div className="productPassportIntro" data-reveal>
+        <p className="eyebrow">Паспорт партии</p>
+        <h2>{isGypsum ? 'Паспорт гипсового камня' : 'Паспорт флюса'}<br />с показателями сырья</h2>
+        <p>
+          Этот блок привязан к выбранному продукту: сначала карточка с описанием,
+          затем показатели, которые согласуют перед расчетом партии.
+        </p>
+      </div>
+      <div className="analysisLayout productPassportLayout">
+        <div className="tableWrap techPassport" data-reveal>
+          <div className="passportHead">
+            <span>{isGypsum ? 'Параметры фиксируются в паспорте качества и протоколе партии' : 'Паспорт показывает состав партии, протокол подтверждает значения лабораторно'}</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Показатель</th>
+                <th>Диапазон</th>
+                <th>Назначение контроля</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(([name, value, reason]) => (
+                <tr key={name}>
+                  <td>{name}</td>
+                  <td>{value}</td>
+                  <td>{reason}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="compositionNote" data-reveal>
+          <FlaskConical size={24} aria-hidden="true" />
+          <strong>{isGypsum ? 'Что подтверждает паспорт' : 'Как читать паспорт партии'}</strong>
+          <p>
+            {isGypsum
+              ? 'Для гипсового и ангидритового камня важны соответствие ГОСТ 4013-2019, фракция, влажность, примеси и происхождение партии. Точные значения берутся из паспорта качества и протокола лаборатории.'
+              : 'CaO показывает флюсующую способность материала, Mn - полезный марганцевый компонент, SiO2, S и P контролируют ограничения для металлургического процесса. Итоговые значения подтверждаются протоколом лабораторного анализа и паспортом качества; для флюса указан ТУ 0751-001-38476082-2025.'}
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function ProductStandalonePage({ product }: { product: ProductPageCard }) {
   const goBack = () => {
     if (typeof window === 'undefined') return
@@ -664,16 +724,19 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
   }
 
   return (
-    <section className="section productStandalonePage snapSlide darkSlide" id={`${product.id}-page`} data-slide>
-      <div className="productStandaloneIntro" data-reveal>
-        <button className="productBackButton" type="button" onClick={goBack}>
-          <ArrowLeft size={16} aria-hidden="true" />
-          Назад
-        </button>
-        <strong>{product.title}</strong>
-      </div>
-      <ProductDetailCard product={product} />
-    </section>
+    <>
+      <section className="section productStandalonePage snapSlide darkSlide" id={`/${product.id}`} data-slide>
+        <div className="productStandaloneIntro" data-reveal>
+          <button className="productBackButton" type="button" onClick={goBack}>
+            <ArrowLeft size={16} aria-hidden="true" />
+            Назад
+          </button>
+          <strong>{product.title}</strong>
+        </div>
+        <ProductDetailCard product={product} />
+      </section>
+      <ProductPassportSlide product={product} />
+    </>
   )
 }
 
@@ -724,12 +787,21 @@ function App() {
       setActiveProductPageId(productRouteId)
 
       if (productRouteId) {
-        const resetProductScroll = () => {
+        const syncProductScroll = () => {
+          const targetId = window.location.hash.replace('#', '')
+          const target = document.getElementById(targetId)
+
+          if (target) {
+            target.scrollIntoView({ behavior: 'auto', block: 'start' })
+            target.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'))
+            return
+          }
+
           document.querySelector('.slideDeck')?.scrollTo({ top: 0, left: 0, behavior: 'auto' })
         }
 
-        window.setTimeout(resetProductScroll, 0)
-        window.setTimeout(resetProductScroll, 120)
+        window.setTimeout(syncProductScroll, 0)
+        window.setTimeout(syncProductScroll, 120)
       }
     }
 
@@ -745,6 +817,9 @@ function App() {
     window.setTimeout(() => {
       document
         .querySelectorAll('.productStandalonePage [data-reveal]')
+        .forEach((element) => element.classList.add('is-visible'))
+      document
+        .querySelectorAll('.productPassportPage [data-reveal]')
         .forEach((element) => element.classList.add('is-visible'))
     }, 40)
   }, [activeProductPageId])
@@ -873,7 +948,6 @@ function App() {
         <nav aria-label="Основная навигация">
           <a href="#/manganese-flux">Марганцовистый флюс</a>
           <a href="#/gypsum-stone">Гипсовый камень</a>
-          <a href="#analysis">Состав</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
           <a href="#gallery">Фотогалерея</a>
@@ -936,7 +1010,7 @@ function App() {
         <div className="heroInner">
           <h1 data-reveal>Марганцовистый<br />флюс для металлургии</h1>
           <div className="heroActions" data-reveal>
-            <a className="primaryButton magnetButton" href="#analysis">
+            <a className="primaryButton magnetButton" href="#/manganese-flux/passport">
               Смотреть состав
               <ArrowRight size={18} aria-hidden="true" />
             </a>
@@ -1074,48 +1148,6 @@ function App() {
               <h3>{title}</h3>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="section analysisBand snapSlide" id="analysis" data-slide>
-        <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Химический состав</p>
-          <h2>Паспорт партии<br />с составом сырья</h2>
-        </div>
-        <div className="analysisLayout">
-          <div className="tableWrap techPassport" data-reveal>
-            <div className="passportHead">
-              <span>Паспорт показывает состав партии, протокол подтверждает значения лабораторно</span>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Показатель</th>
-                  <th>Диапазон</th>
-                  <th>Назначение контроля</th>
-                </tr>
-              </thead>
-              <tbody>
-                {compositionRows.map(([name, value, reason]) => (
-                  <tr key={name}>
-                    <td>{name}</td>
-                    <td>{value}</td>
-                    <td>{reason}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="compositionNote" data-reveal>
-            <FlaskConical size={24} aria-hidden="true" />
-            <strong>Как читать паспорт партии</strong>
-            <p>
-              CaO показывает флюсующую способность материала, Mn - полезный марганцевый компонент,
-              SiO2, S и P контролируют ограничения для металлургического процесса. Итоговые значения
-              подтверждаются протоколом лабораторного анализа и паспортом качества; для флюса указан
-              ТУ 0751-001-38476082-2025.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -1324,7 +1356,7 @@ function App() {
             <a href="#/gypsum-stone">Гипсовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
-            <a href="#analysis">Состав</a>
+            <a href="#/manganese-flux/passport">Паспорт флюса</a>
           </div>
           <div className="footerBlock">
             <small>Материалы</small>
