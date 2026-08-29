@@ -5,23 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Лицензии и сведения по сырью</title>
     <style>
+      * { box-sizing: border-box; }
       body { margin: 0; font-family: Arial, sans-serif; color: #18211d; background: #f3f1ea; }
-      main { width: min(920px, calc(100% - 32px)); margin: 36px auto; padding: 36px; background: #fffdf5; border: 1px solid #d8d2bd; }
-      h1 { margin: 0 0 12px; font-size: 34px; line-height: 1.05; }
+      main { width: min(1120px, calc(100% - 32px)); margin: 32px auto; padding: clamp(24px, 4vw, 44px); background: #fffdf5; border: 1px solid #d8d2bd; border-radius: 8px; }
+      h1 { max-width: 760px; margin: 0 0 14px; font-size: clamp(30px, 5vw, 54px); line-height: 1.02; letter-spacing: 0; }
+      h2 { margin: 0; font-size: 18px; line-height: 1.2; }
       p, li { color: #4f5b54; line-height: 1.55; }
-      ul { margin-top: 24px; padding-left: 22px; }
+      .lead { max-width: 650px; margin: 0; font-size: 17px; }
+      .licenseGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 30px; }
+      .licenseCard { display: grid; gap: 12px; padding: 12px; color: inherit; text-decoration: none; background: #ece8d9; border: 1px solid #d2caa9; border-radius: 8px; }
+      .licenseCard img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; object-position: top center; background: #fbfaf2; border: 1px solid rgba(24, 33, 29, 0.12); border-radius: 6px; }
+      .licenseCard strong { display: block; font-size: 15px; line-height: 1.25; }
+      .licenseCard span { color: #637168; font-size: 13px; line-height: 1.35; }
+      .pdfLink { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 24px; padding: 0 18px; color: #111917; font-weight: 800; text-decoration: none; background: #d7ca84; border: 1px solid #c8ba73; border-radius: 6px; }
+      @media (max-width: 640px) {
+        main { width: calc(100% - 20px); padding: 20px; }
+        .licenseGrid { grid-template-columns: 1fr; }
+      }
     </style>
   </head>
   <body>
     <main>
       <h1>Лицензии и сведения по сырью</h1>
-      <p>Комплект подтверждающих материалов для проверки происхождения сырья и права добычи.</p>
-      <ul>
-        <li>сведения по лицензии;</li>
-        <li>информация по месторождению и запасам, допустимая к публичному раскрытию;</li>
-        <li>документы, подтверждающие происхождение партии;</li>
-        <li>реквизиты поставщика и ответственные контакты.</li>
-      </ul>
+      <p class="lead">Комплект подтверждающих материалов для проверки происхождения сырья, права добычи и профильных работ.</p>
+
+      <section class="licenseGrid" aria-label="Сканы лицензий">
+        <a class="licenseCard" href="../licenses/explosive-fire-01.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/explosive-fire-01.jpg" alt="Скан лицензии по взрывопожарной безопасности, лист 1" />
+          <strong>Лицензия: взрывопожарная безопасность</strong>
+          <span>Лист 1</span>
+        </a>
+        <a class="licenseCard" href="../licenses/explosive-fire-02.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/explosive-fire-02.jpg" alt="Скан лицензии по взрывопожарной безопасности, лист 2" />
+          <strong>Лицензия: взрывопожарная безопасность</strong>
+          <span>Лист 2</span>
+        </a>
+        <a class="licenseCard" href="../licenses/explosive-fire-03.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/explosive-fire-03.jpg" alt="Скан лицензии по взрывопожарной безопасности, лист 3" />
+          <strong>Лицензия: взрывопожарная безопасность</strong>
+          <span>Лист 3</span>
+        </a>
+        <a class="licenseCard" href="../licenses/explosive-fire-04.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/explosive-fire-04.jpg" alt="Скан лицензии по взрывопожарной безопасности, лист 4" />
+          <strong>Лицензия: взрывопожарная безопасность</strong>
+          <span>Лист 4</span>
+        </a>
+        <a class="licenseCard" href="../licenses/mine-survey-01.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/mine-survey-01.jpg" alt="Скан лицензии на маркшейдерские работы, лист 1" />
+          <strong>Маркшейдерские работы</strong>
+          <span>Лист 1</span>
+        </a>
+        <a class="licenseCard" href="../licenses/mine-survey-02.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/mine-survey-02.jpg" alt="Скан лицензии на маркшейдерские работы, лист 2" />
+          <strong>Маркшейдерские работы</strong>
+          <span>Лист 2</span>
+        </a>
+        <a class="licenseCard" href="../licenses/mine-survey-03.jpg" target="_blank" rel="noreferrer">
+          <img src="../licenses/mine-survey-03.jpg" alt="Скан лицензии на маркшейдерские работы, лист 3" />
+          <strong>Маркшейдерские работы</strong>
+          <span>Лист 3</span>
+        </a>
+      </section>
+
+      <a class="pdfLink" href="../licenses/license-2012.pdf" target="_blank" rel="noreferrer">Открыть PDF лицензии 2012</a>
     </main>
   </body>
 </html>

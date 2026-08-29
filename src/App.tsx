@@ -65,7 +65,7 @@ const heroFacts = [
 const documentCards = [
   ['Протокол лабораторного анализа', 'Химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
   ['Паспорт качества партии', 'Фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
-  ['Лицензии и сведения по запасам', 'Лицензия на недропользование до 2045 года и данные по запасам сырья', 'documents/license-info.html'],
+  ['Лицензии и сведения по запасам', 'Сканы лицензий, маркшейдерские материалы и подтверждения по добыче сырья', 'documents/license-info.html'],
   ['Условия отгрузки', 'Автомобильная поставка и железнодорожная площадка с веткой до станции Аша', 'documents/shipping-terms.html'],
 ]
 
@@ -737,15 +737,9 @@ function App() {
       } as CSSProperties}
     >
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="На главную">
+        <a className="brand brandLogoOnly" href="#top" aria-label="БашМинералРесурс: на главную">
           <span className="brandLogo">
             <img src={asset('logo-bashmineral.png')} alt="" />
-          </span>
-          <span>
-            <strong>{company.name}</strong>
-            <small className="brandSubtitle">
-              {company.subtitleLines.map((line) => <span key={line}>{line}</span>)}
-            </small>
           </span>
         </a>
         <nav aria-label="Основная навигация">

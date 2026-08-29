@@ -6571,6 +6571,38 @@ footer .footerDocs a {
   }
 }
 
+.topbar {
+  grid-template-columns: minmax(112px, auto) minmax(0, 1fr) minmax(440px, auto);
+}
+
+.brandLogoOnly {
+  width: max-content;
+  min-width: 0;
+}
+
+.brandLogoOnly .brandLogo {
+  width: 104px;
+  height: 72px;
+}
+
+@media (max-width: 1500px) {
+  .topbar {
+    grid-template-columns: minmax(98px, auto) minmax(0, 1fr) minmax(410px, auto);
+  }
+
+  .brandLogoOnly .brandLogo {
+    width: 90px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 760px) {
+  .brandLogoOnly .brandLogo {
+    width: 68px;
+    height: 50px;
+  }
+}
+
 .productPageSlide,
 .benefitsSlide {
   align-content: center;
