@@ -35,9 +35,9 @@ const company = {
   legalName: 'ООО «БашМинералРесурс»',
   subtitle: 'Добыча гипсового камня и марганцовистого известняка',
   subtitleLines: ['Добыча гипсового камня', 'и марганцовистого известняка'],
-  phonePrimary: '+7 912 286-71-11',
-  phoneSecondary: '+7 (347) 246-39-13',
-  email: 'banaev89@gmail.com',
+  phonePrimary: '+7 (347) 246-39-13',
+  phoneSecondary: '+7 (347) 246-39-14',
+  email: 'info@bashmineral.ru',
   location: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5',
   officeAddress: 'Иглинский район, территория Башминералресурс',
   officeAddressFull: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5. Почтовый адрес: 452408, Иглинский район, дер. Орловка',
@@ -45,7 +45,7 @@ const company = {
 
 const compositionRows = [
   ['Mn', '7,6-7,9%', 'Марганцевый компонент для оценки применимости флюса'],
-  ['CaO', '32,7-34,5%', 'Флюсующая основа, влияющая на работу шихты'],
+  ['CaO', '32,7-34,5%', 'Флюсующая основа для технологической оценки'],
   ['SiO2', '14,9-17,0%', 'Кремнезем контролируют как технологическое ограничение'],
   ['S', 'до 0,17%', 'Сера фиксируется для контроля требований плавки'],
   ['P', 'до 0,041%', 'Фосфор контролируется по протоколу анализа партии'],
@@ -69,10 +69,10 @@ const documentCards = [
 ]
 
 const routeSteps = [
-  ['01', 'Карьерная добыча', 'Сырье добывается на участках Северный и Ново-Северный с фиксацией происхождения партии для дальнейшего лабораторного контроля.'],
-  ['02', 'Переработка на ДСК', 'Материал проходит дробление, сортировку и подготовку фракции; расчетная мощность комплекса - до 40 тыс. тонн в месяц.'],
-  ['03', 'Контроль качества', 'По партии проверяют химический состав, фракцию, влажность и примеси; результаты заносятся в паспорт и протокол анализа.'],
-  ['04', 'Отгрузка клиенту', 'Партия отгружается автотранспортом или через ЖД площадку: ветка до станции Аша 7,7 км, склад до 15 тыс. тонн.'],
+  ['01', 'Карьерная добыча', 'Сырье добывается на участках Северный и Ново-Северный. Происхождение партии фиксируется до передачи материала на подготовку.'],
+  ['02', 'Переработка на ДСК', 'Материал проходит дробление, сортировку и подготовку фракции. Расчетная мощность комплекса - до 40 тыс. тонн в месяц.'],
+  ['03', 'Контроль качества', 'Лаборатория проверяет состав, фракцию, влажность и примеси. Результаты заносятся в паспорт и протокол анализа.'],
+  ['04', 'Отгрузка клиенту', 'Поставка идет автотранспортом или через ЖД площадку: ветка до станции Аша 7,7 км, склад до 15 тыс. тонн.'],
 ]
 
 const productCards = [
@@ -120,7 +120,7 @@ const productPageCards = [
     ],
     useCases: [
       'Подходит для агломерации, окатышей, доменных печей и сталеплавильного производства.',
-      'Помогает стабилизировать состав шихты и поддерживать предсказуемый режим печи.',
+      'Проходит подготовку и контроль, чтобы партия соответствовала согласованным параметрам производства.',
       'Сокращает зависимость от импортных марганцевых материалов.',
       'Состав, фракция и влажность фиксируются по конкретной партии.',
     ],
@@ -175,8 +175,8 @@ const productPageCards = [
 ]
 
 const benefitCards = [
-  ['01', 'Стабильнее шихта', 'Марганцовистый флюс помогает выровнять состав сырья и держать процесс плавки предсказуемым.'],
-  ['02', 'Выше выпуск', 'Подготовленное сырье помогает агломашине и печам работать ровнее, с меньшим числом остановок.'],
+  ['01', 'Контроль до отгрузки', 'Партия проходит подготовку, лабораторную проверку и оформление показателей до передачи клиенту.'],
+  ['02', 'Параметры под задачу', 'Фракция, объем, влажность и формат поставки согласуются под технологический процесс предприятия.'],
   ['03', 'Меньше импортной зависимости', 'Собственная база в Башкортостане снижает зависимость от привозных марганцевых материалов.'],
   ['04', 'Понятная отгрузка', 'Автотранспорт и ЖД площадка позволяют заранее согласовать объем, график и станцию назначения.'],
 ]
@@ -466,7 +466,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 type ProductPageCard = (typeof productPageCards)[number]
 
 function ProductDetailCard({ product, titleId }: { product: ProductPageCard; titleId?: string }) {
-  const { eyebrow, title, lead, image, model, badges, specs, useCases, documents } = product
+  const { eyebrow, title, lead, image, model, badges, specs, useCases } = product
 
   return (
     <article className="productDetailCard" data-reveal>
@@ -510,12 +510,6 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
             </div>
           </div>
 
-          <div className="productDocumentStrip">
-            {documents.map((document) => (
-              <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
-            ))}
-          </div>
-
           <div className="productDetailActions">
             <a className="primaryAction shineAction" href="#contacts">
               Написать нам
@@ -532,7 +526,20 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
           <strong>{model.title}</strong>
           <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
         </div>
-        <div className="productModelViewport">
+        <div
+          className="productModelViewport"
+          onPointerMove={(event) => {
+            const rect = event.currentTarget.getBoundingClientRect()
+            const x = ((event.clientX - rect.left) / rect.width - 0.5) * 18
+            const y = ((event.clientY - rect.top) / rect.height - 0.5) * 14
+            event.currentTarget.style.setProperty('--chem-x', `${x}px`)
+            event.currentTarget.style.setProperty('--chem-y', `${y}px`)
+          }}
+          onPointerLeave={(event) => {
+            event.currentTarget.style.setProperty('--chem-x', '0px')
+            event.currentTarget.style.setProperty('--chem-y', '0px')
+          }}
+        >
           <RockSample
             key={model.model}
             model={model.model}
@@ -557,10 +564,6 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 function ProductStandalonePage({ product }: { product: ProductPageCard }) {
   const goBack = () => {
     if (typeof window === 'undefined') return
-    if (window.history.length > 1) {
-      window.history.back()
-      return
-    }
     window.location.hash = 'product'
   }
 
@@ -888,8 +891,8 @@ function App() {
             для строительных материалов.
           </p>
           <div className="checkList">
-            <span><CheckCircle2 size={20} /> Марганцовистый флюс для корректировки состава шихты</span>
-            <span><CheckCircle2 size={20} /> Собственная сырьевая база в Башкортостане</span>
+            <span><CheckCircle2 size={20} /> Марганцовистый флюс для металлургии</span>
+            <span><CheckCircle2 size={20} /> Собственные карьеры и площадка в Башкортостане</span>
             <span><CheckCircle2 size={20} /> Паспорт качества и протокол анализа</span>
             <span><CheckCircle2 size={20} /> Отгрузка автотранспортом и через ЖД площадку</span>
           </div>
@@ -982,11 +985,6 @@ function App() {
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Химический состав</p>
           <h2>Паспорт партии<br />с составом сырья</h2>
-          <p>
-            Показатели нужны технологу для оценки применимости сырья:
-            марганцевый компонент, флюсующая основа, кремнезем, сера, фосфор,
-            фракция и влажность по конкретной партии.
-          </p>
         </div>
         <div className="analysisLayout">
           <div className="tableWrap techPassport" data-reveal>

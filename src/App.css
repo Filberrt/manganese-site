@@ -7349,10 +7349,11 @@ footer .footerDocs a {
 /* Product page revision: full information card on the left, 3D model on the right. */
 .brandLogo,
 .brandLogoOnly .brandLogo {
-  padding: 0;
-  background: transparent;
-  border: 0;
-  box-shadow: none;
+  padding: 8px 12px;
+  background: #fffdf5;
+  border: 1px solid rgba(210, 198, 137, 0.44);
+  border-radius: 6px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 .brandLogo img {
@@ -7366,9 +7367,9 @@ footer .footerDocs a {
 }
 
 .productStandalonePage .productDetailCard {
-  grid-template-columns: minmax(0, 1.1fr) minmax(390px, 0.7fr);
-  gap: 18px;
-  height: min(670px, calc(100svh - 210px));
+  grid-template-columns: minmax(0, 0.98fr) minmax(420px, 0.78fr);
+  gap: 20px;
+  height: min(650px, calc(100svh - 210px));
   min-height: 0;
   overflow: visible;
   background: transparent;
@@ -7676,7 +7677,8 @@ button,
 }
 
 .productInfoCard {
-  grid-template-rows: 128px minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 0.58fr);
+  grid-template-rows: minmax(0, 1fr);
   background:
     linear-gradient(180deg, rgba(255, 253, 245, 0.055), rgba(255, 253, 245, 0.018)),
     rgba(13, 20, 18, 0.92);
@@ -7689,7 +7691,7 @@ button,
 }
 
 .productInfoCard .productDetailPhotoCaption {
-  bottom: 18px;
+  display: none;
 }
 
 .productInfoCard .productDetailPhotoCaption strong {
@@ -7697,19 +7699,19 @@ button,
 }
 
 .productInfoCard .productDetailBody {
-  gap: 9px;
-  padding: 20px 24px 22px;
+  gap: 10px;
+  padding: 22px 24px;
 }
 
 .productInfoCard .productDetailHeader h2 {
-  max-width: 640px;
-  font-size: clamp(26px, 2.1vw, 34px);
+  max-width: 420px;
+  font-size: clamp(24px, 2vw, 31px);
 }
 
 .productInfoCard .productDetailHeader p:not(.eyebrow) {
-  max-width: 690px;
+  max-width: 450px;
   color: rgba(232, 234, 223, 0.82);
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .productInfoCard .productDetailContent {
@@ -7718,8 +7720,8 @@ button,
 }
 
 .productInfoCard .productSpecTable {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
   overflow: visible;
   background: transparent;
   border: 0;
@@ -7727,7 +7729,7 @@ button,
 
 .productInfoCard .productSpecRow {
   display: grid;
-  min-height: 58px;
+  min-height: 50px;
   align-content: center;
   gap: 4px;
   padding: 9px 10px;
@@ -7753,7 +7755,7 @@ button,
 }
 
 .productInfoCard .productDetailList {
-  padding: 12px;
+  padding: 11px;
   background: rgba(4, 10, 8, 0.26);
   border: 1px solid rgba(210, 198, 137, 0.16);
   border-radius: 7px;
@@ -7763,20 +7765,13 @@ button,
   font-weight: 620;
 }
 
-.productInfoCard .productDocumentStrip span {
-  color: rgba(232, 234, 223, 0.86);
-  font-weight: 620;
-}
-
-.productInfoCard .productDocumentStrip span:nth-child(n+4) {
-  display: none;
-}
-
 .productModelPanel {
   padding: 20px;
 }
 
 .productModelViewport {
+  --chem-x: 0px;
+  --chem-y: 0px;
   overflow: hidden;
   border: 1px solid rgba(210, 198, 137, 0.12);
   border-radius: 7px;
@@ -7796,6 +7791,8 @@ button,
   border: 1px solid rgba(210, 198, 137, 0.28);
   border-radius: 7px;
   backdrop-filter: blur(12px);
+  transform: translate3d(var(--chem-x), var(--chem-y), 0);
+  transition: transform 160ms ease-out;
 }
 
 .modelChemCard span {
@@ -7872,6 +7869,19 @@ button,
   margin-bottom: 8px;
 }
 
+.routeMap article {
+  display: grid;
+  grid-template-rows: 64px 1fr auto auto;
+}
+
+.routeMap article > span {
+  align-self: start;
+}
+
+.routeMap h3 {
+  align-self: end;
+}
+
 .routeMap p {
   font-size: 14px;
   line-height: 1.42;
@@ -7918,5 +7928,227 @@ button,
 }
 
 .productStandalonePage {
-  padding-top: clamp(136px, 16vh, 172px);
+  padding-top: clamp(104px, 12vh, 132px);
+}
+
+/* Final product detail layout pass: keep the product card readable in one snap screen. */
+.brandLogo,
+.brandLogoOnly .brandLogo {
+  overflow: hidden;
+  padding: 7px 10px;
+  background: #fffdf5;
+}
+
+.brandLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.productStandalonePage {
+  gap: 12px;
+}
+
+.productStandaloneIntro {
+  width: min(1360px, calc(100vw - 96px));
+  margin-inline: auto;
+}
+
+.productStandalonePage .productDetailCard {
+  grid-template-columns: minmax(780px, 1.35fr) minmax(390px, 0.65fr);
+  width: min(1360px, calc(100vw - 96px));
+  height: min(620px, calc(100svh - 178px));
+  gap: 20px;
+}
+
+.productInfoCard {
+  grid-template-columns: minmax(290px, 0.42fr) minmax(0, 0.58fr);
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.productInfoCard .productDetailMedia {
+  min-height: 100%;
+}
+
+.productInfoCard .productDetailBody {
+  gap: 8px;
+  padding: 18px 20px;
+}
+
+.productInfoCard .productDetailHeader {
+  gap: 5px;
+}
+
+.productInfoCard .productDetailHeader .eyebrow {
+  font-size: 10px;
+}
+
+.productInfoCard .productDetailHeader h2 {
+  max-width: 470px;
+  font-size: clamp(24px, 1.75vw, 30px);
+  line-height: 1.02;
+}
+
+.productInfoCard .productDetailHeader p:not(.eyebrow) {
+  max-width: 500px;
+  font-size: 12px;
+  line-height: 1.24;
+}
+
+.productInfoCard .productDetailBadges {
+  gap: 5px;
+}
+
+.productInfoCard .productDetailBadges span {
+  padding: 5px 8px;
+  font-size: 9px;
+}
+
+.productInfoCard .productDetailContent {
+  gap: 8px;
+}
+
+.productInfoCard .productSpecTable {
+  gap: 6px;
+}
+
+.productInfoCard .productSpecRow {
+  min-height: 42px;
+  gap: 3px;
+  padding: 7px 9px;
+}
+
+.productInfoCard .productSpecRow span {
+  font-size: 9px;
+  line-height: 1.1;
+}
+
+.productInfoCard .productSpecRow strong {
+  font-size: 11px;
+  line-height: 1.16;
+}
+
+.productInfoCard .productDetailList {
+  gap: 5px;
+  padding: 10px;
+}
+
+.productInfoCard .productDetailList small {
+  font-size: 10px;
+}
+
+.productInfoCard .productDetailList span {
+  grid-template-columns: 14px minmax(0, 1fr);
+  gap: 6px;
+  font-size: 10.5px;
+  line-height: 1.18;
+}
+
+.productInfoCard .productDetailList svg {
+  width: 14px;
+  height: 14px;
+}
+
+.productInfoCard .productDetailActions {
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.productInfoCard .productDetailActions a {
+  min-height: 32px;
+  padding-inline: 13px;
+  font-size: 11px;
+}
+
+.productModelPanel {
+  padding: 18px;
+}
+
+.productModelPanelHeader {
+  gap: 6px;
+}
+
+.productModelPanelHeader small {
+  font-size: 10px;
+}
+
+.productModelPanelHeader strong {
+  font-size: clamp(24px, 1.95vw, 32px);
+}
+
+.productModelPanelHeader span {
+  font-size: 13px;
+  line-height: 1.28;
+}
+
+.productModelPanel .localModelViewer {
+  margin-top: 8px;
+}
+
+.modelChemCard {
+  top: 14px;
+  right: 14px;
+  width: min(252px, calc(100% - 28px));
+  gap: 7px;
+  padding: 11px;
+  background:
+    linear-gradient(135deg, rgba(210, 198, 137, 0.12), transparent 42%),
+    rgba(5, 10, 8, 0.72);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.26);
+}
+
+.modelChemCard span {
+  grid-template-columns: 58px minmax(0, 1fr);
+}
+
+.modelChemCard strong {
+  font-size: 19px;
+}
+
+.modelChemCard b {
+  font-size: 11px;
+}
+
+.modelChemCard small {
+  font-size: 9px;
+}
+
+#route .routeMap article {
+  grid-template-rows: 64px 78px 96px;
+  align-content: end;
+}
+
+#route .routeMap article > span {
+  align-self: start;
+}
+
+#route .routeMap article h3 {
+  min-height: 56px;
+  align-self: end;
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+}
+
+#route .routeMap article p {
+  min-height: 84px;
+  margin: 0;
+}
+
+@media (max-width: 1180px) {
+  .productStandaloneIntro,
+  .productStandalonePage .productDetailCard {
+    width: min(100%, calc(100vw - 48px));
+  }
+
+  .productStandalonePage .productDetailCard,
+  .productInfoCard {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .productInfoCard .productDetailMedia {
+    min-height: 260px;
+  }
 }
