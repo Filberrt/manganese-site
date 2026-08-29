@@ -993,26 +993,47 @@ h3 {
 
 .modalFilm {
   display: grid;
-  align-content: end;
+  gap: 18px;
   width: min(980px, 100%);
-  min-height: min(560px, 74vh);
-  padding: clamp(24px, 4vw, 44px);
+  padding: clamp(14px, 2vw, 20px);
   color: #fffdf5;
   background:
-    linear-gradient(0deg, rgba(17, 25, 23, 0.98), rgba(17, 25, 23, 0.24)),
-    var(--hero-image) center / cover;
+    linear-gradient(145deg, rgba(255, 253, 245, 0.07), rgba(255, 253, 245, 0.02)),
+    rgba(12, 18, 16, 0.96);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
   box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
 }
 
+.modalFilm video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #050807;
+  border-radius: 6px;
+}
+
+.modalFilm div {
+  display: grid;
+  gap: 8px;
+  padding: 0 clamp(4px, 1vw, 10px) clamp(4px, 1vw, 10px);
+}
+
 .modalFilm span {
   color: var(--acid);
   font-weight: 900;
+  text-transform: uppercase;
 }
 
 .modalFilm h2 {
+  margin: 0;
   color: #fffdf5;
+}
+
+.modalFilm p {
+  max-width: 620px;
+  margin: 0;
+  color: #d8e0d7;
 }
 
 .elevatedSection {
@@ -6719,7 +6740,7 @@ footer .footerDocs a {
 
 .productDetailContent {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(360px, 0.95fr) minmax(0, 1.05fr);
   gap: clamp(14px, 1.6vw, 20px);
   align-items: start;
 }
@@ -6734,7 +6755,7 @@ footer .footerDocs a {
 
 .productSpecRow {
   display: grid;
-  grid-template-columns: minmax(110px, 0.62fr) minmax(0, 1fr);
+  grid-template-columns: minmax(142px, 0.82fr) minmax(0, 1fr);
   gap: 12px;
   padding: 10px 14px;
   border-top: 1px solid rgba(245, 242, 232, 0.1);
@@ -6746,14 +6767,14 @@ footer .footerDocs a {
 
 .productSpecRow span {
   color: rgba(216, 224, 215, 0.72);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   line-height: 1.25;
 }
 
 .productSpecRow strong {
   color: #fffdf5;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 900;
   line-height: 1.28;
 }
