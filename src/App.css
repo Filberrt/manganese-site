@@ -9534,3 +9534,63 @@ textarea:focus {
 .productModelPanel .localModelViewer canvas {
   background-color: #2b2422 !important;
 }
+
+/* Remove synthetic grid pattern: keep the palette, lose the square background. */
+body {
+  background:
+    radial-gradient(circle at 22% 12%, rgba(116, 19, 22, 0.16), transparent 32%),
+    radial-gradient(circle at 82% 78%, rgba(187, 170, 150, 0.14), transparent 36%),
+    linear-gradient(180deg, #181514 0%, #2b2422 56%, #665754 100%) !important;
+}
+
+.darkSlide,
+#product.elevatedSection,
+#route.routeBand,
+#gallery.gallerySlide,
+#documents.documentBand,
+#benefits.benefitsSlide,
+#articles.articlesBand,
+#contacts.contacts,
+.productStandalonePage,
+.videoSlide,
+.articlesBand {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(116, 19, 22, 0.18), transparent 28%),
+    radial-gradient(circle at 16% 84%, rgba(187, 170, 150, 0.11), transparent 32%),
+    linear-gradient(135deg, #181514 0%, #2b2422 60%, #665754 100%) !important;
+  background-size: auto !important;
+}
+
+.analysisBand,
+.productPassportPage {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(116, 19, 22, 0.1), transparent 30%),
+    linear-gradient(180deg, #eee8d8 0%, #ddd4c5 100%) !important;
+  background-size: auto !important;
+}
+
+.industrialGrid,
+.videoFrame::before,
+.modelTheater::before,
+.modelTheater::after,
+#sample.sampleSlide::before,
+#sample.sampleSlide::after {
+  display: none !important;
+}
+
+.videoFrame,
+.videoSlide .videoFrame {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(187, 170, 150, 0.12), transparent 34%),
+    linear-gradient(145deg, rgba(102, 87, 84, 0.58), rgba(43, 36, 34, 0.96)),
+    #332b28 !important;
+  background-size: auto !important;
+}
+
+#articles.articlesBand,
+.articlesBand {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(116, 19, 22, 0.18), transparent 28%),
+    radial-gradient(circle at 16% 84%, rgba(187, 170, 150, 0.1), transparent 32%),
+    linear-gradient(135deg, #181514 0%, #2b2422 60%, #665754 100%) !important;
+}
