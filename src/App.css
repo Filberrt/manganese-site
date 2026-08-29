@@ -8793,3 +8793,45 @@ button,
     padding: 10px;
   }
 }
+
+/* Desktop product card fix: give the text block enough room for actions. */
+@media (min-width: 1181px) {
+  .productStandaloneIntro,
+  .productStandalonePage .productDetailCard {
+    width: min(1500px, calc(100vw - 120px));
+  }
+
+  .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(0, 1.18fr) minmax(420px, 0.56fr);
+    height: min(790px, calc(100svh - 132px));
+    gap: 18px;
+  }
+
+  .productInfoCard {
+    grid-template-columns: minmax(500px, 0.54fr) minmax(390px, 0.46fr);
+  }
+
+  .productInfoCard .productDetailBody {
+    align-content: center;
+    gap: 10px;
+    padding: 22px 28px;
+  }
+
+  .productInfoCard .productDetailHeader h2 {
+    max-width: 680px;
+    font-size: clamp(31px, 2.15vw, 40px);
+  }
+
+  .productInfoCard .productDetailHeader p:not(.eyebrow) {
+    max-width: 610px;
+  }
+
+  .productInfoCard .productDetailList span {
+    font-size: 11px;
+    line-height: 1.2;
+  }
+
+  .productModelPanelHeader strong {
+    font-size: clamp(24px, 1.9vw, 34px);
+  }
+}
