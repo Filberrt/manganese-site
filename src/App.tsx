@@ -461,33 +461,69 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 
   return (
     <article className="productDetailCard" data-reveal>
-      <div className="productDetailMedia">
-        <img src={asset(image)} alt="" loading="lazy" decoding="async" />
-        <div className="productDetailPhotoCaption">
-          <span>{eyebrow}</span>
-          <strong>{title}</strong>
+      <div className="productInfoCard">
+        <div className="productDetailMedia">
+          <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+          <div className="productDetailPhotoCaption">
+            <span>{eyebrow}</span>
+            <strong>{title}</strong>
+          </div>
+        </div>
+
+        <div className="productDetailBody">
+          <div className="productDetailHeader">
+            <p className="eyebrow">{eyebrow}</p>
+            <h2 id={titleId}>{title}</h2>
+            <p>{lead}</p>
+          </div>
+
+          <div className="productDetailBadges" aria-label="Ключевые параметры">
+            {badges.map((badge) => (
+              <span key={badge}>{badge}</span>
+            ))}
+          </div>
+
+          <div className="productDetailContent">
+            <div className="productSpecTable" aria-label="Характеристики продукта">
+              {specs.map(([label, value]) => (
+                <div className="productSpecRow" key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+            </div>
+
+            <div className="productDetailList">
+              <small>Применение</small>
+              {useCases.map((item) => (
+                <span key={item}><CheckCircle2 size={17} aria-hidden="true" /> {item}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="productDocumentStrip">
+            {documents.map((document) => (
+              <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
+            ))}
+          </div>
+
+          <div className="productDetailActions">
+            <a className="primaryAction shineAction" href="#contacts">
+              Написать нам
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
+            <a className="ghostAction" href="#analysis">Уточнить состав</a>
+          </div>
         </div>
       </div>
 
-      <div className="productDetailBody">
-        <div className="productDetailHeader">
-          <p className="eyebrow">{eyebrow}</p>
-          <h2 id={titleId}>{title}</h2>
-          <p>{lead}</p>
+      <aside className="productModelPanel" aria-label={model.subtitle}>
+        <div className="productModelPanelHeader">
+          <small>{model.subtitle}</small>
+          <strong>{model.title}</strong>
+          <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
         </div>
-
-        <div className="productDetailBadges" aria-label="Ключевые параметры">
-          {badges.map((badge) => (
-            <span key={badge}>{badge}</span>
-          ))}
-        </div>
-
-        <div className="productModelBlock">
-          <div>
-            <small>{model.subtitle}</small>
-            <strong>{model.title}</strong>
-            <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
-          </div>
+        <div className="productModelViewport">
           <RockSample
             key={model.model}
             model={model.model}
@@ -495,39 +531,7 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
             variant={model.variant as RockVariant}
           />
         </div>
-
-        <div className="productDetailContent">
-          <div className="productSpecTable" aria-label="Характеристики продукта">
-            {specs.map(([label, value]) => (
-              <div className="productSpecRow" key={label}>
-                <span>{label}</span>
-                <strong>{value}</strong>
-              </div>
-            ))}
-          </div>
-
-          <div className="productDetailList">
-            <small>Применение</small>
-            {useCases.map((item) => (
-              <span key={item}><CheckCircle2 size={17} aria-hidden="true" /> {item}</span>
-            ))}
-          </div>
-        </div>
-
-        <div className="productDocumentStrip">
-          {documents.map((document) => (
-            <span key={document}><FileText size={16} aria-hidden="true" /> {document}</span>
-          ))}
-        </div>
-
-        <div className="productDetailActions">
-          <a className="primaryAction shineAction" href="#contacts">
-            Написать нам
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
-          <a className="ghostAction" href="#analysis">Уточнить состав</a>
-        </div>
-      </div>
+      </aside>
     </article>
   )
 }
@@ -1117,6 +1121,10 @@ function App() {
             <a href="tel:+79122867111"><Phone size={18} /> {company.phonePrimary}</a>
             <a href="tel:+73472463913"><Phone size={18} /> {company.phoneSecondary}</a>
             <a href={`mailto:${company.email}`}><Mail size={18} /> {company.email}</a>
+          </div>
+          <div className="messengerPanel" aria-label="Мессенджеры">
+            <span className="messengerButton telegram" aria-disabled="true">Telegram</span>
+            <span className="messengerButton max" aria-disabled="true">Max</span>
           </div>
         </div>
         <form data-reveal>

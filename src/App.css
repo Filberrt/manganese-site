@@ -7345,3 +7345,273 @@ footer .footerDocs a {
     grid-template-columns: 1fr;
   }
 }
+
+/* Product page revision: full information card on the left, 3D model on the right. */
+.brandLogo,
+.brandLogoOnly .brandLogo {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.brandLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productStandalonePage {
+  gap: 10px;
+}
+
+.productStandalonePage .productDetailCard {
+  grid-template-columns: minmax(0, 1.1fr) minmax(390px, 0.7fr);
+  gap: 18px;
+  height: min(720px, calc(100svh - 156px));
+  min-height: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.productInfoCard,
+.productModelPanel {
+  min-height: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 245, 0.07), rgba(255, 253, 245, 0.02)),
+    rgba(12, 18, 16, 0.9);
+  border: 1px solid rgba(210, 198, 137, 0.32);
+  border-radius: 8px;
+  box-shadow: 0 34px 95px rgba(0, 0, 0, 0.3);
+}
+
+.productInfoCard {
+  display: grid;
+  grid-template-rows: 144px minmax(0, 1fr);
+}
+
+.productInfoCard .productDetailMedia {
+  min-height: 0;
+}
+
+.productInfoCard .productDetailBody {
+  align-content: start;
+  gap: 7px;
+  overflow: hidden;
+  padding: clamp(18px, 1.7vw, 24px);
+}
+
+.productInfoCard .productDetailHeader {
+  gap: 6px;
+}
+
+.productInfoCard .productDetailHeader h2 {
+  max-width: 760px;
+  font-size: clamp(27px, 2.35vw, 36px);
+  line-height: 0.98;
+}
+
+.productInfoCard .productDetailHeader p:not(.eyebrow) {
+  max-width: 640px;
+  font-size: 13px;
+  line-height: 1.28;
+}
+
+.productInfoCard .productDetailPhotoCaption {
+  display: flex;
+  right: auto;
+  max-width: calc(100% - 44px);
+  align-items: center;
+  gap: 10px;
+}
+
+.productInfoCard .productDetailPhotoCaption strong {
+  max-width: 620px;
+  font-size: clamp(19px, 1.9vw, 28px);
+}
+
+.productInfoCard .productDetailBadges span {
+  padding: 6px 9px;
+  font-size: 10px;
+}
+
+.productInfoCard .productDetailContent {
+  grid-template-columns: minmax(300px, 0.92fr) minmax(260px, 1.08fr);
+  gap: 10px;
+}
+
+.productInfoCard .productSpecRow {
+  padding: 7px 11px;
+}
+
+.productInfoCard .productDetailList {
+  gap: 5px;
+}
+
+.productInfoCard .productDetailList span {
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 7px;
+  font-size: 11px;
+  line-height: 1.18;
+}
+
+.productInfoCard .productDetailList svg {
+  width: 15px;
+  height: 15px;
+}
+
+.productInfoCard .productDocumentStrip span {
+  padding: 7px 9px;
+  font-size: 10px;
+}
+
+.productInfoCard .productDetailActions a {
+  min-height: 34px;
+  font-size: 12px;
+}
+
+.productInfoCard .productDetailActions {
+  gap: 8px;
+}
+
+.productModelPanel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  padding: clamp(18px, 2vw, 28px);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(210, 198, 137, 0.12), transparent 45%),
+    linear-gradient(145deg, rgba(20, 31, 27, 0.96), rgba(4, 10, 8, 0.92));
+}
+
+.productModelPanel::before {
+  position: absolute;
+  inset: 14px;
+  content: "";
+  border: 1px solid rgba(210, 198, 137, 0.14);
+  border-radius: 7px;
+  pointer-events: none;
+}
+
+.productModelPanelHeader {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  max-width: 430px;
+}
+
+.productModelPanelHeader small {
+  color: #d2c689;
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.productModelPanelHeader strong {
+  color: #fffdf5;
+  font-size: clamp(24px, 2.1vw, 34px);
+  font-weight: 950;
+  line-height: 1.04;
+}
+
+.productModelPanelHeader span {
+  max-width: 360px;
+  color: #cfd8cf;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.productModelPanel .localModelViewer {
+  min-height: 0;
+  height: 100%;
+  margin-top: 12px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.productModelViewport {
+  position: relative;
+  min-height: 0;
+}
+
+.productModelViewport .localModelViewer {
+  inset: 0;
+  margin-top: 0;
+}
+
+.productModelPanel .localModelViewer canvas {
+  filter: drop-shadow(0 34px 42px rgba(0, 0, 0, 0.42));
+}
+
+.messengerPanel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.messengerButton {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 950;
+  line-height: 1;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+}
+
+.messengerButton.telegram {
+  background: linear-gradient(135deg, #2aabee, #168acd);
+}
+
+.messengerButton.max {
+  background: linear-gradient(135deg, #0b7cff, #005ff9);
+}
+
+.messengerButton[aria-disabled="true"] {
+  cursor: not-allowed;
+}
+
+@media (max-width: 1180px) {
+  .productStandalonePage .productDetailCard,
+  .productInfoCard {
+    grid-template-columns: 1fr;
+  }
+
+  .productStandalonePage .productDetailCard {
+    height: auto;
+  }
+
+  .productModelPanel {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  .productStandalonePage .productDetailCard {
+    width: min(100%, calc(100vw - 32px));
+    gap: 12px;
+  }
+
+  .productInfoCard .productDetailMedia {
+    min-height: 220px;
+  }
+
+  .productModelPanel {
+    min-height: 360px;
+  }
+
+  .messengerPanel {
+    grid-template-columns: 1fr;
+  }
+}
