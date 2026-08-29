@@ -601,12 +601,10 @@ function App() {
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
   const [copiedContact, setCopiedContact] = useState<string | null>(null)
-  const [activeProductDetailId, setActiveProductDetailId] = useState<string | null>(null)
   const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
-  const openedProductDetail = productPageCards.find((product) => product.id === activeProductDetailId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
   const openDocument = (href: string) => {
     const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
@@ -773,21 +771,20 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (!openedArticle && !openedDocument && !openedProductDetail && !isVideoOpen) return
+    if (!openedArticle && !openedDocument && !isVideoOpen) return
 
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return
 
       setActiveArticle(null)
       setActiveDocument(null)
-      setActiveProductDetailId(null)
       setIsVideoOpen(false)
     }
 
     window.addEventListener('keydown', closeOnEscape)
 
     return () => window.removeEventListener('keydown', closeOnEscape)
-  }, [openedArticle, openedDocument, openedProductDetail, isVideoOpen])
+  }, [openedArticle, openedDocument, isVideoOpen])
 
   return (
     <main
@@ -951,10 +948,10 @@ function App() {
                 <div>
                   <strong>{title}</strong>
                   <span>{text}</span>
-                  <button type="button" onClick={() => setActiveProductDetailId(productId)}>
+                  <a href={`#/${productId}`}>
                     Открыть подробнее
                     <ArrowRight size={16} aria-hidden="true" />
-                  </button>
+                  </a>
                 </div>
               </article>
             ))}
@@ -1177,23 +1174,6 @@ function App() {
             <h2 id="document-title">{openedDocument[0]}</h2>
             <iframe src={asset(openedDocument[2])} title={openedDocument[0]} />
           </article>
-        </div>
-      )}
-
-      {openedProductDetail && (
-        <div
-          className="productDetailModal"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="product-detail-title"
-          onClick={() => setActiveProductDetailId(null)}
-        >
-          <div className="productDetailModalInner" onClick={(event) => event.stopPropagation()}>
-            <button className="articleClose" type="button" onClick={() => setActiveProductDetailId(null)} aria-label="Закрыть карточку продукта">
-              <X size={22} aria-hidden="true" />
-            </button>
-            <ProductDetailCard product={openedProductDetail} titleId="product-detail-title" />
-          </div>
         </div>
       )}
 

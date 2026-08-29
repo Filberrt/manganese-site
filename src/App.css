@@ -5732,7 +5732,7 @@ footer .footerDocs a {
   overflow-wrap: anywhere;
 }
 
-#product .productCards button {
+#product .productCards a {
   position: relative;
   display: inline-flex;
   min-height: 40px;
@@ -5744,16 +5744,14 @@ footer .footerDocs a {
   overflow: hidden;
   color: #111917;
   background: linear-gradient(135deg, #d9ce93, #b7aa71);
-  border: 0;
   border-radius: 7px;
-  cursor: pointer;
   font-size: 13px;
   font-weight: 950;
   line-height: 1;
   box-shadow: 0 12px 30px rgba(210, 198, 137, 0.14);
 }
 
-#product .productCards button::after {
+#product .productCards a::after {
   position: absolute;
   inset: -70% -35%;
   content: "";
@@ -5763,11 +5761,11 @@ footer .footerDocs a {
   animation: diagonalShine 5.8s ease-in-out infinite;
 }
 
-#product .productCards button svg {
+#product .productCards a svg {
   transition: transform 180ms ease;
 }
 
-#product .productCards button:hover svg {
+#product .productCards a:hover svg {
   transform: translateX(3px);
 }
 
@@ -6867,12 +6865,12 @@ footer .footerDocs a {
   min-height: 100vh;
   align-content: start;
   gap: clamp(22px, 2.6vh, 32px);
-  padding-top: clamp(124px, 12vh, 150px);
+  padding-top: clamp(150px, 14vh, 170px);
   padding-bottom: clamp(44px, 5vw, 72px);
 }
 
 .productStandalonePage .productDetailCard {
-  min-height: min(560px, calc(100vh - 260px));
+  min-height: min(540px, calc(100vh - 285px));
 }
 
 .productStandaloneIntro,
@@ -6886,6 +6884,7 @@ footer .footerDocs a {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+  margin-bottom: 14px;
   padding-left: 4px;
   color: rgba(232, 234, 223, 0.72);
   font-size: 13px;
@@ -6957,42 +6956,6 @@ footer .footerDocs a {
   font-weight: 950;
   line-height: 1;
   box-shadow: 0 18px 46px rgba(0, 0, 0, 0.26), 0 18px 46px rgba(210, 198, 137, 0.18);
-}
-
-.productDetailModal {
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  display: grid;
-  place-items: center;
-  padding: clamp(18px, 3vw, 42px);
-  overflow: auto;
-  background: rgba(4, 9, 8, 0.78);
-  backdrop-filter: blur(18px);
-}
-
-.productDetailModalInner {
-  position: relative;
-  width: min(1280px, 100%);
-}
-
-.productDetailModalInner .articleClose {
-  top: 14px;
-  right: 14px;
-  z-index: 2;
-  color: #fffdf5;
-  background: rgba(4, 9, 8, 0.72);
-  border-color: rgba(210, 198, 137, 0.28);
-}
-
-.productDetailModalInner .productDetailCard {
-  width: 100%;
-  min-height: min(650px, calc(100vh - 84px));
-}
-
-.productDetailModalInner .productDetailCard[data-reveal] {
-  opacity: 1;
-  transform: none;
 }
 
 .benefitGrid {
@@ -7089,12 +7052,4 @@ footer .footerDocs a {
     font-size: 12px;
   }
 
-  .productDetailModal {
-    align-items: start;
-    padding: 14px;
-  }
-
-  .productDetailModalInner .productDetailCard {
-    min-height: 0;
-  }
 }
