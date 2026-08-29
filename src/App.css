@@ -8152,3 +8152,143 @@ button,
     min-height: 260px;
   }
 }
+
+/* Product detail comfort pass: more air in the text card, no inner 3D frame. */
+.productStandaloneIntro,
+.productStandalonePage .productDetailCard {
+  width: min(1340px, calc(100vw - 96px));
+}
+
+.productStandalonePage .productDetailCard {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.34fr);
+  height: min(640px, calc(100svh - 164px));
+  gap: 18px;
+}
+
+.productInfoCard {
+  grid-template-columns: minmax(390px, 0.46fr) minmax(0, 0.54fr);
+}
+
+.productInfoCard .productDetailBody {
+  align-content: center;
+  gap: 10px;
+  padding: 22px 24px;
+}
+
+.productInfoCard .productDetailHeader h2 {
+  max-width: 540px;
+  font-size: clamp(28px, 2vw, 34px);
+}
+
+.productInfoCard .productDetailHeader p:not(.eyebrow) {
+  max-width: 560px;
+  font-size: 13px;
+  line-height: 1.34;
+}
+
+.productInfoCard .productDetailBadges {
+  gap: 7px;
+}
+
+.productInfoCard .productDetailBadges span {
+  padding: 6px 10px;
+  font-size: 10px;
+}
+
+.productInfoCard .productSpecTable {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.productInfoCard .productSpecRow {
+  grid-template-columns: 1fr;
+  min-height: 54px;
+  align-content: start;
+  gap: 6px;
+  padding: 10px 12px;
+}
+
+.productInfoCard .productSpecRow span {
+  font-size: 9.5px;
+}
+
+.productInfoCard .productSpecRow strong {
+  max-width: 100%;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.productInfoCard .productDetailList {
+  padding: 12px;
+}
+
+.productInfoCard .productDetailList span {
+  font-size: 11px;
+  line-height: 1.22;
+}
+
+.productModelPanel::before {
+  display: none;
+}
+
+.productModelViewport {
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.productModelPanel .localModelViewer {
+  border: 0;
+  border-radius: 0;
+}
+
+.modelChemCard {
+  right: 10px;
+  width: min(300px, calc(100% - 20px));
+  gap: 6px;
+  padding: 12px;
+}
+
+.modelChemCard span {
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 3px 10px;
+  align-items: start;
+  min-height: 38px;
+}
+
+.modelChemCard strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 17px;
+  line-height: 1.05;
+}
+
+.modelChemCard b,
+.modelChemCard small {
+  min-width: 0;
+}
+
+.modelChemCard b {
+  font-size: 10.5px;
+  line-height: 1.15;
+}
+
+.modelChemCard small {
+  font-size: 8.5px;
+  line-height: 1.2;
+}
+
+@media (max-width: 1320px) {
+  .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(780px, 1.35fr) minmax(340px, 0.65fr);
+  }
+
+  .productInfoCard {
+    grid-template-columns: minmax(320px, 0.43fr) minmax(0, 0.57fr);
+  }
+
+  .productInfoCard .productSpecTable {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
