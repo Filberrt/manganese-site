@@ -255,8 +255,21 @@ const slideItems = [
 ]
 
 type RockVariant = 'limestone' | 'flux' | 'gypsum'
+type ChemistryRow = [string, string, string]
 
-function RockSample({ model, poster, variant = 'limestone' }: { model: string; poster: string; variant?: RockVariant }) {
+function RockSample({
+  model,
+  poster,
+  variant = 'limestone',
+  chemistry,
+  chemistryTitle,
+}: {
+  model: string
+  poster: string
+  variant?: RockVariant
+  chemistry?: ChemistryRow[]
+  chemistryTitle?: string
+}) {
   const mountRef = useRef<HTMLDivElement>(null)
   const [loadLabel, setLoadLabel] = useState('Загрузка 3D-модели')
 
@@ -271,6 +284,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
     let renderer: { dispose: () => void } | null = null
     let rendererCanvas: HTMLCanvasElement | null = null
     let disposeLoadedModel = () => {}
+    let disposeSceneAnnotations = () => {}
 
     const startViewer = async () => {
       if (hasStarted || isDisposed) return
@@ -322,8 +336,96 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       scene.add(fillLight)
 
       const modelRoot = new THREE.Group()
+      if (chemistry?.length) modelRoot.position.x = -0.68
       modelRoot.rotation.set(-0.16, -0.24, 0.05)
       scene.add(modelRoot)
+
+      if (chemistry?.length) {
+        const textureCanvas = document.createElement('canvas')
+        const pixelRatio = 2
+        const textureWidth = 620
+        const textureHeight = 560
+        textureCanvas.width = textureWidth * pixelRatio
+        textureCanvas.height = textureHeight * pixelRatio
+        textureCanvas.style.width = `${textureWidth}px`
+        textureCanvas.style.height = `${textureHeight}px`
+
+        const context = textureCanvas.getContext('2d')
+        if (context) {
+          context.scale(pixelRatio, pixelRatio)
+          context.clearRect(0, 0, textureWidth, textureHeight)
+          context.fillStyle = 'rgba(3, 8, 6, 0.48)'
+          context.fillRect(18, 18, textureWidth - 36, textureHeight - 36)
+          context.strokeStyle = 'rgba(245, 242, 232, 0.72)'
+          context.lineWidth = 2
+          context.strokeRect(18, 18, textureWidth - 36, textureHeight - 36)
+
+          context.strokeStyle = 'rgba(255, 255, 255, 0.96)'
+          context.lineWidth = 5
+          context.beginPath()
+          context.moveTo(18, 76)
+          context.lineTo(18, 18)
+          context.lineTo(78, 18)
+          context.moveTo(textureWidth - 78, textureHeight - 18)
+          context.lineTo(textureWidth - 18, textureHeight - 18)
+          context.lineTo(textureWidth - 18, textureHeight - 76)
+          context.stroke()
+
+          const heading = (chemistryTitle || 'Состав продукта').toUpperCase()
+          context.fillStyle = '#f8f5ec'
+          context.font = '800 31px Arial, sans-serif'
+          context.fillText(heading.length > 25 ? heading.slice(0, 25) : heading, 46, 72)
+          context.strokeStyle = 'rgba(245, 242, 232, 0.28)'
+          context.lineWidth = 1
+          context.beginPath()
+          context.moveTo(46, 96)
+          context.lineTo(textureWidth - 46, 96)
+          context.stroke()
+
+          chemistry.forEach(([name, value, note], index) => {
+            const y = 150 + index * 116
+            if (index > 0) {
+              context.strokeStyle = 'rgba(245, 242, 232, 0.18)'
+              context.beginPath()
+              context.moveTo(46, y - 34)
+              context.lineTo(textureWidth - 46, y - 34)
+              context.stroke()
+            }
+
+            context.fillStyle = '#efe7b1'
+            context.font = `${name.length > 5 ? 700 : 800} ${name.length > 5 ? 36 : 46}px Arial, sans-serif`
+            context.fillText(name, 52, y + 38)
+
+            context.fillStyle = '#fffdf5'
+            context.font = '800 27px Arial, sans-serif'
+            context.fillText(value, 280, y + 20)
+
+            context.fillStyle = 'rgba(245, 242, 232, 0.76)'
+            context.font = '500 22px Arial, sans-serif'
+            context.fillText(note, 280, y + 54)
+          })
+        }
+
+        const texture = new THREE.CanvasTexture(textureCanvas)
+        texture.colorSpace = THREE.SRGBColorSpace
+        texture.anisotropy = Math.min(8, webglRenderer.capabilities.getMaxAnisotropy())
+        const material = new THREE.SpriteMaterial({
+          map: texture,
+          transparent: true,
+          depthTest: false,
+          depthWrite: false,
+        })
+        const annotation = new THREE.Sprite(material)
+        annotation.position.set(0.38, 0.08, 0.1)
+        annotation.scale.set(0.82, 0.74, 1)
+        scene.add(annotation)
+
+        disposeSceneAnnotations = () => {
+          scene.remove(annotation)
+          texture.dispose()
+          material.dispose()
+        }
+      }
 
       let loadedModel: Object3D | null = null
       disposeLoadedModel = () => {
@@ -397,7 +499,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       const resize = () => {
         const { width, height } = mount.getBoundingClientRect()
         camera.aspect = width / Math.max(height, 1)
-        camera.position.z = width < 640 ? 5.2 : 3.55
+        camera.position.z = chemistry?.length ? 4.1 : width < 640 ? 5.2 : 3.55
         camera.updateProjectionMatrix()
         webglRenderer.setSize(width, height, false)
       }
@@ -448,12 +550,13 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
       resizeObserver?.disconnect()
       controls?.dispose()
       disposeLoadedModel()
+      disposeSceneAnnotations()
       renderer?.dispose()
       rendererCanvas?.remove()
       mount.classList.remove('is-loaded')
       mount.classList.remove('has-error')
     }
-  }, [model, variant])
+  }, [model, variant, chemistry, chemistryTitle])
 
   return (
     <div className="localModelViewer" ref={mountRef} data-testid="rock-viewer">
@@ -545,16 +648,9 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
             model={model.model}
             poster={model.poster}
             variant={model.variant as RockVariant}
+            chemistry={model.chemistry as ChemistryRow[]}
+            chemistryTitle={model.title}
           />
-          <div className="modelChemCard" aria-label="Ключевые показатели состава">
-            {model.chemistry.map(([name, value, note]) => (
-              <span key={name}>
-                <strong>{name}</strong>
-                <b>{value}</b>
-                <small>{note}</small>
-              </span>
-            ))}
-          </div>
         </div>
       </aside>
     </article>

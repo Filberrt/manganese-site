@@ -8156,11 +8156,11 @@ button,
 /* Product detail comfort pass: more air in the text card, no inner 3D frame. */
 .productStandaloneIntro,
 .productStandalonePage .productDetailCard {
-  width: min(1340px, calc(100vw - 96px));
+  width: min(1380px, calc(100vw - 72px));
 }
 
 .productStandalonePage .productDetailCard {
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.42fr);
+  grid-template-columns: minmax(0, 1fr) minmax(460px, 0.5fr);
   height: min(640px, calc(100svh - 164px));
   gap: 18px;
 }
@@ -8246,7 +8246,7 @@ button,
 
 .productModelPanel .localModelViewer {
   position: absolute;
-  inset: 94px 47% 0 0;
+  inset: 0;
   min-height: 0;
   height: auto;
   border: 0;
