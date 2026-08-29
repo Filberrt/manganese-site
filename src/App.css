@@ -9338,3 +9338,179 @@ textarea:focus {
     content: "Контроль";
   }
 }
+
+/* Old green cleanup: remaining cards, forms, dots and model canvases. */
+.trustGrid article,
+.articleGrid article,
+.readableArticles article,
+#product .checkList span,
+.checkList span,
+.videoPlan span,
+.requestSummary span {
+  color: #f6f1e6;
+  background:
+    linear-gradient(145deg, rgba(246, 241, 230, 0.065), rgba(246, 241, 230, 0.018)),
+    #332b28;
+  border-color: rgba(187, 170, 150, 0.28);
+  box-shadow: 0 22px 58px rgba(24, 21, 20, 0.2);
+}
+
+.articleGrid article::before {
+  background: linear-gradient(180deg, #d7c8ac, #741316);
+}
+
+.trustGrid article::after {
+  display: none;
+}
+
+.trustGrid svg,
+.articleGrid svg,
+#product .checkList svg,
+.checkList svg,
+.requestSummary svg,
+.videoPlan span::before {
+  color: #d7c8ac;
+}
+
+.trustGrid p,
+.articleGrid p,
+.readableArticles p,
+.requestSummary span,
+.checkList span,
+.videoPlan span {
+  color: rgba(246, 241, 230, 0.78);
+}
+
+.trustGrid h3,
+.articleGrid h3,
+.readableArticles h3,
+.checkList strong {
+  color: #f6f1e6;
+}
+
+.trustGrid button,
+.trustGrid a,
+.articleGrid button,
+.readableArticles button,
+.documentOpenCta {
+  color: #181514;
+  background:
+    linear-gradient(135deg, rgba(246, 241, 230, 0.34), transparent 38%),
+    linear-gradient(135deg, #eee8d8 0%, #d7c8ac 52%, #bbaa96 100%);
+  border-color: rgba(246, 241, 230, 0.42);
+  box-shadow: 0 14px 34px rgba(24, 21, 20, 0.2);
+}
+
+.trustGrid button:hover,
+.trustGrid a:hover,
+.articleGrid button:hover,
+.readableArticles button:hover {
+  background:
+    linear-gradient(135deg, rgba(246, 241, 230, 0.42), transparent 40%),
+    linear-gradient(135deg, #f6f1e6 0%, #bbaa96 58%, #8d8075 100%);
+}
+
+.trustGrid button::after,
+.trustGrid a::after,
+.articleGrid button::after,
+.readableArticles button::after,
+.documentOpenCta::after {
+  display: none;
+}
+
+.videoFrame,
+.videoSlide .videoFrame,
+.modalFilm {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(187, 170, 150, 0.12), transparent 34%),
+    linear-gradient(145deg, rgba(102, 87, 84, 0.54), rgba(43, 36, 34, 0.96)),
+    #332b28;
+  border-color: rgba(187, 170, 150, 0.32);
+}
+
+.videoFrame::before {
+  background:
+    linear-gradient(rgba(238, 232, 216, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 232, 216, 0.022) 1px, transparent 1px);
+  background-size: 54px 54px;
+}
+
+.videoFrame::after {
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 22%, rgba(24, 21, 20, 0.32) 58%, rgba(24, 21, 20, 0.52) 100%);
+}
+
+.contacts form,
+#contacts form {
+  color: #f6f1e6;
+  background:
+    linear-gradient(145deg, rgba(246, 241, 230, 0.075), rgba(246, 241, 230, 0.024)),
+    #332b28;
+  border-color: rgba(187, 170, 150, 0.34);
+  box-shadow: 0 30px 82px rgba(24, 21, 20, 0.28);
+}
+
+.contacts label,
+#contacts label {
+  color: #f6f1e6;
+}
+
+.contacts input,
+.contacts textarea,
+#contacts input,
+#contacts textarea {
+  color: #f6f1e6;
+  background: #181514;
+  border-color: rgba(187, 170, 150, 0.28);
+}
+
+.productModelViewport,
+.productModelPanel .localModelViewer,
+.productModelBlock .localModelViewer,
+.modelViewer,
+.localModelViewer {
+  background:
+    radial-gradient(circle at 30% 60%, rgba(187, 170, 150, 0.15), transparent 30%),
+    radial-gradient(circle at 72% 34%, rgba(116, 19, 22, 0.17), transparent 32%),
+    linear-gradient(180deg, rgba(51, 43, 40, 0.9), #181514);
+}
+
+.productModelPanel .localModelViewer canvas,
+.productModelBlock .localModelViewer canvas,
+.localModelViewer canvas {
+  background: transparent;
+}
+
+.modelChemCard {
+  color: #f6f1e6;
+  background: rgba(43, 36, 34, 0.82);
+  border-color: rgba(215, 200, 172, 0.56);
+  box-shadow: 0 18px 48px rgba(24, 21, 20, 0.24);
+}
+
+.modelChemCard b,
+.modelChemCard strong {
+  color: #d7c8ac;
+}
+
+.modelChemCard small,
+.modelChemCard span {
+  color: rgba(246, 241, 230, 0.78);
+}
+
+.slideNav a {
+  background: rgba(187, 170, 150, 0.18);
+  border-color: rgba(238, 232, 216, 0.18);
+}
+
+.slideNav a:hover,
+.slideNav a.active {
+  background: #bbaa96;
+  border-color: #d7c8ac;
+}
+
+.slideNav a span {
+  color: #f6f1e6;
+  background: rgba(43, 36, 34, 0.88);
+  border-color: rgba(187, 170, 150, 0.32);
+}
