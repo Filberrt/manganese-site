@@ -4,8 +4,6 @@ import {
   ArrowRight,
   Check,
   CheckCircle2,
-  ChevronLeft,
-  ChevronRight,
   ClipboardCheck,
   Copy,
   FileText,
@@ -100,6 +98,13 @@ const productPageCards = [
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Основной продукт для металлургических предприятий: понятная сырьевая база, подготовка на ДСК и документы по каждой партии.',
     image: 'product/manganese-limestone-material.webp',
+    model: {
+      title: 'Марганцовистый известняк',
+      subtitle: '3D-образец продукта',
+      model: 'models/fast/limestone.glb',
+      poster: 'models/posters/limestone.webp',
+      variant: 'limestone',
+    },
     badges: ['Фракция 0-6', 'ТУ 0751-001-38476082-2025', 'ДСК 40 тыс. т/мес', 'Ресурсы 140 млн т'],
     specs: [
       ['Материал', 'Марганцовистый известняк'],
@@ -128,6 +133,13 @@ const productPageCards = [
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Отдельное направление для строительных материалов: большие ресурсы, переработка на ДСУ и отгрузка под объем клиента.',
     image: 'product/gypsum-anhydrite-material.webp',
+    model: {
+      title: 'Гипсоангидритовый камень',
+      subtitle: '3D-образец продукта',
+      model: 'models/fast/gypsum.glb',
+      poster: 'models/posters/gypsum.webp',
+      variant: 'gypsum',
+    },
     badges: ['ГОСТ 4013-2019', 'Ресурсы 434 млн т', 'ДСУ до 45 тыс. т/мес', 'Толща более 12 кв. км'],
     specs: [
       ['Материал', 'Гипсовый и ангидритовый камень'],
@@ -177,72 +189,6 @@ const galleryItems = [
   ['Карьер Северный', 'gallery/gallery-severny-v2.webp'],
 ]
 
-const sampleModels = [
-  {
-    title: 'Марганцовистый известняк',
-    subtitle: 'основной продукт',
-    model: 'models/fast/limestone.glb',
-    poster: 'models/posters/limestone.webp',
-    variant: 'limestone',
-  },
-  {
-    title: 'Флюсовое сырье',
-    subtitle: 'отдельная 3D-модель',
-    model: 'models/fast/flux.glb',
-    poster: 'models/posters/flux.webp',
-    variant: 'flux',
-  },
-  {
-    title: 'Гипсоангидритовый камень',
-    subtitle: 'отдельная 3D-модель',
-    model: 'models/fast/gypsum.glb',
-    poster: 'models/posters/gypsum.webp',
-    variant: 'gypsum',
-  },
-]
-
-const modelAssetManifest: Record<string, string[]> = {
-  'models/fast/limestone.glb': ['models/fast/limestone.glb'],
-  'models/fast/flux.glb': ['models/fast/flux.glb'],
-  'models/fast/gypsum.glb': ['models/fast/gypsum.glb'],
-}
-
-let firstModelWarmupPromise: Promise<void> | null = null
-let allModelsWarmupPromise: Promise<void> | null = null
-
-const preloadModelAssets = (models: typeof sampleModels) => {
-  const modelUrls = Array.from(new Set(models.flatMap((model) => modelAssetManifest[model.model] ?? [model.model])))
-
-  return Promise.all([
-    import('three'),
-    import('three/examples/jsm/controls/OrbitControls.js'),
-    import('three/examples/jsm/loaders/GLTFLoader.js'),
-    ...modelUrls.map((url) => fetch(asset(url), { cache: 'force-cache' }).catch(() => null)),
-  ])
-    .then(() => undefined)
-    .catch((error) => {
-      console.warn('3D warmup failed', error)
-    })
-
-}
-
-const warmup3DAssets = (scope: 'first' | 'all' = 'first') => {
-  if (scope === 'all') {
-    if (!allModelsWarmupPromise) {
-      allModelsWarmupPromise = preloadModelAssets(sampleModels)
-      firstModelWarmupPromise = firstModelWarmupPromise ?? allModelsWarmupPromise
-    }
-
-    return allModelsWarmupPromise
-  }
-
-  if (!firstModelWarmupPromise) {
-    firstModelWarmupPromise = preloadModelAssets([sampleModels[0]])
-  }
-
-  return firstModelWarmupPromise
-}
-
 const articlePlan = [
   {
     title: 'Как оценить марганцовистый известняк перед пробной партией',
@@ -290,12 +236,9 @@ const slideItems = [
   ['top', 'Старт'],
   ['video', 'Ролик'],
   ['product', 'Наши продукты'],
-  ['manganese-flux', 'Флюс'],
-  ['gypsum-stone', 'Гипс'],
   ['benefits', 'Выгоды'],
   ['route', 'О компании'],
   ['gallery', 'Фото'],
-  ['sample', '3D'],
   ['analysis', 'Состав'],
   ['documents', 'Документы'],
   ['articles', 'Статьи'],
@@ -486,21 +429,13 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 
         console.error('Failed to pre-initialize 3D viewer', error)
       })
-    }, window.location.hash === '#sample' ? 0 : 700)
-
-    const startForSampleHash = () => {
-      if (window.location.hash === '#sample') void startViewer()
-    }
-
-    startForSampleHash()
-    window.addEventListener('hashchange', startForSampleHash)
+    }, 700)
 
     return () => {
       isDisposed = true
       window.clearTimeout(eagerStartTimer)
       window.cancelAnimationFrame(frameId)
       loadObserver.disconnect()
-      window.removeEventListener('hashchange', startForSampleHash)
       resizeObserver?.disconnect()
       controls?.dispose()
       disposeLoadedModel()
@@ -522,7 +457,7 @@ function RockSample({ model, poster, variant = 'limestone' }: { model: string; p
 type ProductPageCard = (typeof productPageCards)[number]
 
 function ProductDetailCard({ product, titleId }: { product: ProductPageCard; titleId?: string }) {
-  const { eyebrow, title, lead, image, badges, specs, useCases, documents } = product
+  const { eyebrow, title, lead, image, model, badges, specs, useCases, documents } = product
 
   return (
     <article className="productDetailCard" data-reveal>
@@ -545,6 +480,20 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
           {badges.map((badge) => (
             <span key={badge}>{badge}</span>
           ))}
+        </div>
+
+        <div className="productModelBlock">
+          <div>
+            <small>{model.subtitle}</small>
+            <strong>{model.title}</strong>
+            <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
+          </div>
+          <RockSample
+            key={model.model}
+            model={model.model}
+            poster={model.poster}
+            variant={model.variant as RockVariant}
+          />
         </div>
 
         <div className="productDetailContent">
@@ -607,7 +556,6 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
 function App() {
   const [activeSlide, setActiveSlide] = useState('top')
   const [activeProductPageId, setActiveProductPageId] = useState<string | null>(() => getProductRouteId())
-  const [activeModel, setActiveModel] = useState(0)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
@@ -621,9 +569,6 @@ function App() {
     const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
     setActiveDocument(documentIndex >= 0 ? documentIndex : 0)
   }
-  const selectedModel = sampleModels[activeModel]
-  const selectPreviousModel = () => setActiveModel((current) => (current + sampleModels.length - 1) % sampleModels.length)
-  const selectNextModel = () => setActiveModel((current) => (current + 1) % sampleModels.length)
   const copyWithTextarea = (value: string) => {
     const textarea = document.createElement('textarea')
     textarea.value = value
@@ -768,16 +713,11 @@ function App() {
     scrollToHash()
     window.addEventListener('hashchange', scrollToHash)
 
-    const warmupTimer = window.setTimeout(() => {
-      void warmup3DAssets('all')
-    }, 120)
-
     return () => {
       observer.disconnect()
       lazyBgObserver?.disconnect()
       slideObserver.disconnect()
       window.removeEventListener('hashchange', scrollToHash)
-      window.clearTimeout(warmupTimer)
     }
   }, [])
 
@@ -823,14 +763,6 @@ function App() {
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
           <a href="#gallery">Фотогалерея</a>
-          <a
-            href="#sample"
-            onClick={() => void warmup3DAssets('all')}
-            onFocus={() => void warmup3DAssets('all')}
-            onPointerEnter={() => void warmup3DAssets('all')}
-          >
-            3D
-          </a>
           <a href="#articles">Статьи</a>
           <a href="#contacts">Контакты</a>
         </nav>
@@ -864,9 +796,6 @@ function App() {
             href={`#${id}`}
             key={id}
             aria-label={label}
-            onClick={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
-            onFocus={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
-            onPointerEnter={id === 'sample' ? () => void warmup3DAssets('all') : undefined}
           >
             <span>{label}</span>
           </a>
@@ -970,12 +899,6 @@ function App() {
         </aside>
       </section>
 
-      {productPageCards.map((product) => (
-        <section className="section productPageSlide snapSlide darkSlide" id={product.id} data-slide key={product.id}>
-          <ProductDetailCard product={product} />
-        </section>
-      ))}
-
       <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Преимущества продукта</p>
@@ -1037,55 +960,6 @@ function App() {
               <h3>{title}</h3>
             </article>
           ))}
-        </div>
-      </section>
-
-      <section className="section sampleSlide snapSlide darkSlide" id="sample" data-slide>
-        <div className="sampleCopy" data-reveal>
-          <p className="eyebrow">3D-модель сырья</p>
-          <h2>3D-модель</h2>
-          <p>Марганцовистый известняк, флюсовое сырье и гипсоангидритовый камень показаны как отдельные образцы с читаемой фактурой поверхности.</p>
-        </div>
-        <div className="sampleShowcase" data-reveal>
-          <div className="modelSwitch" aria-label="Выбор 3D-образца">
-            {sampleModels.map((item, index) => (
-              <button
-                aria-pressed={activeModel === index}
-                className={activeModel === index ? 'is-active' : ''}
-                key={item.title}
-                onClick={() => setActiveModel(index)}
-                type="button"
-              >
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {item.title}
-              </button>
-            ))}
-          </div>
-          <div className="modelTheater">
-            <button className="modelArrow modelArrowPrev" type="button" onClick={selectPreviousModel} aria-label="Предыдущий образец">
-              <ChevronLeft size={24} aria-hidden="true" />
-            </button>
-            <article className={`modelHero modelHero-${selectedModel.variant}`}>
-              <div className="modelHeroHeader">
-                <span>{selectedModel.subtitle}</span>
-                <strong>{selectedModel.title}</strong>
-              </div>
-              <RockSample
-                key={selectedModel.model}
-                model={selectedModel.model}
-                poster={selectedModel.poster}
-                variant={selectedModel.variant as RockVariant}
-              />
-            </article>
-            <button className="modelArrow modelArrowNext" type="button" onClick={selectNextModel} aria-label="Следующий образец">
-              <ChevronRight size={24} aria-hidden="true" />
-            </button>
-          </div>
-          <div className="modelHints" aria-label="Управление 3D-моделью">
-            <span><CheckCircle2 size={18} aria-hidden="true" /> Вращайте модель мышью или пальцем</span>
-            <span><CheckCircle2 size={18} aria-hidden="true" /> Приближайте колесом или жестом</span>
-            <span><CheckCircle2 size={18} aria-hidden="true" /> Переключайте образцы кнопками и стрелками</span>
-          </div>
         </div>
       </section>
 
@@ -1342,14 +1216,6 @@ function App() {
             <a href="#/gypsum-stone">Гипсовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
-            <a
-              href="#sample"
-              onClick={() => void warmup3DAssets('all')}
-              onFocus={() => void warmup3DAssets('all')}
-              onPointerEnter={() => void warmup3DAssets('all')}
-            >
-              3D-образцы
-            </a>
             <a href="#analysis">Состав</a>
           </div>
           <div className="footerBlock">
