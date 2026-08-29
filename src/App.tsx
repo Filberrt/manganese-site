@@ -534,21 +534,13 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 
 function ProductStandalonePage({ product }: { product: ProductPageCard }) {
   return (
-    <section className="section productStandalonePage darkSlide" id={`${product.id}-page`} data-slide>
+    <section className="section productStandalonePage snapSlide darkSlide" id={`${product.id}-page`} data-slide>
       <div className="productStandaloneIntro" data-reveal>
         <a href="#top">Главная</a>
         <span>/</span>
         <strong>{product.title}</strong>
       </div>
       <ProductDetailCard product={product} />
-      <div className="productStandaloneBottom" data-reveal>
-        <div>
-          <small>Преимущество для клиента</small>
-          <strong>Быстро понять, подходит ли партия под задачу</strong>
-          <p>Параметры, документы и логистика собраны рядом, поэтому технолог и снабжение сразу видят, что уточнить перед расчетом.</p>
-        </div>
-        <a className="secondaryButton" href="#product">Все продукты</a>
-      </div>
     </section>
   )
 }
