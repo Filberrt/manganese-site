@@ -1,23 +1,27 @@
 :root {
-  color: #17201d;
-  background: #f3f1ea;
+  color: #2b2422;
+  background: #eee8d8;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ink: #17201d;
-  --deep: #111917;
-  --graphite: #26352f;
-  --steel: #4b6473;
-  --moss: #46685d;
-  --acid: #d8e45f;
-  --rust: #b7673f;
-  --paper: #fffdf5;
-  --limestone: #e7e2d6;
-  --muted: #5b665f;
-  --line: rgba(23, 32, 29, 0.14);
-  --shadow: 0 28px 90px rgba(17, 25, 23, 0.16);
+  --ink: #2b2422;
+  --deep: #181514;
+  --graphite: #665754;
+  --steel: #b7b2aa;
+  --moss: #8d8075;
+  --acid: #eee8d8;
+  --rust: #bbaa96;
+  --paper: #f6f1e6;
+  --limestone: #ddd4c5;
+  --muted: #7b7068;
+  --wine: #741316;
+  --umber: #665754;
+  --stone: #b7b2aa;
+  --sand: #bbaa96;
+  --line: rgba(43, 36, 34, 0.16);
+  --shadow: 0 28px 90px rgba(24, 21, 20, 0.18);
 }
 
 * {
@@ -8834,5 +8838,503 @@ button,
 
   .productModelPanelHeader strong {
     font-size: clamp(24px, 1.9vw, 34px);
+  }
+}
+
+/* Complete palette pass: wine, ivory, stone, sand and umber across the full site. */
+:root {
+  color: #2b2422;
+  background: #eee8d8;
+  --ink: #2b2422;
+  --deep: #181514;
+  --graphite: #665754;
+  --steel: #b7b2aa;
+  --moss: #8d8075;
+  --acid: #eee8d8;
+  --rust: #bbaa96;
+  --paper: #f6f1e6;
+  --limestone: #ddd4c5;
+  --muted: #7b7068;
+  --wine: #741316;
+  --umber: #665754;
+  --stone: #b7b2aa;
+  --sand: #bbaa96;
+  --line: rgba(43, 36, 34, 0.16);
+  --shadow: 0 28px 90px rgba(24, 21, 20, 0.18);
+}
+
+html {
+  background: #181514;
+}
+
+body {
+  background:
+    linear-gradient(rgba(238, 232, 216, 0.034) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 232, 216, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 20% 14%, rgba(116, 19, 22, 0.18), transparent 31%),
+    radial-gradient(circle at 86% 78%, rgba(187, 170, 150, 0.15), transparent 34%),
+    linear-gradient(180deg, #181514 0%, #2b2422 54%, #eee8d8 100%);
+  background-size: 64px 64px, 64px 64px, auto, auto;
+}
+
+.slideDeck {
+  scrollbar-color: #bbaa96 rgba(24, 21, 20, 0.42);
+}
+
+.slideDeck::-webkit-scrollbar-track {
+  background: rgba(24, 21, 20, 0.42);
+}
+
+.slideDeck::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #eee8d8, #bbaa96 54%, #741316);
+  border-color: rgba(24, 21, 20, 0.55);
+}
+
+.darkSlide,
+#product.elevatedSection,
+#route.routeBand,
+#gallery.gallerySlide,
+#documents.documentBand,
+#benefits.benefitsSlide,
+#contacts.contacts,
+.productStandalonePage {
+  color: #f6f1e6;
+  background:
+    linear-gradient(rgba(238, 232, 216, 0.033) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 232, 216, 0.027) 1px, transparent 1px),
+    radial-gradient(circle at 78% 18%, rgba(116, 19, 22, 0.22), transparent 25%),
+    radial-gradient(circle at 18% 86%, rgba(187, 170, 150, 0.13), transparent 30%),
+    linear-gradient(135deg, #181514 0%, #2b2422 58%, #665754 100%);
+  background-size: 54px 54px, 54px 54px, auto, auto, auto;
+}
+
+.analysisBand,
+.productPassportPage {
+  color: #2b2422;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(116, 19, 22, 0.11), transparent 29%),
+    linear-gradient(180deg, #eee8d8 0%, #ddd4c5 100%);
+}
+
+.topbar,
+.quietPanel,
+#product .productMatrix,
+.productInfoCard,
+.productModelPanel,
+.productStandaloneBottom,
+.videoFrame,
+.routeMap article,
+.benefitGrid article,
+.documentGrid article,
+.articleList article,
+.contactPanel,
+.requestCard,
+.requestSummary span,
+.checkList span,
+.productCards article,
+.siteFooter,
+.footerContactItem a,
+.copyContactButton,
+.articleModal,
+.documentModal,
+.videoModal,
+.compositionNote {
+  color: #f6f1e6;
+  background:
+    linear-gradient(145deg, rgba(246, 241, 230, 0.075), rgba(246, 241, 230, 0.02)),
+    #2b2422;
+  border-color: rgba(187, 170, 150, 0.34);
+  box-shadow: 0 26px 78px rgba(24, 21, 20, 0.26);
+}
+
+.topbar,
+.siteFooter {
+  background:
+    linear-gradient(145deg, rgba(246, 241, 230, 0.08), rgba(246, 241, 230, 0.025)),
+    #332b28;
+}
+
+.hero::after {
+  background:
+    linear-gradient(90deg, rgba(24, 21, 20, 0.94) 0%, rgba(43, 36, 34, 0.75) 43%, rgba(43, 36, 34, 0.26) 100%),
+    linear-gradient(0deg, rgba(24, 21, 20, 0.98) 0%, rgba(43, 36, 34, 0.04) 58%);
+}
+
+nav,
+.topContacts > a:not(.topCall),
+.topAddress,
+.darkSlide p,
+.productDetailHeader p:not(.eyebrow),
+.productModelPanelHeader span,
+.productCards span,
+.routeMap p,
+.benefitGrid p,
+.documentGrid p,
+.articleList p,
+.requestCard p,
+.contactLead p,
+.siteFooter span,
+.siteFooter a {
+  color: rgba(246, 241, 230, 0.78);
+}
+
+.darkSlide h2,
+.darkSlide h3,
+.hero h1,
+.sectionIntro h2,
+.productDetailHeader h2,
+.productModelPanelHeader strong,
+.productCards strong,
+.contactLead h2,
+.siteFooter strong {
+  color: #f6f1e6;
+}
+
+.eyebrow,
+.productDetailHeader .eyebrow,
+.productDetailPhotoCaption span,
+.productDetailList small,
+.productModelPanelHeader small,
+.routeMap article > span,
+.benefitGrid article span,
+.documentGrid small,
+.articleList small,
+.siteFooter small,
+.compositionNote svg {
+  color: #d7c8ac;
+}
+
+nav a::after,
+.routeMap article::before,
+.benefitGrid article::before,
+.timelineLine,
+.processRail {
+  background: linear-gradient(90deg, #d7c8ac, #741316);
+}
+
+.topCall,
+.primaryButton,
+.secondaryButton:hover,
+.primaryAction,
+.productDetailActions .primaryAction,
+.productBackButton,
+.floatingWriteCta,
+.videoFrame button,
+.productCards a,
+.documentGrid a,
+.messengerButton.telegram,
+.messengerButton.max,
+.submitButton {
+  color: #181514;
+  background:
+    linear-gradient(135deg, rgba(246, 241, 230, 0.34), transparent 37%),
+    linear-gradient(135deg, #eee8d8 0%, #bbaa96 66%, #8d8075 100%);
+  border-color: rgba(246, 241, 230, 0.46);
+  box-shadow: 0 18px 48px rgba(24, 21, 20, 0.24), 0 12px 32px rgba(187, 170, 150, 0.18);
+}
+
+.secondaryButton,
+.ghostAction,
+.productDetailActions .ghostAction,
+.contactPanel a,
+.topMail,
+.footerDocs a {
+  color: #f6f1e6;
+  background: rgba(246, 241, 230, 0.075);
+  border-color: rgba(246, 241, 230, 0.2);
+}
+
+.secondaryButton:hover,
+.ghostAction:hover,
+.contactPanel a:hover,
+.footerDocs a:hover {
+  border-color: rgba(238, 232, 216, 0.44);
+  background: rgba(116, 19, 22, 0.28);
+}
+
+.productDetailBadges span,
+.heroStats span,
+.statGrid span,
+.productSpecPill,
+.passportHead + table th,
+.tableWrap th {
+  color: #181514;
+  background: #d7c8ac;
+}
+
+.productSpecRow,
+.productInfoCard .productSpecRow,
+.productDetailList,
+.productInfoCard .productDetailList,
+.productDocumentStrip span,
+.modelChemCard,
+.techPassport,
+.tableWrap {
+  color: #f6f1e6;
+  background: rgba(246, 241, 230, 0.065);
+  border-color: rgba(187, 170, 150, 0.28);
+}
+
+.productSpecRow span,
+.productInfoCard .productSpecRow span {
+  color: rgba(238, 232, 216, 0.62);
+}
+
+.productSpecRow strong,
+.productInfoCard .productSpecRow strong,
+.productDetailList span {
+  color: #f6f1e6;
+}
+
+.productModelPanel {
+  background:
+    radial-gradient(circle at 52% 44%, rgba(116, 19, 22, 0.13), transparent 42%),
+    linear-gradient(145deg, rgba(102, 87, 84, 0.78), rgba(24, 21, 20, 0.96));
+}
+
+.productModelViewport {
+  background:
+    radial-gradient(circle at 30% 62%, rgba(187, 170, 150, 0.14), transparent 28%),
+    radial-gradient(circle at 78% 36%, rgba(116, 19, 22, 0.18), transparent 32%),
+    linear-gradient(180deg, rgba(43, 36, 34, 0.55), #181514);
+}
+
+.brandLogo,
+.siteFooter .footerLogo {
+  background: #f6f1e6;
+  border-color: rgba(187, 170, 150, 0.5);
+}
+
+.productDetailMedia,
+.productCards article,
+.galleryGrid article,
+.routeMap article,
+.documentGrid article,
+.articleList article {
+  border-color: rgba(187, 170, 150, 0.28);
+}
+
+.galleryGrid h3 {
+  color: #181514;
+  background: rgba(238, 232, 216, 0.92);
+  border-color: rgba(187, 170, 150, 0.45);
+}
+
+.passportHead {
+  color: #f6f1e6;
+  background: linear-gradient(90deg, #665754 0%, #741316 100%);
+}
+
+.techPassport td,
+.tableWrap td {
+  color: #2b2422;
+  background: #f6f1e6;
+}
+
+.techPassport tr:nth-child(even) td,
+.tableWrap tr:nth-child(even) td {
+  background: #eee8d8;
+}
+
+.productPassportIntro h2,
+.analysisBand h2,
+.analysisBand h3,
+.compositionNote strong {
+  color: #2b2422;
+}
+
+.productPassportIntro p:not(.eyebrow),
+.analysisBand p,
+.compositionNote p {
+  color: rgba(43, 36, 34, 0.72);
+}
+
+input,
+textarea {
+  color: #f6f1e6;
+  background: #181514;
+  border-color: rgba(187, 170, 150, 0.26);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(238, 232, 216, 0.48);
+}
+
+input:focus,
+textarea:focus {
+  border-color: #d7c8ac;
+  box-shadow: 0 0 0 4px rgba(187, 170, 150, 0.18);
+}
+
+/* Palette QA fixes: keep light slides readable and avoid fixed-header overlap. */
+.analysisBand .compositionNote,
+.productPassportPage .compositionNote {
+  color: #2b2422;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.46), rgba(238, 232, 216, 0.74)),
+    #eee8d8;
+  border-color: rgba(102, 87, 84, 0.18);
+  box-shadow: 0 24px 68px rgba(102, 87, 84, 0.18);
+}
+
+.analysisBand .compositionNote strong,
+.productPassportPage .compositionNote strong {
+  color: #2b2422;
+}
+
+.analysisBand .compositionNote p,
+.productPassportPage .compositionNote p {
+  color: rgba(43, 36, 34, 0.74);
+}
+
+.analysisBand .compositionNote svg,
+.productPassportPage .compositionNote svg {
+  color: #741316;
+}
+
+.heroFactStrip {
+  width: min(1080px, 100%);
+  background:
+    linear-gradient(145deg, rgba(246, 241, 230, 0.075), rgba(246, 241, 230, 0.02)),
+    rgba(43, 36, 34, 0.78);
+  border-color: rgba(187, 170, 150, 0.34);
+}
+
+.heroFactStrip article {
+  min-height: 76px;
+  padding: 14px 18px;
+}
+
+.heroFactStrip span {
+  color: #d7c8ac;
+}
+
+.heroFactStrip strong {
+  color: #f6f1e6;
+  font-size: clamp(14px, 1vw, 17px);
+  line-height: 1.12;
+}
+
+#contacts.contacts {
+  padding-top: clamp(150px, 15vh, 178px);
+  padding-bottom: clamp(34px, 5vh, 54px);
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    left: 14px;
+    right: 14px;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    width: auto;
+    max-width: calc(100vw - 28px);
+    padding: 10px 12px;
+  }
+
+  .topbar nav,
+  .topAddress {
+    display: none !important;
+  }
+
+  .brandLogoOnly .brandLogo,
+  .brandLogo {
+    width: 68px;
+    height: 50px;
+    padding: 6px 8px;
+  }
+
+  .topContacts {
+    display: flex;
+    grid-template-columns: none;
+    align-items: center;
+    justify-content: end;
+    gap: 8px;
+    width: auto;
+    min-width: 0;
+  }
+
+  .topContacts > a.topCall,
+  .topContacts > a.topMail {
+    display: inline-flex !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px;
+    min-height: 48px;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    font-size: 0 !important;
+  }
+
+  .topContacts > a.topCall svg,
+  .topContacts > a.topMail svg {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .productPassportPage {
+    padding-top: 132px;
+  }
+
+  .productPassportPage .techPassport {
+    overflow: visible;
+  }
+
+  .productPassportPage .passportHead {
+    padding: 16px;
+  }
+
+  .productPassportPage table,
+  .productPassportPage thead,
+  .productPassportPage tbody,
+  .productPassportPage tr,
+  .productPassportPage th,
+  .productPassportPage td {
+    display: block;
+    width: 100%;
+  }
+
+  .productPassportPage thead {
+    display: none;
+  }
+
+  .productPassportPage tr {
+    display: grid;
+    gap: 8px;
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(102, 87, 84, 0.14);
+  }
+
+  .productPassportPage tr:last-child {
+    border-bottom: 0;
+  }
+
+  .productPassportPage td {
+    display: grid;
+    grid-template-columns: minmax(86px, 0.38fr) minmax(0, 1fr);
+    gap: 12px;
+    padding: 0;
+    background: transparent !important;
+    line-height: 1.28;
+  }
+
+  .productPassportPage td::before {
+    color: rgba(43, 36, 34, 0.54);
+    font-size: 11px;
+    font-weight: 820;
+    text-transform: uppercase;
+  }
+
+  .productPassportPage td:nth-child(1)::before {
+    content: "Показатель";
+  }
+
+  .productPassportPage td:nth-child(2)::before {
+    content: "Диапазон";
+  }
+
+  .productPassportPage td:nth-child(3)::before {
+    content: "Контроль";
   }
 }

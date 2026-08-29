@@ -792,7 +792,11 @@ function App() {
           const target = document.getElementById(targetId)
 
           if (target) {
-            target.scrollIntoView({ behavior: 'auto', block: 'start' })
+            document.querySelector<HTMLElement>('.slideDeck')?.scrollTo({
+              top: target.offsetTop,
+              left: 0,
+              behavior: 'auto',
+            })
             target.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'))
             return
           }
@@ -900,7 +904,12 @@ function App() {
 
       window.setTimeout(() => {
         const target = document.getElementById(targetId)
-        target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const deck = document.querySelector<HTMLElement>('.slideDeck')
+        if (target && deck) {
+          deck.scrollTo({ top: target.offsetTop, left: 0, behavior: 'smooth' })
+        } else {
+          target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
         target?.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'))
       }, 80)
     }
