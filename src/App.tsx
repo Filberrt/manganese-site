@@ -946,8 +946,8 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#/manganese-flux">Марганцовистый флюс</a>
-          <a href="#/gypsum-stone">Гипсовый камень</a>
+          <a href="#/manganese-flux">Марганцовистый флюс / известняк</a>
+          <a href="#/gypsum-stone">Гипсовый / ангидритовый камень</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
           <a href="#gallery">Фотогалерея</a>
@@ -1352,8 +1352,8 @@ function App() {
           </div>
           <div className="footerBlock">
             <small>Сырье</small>
-            <a href="#/manganese-flux">Марганцовистый флюс</a>
-            <a href="#/gypsum-stone">Гипсовый камень</a>
+            <a href="#/manganese-flux">Марганцовистый флюс / известняк</a>
+            <a href="#/gypsum-stone">Гипсовый / ангидритовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
             <a href="#/manganese-flux/passport">Паспорт флюса</a>

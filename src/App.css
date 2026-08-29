@@ -217,6 +217,7 @@ nav {
 nav a {
   position: relative;
   padding: 10px 0;
+  white-space: nowrap;
 }
 
 nav a::after {
@@ -6519,8 +6520,8 @@ footer .footerDocs a {
   }
 
   .topbar nav {
-    gap: 14px;
-    font-size: 13px;
+    gap: 12px;
+    font-size: 12px;
   }
 
   .topbar nav a[href="#articles"],
