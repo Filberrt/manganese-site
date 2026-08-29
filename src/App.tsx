@@ -308,7 +308,7 @@ function RockSample({
       if (isDisposed) return
 
       const scene = new THREE.Scene()
-      scene.background = new THREE.Color('#101613')
+      scene.background = new THREE.Color('#2b2422')
 
       const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
       camera.position.set(0.08, 0.1, 3.55)
@@ -318,6 +318,7 @@ function RockSample({
       rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
+      webglRenderer.setClearColor(new THREE.Color('#2b2422'), 1)
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
       webglRenderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
       mount.appendChild(webglRenderer.domElement)

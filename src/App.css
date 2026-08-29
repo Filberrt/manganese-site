@@ -8896,6 +8896,7 @@ body {
 #gallery.gallerySlide,
 #documents.documentBand,
 #benefits.benefitsSlide,
+#articles.articlesBand,
 #contacts.contacts,
 .productStandalonePage {
   color: #f6f1e6;
@@ -9513,4 +9514,23 @@ textarea:focus {
   color: #f6f1e6;
   background: rgba(43, 36, 34, 0.88);
   border-color: rgba(187, 170, 150, 0.32);
+}
+
+#articles.articlesBand,
+.articlesBand {
+  color: #f6f1e6;
+  background:
+    linear-gradient(rgba(238, 232, 216, 0.033) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 232, 216, 0.027) 1px, transparent 1px),
+    radial-gradient(circle at 78% 18%, rgba(116, 19, 22, 0.2), transparent 25%),
+    radial-gradient(circle at 18% 86%, rgba(187, 170, 150, 0.12), transparent 30%),
+    linear-gradient(135deg, #181514 0%, #2b2422 58%, #665754 100%) !important;
+  background-size: 54px 54px, 54px 54px, auto, auto, auto !important;
+}
+
+.productModelViewport,
+.productModelViewport .localModelViewer,
+.productModelPanel .localModelViewer,
+.productModelPanel .localModelViewer canvas {
+  background-color: #2b2422 !important;
 }
