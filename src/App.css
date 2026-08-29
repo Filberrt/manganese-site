@@ -8699,3 +8699,97 @@ button,
     grid-template-columns: 1fr;
   }
 }
+
+/* Tablet product page fix: keep text and actions visible before the 3D block. */
+@media (max-width: 1180px) and (min-width: 761px) {
+  .productStandalonePage {
+    min-height: auto;
+    align-content: start;
+    padding-top: clamp(154px, 16vh, 188px);
+    padding-bottom: 44px;
+  }
+
+  .productStandaloneIntro {
+    width: min(100%, calc(100vw - 64px));
+    margin-bottom: 14px;
+  }
+
+  .productStandalonePage .productDetailCard {
+    grid-template-columns: 1fr;
+    width: min(100%, calc(100vw - 64px));
+    height: auto;
+    gap: 14px;
+    overflow: visible;
+  }
+
+  .productInfoCard {
+    grid-template-columns: minmax(340px, 0.48fr) minmax(0, 0.52fr);
+    grid-template-rows: minmax(0, 1fr);
+    min-height: 660px;
+    overflow: hidden;
+  }
+
+  .productInfoCard .productDetailMedia {
+    min-height: 660px;
+  }
+
+  .productInfoCard .productDetailBody {
+    align-content: center;
+    gap: 9px;
+    padding: 20px 24px;
+    overflow: visible;
+  }
+
+  .productInfoCard .productDetailHeader h2 {
+    font-size: clamp(28px, 3.4vw, 40px);
+  }
+
+  .productInfoCard .productDetailHeader p:not(.eyebrow) {
+    font-size: 13px;
+    line-height: 1.32;
+  }
+
+  .productInfoCard .productSpecRow {
+    min-height: 54px;
+  }
+
+  .productInfoCard .productDetailList span {
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  .productInfoCard .productDetailActions {
+    margin-top: 4px;
+  }
+
+  .productModelPanel {
+    min-height: 420px;
+    max-height: 460px;
+  }
+}
+
+@media (max-width: 860px) and (min-width: 761px) {
+  .productInfoCard {
+    grid-template-columns: minmax(300px, 0.44fr) minmax(0, 0.56fr);
+  }
+
+  .productInfoCard .productDetailBody {
+    padding: 18px 20px;
+  }
+
+  .productInfoCard .productDetailHeader h2 {
+    font-size: 28px;
+  }
+
+  .productInfoCard .productSpecTable {
+    grid-template-columns: 1fr;
+  }
+
+  .productInfoCard .productSpecRow {
+    min-height: 44px;
+  }
+
+  .productInfoCard .productDetailList {
+    padding: 10px;
+  }
+}
