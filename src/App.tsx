@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { Object3D } from 'three'
 import {
+  ArrowLeft,
   ArrowRight,
   Check,
   CheckCircle2,
-  ClipboardCheck,
   Copy,
   FileText,
   FlaskConical,
@@ -12,7 +12,6 @@ import {
   MapPin,
   Phone,
   Play,
-  ShieldCheck,
   X,
 } from 'lucide-react'
 import './App.css'
@@ -45,20 +44,20 @@ const company = {
 }
 
 const compositionRows = [
-  ['Mn', '7,9%', 'Марганцевый флюс участка Северный'],
-  ['CaO', '32,7%', 'Показатель для оценки флюсующей способности'],
-  ['SiO2', '17,0%', 'Фиксируется в протоколе анализа'],
-  ['S', '0,17%', 'Контроль серы по партии'],
-  ['P', '0,041%', 'Контроль фосфора по партии'],
-  ['Фракция', 'по паспорту партии', 'Уточняется под заявку'],
-  ['Влажность', 'по паспорту партии', 'Фиксируется при отгрузке'],
+  ['Mn', '7,6-7,9%', 'Марганцевый компонент для оценки применимости флюса'],
+  ['CaO', '32,7-34,5%', 'Флюсующая основа, влияющая на работу шихты'],
+  ['SiO2', '14,9-17,0%', 'Кремнезем контролируют как технологическое ограничение'],
+  ['S', 'до 0,17%', 'Сера фиксируется для контроля требований плавки'],
+  ['P', 'до 0,041%', 'Фосфор контролируется по протоколу анализа партии'],
+  ['Фракция', 'по паспорту партии', 'Подбирается под оборудование и способ подачи'],
+  ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дозирования'],
   ['Примеси', 'по протоколу лаборатории', 'Al2O3, Fe2O3, MgO и другие показатели'],
 ]
 
 const heroFacts = [
   ['Ресурсы флюса', '140 млн тонн'],
   ['Производительность', 'До 500 тыс. тонн в год'],
-  ['Логистика', 'Авто и железная дорога'],
+  ['Логистика', 'Авто и ЖД площадка'],
   ['Контроль партии', 'Паспорт и протокол'],
 ]
 
@@ -70,10 +69,10 @@ const documentCards = [
 ]
 
 const routeSteps = [
-  ['01', 'Добыча', 'Марганцевый флюс добывают на карьерах Северный и Ново-Северный, гипсовый камень - на Тюлько-Тюбинском месторождении в Иглинском районе.'],
-  ['02', 'Переработка', 'Флюс проходит подготовку на ДСК мощностью 40 тыс. тонн в месяц, гипсовый камень - на ДСУ до 45 тыс. тонн в месяц.'],
-  ['03', 'Лабораторные испытания', 'По партии готовят паспорт качества и протокол анализа: состав, фракция, влажность и примеси видны до согласования поставки.'],
-  ['04', 'Отгрузка готового продукта', 'Есть дорога к ЖД площадке, ветка до станции Аша 7,7 км, размещение 90 вагонов, склад 15 тыс. тонн и погрузка до 100 тыс. тонн в месяц.'],
+  ['01', 'Карьерная добыча', 'Сырье добывается на участках Северный и Ново-Северный с фиксацией происхождения партии для дальнейшего лабораторного контроля.'],
+  ['02', 'Переработка на ДСК', 'Материал проходит дробление, сортировку и подготовку фракции; расчетная мощность комплекса - до 40 тыс. тонн в месяц.'],
+  ['03', 'Контроль качества', 'По партии проверяют химический состав, фракцию, влажность и примеси; результаты заносятся в паспорт и протокол анализа.'],
+  ['04', 'Отгрузка клиенту', 'Партия отгружается автотранспортом или через ЖД площадку: ветка до станции Аша 7,7 км, склад до 15 тыс. тонн.'],
 ]
 
 const productCards = [
@@ -104,6 +103,11 @@ const productPageCards = [
       model: 'models/fast/limestone.glb',
       poster: 'models/posters/limestone.webp',
       variant: 'limestone',
+      chemistry: [
+        ['CaO', '32,7-34,5%', 'Флюсующая основа'],
+        ['Mn', '7,6-7,9%', 'Марганцевый компонент'],
+        ['SiO2', '14,9-17,0%', 'Контроль кремнезема'],
+      ],
     },
     badges: ['Фракция 0-6', 'ТУ 0751-001-38476082-2025', 'ДСК 40 тыс. т/мес', 'Ресурсы 140 млн т'],
     specs: [
@@ -116,7 +120,7 @@ const productPageCards = [
     ],
     useCases: [
       'Подходит для агломерации, окатышей, доменных печей и сталеплавильного производства.',
-      'Помогает снизить расход кокса и поддерживать стабильную работу печей.',
+      'Помогает стабилизировать состав шихты и поддерживать предсказуемый режим печи.',
       'Сокращает зависимость от импортных марганцевых материалов.',
       'Состав, фракция и влажность фиксируются по конкретной партии.',
     ],
@@ -139,6 +143,11 @@ const productPageCards = [
       model: 'models/fast/gypsum.glb',
       poster: 'models/posters/gypsum.webp',
       variant: 'gypsum',
+      chemistry: [
+        ['CaSO4', 'ГОСТ 4013-2019', 'Основа гипсового камня'],
+        ['H2O', 'по паспорту', 'Контроль влажности'],
+        ['Примеси', 'по протоколу', 'Проверка партии'],
+      ],
     },
     badges: ['ГОСТ 4013-2019', 'Ресурсы 434 млн т', 'ДСУ до 45 тыс. т/мес', 'Толща более 12 кв. км'],
     specs: [
@@ -166,10 +175,10 @@ const productPageCards = [
 ]
 
 const benefitCards = [
-  ['01', 'Ниже расход кокса', 'Марганцевый флюс помогает экономить топливо и держать плавку стабильнее.'],
+  ['01', 'Стабильнее шихта', 'Марганцовистый флюс помогает выровнять состав сырья и держать процесс плавки предсказуемым.'],
   ['02', 'Выше выпуск', 'Подготовленное сырье помогает агломашине и печам работать ровнее, с меньшим числом остановок.'],
   ['03', 'Меньше импортной зависимости', 'Собственная база в Башкортостане снижает зависимость от привозных марганцевых материалов.'],
-  ['04', 'Проще планировать поставку', 'ДСК, склад и железнодорожная площадка помогают заранее согласовать объем, сроки и станцию.'],
+  ['04', 'Понятная отгрузка', 'Автотранспорт и ЖД площадка позволяют заранее согласовать объем, график и станцию назначения.'],
 ]
 
 const routeStageImages = [
@@ -530,6 +539,15 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
             poster={model.poster}
             variant={model.variant as RockVariant}
           />
+          <div className="modelChemCard" aria-label="Ключевые показатели состава">
+            {model.chemistry.map(([name, value, note]) => (
+              <span key={name}>
+                <strong>{name}</strong>
+                <b>{value}</b>
+                <small>{note}</small>
+              </span>
+            ))}
+          </div>
         </div>
       </aside>
     </article>
@@ -537,11 +555,22 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 }
 
 function ProductStandalonePage({ product }: { product: ProductPageCard }) {
+  const goBack = () => {
+    if (typeof window === 'undefined') return
+    if (window.history.length > 1) {
+      window.history.back()
+      return
+    }
+    window.location.hash = 'product'
+  }
+
   return (
     <section className="section productStandalonePage snapSlide darkSlide" id={`${product.id}-page`} data-slide>
       <div className="productStandaloneIntro" data-reveal>
-        <a href="#top">Главная</a>
-        <span>/</span>
+        <button className="productBackButton" type="button" onClick={goBack}>
+          <ArrowLeft size={16} aria-hidden="true" />
+          Назад
+        </button>
         <strong>{product.title}</strong>
       </div>
       <ProductDetailCard product={product} />
@@ -561,10 +590,6 @@ function App() {
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
-  const openDocument = (href: string) => {
-    const documentIndex = documentCards.findIndex(([, , documentHref]) => documentHref === href)
-    setActiveDocument(documentIndex >= 0 ? documentIndex : 0)
-  }
   const copyWithTextarea = (value: string) => {
     const textarea = document.createElement('textarea')
     textarea.value = value
@@ -859,14 +884,14 @@ function App() {
           <p className="eyebrow">Наши продукты</p>
           <h2>Сырье<br />с паспортом партии</h2>
           <p>
-            Два направления поставки: марганцовистый флюс для металлургии и гипсовый камень
+            Мы предлагаем два направления поставки: марганцовистый флюс для металлургии и гипсовый камень
             для строительных материалов.
           </p>
           <div className="checkList">
-            <span><CheckCircle2 size={20} /> Флюс помогает снижать расход кокса</span>
+            <span><CheckCircle2 size={20} /> Марганцовистый флюс для корректировки состава шихты</span>
             <span><CheckCircle2 size={20} /> Собственная сырьевая база в Башкортостане</span>
             <span><CheckCircle2 size={20} /> Паспорт качества и протокол анализа</span>
-            <span><CheckCircle2 size={20} /> Авто и железнодорожная отгрузка</span>
+            <span><CheckCircle2 size={20} /> Отгрузка автотранспортом и через ЖД площадку</span>
           </div>
         </div>
         <aside className="quietPanel productMatrix" data-reveal>
@@ -909,7 +934,7 @@ function App() {
       <section className="section routeBand snapSlide darkSlide" id="route" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">О компании</p>
-          <h2>Добыча, переработка<br />и отгрузка сырья</h2>
+          <h2>Маршрут партии<br />до предприятия клиента</h2>
         </div>
         <div className="routeMap supplyRoute">
           {routeSteps.map(([number, title, text], index) => (
@@ -958,8 +983,9 @@ function App() {
           <p className="eyebrow">Химический состав</p>
           <h2>Паспорт партии<br />с составом сырья</h2>
           <p>
-            Вынесены показатели, которые технолог запрашивает в первую очередь:
-            состав, фракция, влажность и примеси по конкретной партии.
+            Показатели нужны технологу для оценки применимости сырья:
+            марганцевый компонент, флюсующая основа, кремнезем, сера, фосфор,
+            фракция и влажность по конкретной партии.
           </p>
         </div>
         <div className="analysisLayout">
@@ -972,7 +998,7 @@ function App() {
                 <tr>
                   <th>Показатель</th>
                   <th>Диапазон</th>
-                  <th>Что подтверждает</th>
+                  <th>Назначение контроля</th>
                 </tr>
               </thead>
               <tbody>
@@ -986,25 +1012,15 @@ function App() {
               </tbody>
             </table>
           </div>
-          <div className="documentStack" data-reveal>
-            <button type="button" onClick={() => openDocument('documents/protocol-analysis.html')}>
-              <FlaskConical size={22} aria-hidden="true" />
-              <strong>Протокол анализа</strong>
-              <span>Открыть структуру документа</span>
-              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
-            </button>
-            <button type="button" onClick={() => openDocument('documents/quality-passport.html')}>
-              <ClipboardCheck size={22} aria-hidden="true" />
-              <strong>Паспорт качества</strong>
-              <span>Фракция, влажность, партия, дата</span>
-              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
-            </button>
-            <button type="button" onClick={() => openDocument('documents/license-info.html')}>
-              <ShieldCheck size={22} aria-hidden="true" />
-              <strong>Документы</strong>
-              <span>Лицензии, запасы, условия отгрузки</span>
-              <span className="documentOpenCta">Открыть <ArrowRight size={16} aria-hidden="true" /></span>
-            </button>
+          <div className="compositionNote" data-reveal>
+            <FlaskConical size={24} aria-hidden="true" />
+            <strong>Как читать паспорт партии</strong>
+            <p>
+              CaO показывает флюсующую способность материала, Mn - полезный марганцевый компонент,
+              SiO2, S и P контролируют ограничения для металлургического процесса. Итоговые значения
+              подтверждаются протоколом лабораторного анализа и паспортом качества; для флюса указан
+              ТУ 0751-001-38476082-2025.
+            </p>
           </div>
         </div>
       </section>
@@ -1055,9 +1071,9 @@ function App() {
       <section className="section articlesBand snapSlide" id="articles" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Материалы для первичной оценки</p>
-          <h2>Что проверить<br />до запроса партии</h2>
+          <h2>Инженерная оценка<br />партии сырья</h2>
           <p>
-            Кратко: состав, документы, применимость сырья и отгрузка.
+            Черновики материалов для будущих статей: состав, документы, применимость сырья и логистика.
           </p>
         </div>
         <div className="articleGrid readableArticles">
@@ -1129,16 +1145,20 @@ function App() {
         </div>
         <form data-reveal>
           <label>
-            Имя и компания
-            <input placeholder="Компания, имя, должность" />
+            Введите свои контактные данные и наименование организации
+            <input placeholder="ФИО" />
           </label>
           <label>
-            Телефон
-            <input placeholder="+7 ___ ___-__-__" />
+            Телефон или email
+            <input placeholder="+7 ___ ___-__-__ / email" />
           </label>
           <label>
-            Что нужно получить
-            <textarea placeholder="Хочу запросить расчет партии, документы или схему отгрузки" />
+            Наименование организации
+            <input placeholder="ООО, ИП или название предприятия" />
+          </label>
+          <label>
+            Опишите подробно ваш вопрос
+            <textarea placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" />
           </label>
           <button className="primaryButton" type="submit">
             Запросить расчет партии
