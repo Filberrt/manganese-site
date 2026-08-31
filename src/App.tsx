@@ -331,6 +331,7 @@ function RockSample({
       orbitControls.autoRotateSpeed = 0.9
 
       scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
+      if (variant === 'gypsum') scene.add(new THREE.AmbientLight('#fff8e6', 1.15))
 
       const keyLight = new THREE.DirectionalLight(variant === 'gypsum' ? '#fff9df' : '#fff1be', 4.2)
       keyLight.position.set(3, 4, 5)
@@ -457,7 +458,7 @@ function RockSample({
         const center = box.getCenter(new THREE.Vector3())
         const size = box.getSize(new THREE.Vector3())
         const maxAxis = Math.max(size.x, size.y, size.z) || 1
-        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.82 : 1.08) : variant === 'flux' ? 1.44 : variant === 'gypsum' ? 1.32 : 1.28
+        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.82 : 1.08) : variant === 'flux' ? 1.44 : variant === 'gypsum' ? 1.08 : 1.28
 
         loadedModel.position.sub(center)
         if (variant === 'gypsum') loadedModel.position.y += chemistry?.length ? 0.12 : 0.34
@@ -477,6 +478,8 @@ function RockSample({
                 }
                 if ('roughness' in cloned) cloned.roughness = 0.96
                 if ('metalness' in cloned) cloned.metalness = 0
+                if ('flatShading' in cloned) cloned.flatShading = false
+                if ('vertexColors' in cloned) cloned.vertexColors = false
                 cloned.needsUpdate = true
                 return cloned
               })
@@ -623,8 +626,8 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 
       <aside className="productModelPanel" aria-label={model.subtitle}>
         <div className="productModelPanelHeader">
-          <small>{model.subtitle}</small>
-          <strong>{model.title}</strong>
+          <small>{model.title}</small>
+          <strong>{model.subtitle}</strong>
           <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
         </div>
         <div

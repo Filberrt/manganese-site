@@ -10426,3 +10426,98 @@ form .primaryButton:hover,
     min-height: 56px;
   }
 }
+
+/* 31.08 final pass: keep the contact cluster compact, align section content, and
+   reserve the article glow for the hovered state shown in the reference. */
+@media (min-width: 1181px) {
+  .topbar {
+    min-height: 112px !important;
+    padding-block: 8px !important;
+  }
+
+  .topContacts {
+    width: min(460px, 32vw) !important;
+    min-width: 420px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    align-content: center;
+  }
+
+  .topContacts > a.topCall,
+  .topContacts > a.topMail {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    padding-inline: 10px !important;
+    font-size: 12px !important;
+  }
+
+  .topContacts > a.topCall {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .topContacts > a.topMail {
+    border-left: 0 !important;
+    border-radius: 0 6px 6px 0;
+    font-size: 11px !important;
+  }
+
+  .topAddress:is(a).topMapButton {
+    grid-column: 1 / -1 !important;
+    width: 360px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    justify-self: center;
+    margin-top: 6px;
+    padding-inline: 12px !important;
+    font-size: 11px !important;
+  }
+
+  #route .sectionIntro {
+    width: min(1680px, calc(100vw - 88px));
+    max-width: none;
+    margin-inline: auto;
+  }
+
+  .productPassportIntro,
+  .productPassportLayout {
+    width: min(1280px, calc(100vw - 96px)) !important;
+    max-width: none !important;
+    margin-inline: 0 !important;
+    justify-self: start !important;
+    transform: translateX(calc((100vw - min(1280px, calc(100vw - 96px))) / 2 - clamp(20px, 5vw, 72px)));
+  }
+
+  .productPassportIntro[data-reveal] {
+    transform: translateX(calc((100vw - min(1280px, calc(100vw - 96px))) / 2 - clamp(20px, 5vw, 72px))) translateY(0) !important;
+  }
+
+  .productPassportLayout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+
+  .readableArticles article {
+    background:
+      linear-gradient(145deg, rgba(246, 241, 230, 0.065), rgba(246, 241, 230, 0.018)),
+      #332b28 !important;
+  }
+
+  .readableArticles article::before {
+    opacity: 0 !important;
+  }
+
+  .readableArticles article:hover::before {
+    opacity: 1 !important;
+  }
+}
+
+.readableArticles article::before {
+  transition: opacity 220ms ease;
+}
+
+.readableArticles article:not(:hover) {
+  transform: none !important;
+}
