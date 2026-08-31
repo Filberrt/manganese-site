@@ -39,7 +39,7 @@ const company = {
   contactName: 'Банаев Александр',
   phonePrimary: '+7 (912) 286-71-11',
   phoneSecondary: '+7 (347) 246-39-13',
-  email: 'banaev89@gmail.com',
+  email: 'info@bashmineral.ru',
   location: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5',
   officeAddress: 'Иглинский район, территория Башминералресурс',
   officeAddressFull: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5. Почтовый адрес: 452408, Иглинский район, дер. Орловка',
@@ -92,13 +92,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Mn 7-10%, ТУ 0751-001-38476082-2025, ДСК 40 тыс. т/мес и поставка под металлургию.',
-    image: 'product/manganese-flux-product-v2.png',
+    image: 'product/manganese-flux-product-v3.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'ГОСТ 4013-2019, ресурсы 434 млн т, ДСУ до 45 тыс. т/мес и применение в стройматериалах.',
-    image: 'product/gypsum-anhydrite-product-v2.png',
+    image: 'product/gypsum-anhydrite-product-v3.png',
   },
 ]
 
@@ -108,7 +108,7 @@ const productPageCards = [
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Флюс Улу-Телякского месторождения с Mn 7-10%: два карьера, подготовка на ДСК и документы по каждой партии.',
-    image: 'product/manganese-flux-product-v2.png',
+    image: 'product/manganese-flux-product-v3.png',
     model: {
       title: 'Марганцовистый флюс',
       subtitle: '3D-образец продукта',
@@ -145,11 +145,11 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product-v2.png',
+    image: 'product/gypsum-anhydrite-product-v3.png',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-образец продукта',
-      model: 'models/fast/gypsum.glb',
+      model: 'models/fast/gypsum-anhydrite-custom.glb',
       poster: 'models/posters/gypsum.webp',
       variant: 'gypsum',
     },
@@ -660,12 +660,7 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
   return (
     <section className="section productPassportPage analysisBand snapSlide" id={`/${product.id}/passport`} data-slide>
       <div className="productPassportIntro" data-reveal>
-        <p className="eyebrow">Паспорт партии</p>
         <h2>{isGypsum ? 'Паспорт гипсового камня' : 'Паспорт флюса'}<br />с показателями сырья</h2>
-        <p>
-          Этот блок привязан к выбранному продукту: сначала карточка с описанием,
-          затем показатели, которые согласуют перед расчетом партии.
-        </p>
       </div>
       <div className="analysisLayout productPassportLayout">
         <div className="tableWrap techPassport" data-reveal>
@@ -690,6 +685,10 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
               ))}
             </tbody>
           </table>
+          <a className="passportContactCta shineAction" href="#contacts">
+            Написать нам
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </div>
         <div className="compositionNote" data-reveal>
           <FlaskConical size={24} aria-hidden="true" />
@@ -719,7 +718,6 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
             <ArrowLeft size={16} aria-hidden="true" />
             Назад
           </button>
-          <p className="productRouteCompany">{company.legalName}</p>
           <h1>{product.title}</h1>
         </div>
         <ProductDetailCard product={product} titleId={`${product.id}-eyebrow`} />
