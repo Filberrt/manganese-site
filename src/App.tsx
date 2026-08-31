@@ -40,7 +40,6 @@ const company = {
   phonePrimary: '+7 (912) 286-71-11',
   phoneSecondary: '+7 (347) 246-39-13',
   email: 'banaev89@gmail.com',
-  website: 'bashmineral.ru',
   location: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5',
   officeAddress: 'Иглинский район, территория Башминералресурс',
   officeAddressFull: 'Республика Башкортостан, Иглинский район, с.п. Красновосходский сельсовет, территория Башминералресурс, здание 5. Почтовый адрес: 452408, Иглинский район, дер. Орловка',
@@ -74,7 +73,7 @@ const heroFacts = [
 ]
 
 const documentCards = [
-  ['Протокол лабораторного анализа', 'Химический состав партии: Mn, CaO, SiO2, MgO, Fe, P, S и другие показатели', 'documents/protocol-analysis.html'],
+  ['Протокол лабораторного анализа', 'Химический состав партии:\nMn, CaO, SiO2, MgO, Fe, P, S\nи другие показатели', 'documents/protocol-analysis.html'],
   ['Паспорт качества партии', 'Фракция, влажность, номер партии, дата отбора, ответственное лицо', 'documents/quality-passport.html'],
   ['Лицензии и сведения по запасам', 'Сканы лицензий, маркшейдерские материалы и подтверждения по добыче сырья', 'documents/license-info.html'],
   ['Условия отгрузки', 'Поставка своими авто и через железнодорожную площадку с веткой до станции Аша', 'documents/shipping-terms.html'],
@@ -93,13 +92,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Mn 7-10%, ТУ 0751-001-38476082-2025, ДСК 40 тыс. т/мес и поставка под металлургию.',
-    image: 'product/manganese-flux-product.png',
+    image: 'product/manganese-flux-product-v2.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'ГОСТ 4013-2019, ресурсы 434 млн т, ДСУ до 45 тыс. т/мес и применение в стройматериалах.',
-    image: 'product/gypsum-anhydrite-product.png',
+    image: 'product/gypsum-anhydrite-product-v2.png',
   },
 ]
 
@@ -108,23 +107,18 @@ const productPageCards = [
     id: 'manganese-flux',
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
-    lead: 'Марганцевый флюс Улу-Телякского месторождения с Mn 7-10%: добыча на двух карьерах, подготовка на ДСК и документы по каждой партии.',
-    image: 'product/manganese-flux-product.png',
+    lead: 'Флюс Улу-Телякского месторождения с Mn 7-10%: два карьера, подготовка на ДСК и документы по каждой партии.',
+    image: 'product/manganese-flux-product-v2.png',
     model: {
-      title: 'Марганцовистый известняк',
+      title: 'Марганцовистый флюс',
       subtitle: '3D-образец продукта',
-      model: 'models/fast/limestone.glb',
-      poster: 'models/posters/limestone.webp',
-      variant: 'limestone',
-      chemistry: [
-        ['CaO', '32,7-34,5%', 'Флюсующая основа'],
-        ['Mn', '7,6-7,9%', 'Марганцевый компонент'],
-        ['SiO2', '14,9-17,0%', 'Контроль кремнезема'],
-      ],
+      model: 'models/fast/flux.glb',
+      poster: 'models/posters/flux.webp',
+      variant: 'flux',
     },
     badges: ['Mn 7-10%', 'Фракция 0-6', 'ТУ 0751-001-38476082-2025', 'ДСК 40 тыс. т/мес', 'Ресурсы 140 млн т'],
     specs: [
-      ['Материал', 'Марганцовистый известняк'],
+      ['Материал', 'Марганцовистый флюс'],
       ['Карьеры', 'Северный и Ново-Северный'],
       ['Ресурсы', '140 млн тонн'],
       ['Производительность', 'до 500 тыс. тонн в год'],
@@ -151,18 +145,13 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product.png',
+    image: 'product/gypsum-anhydrite-product-v2.png',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-образец продукта',
       model: 'models/fast/gypsum.glb',
       poster: 'models/posters/gypsum.webp',
       variant: 'gypsum',
-      chemistry: [
-        ['CaSO4', 'ГОСТ 4013-2019', 'Основа гипсового камня'],
-        ['H2O', 'по паспорту', 'Контроль влажности'],
-        ['Примеси', 'по протоколу', 'Проверка партии'],
-      ],
     },
     badges: ['ГОСТ 4013-2019', 'Ресурсы 434 млн т', 'ДСУ до 45 тыс. т/мес', 'Толща более 12 кв. км'],
     specs: [
@@ -191,10 +180,10 @@ const productPageCards = [
 ]
 
 const benefitCards = [
-  ['01', 'Контроль до отгрузки', 'Партия проходит подготовку, лабораторную проверку и оформление показателей до передачи клиенту.'],
-  ['02', 'Параметры под задачу', 'Фракция, объем, влажность и формат поставки согласуются под технологический процесс предприятия.'],
-  ['03', 'Металлургический эффект', 'MnO снижает температуру плавления агломерата, CaCO3 служит флюсом, показатели подтверждаются протоколом.'],
-  ['04', 'Понятная отгрузка', 'Свои авто, ЖД ветка до станции Аша 7,7 км и площадка 100 тыс. т/мес помогают согласовать график заранее.'],
+  ['01', 'Сначала состав', 'Технолог видит Mn, CaO, SiO2 и ограничения партии до расчета цены и графика.'],
+  ['02', 'Потом фракция', 'Фракция, влажность и объем согласуются под оборудование, а не уточняются после заявки.'],
+  ['03', 'Дальше документы', 'Паспорт и протокол показывают, какие показатели подтверждены именно по этой партии.'],
+  ['04', 'После этого отгрузка', 'Авто, ЖД ветка до Аши 7,7 км и площадка 100 тыс. т/мес дают понятный маршрут поставки.'],
 ]
 
 const routeStageImages = [
@@ -335,8 +324,8 @@ function RockSample({
       orbitControls.enableDamping = true
       orbitControls.enablePan = false
       orbitControls.enableZoom = true
-      orbitControls.minDistance = 1.85
-      orbitControls.maxDistance = 6.4
+      orbitControls.minDistance = 2.35
+      orbitControls.maxDistance = 7.2
       orbitControls.target.set(0, 0, 0)
       orbitControls.autoRotate = true
       orbitControls.autoRotateSpeed = 0.9
@@ -468,7 +457,7 @@ function RockSample({
         const center = box.getCenter(new THREE.Vector3())
         const size = box.getSize(new THREE.Vector3())
         const maxAxis = Math.max(size.x, size.y, size.z) || 1
-        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.82 : 1.08) : variant === 'flux' ? 1.28 : variant === 'gypsum' ? 1.18 : 1.45
+        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.82 : 1.08) : variant === 'flux' ? 1.44 : variant === 'gypsum' ? 1.32 : 1.28
 
         loadedModel.position.sub(center)
         if (variant === 'gypsum') loadedModel.position.y += chemistry?.length ? 0.12 : 0.34
@@ -515,7 +504,7 @@ function RockSample({
       const resize = () => {
         const { width, height } = mount.getBoundingClientRect()
         camera.aspect = width / Math.max(height, 1)
-        camera.position.z = chemistry?.length ? (width < 640 ? 6.25 : 5.45) : width < 640 ? 5.2 : 3.55
+        camera.position.z = chemistry?.length ? (width < 640 ? 6.25 : 5.45) : width < 640 ? 5.4 : 3.8
         camera.updateProjectionMatrix()
         webglRenderer.setSize(width, height, false)
       }
@@ -585,13 +574,13 @@ function RockSample({
 type ProductPageCard = (typeof productPageCards)[number]
 
 function ProductDetailCard({ product, titleId }: { product: ProductPageCard; titleId?: string }) {
-  const { eyebrow, lead, image, model, badges, specs, useCases } = product
+  const { eyebrow, lead, image, model, specs, useCases } = product
 
   return (
     <article className="productDetailCard" data-reveal>
       <div className="productInfoCard">
         <div className="productDetailMedia">
-          <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+          <img src={asset(image)} alt={product.title} loading="lazy" decoding="async" />
           <div className="productDetailPhotoCaption">
             <span>{eyebrow}</span>
             <strong>Каталожное фото сырья</strong>
@@ -602,12 +591,6 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
           <div className="productDetailHeader">
             <p className="eyebrow" id={titleId}>{eyebrow}</p>
             <p>{lead}</p>
-          </div>
-
-          <div className="productDetailBadges" aria-label="Ключевые параметры">
-            {badges.map((badge) => (
-              <span key={badge}>{badge}</span>
-            ))}
           </div>
 
           <div className="productDetailContent">
@@ -663,8 +646,6 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
             model={model.model}
             poster={model.poster}
             variant={model.variant as RockVariant}
-            chemistry={model.chemistry as ChemistryRow[]}
-            chemistryTitle={model.title}
           />
         </div>
       </aside>
@@ -738,6 +719,7 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
             <ArrowLeft size={16} aria-hidden="true" />
             Назад
           </button>
+          <p className="productRouteCompany">{company.legalName}</p>
           <h1>{product.title}</h1>
         </div>
         <ProductDetailCard product={product} titleId={`${product.id}-eyebrow`} />
@@ -962,7 +944,7 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#/manganese-flux">Марганцовистый флюс / известняк</a>
+          <a href="#/manganese-flux">Марганцовистый флюс</a>
           <a href="#/gypsum-stone">Гипсовый / ангидритовый камень</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
@@ -979,9 +961,9 @@ function App() {
             <Mail size={18} aria-hidden="true" />
             {company.email}
           </a>
-          <a className="topAddress" href={company.mapUrl} target="_blank" rel="noreferrer" title={company.officeAddressFull}>
+          <a className="topAddress topMapButton" href={company.mapUrl} target="_blank" rel="noreferrer" title={company.officeAddressFull}>
             <MapPin size={16} aria-hidden="true" />
-            {company.officeAddress}
+            Яндекс Карты
           </a>
         </div>
       </header>
@@ -1007,7 +989,6 @@ function App() {
       </div>
 
       <section className="hero snapSlide darkSlide" id="top" data-slide>
-        <span className="heroWatermark" aria-hidden="true">{company.name}</span>
         <video
           ref={heroVideoRef}
           className="heroPhoto heroVideo"
@@ -1025,6 +1006,7 @@ function App() {
         </video>
         <div className="heroShade" />
         <div className="heroInner">
+          <p className="heroCompanyEyebrow" data-reveal>{company.legalName}</p>
           <h1 data-reveal>Марганцовистый<br />флюс для металлургии</h1>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#/manganese-flux/passport">
@@ -1089,7 +1071,7 @@ function App() {
           <div className="productCards">
             {productCards.map(({ productId, title, text, image }) => (
               <article key={title}>
-                <img src={asset(image)} alt="" loading="lazy" decoding="async" />
+                <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
                 <div>
                   <strong>{title}</strong>
                   <span>{text}</span>
@@ -1279,7 +1261,7 @@ function App() {
           <div className="contactPanel">
             <a href="tel:+79122867111"><Phone size={18} /> {company.phonePrimary}</a>
             <a href={`mailto:${company.email}`}><Mail size={18} /> {company.email}</a>
-            <a href={`https://${company.website}`} target="_blank" rel="noreferrer">{company.website}</a>
+            <a href={company.mapUrl} target="_blank" rel="noreferrer"><MapPin size={18} /> Яндекс Карты</a>
           </div>
           <div className="messengerPanel" aria-label="Мессенджеры">
             <span className="messengerButton telegram" aria-disabled="true">Telegram</span>
@@ -1367,15 +1349,12 @@ function App() {
               </button>
             </div>
             <div className="footerContactItem">
-              <a href={`https://${company.website}`} target="_blank" rel="noreferrer">{company.website}</a>
-              <button type="button" className="copyContactButton" onClick={() => void copyContact(company.website)} aria-label="Скопировать сайт" title="Скопировать">
-                {copiedContact === company.website ? <Check size={15} /> : <Copy size={15} />}
-              </button>
+              <a href={company.mapUrl} target="_blank" rel="noreferrer"><MapPin size={16} /> Яндекс Карты</a>
             </div>
           </div>
           <div className="footerBlock">
             <small>Сырье</small>
-            <a href="#/manganese-flux">Марганцовистый флюс / известняк</a>
+            <a href="#/manganese-flux">Марганцовистый флюс</a>
             <a href="#/gypsum-stone">Гипсовый / ангидритовый камень</a>
             <a href="#product">Наши продукты</a>
             <a href="#gallery">Фотогалерея</a>
@@ -1394,6 +1373,7 @@ function App() {
             <a className="footerLocation" href={company.mapUrl} target="_blank" rel="noreferrer" title={company.officeAddressFull}>
               <MapPin size={18} aria-hidden="true" />
               <span>{company.location}</span>
+              <strong>Открыть в Яндекс Картах</strong>
             </a>
           </div>
         </div>

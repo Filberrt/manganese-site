@@ -9863,11 +9863,372 @@ body {
   }
 
   .productStandaloneIntro h1 {
-    font-size: clamp(35px, 10vw, 50px) !important;
-    line-height: 0.98;
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(30px, 8.6vw, 36px) !important;
+    line-height: 1.02;
+    overflow-wrap: normal;
+  }
+
+  .productStandalonePage {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .productStandalonePage .productDetailCard {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 16px !important;
+    overflow: visible !important;
+  }
+
+  .productInfoCard,
+  .productInfoCard .productDetailBody {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  .productInfoCard .productDetailMedia {
+    aspect-ratio: 4 / 3;
   }
 
   .productModelPanel {
     grid-template-rows: auto minmax(300px, 52vh);
+  }
+}
+
+/* Follow-up fixes from marked screenshots: cleaner copy, aligned product pages, no chemistry cards in the 3D view. */
+.heroCompanyEyebrow,
+.productRouteCompany {
+  margin: 0 0 12px;
+  color: rgba(246, 241, 230, 0.78);
+  font-size: clamp(12px, 0.78vw, 14px);
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.heroInner {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: start;
+  gap: 0;
+  width: min(1080px, calc(100vw - 144px)) !important;
+  max-width: none !important;
+}
+
+.heroInner h1 {
+  margin-top: 0 !important;
+}
+
+.productStandaloneIntro {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: start;
+  align-items: start;
+  width: min(1500px, calc(100vw - 120px)) !important;
+  max-width: none !important;
+  margin-inline: auto;
+  gap: 0 !important;
+}
+
+.productStandaloneIntro .productBackButton {
+  justify-self: start;
+  margin-bottom: clamp(18px, 3vh, 34px);
+}
+
+.productRouteCompany {
+  color: #d7c8ac;
+}
+
+.productStandaloneIntro h1 {
+  max-width: 720px;
+  font-size: clamp(42px, 4.1vw, 64px) !important;
+  text-align: left;
+}
+
+.productStandalonePage .productDetailCard {
+  align-items: start !important;
+}
+
+.productInfoCard {
+  grid-template-columns: minmax(360px, 420px) minmax(0, 1fr) !important;
+  grid-template-rows: auto !important;
+  gap: 0 !important;
+  align-self: start !important;
+  height: auto !important;
+}
+
+.productInfoCard .productDetailMedia {
+  min-height: 0 !important;
+  align-self: start;
+  aspect-ratio: 4 / 3;
+  padding: 12px !important;
+}
+
+.productInfoCard .productDetailMedia img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+}
+
+.productInfoCard .productDetailPhotoCaption,
+.productDetailBadges {
+  display: none !important;
+}
+
+.productInfoCard .productDetailBody {
+  align-content: start !important;
+  min-height: 0;
+}
+
+.productInfoCard .productDetailContent {
+  grid-template-columns: 1fr !important;
+}
+
+.productModelPanel {
+  align-self: start;
+  min-height: clamp(520px, 52vh, 680px);
+}
+
+.productModelViewport,
+.productModelPanel .localModelViewer,
+.productModelPanel .localModelViewer canvas {
+  overflow: hidden;
+}
+
+.modelChemCard {
+  display: none !important;
+}
+
+.benefitGrid article span {
+  color: #2b2422 !important;
+  background: #d7c8ac !important;
+}
+
+.benefitGrid p {
+  max-width: 60ch;
+}
+
+.trustGrid article p,
+.documentGrid article p {
+  white-space: pre-line;
+}
+
+.articleGrid article h3,
+.readableArticles article h3 {
+  max-width: none;
+  white-space: nowrap;
+  font-size: clamp(20px, 1.25vw, 26px);
+}
+
+.articleGrid.readableArticles {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px;
+}
+
+.articleGrid.readableArticles article {
+  min-height: 260px;
+}
+
+.articleGrid.readableArticles article h3 {
+  font-size: clamp(19px, 1.18vw, 23px);
+  overflow: visible;
+}
+
+.trustGrid article,
+.documentGrid article,
+.articleGrid article,
+.readableArticles article,
+.contactPanel a,
+.messengerButton,
+form .primaryButton {
+  box-shadow:
+    inset 0 1px 0 rgba(246, 241, 230, 0.16),
+    0 22px 62px rgba(116, 19, 22, 0.2),
+    0 10px 34px rgba(187, 170, 150, 0.12) !important;
+}
+
+.trustGrid article:hover,
+.documentGrid article:hover,
+.articleGrid article:hover,
+.readableArticles article:hover,
+.contactPanel a:hover,
+.messengerButton:hover,
+form .primaryButton:hover {
+  border-color: rgba(215, 200, 172, 0.5) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(246, 241, 230, 0.2),
+    0 28px 78px rgba(116, 19, 22, 0.3),
+    0 14px 40px rgba(187, 170, 150, 0.18) !important;
+}
+
+.contactPanel {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.contactPanel a {
+  min-width: 0;
+}
+
+.footerLocation {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px 12px;
+}
+
+.footerLocation strong {
+  grid-column: 2;
+  width: fit-content;
+  padding: 10px 14px;
+  color: #181514;
+  background:
+    linear-gradient(135deg, rgba(246, 241, 230, 0.34), transparent 37%),
+    linear-gradient(135deg, #eee8d8 0%, #bbaa96 66%, #8d8075 100%);
+  border: 1px solid rgba(246, 241, 230, 0.34);
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+@media (min-width: 1181px) {
+  .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(360px, 400px) minmax(0, 1fr) minmax(380px, 400px) !important;
+    gap: 18px !important;
+  }
+
+  .productInfoCard {
+    display: contents !important;
+  }
+
+  .productInfoCard .productDetailMedia,
+  .productInfoCard .productDetailBody,
+  .productModelPanel {
+    color: #f6f1e6;
+    background:
+      linear-gradient(145deg, rgba(246, 241, 230, 0.075), rgba(246, 241, 230, 0.02)),
+      #2b2422;
+    border: 1px solid rgba(187, 170, 150, 0.34);
+    border-radius: 8px;
+    box-shadow: 0 26px 78px rgba(24, 21, 20, 0.26);
+  }
+
+  .productInfoCard .productDetailMedia {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .productInfoCard .productDetailBody {
+    grid-column: 2;
+    width: auto;
+    overflow: visible !important;
+  }
+
+  .productModelPanel {
+    grid-column: 3;
+  }
+
+  .topbar {
+    grid-template-columns: minmax(118px, auto) minmax(0, 1fr) minmax(640px, auto) !important;
+    min-height: 94px !important;
+    align-items: center !important;
+    padding-bottom: clamp(14px, 1.3vw, 18px) !important;
+  }
+
+  .brandLogoOnly .brandLogo {
+    width: 112px;
+    height: 74px;
+  }
+
+  .topContacts {
+    display: grid !important;
+    grid-template-columns: minmax(220px, 230px) minmax(250px, 270px) minmax(150px, 170px) !important;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .topContacts > a {
+    min-height: 48px;
+    height: 48px;
+    justify-content: center;
+  }
+
+  .topAddress:is(a).topMapButton {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+    grid-column: auto !important;
+    display: inline-flex !important;
+    max-width: none !important;
+    padding: 0 16px;
+    color: #181514 !important;
+    background:
+      linear-gradient(135deg, rgba(246, 241, 230, 0.34), transparent 37%),
+      linear-gradient(135deg, #eee8d8 0%, #bbaa96 66%, #8d8075 100%);
+    border: 1px solid rgba(246, 241, 230, 0.38);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 950;
+    box-shadow: 0 18px 48px rgba(24, 21, 20, 0.24);
+  }
+}
+
+@media (max-width: 1180px) {
+  .productInfoCard {
+    grid-template-columns: 1fr !important;
+  }
+
+  .productInfoCard .productDetailMedia {
+    aspect-ratio: 16 / 10;
+  }
+
+  .articleGrid article h3,
+  .readableArticles article h3 {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 760px) {
+  .heroInner {
+    width: min(100%, calc(100vw - 48px)) !important;
+  }
+
+  .heroActions,
+  .heroFactStrip {
+    width: 100% !important;
+  }
+
+  .heroCompanyEyebrow {
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .productStandaloneIntro {
+    width: min(100%, calc(100vw - 48px)) !important;
+  }
+
+  .productStandalonePage .productDetailCard {
+    width: min(100%, calc(100vw - 48px)) !important;
+  }
+
+  .productStandaloneIntro h1 {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: clamp(30px, 8.6vw, 36px) !important;
+    line-height: 1.02;
+  }
+
+  .contactPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .footerLocation strong {
+    grid-column: 1 / -1;
   }
 }
