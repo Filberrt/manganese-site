@@ -10429,7 +10429,8 @@ form .primaryButton:hover,
 
 @media (min-width: 761px) and (max-width: 1180px) {
   .contactPanel {
-    width: min(460px, 100%);
+    width: 100%;
+    max-width: none;
     column-gap: 0;
     margin-top: 0 !important;
   }
@@ -10575,7 +10576,8 @@ form .primaryButton:hover,
   }
 
   .contactPanel {
-    width: min(460px, 100%);
+    width: 100%;
+    max-width: none;
     column-gap: 0;
     margin-top: 0 !important;
   }
