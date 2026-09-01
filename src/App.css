@@ -10521,3 +10521,44 @@ form .primaryButton:hover,
 .readableArticles article:not(:hover) {
   transform: none !important;
 }
+
+.routeMap article p {
+  white-space: pre-line;
+}
+
+@media (min-width: 1181px) {
+  .topContacts {
+    justify-self: end !important;
+  }
+
+  .topAddress:is(a).topMapButton {
+    width: 100% !important;
+    justify-self: stretch !important;
+  }
+
+  .productStandaloneIntro {
+    width: min(1520px, calc(100vw - 120px)) !important;
+    padding-left: 0 !important;
+  }
+
+  .productInfoCard .productDetailMedia {
+    display: grid;
+    place-items: center;
+  }
+
+  .productInfoCard .productDetailMedia img {
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  #product .productCards img {
+    object-fit: contain !important;
+    object-position: center !important;
+    padding: 12px !important;
+  }
+
+  .contactPanel {
+    width: min(460px, 100%);
+    margin-top: 0 !important;
+  }
+}

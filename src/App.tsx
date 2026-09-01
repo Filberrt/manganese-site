@@ -83,8 +83,8 @@ const routeSteps = [
   ['01', 'Геологоразведка и лицензия', 'Действующая лицензия на пользование недрами оформлена до 2045 года. Запасы и происхождение сырья фиксируются до добычи.'],
   ['02', 'Вскрышные работы', 'Вскрышные породы вывозятся собственным парком техники. По проекту средний коэффициент вскрыши составляет 2,1 куб.м/т.'],
   ['03', 'Карьерная добыча', 'Марганцевый флюс добывается на участках Северный и Ново-Северный, гипсовый камень - на Тюлько-Тюбинском месторождении.'],
-  ['04', 'Переработка на ДСК и ДСУ', 'Флюс проходит 3 стадии дробления и рассева на ДСК до 40 тыс. т/мес, гипсовый камень - на ДСУ до 45 тыс. т/мес.'],
-  ['05', 'Отгрузка клиенту', 'Поставка идет своими авто или через ЖД площадку: ветка до станции Аша 7,7 км, склад 15 тыс. т, погрузка до 100 тыс. т/мес.'],
+  ['04', 'Переработка на ДСК и ДСУ', 'Флюс проходит 3 стадии дробления и рассева на ДСК до 40 тыс. т/мес, гипсовый камень - на ДСУ\nдо 45 тыс. т/мес.'],
+  ['05', 'Отгрузка клиенту', 'Поставка идет своими авто или через ЖД площадку: ветка до станции Аша 7,7 км, склад 15 тыс. т, погрузка\nдо 100 тыс. т/мес.'],
 ]
 
 const productCards = [
@@ -576,8 +576,8 @@ function RockSample({
 
 type ProductPageCard = (typeof productPageCards)[number]
 
-function ProductDetailCard({ product, titleId }: { product: ProductPageCard; titleId?: string }) {
-  const { eyebrow, lead, image, model, specs, useCases } = product
+function ProductDetailCard({ product }: { product: ProductPageCard }) {
+  const { lead, image, model, specs, useCases } = product
 
   return (
     <article className="productDetailCard" data-reveal>
@@ -585,14 +585,12 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
         <div className="productDetailMedia">
           <img src={asset(image)} alt={product.title} loading="lazy" decoding="async" />
           <div className="productDetailPhotoCaption">
-            <span>{eyebrow}</span>
             <strong>Каталожное фото сырья</strong>
           </div>
         </div>
 
         <div className="productDetailBody">
           <div className="productDetailHeader">
-            <p className="eyebrow" id={titleId}>{eyebrow}</p>
             <p>{lead}</p>
           </div>
 
@@ -626,7 +624,6 @@ function ProductDetailCard({ product, titleId }: { product: ProductPageCard; tit
 
       <aside className="productModelPanel" aria-label={model.subtitle}>
         <div className="productModelPanelHeader">
-          <small>{model.title}</small>
           <strong>{model.subtitle}</strong>
           <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
         </div>
@@ -723,7 +720,7 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
           </button>
           <h1>{product.title}</h1>
         </div>
-        <ProductDetailCard product={product} titleId={`${product.id}-eyebrow`} />
+        <ProductDetailCard product={product} />
       </section>
       <ProductPassportSlide product={product} />
     </>
