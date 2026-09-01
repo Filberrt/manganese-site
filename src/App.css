@@ -10645,17 +10645,28 @@ form .primaryButton:hover,
   }
 }
 
-/* The hero primary action and article cards use the same hover treatment as documents. */
+/* Gold controls stay gold; dark surfaces use the wine-red interaction treatment. */
 .heroActions .primaryButton:hover,
-.heroActions .primaryButton:focus-visible,
+.heroActions .primaryButton:focus-visible {
+  color: #181514 !important;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 245, 0.46), transparent 40%),
+    linear-gradient(135deg, #f6f1e6 0%, #d7c8ac 54%, #bbaa96 100%) !important;
+  border: 1px solid rgba(255, 248, 215, 0.88) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 245, 0.72),
+    0 0 0 1px rgba(238, 216, 141, 0.26),
+    0 0 34px rgba(238, 216, 141, 0.58),
+    0 24px 68px rgba(215, 200, 172, 0.42) !important;
+  transform: translateY(-2px);
+}
+
 .articleGrid article:hover,
 .articleGrid article:focus-within,
 .readableArticles article:hover,
 .readableArticles article:focus-within {
   color: #f6f1e6 !important;
-  background:
-    linear-gradient(135deg, rgba(246, 241, 230, 0.16), transparent 40%),
-    rgba(116, 19, 22, 0.46) !important;
+  background: rgba(116, 19, 22, 0.46) !important;
   border: 1px solid rgba(246, 241, 230, 0.72) !important;
   box-shadow:
     inset 0 1px 0 rgba(246, 241, 230, 0.32),
@@ -10663,6 +10674,13 @@ form .primaryButton:hover,
     0 0 34px rgba(238, 216, 141, 0.42),
     0 24px 68px rgba(116, 19, 22, 0.36) !important;
   transform: translateY(-2px);
+}
+
+.articleGrid article:hover::before,
+.articleGrid article:focus-within::before,
+.readableArticles article:hover::before,
+.readableArticles article:focus-within::before {
+  opacity: 0 !important;
 }
 
 @media (min-width: 1181px) {
