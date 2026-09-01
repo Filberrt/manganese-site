@@ -9630,7 +9630,6 @@ body {
 .heroFactStrip article:hover,
 .topCall:hover,
 .topMail:hover,
-.primaryButton:hover,
 .primaryAction:hover,
 .productDetailActions .primaryAction:hover,
 .productCards a:hover,
@@ -10034,7 +10033,6 @@ form .primaryButton {
 .articleGrid article:hover,
 .readableArticles article:hover,
 .contactPanel a:hover,
-.messengerButton:hover,
 form .primaryButton:hover {
   border-color: rgba(215, 200, 172, 0.5) !important;
   box-shadow:
@@ -10380,13 +10378,9 @@ form .primaryButton:hover {
 .topCall:hover,
 .topMail:hover,
 .topAddress:is(a):hover,
-.heroActions a:hover,
 .documentGrid article:hover,
 .documentOpenCta:hover,
-.readableArticles button:hover,
-.articleGrid button:hover,
 .contactPanel a:hover,
-.messengerButton:hover,
 form .primaryButton:hover,
 .floatingWriteCta:hover,
 .footerLocation:hover,
@@ -10467,12 +10461,10 @@ form .primaryButton:hover,
     transform 220ms ease;
 }
 
-.heroActions a:hover,
-.heroActions a:focus-visible,
+.heroActions .secondaryButton:hover,
+.heroActions .secondaryButton:focus-visible,
 .contactPanel a:hover,
 .contactPanel a:focus-visible,
-.messengerButton:hover,
-.messengerButton:focus-visible,
 .siteFooter .footerAction:hover,
 .siteFooter .footerAction:focus-visible,
 .siteFooter .footerBlock a:hover,
