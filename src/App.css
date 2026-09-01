@@ -10427,6 +10427,23 @@ form .primaryButton:hover,
   }
 }
 
+@media (min-width: 761px) and (max-width: 1180px) {
+  .contactPanel {
+    width: min(460px, 100%);
+    column-gap: 0;
+    margin-top: 0 !important;
+  }
+
+  .contactPanel a:nth-child(1) {
+    border-radius: 6px 0 0 6px;
+  }
+
+  .contactPanel a:nth-child(2) {
+    border-left: 0;
+    border-radius: 0 6px 6px 0;
+  }
+}
+
 /* 31.08 final pass: keep the contact cluster compact, align section content, and
    reserve the article glow for the hovered state shown in the reference. */
 @media (min-width: 1181px) {
