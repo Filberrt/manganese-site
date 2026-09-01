@@ -20,38 +20,39 @@ globalThis.FileReader = class FileReader {
   }
 }
 
-const outline = new THREE.Shape()
-outline.moveTo(-0.86, -0.32)
-outline.lineTo(-0.72, 0.42)
-outline.lineTo(-0.24, 0.7)
-outline.lineTo(0.42, 0.58)
-outline.lineTo(0.86, 0.18)
-outline.lineTo(0.68, -0.48)
-outline.lineTo(0.18, -0.68)
-outline.lineTo(-0.48, -0.58)
-outline.closePath()
+const geometry = new THREE.IcosahedronGeometry(1, 3)
+const position = geometry.getAttribute('position')
 
-const geometry = new THREE.ExtrudeGeometry(outline, {
-  depth: 1.14,
-  bevelEnabled: true,
-  bevelSegments: 4,
-  bevelSize: 0.14,
-  bevelThickness: 0.16,
-  steps: 2,
-  curveSegments: 4,
-})
-geometry.translate(0, 0, -0.57)
-geometry.scale(1.06, 0.82, 0.92)
+for (let index = 0; index < position.count; index += 1) {
+  const vertex = new THREE.Vector3().fromBufferAttribute(position, index).normalize()
+  const variation =
+    Math.sin(vertex.x * 8.7 + vertex.y * 3.1) * 0.07 +
+    Math.sin(vertex.z * 11.2 - vertex.x * 4.4) * 0.045
+  const radialScale = 0.91 + variation
+  vertex.multiplyScalar(radialScale)
+  vertex.x *= 1.18
+  vertex.y *= 0.78
+  vertex.z *= 0.94
+  vertex.y += 0.08 * Math.sin(vertex.x * 3.2)
+  position.setXYZ(index, vertex.x, vertex.y, vertex.z)
+}
+
 geometry.computeVertexNormals()
+geometry.clearGroups()
+const materialIndexByTriangle = [0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 0]
+const triangleCount = position.count / 3
+for (let triangle = 0; triangle < triangleCount; triangle += 1) {
+  const materialIndex = materialIndexByTriangle[triangle % materialIndexByTriangle.length]
+  geometry.addGroup(triangle * 3, 3, materialIndex)
+}
 
-const stone = new THREE.Mesh(
-  geometry,
-  new THREE.MeshStandardMaterial({
-    color: '#ded5c4',
-    roughness: 1,
-    metalness: 0,
-  }),
-)
+const materials = [
+  new THREE.MeshStandardMaterial({ color: '#b8a98f', roughness: 0.98, metalness: 0 }),
+  new THREE.MeshStandardMaterial({ color: '#dfd3b8', roughness: 1, metalness: 0 }),
+  new THREE.MeshStandardMaterial({ color: '#8f8067', roughness: 1, metalness: 0 }),
+]
+
+const stone = new THREE.Mesh(geometry, materials)
 stone.rotation.set(0.24, -0.28, 0.08)
 stone.castShadow = true
 stone.receiveShadow = true

@@ -20,9 +20,9 @@ Files used: optimized single-file GLB at public/models/fast/gypsum.glb
 Production note: Previous visual sample for the gypsum / gypsum-anhydrite stone block.
 
 Current generated 3D model: Gypsum anhydrite rough stone
-Source: locally generated procedural GLB by Codex on 2026-08-31.
+Source: locally generated procedural GLB by Codex on 2026-09-01.
 Files used: public/models/fast/gypsum-anhydrite-custom.glb
-Production note: Used as the current product-page 3D sample for gypsum / gypsum-anhydrite stone.
+Production note: Organic irregular boulder form with varied rough mineral facets; used as the current product-page 3D sample for gypsum / gypsum-anhydrite stone.
 
 Previous reference model: Limestone with manganese dendrites
 Source: Sketchfab

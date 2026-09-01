@@ -92,13 +92,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Mn 7-10%, ТУ 0751-001-38476082-2025, ДСК 40 тыс. т/мес и поставка под металлургию.',
-    image: 'product/manganese-flux-product-v3.png',
+    image: 'product/manganese-flux-line-wide.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'ГОСТ 4013-2019, ресурсы 434 млн т, ДСУ до 45 тыс. т/мес и применение в стройматериалах.',
-    image: 'product/gypsum-anhydrite-product-v3.png',
+    image: 'product/gypsum-anhydrite-line-wide.png',
   },
 ]
 
@@ -458,7 +458,7 @@ function RockSample({
         const center = box.getCenter(new THREE.Vector3())
         const size = box.getSize(new THREE.Vector3())
         const maxAxis = Math.max(size.x, size.y, size.z) || 1
-        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.82 : 1.08) : variant === 'flux' ? 1.44 : variant === 'gypsum' ? 1.08 : 1.28
+        const modelScale = chemistry?.length ? (variant === 'flux' ? 0.98 : variant === 'gypsum' ? 0.9 : 1.08) : variant === 'flux' ? 1.44 : variant === 'gypsum' ? 1.22 : 1.28
 
         loadedModel.position.sub(center)
         if (variant === 'gypsum') loadedModel.position.y += chemistry?.length ? 0.12 : 0.34
