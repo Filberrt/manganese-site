@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
+import './review-overrides.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
@@ -47,18 +48,18 @@ const company = {
 }
 
 const compositionRows = [
-  ['Mn', '7,6-7,9%', 'Марганцевый компонент для оценки применимости флюса'],
-  ['CaO', '32,7-34,5%', 'Флюсующая основа для технологической оценки'],
-  ['SiO2', '14,9-17,0%', 'Кремнезем контролируют как технологическое ограничение'],
-  ['S', 'до 0,17%', 'Сера фиксируется для контроля требований плавки'],
-  ['P', 'до 0,041%', 'Фосфор контролируется по протоколу анализа партии'],
+  ['Марганец (Mn)', '7,9%', 'Содержание в образце участка Северный*'],
+  ['Оксид кальция (CaO)', '32,7%', 'Флюсующая составляющая образца*'],
+  ['Диоксид кремния (SiO₂)', '17,0%', 'Контролируемый компонент образца*'],
+  ['Сера (S)', 'до 0,17%', 'Контролируемый показатель образца участка Северный*'],
+  ['Фосфор (P)', 'до 0,041%', 'Контролируемый показатель образца участка Северный*'],
   ['Фракция', 'по паспорту партии', 'Подбирается под оборудование и способ подачи'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дозирования'],
-  ['Примеси', 'по протоколу лаборатории', 'Al2O3, Fe2O3, MgO и другие показатели'],
+  ['Прочие компоненты', 'по протоколу лаборатории', 'Al₂O₃, Fe₂O₃, MgO и другие показатели'],
 ]
 
 const gypsumCompositionRows = [
-  ['CaSO4', 'по ГОСТ 4013-2019', 'Основной показатель для гипсового камня'],
+  ['Сульфат кальция (CaSO₄)', 'по паспорту партии', 'Основной показатель гипсового камня'],
   ['Фракция', 'по паспорту партии', 'Подбирается под производство цемента, смесей или гипсовых материалов'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дальнейшей переработки'],
   ['Примеси', 'по протоколу лаборатории', 'Контролируются для подтверждения применимости партии'],
@@ -91,14 +92,14 @@ const productCards = [
   {
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
-    text: 'Mn 7-10%, ТУ 0751-001-38476082-2025, ДСК 40 тыс. т/мес и поставка под металлургию.',
-    image: 'product/manganese-flux-line-wide.png',
+    text: 'Для агломерации, производства окатышей и сталеплавильных процессов. Состав партии фиксируют в паспорте и протоколе анализа.',
+    image: 'product/manganese-limestone-material.webp',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
-    text: 'ГОСТ 4013-2019, ресурсы 434 млн т, ДСУ до 45 тыс. т/мес и применение в стройматериалах.',
-    image: 'product/gypsum-anhydrite-line-wide.png',
+    text: 'Для цемента, сухих смесей, гипсокартона и гипсовых изделий. Фракцию и показатели согласуют для конкретной партии.',
+    image: 'product/gypsum-anhydrite-material.webp',
   },
 ]
 
@@ -108,7 +109,7 @@ const productPageCards = [
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Флюс Улу-Телякского месторождения с Mn 7-10%: два карьера, подготовка на ДСК и документы по каждой партии.',
-    image: 'product/manganese-flux-product-v3.png',
+    image: 'product/manganese-limestone-material.webp',
     model: {
       title: 'Марганцовистый флюс',
       subtitle: '3D-образец продукта',
@@ -145,7 +146,7 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product-v3.png',
+    image: 'product/gypsum-anhydrite-material.webp',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-образец продукта',
@@ -180,10 +181,10 @@ const productPageCards = [
 ]
 
 const benefitCards = [
-  ['01', 'Сначала состав', 'Технолог видит Mn, CaO, SiO2 и ограничения партии до расчета цены и графика.'],
-  ['02', 'Потом фракция', 'Фракция, влажность и объем согласуются под оборудование, а не уточняются после заявки.'],
-  ['03', 'Дальше документы', 'Паспорт и протокол показывают, какие показатели подтверждены именно по этой партии.'],
-  ['04', 'После этого отгрузка', 'Авто, ЖД ветка до Аши 7,7 км и площадка 100 тыс. т/мес дают понятный маршрут поставки.'],
+  ['01', 'Анализ химического состава', 'Лаборатория определяет показатели образца и оформляет протокол анализа.'],
+  ['02', 'Определение фракции', 'Фракцию, влажность и объем согласуют с требованиями оборудования клиента.'],
+  ['03', 'Оформление документации', 'На конкретную партию готовят паспорт качества и комплект отгрузочных документов.'],
+  ['04', 'Отгрузка клиенту', 'Партию отправляют автотранспортом или через собственную железнодорожную площадку.'],
 ]
 
 const routeStageImages = [
@@ -304,7 +305,7 @@ function RockSample({
       if (isDisposed) return
 
       const scene = new THREE.Scene()
-      scene.background = new THREE.Color('#2b2422')
+      scene.background = new THREE.Color('#e8dfd1')
 
       const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
       camera.position.set(0.08, 0.1, 3.55)
@@ -314,7 +315,7 @@ function RockSample({
       rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
-      webglRenderer.setClearColor(new THREE.Color('#2b2422'), 1)
+      webglRenderer.setClearColor(new THREE.Color('#e8dfd1'), 1)
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
       webglRenderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
       mount.appendChild(webglRenderer.domElement)
@@ -585,7 +586,7 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
         <div className="productDetailMedia">
           <img src={asset(image)} alt={product.title} loading="lazy" decoding="async" />
           <div className="productDetailPhotoCaption">
-            <strong>Каталожное фото сырья</strong>
+            <strong>Фотография сырья</strong>
           </div>
         </div>
 
@@ -625,7 +626,7 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
       <aside className="productModelPanel" aria-label={model.subtitle}>
         <div className="productModelPanelHeader">
           <strong>{model.subtitle}</strong>
-          <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
+          <span>Образец можно вращать и приблизить. Модель носит иллюстративный характер.</span>
         </div>
         <div
           className="productModelViewport"
@@ -685,6 +686,7 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
               ))}
             </tbody>
           </table>
+          {!isGypsum && <p className="passportSource">* Значения для образца участка Северный приведены по презентации ООО «БашМинералРесурс», 2026. Параметры поставляемой партии указываются в её документах.</p>}
           <a className="passportContactCta shineAction" href="#contacts">
             Написать нам
             <ArrowRight size={18} aria-hidden="true" />
@@ -692,11 +694,11 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
         </div>
         <div className="compositionNote" data-reveal>
           <FlaskConical size={24} aria-hidden="true" />
-          <strong>{isGypsum ? 'Что подтверждает паспорт' : 'Как читать паспорт партии'}</strong>
+          <strong>{isGypsum ? 'Для чего нужен паспорт' : 'Как читать показатели'}</strong>
           <p>
             {isGypsum
-              ? 'Для гипсового и ангидритового камня важны соответствие ГОСТ 4013-2019, фракция, влажность, примеси и происхождение партии. Точные значения берутся из паспорта качества и протокола лаборатории.'
-              : 'CaO показывает флюсующую способность материала, Mn - полезный марганцевый компонент, SiO2, S и P контролируют ограничения для металлургического процесса. Итоговые значения подтверждаются протоколом лабораторного анализа и паспортом качества; для флюса указан ТУ 0751-001-38476082-2025.'}
+              ? 'Паспорт связывает показатели с конкретной партией: в нем указывают наименование сырья, фракцию, влажность и результаты контроля. Протокол лаборатории содержит фактические значения анализа. Требования к продукту и применимую редакцию стандарта согласуют с клиентом до поставки.'
+              : 'Сначала указано название соединения, затем его формула. Приведенные значения со звездочкой взяты из презентации компании для образца участка Северный и не заменяют паспорт партии. Фактический состав, фракцию и влажность подтверждают паспорт качества и лабораторный протокол.'}
           </p>
         </div>
       </div>
@@ -780,7 +782,7 @@ function App() {
 
           if (target) {
             document.querySelector<HTMLElement>('.slideDeck')?.scrollTo({
-              top: target.offsetTop,
+              top: Math.max(0, target.offsetTop - 132),
               left: 0,
               behavior: 'auto',
             })
@@ -893,7 +895,7 @@ function App() {
         const target = document.getElementById(targetId)
         const deck = document.querySelector<HTMLElement>('.slideDeck')
         if (target && deck) {
-          deck.scrollTo({ top: target.offsetTop, left: 0, behavior: 'smooth' })
+          deck.scrollTo({ top: Math.max(0, target.offsetTop - 132), left: 0, behavior: 'smooth' })
         } else {
           target?.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
@@ -940,6 +942,7 @@ function App() {
           <span className="brandLogo">
             <img src={asset('logo-bashmineral.png')} alt="" />
           </span>
+          <span className="brandName"><strong>{company.name}</strong><small>добыча и переработка сырья</small></span>
         </a>
         <nav aria-label="Основная навигация">
           <a href="#/manganese-flux">Марганцовистый флюс</a>
@@ -1032,27 +1035,28 @@ function App() {
 
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Видеоролик о компании</p>
-          <h2>Марганцовистый флюс:<br />производство и контроль</h2>
+          <p className="eyebrow">Производственная площадка</p>
+          <h2>Карьер и подготовка сырья</h2>
+          <p className="videoAnnotation">Аэровидеосъёмка знакомит с карьером и производственной площадкой БашМинералРесурс. В кадре — добыча, дробильно-сортировочное оборудование и зона накопления готового сырья перед отгрузкой.</p>
           <div className="videoPlan">
             <span>Карьер и производственная площадка</span>
             <span>Оборудование и подготовка партии</span>
-            <span>Протокол анализа и паспорт качества</span>
-            <span>Отгрузка своими авто и через ЖД</span>
+            <span>Дробление и сортировка сырья</span>
+            <span>Подготовка продукции к отгрузке</span>
           </div>
         </div>
         <div className="videoFrame cinematic" data-reveal>
           <button type="button" aria-label="Смотреть видеоролик о компании" onClick={() => setIsVideoOpen(true)}>
             <Play size={34} aria-hidden="true" />
           </button>
-          <strong>Марганцовистый флюс: от карьера до отгрузки</strong>
+          <strong>Производство БашМинералРесурс с высоты</strong>
         </div>
       </section>
 
       <section className="section split elevatedSection snapSlide" id="product" data-slide>
         <div data-reveal>
           <p className="eyebrow">Наши продукты</p>
-          <h2>Сырье<br />с паспортом партии</h2>
+          <h2>Два направления поставки сырья</h2>
           <p>
             Мы предлагаем два направления поставки: марганцовистый флюс для металлургии и гипсовый камень
             для строительных материалов.
@@ -1065,7 +1069,7 @@ function App() {
           </div>
         </div>
         <aside className="quietPanel productMatrix" data-reveal>
-          <h3>Продуктовая линейка</h3>
+          <h3>Продукты</h3>
           <div className="productCards">
             {productCards.map(({ productId, title, text, image }) => (
               <article key={title}>
@@ -1074,7 +1078,7 @@ function App() {
                   <strong>{title}</strong>
                   <span>{text}</span>
                   <a href={`#/${productId}`}>
-                    Открыть подробнее
+                    Изучить подробнее
                     <ArrowRight size={16} aria-hidden="true" />
                   </a>
                 </div>
@@ -1086,9 +1090,9 @@ function App() {
 
       <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Преимущества продукта</p>
-          <h2>Что проверяет технолог</h2>
-          <p>Показатели партии, производственная мощность и логистика должны быть понятны до первого расчета.</p>
+          <p className="eyebrow">Контроль партии</p>
+          <h2>От анализа до отгрузки</h2>
+          <p>Последовательная схема показывает, когда определяют параметры сырья и оформляют документы.</p>
         </div>
         <div className="benefitGrid">
           {benefitCards.map(([number, title, text], index) => (
@@ -1151,7 +1155,7 @@ function App() {
       <section className="section documentsSlide snapSlide darkSlide" id="documents" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Документы</p>
-          <h2>Комплект документов<br />по сырью и поставке</h2>
+          <h2>Документы для проверки и приёмки партии</h2>
           <p>
             Предоставляем комплект материалов для первичной проверки сырья,
             условий поставки и происхождения партии.
@@ -1193,10 +1197,10 @@ function App() {
 
       <section className="section articlesBand snapSlide" id="articles" data-slide>
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Материалы для первичной оценки</p>
-          <h2>Инженерная оценка<br />партии сырья</h2>
+          <p className="eyebrow">Справочные материалы</p>
+          <h2>О сырье, производстве и логистике</h2>
           <p>
-            Черновики материалов для будущих статей: состав, документы, применимость сырья и логистика.
+            Короткие пояснения о месторождениях, составе, применении продукции и вариантах доставки.
           </p>
         </div>
         <div className="articleGrid readableArticles">
@@ -1244,8 +1248,8 @@ function App() {
       <section className="section contacts snapSlide" id="contacts" data-slide>
         <div className="contactLead" data-reveal>
           <div>
-            <p className="eyebrow">Заявка на поставку</p>
-            <h2>Запросить<br />расчет партии</h2>
+            <p className="eyebrow">Связаться с компанией</p>
+            <h2>Обсудить поставку сырья</h2>
             <p>
               Позвоните или напишите: подберем продукт, фракцию и удобную схему отгрузки.
               Для старта достаточно объема и станции назначения.
@@ -1266,22 +1270,33 @@ function App() {
             <span className="messengerButton max" aria-disabled="true">Max</span>
           </div>
         </div>
-        <form data-reveal>
+        <form data-reveal onSubmit={(event) => {
+          event.preventDefault()
+          const data = new FormData(event.currentTarget)
+          const body = [
+            `Контакт: ${data.get('contact') || ''}`,
+            `Телефон или email: ${data.get('reply') || ''}`,
+            `Организация: ${data.get('company') || ''}`,
+            '',
+            String(data.get('question') || ''),
+          ].join('\n')
+          window.location.href = `mailto:${company.email}?subject=${encodeURIComponent('Запрос с сайта о поставке сырья')}&body=${encodeURIComponent(body)}`
+        }}>
           <label>
             Введите свои контактные данные и наименование организации
-            <input placeholder="ФИО" />
+            <input name="contact" placeholder="ФИО" autoComplete="name" required />
           </label>
           <label>
             Телефон или email
-            <input placeholder="+7 ___ ___-__-__ / email" />
+            <input name="reply" placeholder="+7 ___ ___-__-__ / email" required />
           </label>
           <label>
             Наименование организации
-            <input placeholder="ООО, ИП или название предприятия" />
+            <input name="company" placeholder="ООО, ИП или название предприятия" autoComplete="organization" />
           </label>
           <label>
             Опишите подробно ваш вопрос
-            <textarea placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" />
+            <textarea name="question" placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" required />
           </label>
           <button className="primaryButton" type="submit">
             Запросить расчет партии
@@ -1299,8 +1314,8 @@ function App() {
             </video>
             <div>
               <span>Видео о производстве</span>
-              <h2>ДСУ, карьер и красное оборудование</h2>
-              <p>Ролик из свежих материалов показывает производственную площадку с коптера.</p>
+              <h2>Карьер и производственная площадка</h2>
+              <p>Аэровидеосъёмка показывает добычу, дробильно-сортировочное оборудование и подготовку сырья к отгрузке.</p>
             </div>
           </div>
         </div>
