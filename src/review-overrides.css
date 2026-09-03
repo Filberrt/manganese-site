@@ -176,7 +176,7 @@ a { color: inherit; }
   position: fixed !important;
   z-index: 18;
   right: 26px !important;
-  bottom: 24px !important;
+  bottom: 10px !important;
   min-height: 46px;
   padding: 0 17px !important;
   display: inline-flex !important;
@@ -318,6 +318,21 @@ h1, h2, h3, strong { color: inherit; }
 .section h3 { color: var(--ink) !important; font-weight: 700 !important; letter-spacing: -.025em !important; }
 .sectionIntro { margin-bottom: 42px !important; }
 .sectionIntro > p:last-child { max-width: 660px; margin: 18px 0 0 !important; }
+
+#benefits .sectionIntro,
+#benefits .benefitGrid,
+#route .sectionIntro,
+#route .routeMap,
+#gallery .sectionIntro,
+#gallery .galleryGrid,
+#documents .sectionIntro,
+#documents .trustGrid,
+#articles .sectionIntro,
+#articles .articleGrid {
+  width: min(1280px, 100%) !important;
+  max-width: 1280px !important;
+  margin-inline: auto !important;
+}
 
 .videoSlide {
   display: grid !important;
@@ -505,6 +520,7 @@ h1, h2, h3, strong { color: inherit; }
 
 @media (max-width: 820px) {
   .slideDeck { scroll-snap-type: none; }
+  .floatingWriteCta { display: none !important; }
   .snapSlide { min-height: auto; padding: 118px 20px 68px !important; }
   .topbar { top: 10px !important; width: calc(100% - 20px) !important; min-height: 108px !important; grid-template-columns: 1fr auto !important; grid-template-rows: 62px 30px !important; padding: 8px 10px !important; }
   .brandLogo { width: 58px !important; height: 54px !important; flex-basis: 58px !important; }
@@ -541,7 +557,14 @@ h1, h2, h3, strong { color: inherit; }
   .techPassport table { min-width: 680px; }
 }
 
-.slideDeck:has(#contacts.is-current) .floatingWriteCta { display: none !important; }
+.slideDeck:has(#product.is-current) .floatingWriteCta,
+.slideDeck:has(#route.is-current) .floatingWriteCta,
+.slideDeck:has(#gallery.is-current) .floatingWriteCta,
+.slideDeck:has(#documents.is-current) .floatingWriteCta,
+.slideDeck:has(#articles.is-current) .floatingWriteCta,
+.slideDeck:has(#contacts.is-current) .floatingWriteCta {
+  display: none !important;
+}
 
 @media (max-width: 560px) {
   .brandName small { display: none; }
