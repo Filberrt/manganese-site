@@ -2874,3 +2874,39 @@ body,
   background: rgba(217, 211, 200, 0.94) !important;
   border-color: rgba(238, 232, 216, 0.46) !important;
 }
+
+/* Product detail: warm application panel and an unobscured material photo. */
+.productStandalonePage .productDetailList,
+.productInfoCard .productDetailList {
+  display: grid;
+  gap: 0 !important;
+  padding: 0 14px 2px !important;
+  overflow: hidden;
+  background: #eee8d8 !important;
+  border: 1px solid rgba(116, 19, 22, 0.12) !important;
+  border-radius: var(--control-radius) !important;
+  box-shadow: none !important;
+}
+
+.productStandalonePage .productDetailList small {
+  padding: 12px 0 10px;
+  color: var(--wine) !important;
+}
+
+.productStandalonePage .productDetailList span {
+  padding: 11px 0 !important;
+  color: var(--ink) !important;
+  background: transparent !important;
+  border-top-color: rgba(98, 86, 87, 0.15) !important;
+}
+
+.productStandalonePage .productDetailMedia {
+  padding: 8px !important;
+  background: #bdb2a1 !important;
+  border-color: rgba(98, 86, 87, 0.18) !important;
+  box-shadow: 0 18px 42px rgba(98, 86, 87, 0.1) !important;
+}
+
+.productStandalonePage[id="/manganese-flux"] .productDetailMedia img {
+  filter: brightness(1.42) contrast(0.86) saturate(1.06) !important;
+}
