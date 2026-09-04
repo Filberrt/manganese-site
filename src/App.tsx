@@ -108,7 +108,7 @@ const productPageCards = [
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Марганцовистый флюс Улу-Телякского месторождения. Состав, фракция и влажность фиксируются в документах конкретной партии.',
-    image: 'product/manganese-flux-product.png',
+    image: 'product/manganese-flux-product-v3.png',
     model: {
       title: 'Марганцовистый флюс',
       subtitle: '3D-модель сырья',
