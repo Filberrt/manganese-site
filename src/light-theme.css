@@ -847,3 +847,28 @@ button,
     right: calc(50% + 32px);
   }
 }
+
+@media (min-width: 981px) and (max-height: 760px) {
+  #product .productMatrix {
+    padding: 22px;
+  }
+
+  #product .productCards {
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  #product .productCards article {
+    grid-template-columns: minmax(0, 0.82fr) minmax(200px, 1fr) !important;
+    gap: 14px;
+    padding: 14px;
+  }
+
+  #product .productCards article img {
+    max-height: 180px;
+  }
+
+  .slideDeck:has(#product.is-current) .floatingWriteCta {
+    display: none;
+  }
+}
