@@ -2927,10 +2927,16 @@ body,
 }
 
 /* Keep the first-screen aerial footage fully visible. */
-.hero .heroShade,
 .hero::before,
 .hero::after {
   display: none !important;
+}
+
+.hero .heroShade {
+  display: block !important;
+  background:
+    linear-gradient(90deg, rgba(24, 21, 20, 0.38) 0%, rgba(24, 21, 20, 0.16) 42%, transparent 72%),
+    linear-gradient(0deg, rgba(24, 21, 20, 0.24) 0%, transparent 42%) !important;
 }
 
 .hero .heroVideo {
