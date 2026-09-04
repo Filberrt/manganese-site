@@ -747,6 +747,73 @@ button,
   }
 }
 
+/* Modal content follows the same light material system as the main slides. */
+.articleModal,
+.documentModal {
+  background: rgba(59, 48, 48, 0.82) !important;
+  backdrop-filter: blur(16px);
+}
+
+.articleModalInner,
+.documentModalInner {
+  color: var(--ink) !important;
+  background: var(--surface-bg) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: var(--surface-radius) !important;
+  box-shadow: 0 30px 90px rgba(59, 48, 48, 0.26) !important;
+}
+
+.articleModalInner > span,
+.documentModalInner > span,
+.articleBack {
+  color: var(--wine) !important;
+}
+
+.articleModalInner h2,
+.documentModalInner h2 {
+  color: var(--ink) !important;
+}
+
+.articleModalInner p,
+.articleModalInner .articleLead {
+  color: var(--deep) !important;
+}
+
+.articleModalInner .articleLead {
+  font-weight: 500;
+}
+
+.articleClose,
+.modalClose {
+  color: var(--ink) !important;
+  background: var(--surface-muted) !important;
+  border: 1px solid rgba(98, 86, 87, 0.22) !important;
+  box-shadow: none !important;
+}
+
+.articleClose:hover,
+.articleClose:focus-visible,
+.modalClose:hover,
+.modalClose:focus-visible {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: rgba(116, 19, 22, 0.72) !important;
+  box-shadow: 0 0 26px rgba(116, 19, 22, 0.28) !important;
+}
+
+.documentModalInner iframe {
+  background: var(--section-bg) !important;
+  border-color: rgba(98, 86, 87, 0.2) !important;
+}
+
+body:has(.articleModal) .floatingWriteCta,
+body:has(.documentModal) .floatingWriteCta,
+body:has(.videoModal) .floatingWriteCta {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Product slide: equal columns and product-specific information without quarry checklists. */
 #product.elevatedSection {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -1132,6 +1199,21 @@ button,
   padding: 0 15px !important;
   font-size: 13px !important;
   font-weight: 700 !important;
+}
+
+.productStandalonePage .productDetailActions .ghostAction {
+  color: var(--ink) !important;
+  background: var(--surface-muted) !important;
+  border: 1px solid rgba(98, 86, 87, 0.24) !important;
+  box-shadow: 0 10px 26px rgba(98, 86, 87, 0.1) !important;
+}
+
+.productStandalonePage .productDetailActions .ghostAction:hover,
+.productStandalonePage .productDetailActions .ghostAction:focus-visible {
+  color: var(--ink) !important;
+  background: var(--paper) !important;
+  border-color: rgba(187, 170, 150, 0.82) !important;
+  box-shadow: 0 0 28px rgba(187, 170, 150, 0.48) !important;
 }
 
 .productStandalonePage .productDetailMedia {
@@ -1707,5 +1789,14 @@ button,
     width: 24px;
     height: 28px;
     content: "↓";
+  }
+}
+
+@media (max-width: 760px) {
+  .slideDeck:has(.snapSlide.is-current:not(#top)) .floatingWriteCta,
+  .slideDeck.productRouteDeck .floatingWriteCta {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
 }

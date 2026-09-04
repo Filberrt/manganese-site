@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
 import type { Object3D } from 'three'
 import {
   ArrowLeft,
@@ -737,6 +737,26 @@ function App() {
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
+  const submitSupplyRequest = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const form = new FormData(event.currentTarget)
+    const contactName = String(form.get('contactName') ?? '').trim()
+    const contact = String(form.get('contact') ?? '').trim()
+    const organization = String(form.get('organization') ?? '').trim()
+    const question = String(form.get('question') ?? '').trim()
+    const subject = organization ? `Запрос расчета партии - ${organization}` : 'Запрос расчета партии'
+    const body = [
+      `Контактное лицо: ${contactName}`,
+      `Телефон или email: ${contact}`,
+      `Организация: ${organization}`,
+      '',
+      'Вопрос:',
+      question,
+    ].join('\n')
+
+    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
   const copyWithTextarea = (value: string) => {
     const textarea = document.createElement('textarea')
     textarea.value = value
@@ -1278,22 +1298,22 @@ function App() {
             <span className="messengerButton max" aria-disabled="true">Max</span>
           </div>
         </div>
-        <form data-reveal>
+        <form data-reveal onSubmit={submitSupplyRequest}>
           <label>
-            Введите свои контактные данные и наименование организации
-            <input placeholder="ФИО" />
+            Контактное лицо
+            <input name="contactName" placeholder="ФИО" autoComplete="name" required />
           </label>
           <label>
             Телефон или email
-            <input placeholder="+7 ___ ___-__-__ / email" />
+            <input name="contact" placeholder="+7 ___ ___-__-__ / email" autoComplete="email" required />
           </label>
           <label>
             Наименование организации
-            <input placeholder="ООО, ИП или название предприятия" />
+            <input name="organization" placeholder="ООО, ИП или название предприятия" autoComplete="organization" required />
           </label>
           <label>
             Опишите подробно ваш вопрос
-            <textarea placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" />
+            <textarea name="question" placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" required />
           </label>
           <button className="primaryButton" type="submit">
             Запросить расчет партии
