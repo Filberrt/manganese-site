@@ -48,21 +48,21 @@ const company = {
 }
 
 const compositionRows = [
-  ['Mn', '7,6-7,9%', 'Марганцевый компонент для оценки применимости флюса'],
-  ['CaO', '32,7-34,5%', 'Флюсующая основа для технологической оценки'],
-  ['SiO2', '14,9-17,0%', 'Кремнезем контролируют как технологическое ограничение'],
-  ['S', 'до 0,17%', 'Сера фиксируется для контроля требований плавки'],
-  ['P', 'до 0,041%', 'Фосфор контролируется по протоколу анализа партии'],
+  ['Марганец (Mn)', '7,6-7,9%', 'Фиксируется как часть химического состава партии'],
+  ['Оксид кальция (CaO)', '32,7-34,5%', 'Учитывается при оценке флюсующих свойств сырья'],
+  ['Диоксид кремния (SiO2)', '14,9-17,0%', 'Контролируется как компонент состава и технологическое ограничение'],
+  ['Сера (S)', 'до 0,17%', 'Сверяется с требованиями технологического процесса'],
+  ['Фосфор (P)', 'до 0,041%', 'Сверяется с требованиями технологического процесса'],
   ['Фракция', 'по паспорту партии', 'Подбирается под оборудование и способ подачи'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дозирования'],
-  ['Примеси', 'по протоколу лаборатории', 'Al2O3, Fe2O3, MgO и другие показатели'],
+  ['Примеси', 'по протоколу лаборатории', 'Оксиды алюминия, железа, магния и другие показатели'],
 ]
 
 const gypsumCompositionRows = [
-  ['CaSO4', 'по ГОСТ 4013-2019', 'Основной показатель для гипсового камня'],
+  ['Сульфат кальция (CaSO4)', 'по ГОСТ 4013-2019', 'Контролируется для оценки партии гипсового камня'],
   ['Фракция', 'по паспорту партии', 'Подбирается под производство цемента, смесей или гипсовых материалов'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дальнейшей переработки'],
-  ['Примеси', 'по протоколу лаборатории', 'Контролируются для подтверждения применимости партии'],
+  ['Примеси', 'по протоколу лаборатории', 'Сверяются с требованиями производства заказчика'],
   ['Происхождение', 'Тюлько-Тюбинское месторождение', 'Фиксируется в документах по партии'],
 ]
 
@@ -93,13 +93,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-    image: 'product/manganese-flux-line-wide.png',
+    image: 'product/flux-material.webp',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
-    image: 'product/gypsum-anhydrite-line-wide.png',
+    image: 'product/gypsum-anhydrite.webp',
   },
 ]
 
@@ -108,31 +108,28 @@ const productPageCards = [
     id: 'manganese-flux',
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
-    lead: 'Флюс Улу-Телякского месторождения с Mn 7-10%: два карьера, подготовка на ДСК и документы по каждой партии.',
-    image: 'product/manganese-flux-product-v3.png',
+    lead: 'Марганцовистый флюс Улу-Телякского месторождения. Состав, фракция и влажность фиксируются в документах конкретной партии.',
+    image: 'product/flux-material.webp',
     model: {
       title: 'Марганцовистый флюс',
-      subtitle: '3D-образец продукта',
+      subtitle: '3D-модель сырья',
       model: 'models/fast/flux.glb',
       poster: 'models/posters/flux.webp',
       variant: 'flux',
     },
     badges: ['Mn 7-10%', 'Фракция 0-6', 'ТУ 0751-001-38476082-2025', 'ДСК 40 тыс. т/мес', 'Ресурсы 140 млн т'],
     specs: [
-      ['Материал', 'Марганцовистый флюс'],
+      ['Месторождение', 'Улу-Телякское'],
       ['Карьеры', 'Северный и Ново-Северный'],
       ['Ресурсы', '140 млн тонн'],
-      ['Производительность', 'до 500 тыс. тонн в год'],
-      ['Переработка', 'ДСК до 40 тыс. тонн в месяц'],
-      ['ЖД площадка', 'погрузка до 100 тыс. т/мес'],
-      ['Склад', 'до 15 тыс. тонн готовой продукции'],
+      ['Добыча', 'до 500 тыс. тонн в год'],
+      ['Подготовка', 'ДСК до 40 тыс. тонн в месяц'],
+      ['Отгрузка', 'авто или ЖД площадка'],
     ],
     useCases: [
-      'Применяется как флюсующий и шлакообразующий материал для агломерации, окатышей, доменных печей и сталеплавильного производства.',
-      'По испытаниям, ввод 7,5% флюса в окатыши снижал расход бентонита с 0,6% до 0,3% без ухудшения прочности.',
-      'MnO снижает температуру плавления агломерата, CaCO3 работает как флюсующая основа.',
-      'Есть перспективное направление: порошковый марганцевый флюс с Mn выше 15%.',
-      'Состав, фракция и влажность фиксируются по конкретной партии.',
+      'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
+      'Технолог заказчика оценивает состав, фракцию и влажность по документам конкретной партии.',
+      'Условия подготовки и отгрузки согласуются до расчета поставки.',
     ],
     documents: [
       'ТУ 0751-001-38476082-2025',
@@ -146,30 +143,27 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product-v3.png',
+    image: 'product/gypsum-anhydrite.webp',
     model: {
       title: 'Гипсоангидритовый камень',
-      subtitle: '3D-образец продукта',
+      subtitle: '3D-модель сырья',
       model: 'models/fast/gypsum-anhydrite-custom.glb',
       poster: 'models/posters/gypsum.webp',
       variant: 'gypsum',
     },
     badges: ['ГОСТ 4013-2019', 'Ресурсы 434 млн т', 'ДСУ до 45 тыс. т/мес', 'Толща более 12 кв. км'],
     specs: [
-      ['Материал', 'Гипсовый и ангидритовый камень'],
       ['Месторождение', 'Тюлько-Тюбинское'],
       ['Ресурсы', '434 млн тонн'],
       ['Площадь толщи', 'более 12 кв. км'],
       ['Глубина', 'до 39,9 м'],
-      ['Переработка', 'ДСУ до 45 тыс. тонн в месяц'],
-      ['Регион', 'Иглинский район, Башкортостан'],
-      ['Логистика', 'Свои авто или железная дорога'],
+      ['Подготовка', 'ДСУ до 45 тыс. тонн в месяц'],
+      ['Отгрузка', 'авто или железная дорога'],
     ],
     useCases: [
-      'Используется в производстве цемента, алебастра и сухих строительных смесей.',
-      'Подходит для гипсокартона, декоративного и медицинского гипса.',
-      'По материалам компании камень соответствует 1-3 сорту, ГА - 1 и 2 сорт.',
-      'Фракция, объем партии и условия отгрузки согласуются перед расчетом.',
+      'Для производства цемента, сухих смесей и гипсовых материалов.',
+      'Соответствие требованиям производства оценивается по паспорту качества и протоколу анализа партии.',
+      'Фракция, объем и схема отгрузки согласуются до расчета поставки.',
     ],
     documents: [
       'ГОСТ 4013-2019',
@@ -305,7 +299,7 @@ function RockSample({
       if (isDisposed) return
 
       const scene = new THREE.Scene()
-      scene.background = new THREE.Color('#2b2422')
+      scene.background = new THREE.Color('#e2dbce')
 
       const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
       camera.position.set(0.08, 0.1, 3.55)
@@ -315,7 +309,7 @@ function RockSample({
       rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
-      webglRenderer.setClearColor(new THREE.Color('#2b2422'), 1)
+      webglRenderer.setClearColor(new THREE.Color('#e2dbce'), 1)
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
       webglRenderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
       mount.appendChild(webglRenderer.domElement)
@@ -328,8 +322,7 @@ function RockSample({
       orbitControls.minDistance = 2.35
       orbitControls.maxDistance = 7.2
       orbitControls.target.set(0, 0, 0)
-      orbitControls.autoRotate = true
-      orbitControls.autoRotateSpeed = 0.9
+      orbitControls.autoRotate = false
 
       scene.add(new THREE.HemisphereLight('#fff7db', '#25352d', 3.1))
       if (variant === 'gypsum') scene.add(new THREE.AmbientLight('#fff8e6', 1.15))
@@ -508,7 +501,7 @@ function RockSample({
       const resize = () => {
         const { width, height } = mount.getBoundingClientRect()
         camera.aspect = width / Math.max(height, 1)
-        camera.position.z = chemistry?.length ? (width < 640 ? 6.25 : 5.45) : width < 640 ? 5.4 : 3.8
+        camera.position.z = chemistry?.length ? (width < 640 ? 6.25 : 5.45) : width < 640 ? 4.15 : 3.8
         camera.updateProjectionMatrix()
         webglRenderer.setSize(width, height, false)
       }
@@ -586,7 +579,7 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
         <div className="productDetailMedia">
           <img src={asset(image)} alt={product.title} loading="lazy" decoding="async" />
           <div className="productDetailPhotoCaption">
-            <strong>Каталожное фото сырья</strong>
+            <strong>Фото образца сырья</strong>
           </div>
         </div>
 
@@ -626,7 +619,7 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
       <aside className="productModelPanel" aria-label={model.subtitle}>
         <div className="productModelPanelHeader">
           <strong>{model.subtitle}</strong>
-          <span>Можно вращать, приблизить и рассмотреть фактуру образца.</span>
+          <span>Интерактивный образец формы и фактуры материала.</span>
         </div>
         <div
           className="productModelViewport"
@@ -657,23 +650,31 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
 function ProductPassportSlide({ product }: { product: ProductPageCard }) {
   const rows = product.id === 'gypsum-stone' ? gypsumCompositionRows : compositionRows
   const isGypsum = product.id === 'gypsum-stone'
+  const passportPurpose = isGypsum
+    ? 'Паспорт качества идентифицирует конкретную партию и фиксирует данные, необходимые для приемки сырья: соответствие ГОСТ 4013-2019, фракцию, влажность, примеси и происхождение. Измеренные значения берут из паспорта и протокола лабораторного анализа.'
+    : 'Паспорт качества идентифицирует конкретную партию и фиксирует ее состав, фракцию и влажность. Протокол лабораторного анализа содержит измеренные значения. По этим документам технолог заказчика проверяет соответствие партии требованиям производства.'
 
   return (
     <section className="section productPassportPage analysisBand snapSlide" id={`/${product.id}/passport`} data-slide>
       <div className="productPassportIntro" data-reveal>
-        <h2>{isGypsum ? 'Паспорт гипсового камня' : 'Паспорт флюса'}<br />с показателями сырья</h2>
+        <a className="passportBackLink" href={`#/${product.id}`}>
+          <ArrowLeft size={16} aria-hidden="true" />
+          К описанию сырья
+        </a>
+        <h2>{isGypsum ? 'Паспорт качества гипсового камня' : 'Паспорт качества флюса'}</h2>
+        <p>Показатели относятся к конкретной партии и сверяются по комплекту отгрузочных документов.</p>
       </div>
       <div className="analysisLayout productPassportLayout">
         <div className="tableWrap techPassport" data-reveal>
           <div className="passportHead">
-            <span>{isGypsum ? 'Параметры фиксируются в паспорте качества и протоколе партии' : 'Паспорт показывает состав партии, протокол подтверждает значения лабораторно'}</span>
+            <span>Точные значения сверяют с паспортом качества и протоколом конкретной партии</span>
           </div>
           <table>
             <thead>
               <tr>
                 <th>Показатель</th>
-                <th>Диапазон</th>
-                <th>Назначение контроля</th>
+                <th>Значение / документ</th>
+                <th>Зачем фиксируется</th>
               </tr>
             </thead>
             <tbody>
@@ -693,12 +694,8 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
         </div>
         <div className="compositionNote" data-reveal>
           <FlaskConical size={24} aria-hidden="true" />
-          <strong>{isGypsum ? 'Что подтверждает паспорт' : 'Как читать паспорт партии'}</strong>
-          <p>
-            {isGypsum
-              ? 'Для гипсового и ангидритового камня важны соответствие ГОСТ 4013-2019, фракция, влажность, примеси и происхождение партии. Точные значения берутся из паспорта качества и протокола лаборатории.'
-              : 'CaO показывает флюсующую способность материала, Mn - полезный марганцевый компонент, SiO2, S и P контролируют ограничения для металлургического процесса. Итоговые значения подтверждаются протоколом лабораторного анализа и паспортом качества; для флюса указан ТУ 0751-001-38476082-2025.'}
-          </p>
+          <strong>Для чего необходим паспорт</strong>
+          <p>{passportPurpose}</p>
         </div>
       </div>
     </section>
@@ -879,7 +876,7 @@ function App() {
           }
         })
       },
-      { threshold: 0.38 },
+      { threshold: 0.18 },
     )
 
     slides.forEach((slide) => slideObserver.observe(slide))
