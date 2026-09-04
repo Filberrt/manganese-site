@@ -1347,10 +1347,6 @@ function App() {
               </p>
             </div>
           </div>
-          <a className="footerAction" href="#contacts">
-            Запросить расчет партии
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
         </div>
         <div className="footerRails">
           <div className="footerBlock">

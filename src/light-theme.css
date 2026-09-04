@@ -2393,7 +2393,7 @@ textarea {
   transform: translateY(-2px);
 }
 
-/* Video preview uses real production footage and a neutral graphite treatment. */
+/* Let the production footage keep its original light and color. */
 .videoSlide .videoFrame,
 .videoFrame,
 .modalFilm {
@@ -2413,15 +2413,13 @@ textarea {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.82) contrast(1.05) brightness(0.78);
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
 }
 
 .videoPreviewShade {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(180deg, rgba(19, 22, 22, 0.18), rgba(19, 22, 22, 0.66));
-  pointer-events: none;
+  display: none !important;
 }
 
 .videoSlide .videoFrame::before,
