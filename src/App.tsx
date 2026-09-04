@@ -943,8 +943,8 @@ function App() {
           </span>
         </a>
         <nav aria-label="Основная навигация">
-          <a href="#/manganese-flux">Марганцовистый флюс</a>
-          <a href="#/gypsum-stone">Гипсовый / ангидритовый камень</a>
+          <a href="#/manganese-flux">Флюс</a>
+          <a href="#/gypsum-stone">Гипсовый камень</a>
           <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
           <a href="#gallery">Фотогалерея</a>
@@ -1033,20 +1033,24 @@ function App() {
 
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Видеоролик о компании</p>
-          <h2>Марганцовистый флюс:<br />производство и контроль</h2>
+          <p className="eyebrow">Производственный цикл</p>
+          <h2>От карьера<br />до отгрузки</h2>
+          <p className="videoLead">
+            В ролике показан полный цикл подготовки минерального сырья: добыча в карьере, переработка,
+            лабораторный контроль партии и отгрузка автомобильным или железнодорожным транспортом.
+          </p>
           <div className="videoPlan">
-            <span>Карьер и производственная площадка</span>
-            <span>Оборудование и подготовка партии</span>
-            <span>Протокол анализа и паспорт качества</span>
-            <span>Отгрузка своими авто и через ЖД</span>
+            <span>Добыча на собственных карьерах</span>
+            <span>Дробление и подготовка партии</span>
+            <span>Лабораторный контроль и паспорт качества</span>
+            <span>Автомобильная и железнодорожная отгрузка</span>
           </div>
         </div>
         <div className="videoFrame cinematic" data-reveal>
           <button type="button" aria-label="Смотреть видеоролик о компании" onClick={() => setIsVideoOpen(true)}>
             <Play size={34} aria-hidden="true" />
           </button>
-          <strong>Марганцовистый флюс: от карьера до отгрузки</strong>
+          <strong>Добыча, подготовка и поставка сырья</strong>
         </div>
       </section>
 

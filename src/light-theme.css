@@ -501,3 +501,248 @@ button,
     animation: none;
   }
 }
+
+/* Header and opening slide refinements from the annotated review. */
+.brandLogoOnly .brandLogo {
+  background: #f3eee3 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.brandLogoOnly .brandLogo img {
+  mix-blend-mode: multiply;
+}
+
+.topbar nav {
+  color: #3b3030 !important;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.topContacts > a.topCall,
+.topContacts > a.topMail,
+.topAddress:is(a).topMapButton {
+  color: #3b3030 !important;
+  background: #e2dbce !important;
+  border-color: rgba(98, 86, 87, 0.22) !important;
+  box-shadow: none !important;
+  font-weight: 650;
+}
+
+.topContacts > a.topCall:hover,
+.topContacts > a.topCall:focus-visible,
+.topContacts > a.topMail:hover,
+.topContacts > a.topMail:focus-visible,
+.topAddress:is(a).topMapButton:hover,
+.topAddress:is(a).topMapButton:focus-visible {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(187, 170, 150, 0.82) !important;
+  box-shadow: 0 0 24px rgba(187, 170, 150, 0.42) !important;
+}
+
+.heroCompanyEyebrow {
+  margin-bottom: 16px;
+  color: #e8e1d2 !important;
+  font-size: clamp(15px, 1.1vw, 18px) !important;
+  font-weight: 750 !important;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.heroInner h1 {
+  color: #e8e1d2 !important;
+  font-weight: 780;
+}
+
+.hero .primaryButton,
+.hero .secondaryButton {
+  color: #3b3030 !important;
+  background: rgba(238, 232, 216, 0.94) !important;
+  border: 1px solid rgba(248, 244, 234, 0.64) !important;
+  box-shadow: 0 12px 28px rgba(24, 21, 20, 0.2) !important;
+}
+
+.hero .primaryButton:hover,
+.hero .primaryButton:focus-visible,
+.hero .secondaryButton:hover,
+.hero .secondaryButton:focus-visible {
+  color: #3b3030 !important;
+  background: #bbaa96 !important;
+  border-color: rgba(238, 232, 216, 0.9) !important;
+  box-shadow: 0 0 28px rgba(187, 170, 150, 0.58) !important;
+}
+
+.heroFactStrip {
+  color: #3b3030 !important;
+  background: rgba(248, 244, 234, 0.93) !important;
+  border-color: rgba(238, 232, 216, 0.62) !important;
+  box-shadow: 0 18px 44px rgba(24, 21, 20, 0.22) !important;
+}
+
+.heroFactStrip article {
+  min-height: 62px;
+  padding: 10px 16px;
+  border-color: rgba(98, 86, 87, 0.16) !important;
+}
+
+.heroFactStrip span,
+.heroFactStrip strong {
+  color: #3b3030 !important;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+.heroFactStrip span {
+  font-size: clamp(11px, 0.72vw, 13px);
+  font-weight: 700;
+}
+
+.heroFactStrip strong {
+  font-size: clamp(13px, 0.88vw, 15px) !important;
+  font-weight: 450 !important;
+  line-height: 1.28;
+}
+
+.floatingWriteCta {
+  color: #3b3030 !important;
+  background: #bbaa96 !important;
+  border-color: rgba(98, 86, 87, 0.22) !important;
+}
+
+/* The video slide uses the same light surface language as the product slide. */
+.videoSlide > div:first-child > .videoLead {
+  display: block !important;
+  max-width: 58ch;
+  margin: 18px 0 0;
+  color: #625657 !important;
+  font-size: clamp(15px, 1.05vw, 18px);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.videoSlide h2 {
+  color: #3b3030 !important;
+  font-weight: 760;
+}
+
+.videoPlan {
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.videoPlan span {
+  min-height: 44px;
+  padding: 9px 16px 9px 42px;
+  color: #3b3030 !important;
+  background: #e2dbce !important;
+  border: 1px solid rgba(98, 86, 87, 0.18) !important;
+  border-radius: var(--control-radius);
+  box-shadow: none !important;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500 !important;
+  line-height: 1.35;
+}
+
+.videoPlan span::before {
+  width: 9px;
+  height: 9px;
+  background: #741316 !important;
+}
+
+.videoSlide .videoFrame {
+  border: 1px solid rgba(98, 86, 87, 0.24) !important;
+  border-radius: var(--surface-radius);
+  box-shadow: var(--surface-shadow) !important;
+}
+
+.videoSlide .videoFrame strong {
+  color: #eee8d8 !important;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+@media (min-width: 1181px) {
+  .topbar {
+    grid-template-columns: 112px minmax(0, 1fr) 360px !important;
+    min-height: 102px !important;
+    gap: 16px !important;
+    padding: 8px 18px !important;
+  }
+
+  .brandLogoOnly .brandLogo {
+    width: 108px !important;
+    height: 72px !important;
+    padding: 8px 10px !important;
+  }
+
+  .topbar nav {
+    justify-self: center;
+    gap: clamp(8px, 0.9vw, 15px) !important;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .topContacts {
+    width: 360px !important;
+    min-width: 360px !important;
+    justify-self: end !important;
+    gap: 5px !important;
+  }
+
+  .topContacts > a.topCall,
+  .topContacts > a.topMail {
+    height: 36px !important;
+    min-height: 36px !important;
+    padding-inline: 8px !important;
+    border: 1px solid rgba(98, 86, 87, 0.22) !important;
+    border-radius: var(--control-radius) !important;
+    font-size: 10.5px !important;
+  }
+
+  .topAddress:is(a).topMapButton {
+    width: 100% !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin-top: 0 !important;
+    border-radius: var(--control-radius) !important;
+    font-size: 10.5px !important;
+  }
+}
+
+@media (min-width: 1240px) {
+  .topbar nav a[href="#articles"],
+  .topbar nav a[href="#gallery"],
+  .topbar nav a[href="#contacts"] {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 1181px) and (max-width: 1400px) {
+  .hero .heroFactStrip {
+    width: calc(100% - 180px) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .slideDeck:has(#top.is-current) .floatingWriteCta {
+    top: 98px;
+    bottom: auto;
+  }
+
+  .heroCompanyEyebrow {
+    margin-bottom: 10px;
+    font-size: 13px !important;
+  }
+
+  .heroFactStrip article {
+    min-height: 58px;
+  }
+
+  .videoSlide > div:first-child > .videoLead {
+    font-size: 15px;
+  }
+}
