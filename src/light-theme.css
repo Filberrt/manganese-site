@@ -2880,11 +2880,11 @@ body,
 .productInfoCard .productDetailList {
   display: grid;
   gap: 0 !important;
-  padding: 0 14px 2px !important;
-  overflow: hidden;
-  background: #eee8d8 !important;
-  border: 1px solid rgba(116, 19, 22, 0.12) !important;
-  border-radius: var(--control-radius) !important;
+  padding: 0 !important;
+  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
 }
 
