@@ -93,13 +93,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-    image: 'product/flux-material.webp',
+    image: 'product/manganese-flux-line-wide.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
-    image: 'product/gypsum-anhydrite.webp',
+    image: 'product/gypsum-anhydrite-line-wide.png',
   },
 ]
 
@@ -109,7 +109,7 @@ const productPageCards = [
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Марганцовистый флюс Улу-Телякского месторождения. Состав, фракция и влажность фиксируются в документах конкретной партии.',
-    image: 'product/flux-material.webp',
+    image: 'product/manganese-flux-product-v3.png',
     model: {
       title: 'Марганцовистый флюс',
       subtitle: '3D-модель сырья',
@@ -143,7 +143,7 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite.webp',
+    image: 'product/gypsum-anhydrite-product-v3.png',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-модель сырья',
