@@ -2908,5 +2908,5 @@ body,
 }
 
 .productStandalonePage[id="/manganese-flux"] .productDetailMedia img {
-  filter: brightness(1.42) contrast(0.86) saturate(1.06) !important;
+  filter: none !important;
 }
