@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
+import './light-theme.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 

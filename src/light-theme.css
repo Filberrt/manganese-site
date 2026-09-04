@@ -1,0 +1,421 @@
+/*
+ * Light palette pass for the existing site.
+ * This file intentionally changes only typography, colors and surface styling.
+ */
+
+:root {
+  color: #3b3030;
+  background: #eee8d8;
+  --ink: #3b3030;
+  --deep: #625657;
+  --graphite: #625657;
+  --steel: #bbb8b2;
+  --moss: #8d8075;
+  --acid: #eee8d8;
+  --rust: #bbaa96;
+  --paper: #f8f4ea;
+  --limestone: #e2dbce;
+  --muted: #766b68;
+  --wine: #741316;
+  --umber: #625657;
+  --stone: #bbb8b2;
+  --sand: #bbaa96;
+  --line: rgba(98, 86, 87, 0.22);
+  --shadow: 0 22px 58px rgba(98, 86, 87, 0.14);
+}
+
+html,
+body {
+  background: #eee8d8;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+.slideDeck {
+  color: #3b3030;
+  background: #eee8d8;
+  scrollbar-color: #bbaa96 rgba(98, 86, 87, 0.12);
+}
+
+.slideDeck::-webkit-scrollbar-track {
+  background: rgba(98, 86, 87, 0.1);
+}
+
+.slideDeck::-webkit-scrollbar-thumb {
+  background: #bbaa96;
+  border-color: #eee8d8;
+}
+
+/* The photographic opening remains dark; the content slides use the light system. */
+.darkSlide:not(.hero),
+#product.elevatedSection,
+#benefits.benefitsSlide,
+#route.routeBand,
+#gallery.gallerySlide,
+#documents.documentsSlide,
+#articles.articlesBand,
+#contacts.contacts,
+.productStandalonePage,
+.analysisBand,
+.productPassportPage {
+  color: #3b3030;
+  background: #eee8d8 !important;
+}
+
+#product.elevatedSection,
+#route.routeBand,
+#documents.documentsSlide,
+#contacts.contacts,
+.productStandalonePage {
+  background: #f8f4ea !important;
+}
+
+.darkSlide:not(.hero) h2,
+.darkSlide:not(.hero) h3,
+.section h2,
+.section h3,
+.sectionIntro h2,
+.productDetailHeader h2,
+.productModelPanelHeader strong,
+.contactLead h2,
+.productPassportIntro h2,
+.analysisBand h2,
+.analysisBand h3 {
+  color: #3b3030 !important;
+}
+
+.darkSlide:not(.hero) p,
+.section p,
+.sectionIntro p:not(.eyebrow),
+.productDetailHeader p:not(.eyebrow),
+.productModelPanelHeader span,
+.contactLead p,
+.analysisBand p,
+.productPassportIntro p:not(.eyebrow) {
+  color: #625657 !important;
+}
+
+.eyebrow,
+.darkSlide:not(.hero) .eyebrow,
+.productDetailHeader .eyebrow,
+.productModelPanelHeader small,
+.articleMeta,
+.productDetailList small {
+  color: #741316 !important;
+}
+
+/* One consistent light window treatment. */
+.topbar,
+.quietPanel,
+#product .productMatrix,
+.productInfoCard,
+.productModelPanel,
+.videoFrame,
+.benefitGrid article,
+.trustGrid article,
+.articleGrid article,
+.readableArticles article,
+.contactPanel,
+.requestSummary span,
+.checkList span,
+.contacts form,
+.compositionNote,
+.tableWrap,
+.siteFooter {
+  color: #3b3030 !important;
+  background: #f8f4ea !important;
+  border-color: rgba(98, 86, 87, 0.24) !important;
+  border-radius: 8px;
+  box-shadow: 0 22px 58px rgba(98, 86, 87, 0.14) !important;
+}
+
+.topbar {
+  background: rgba(248, 244, 234, 0.94) !important;
+  backdrop-filter: blur(18px);
+}
+
+.topbar nav,
+.topbar nav a,
+.siteFooter a,
+.siteFooter span,
+.siteFooter strong {
+  color: #3b3030 !important;
+}
+
+.topbar nav a:hover,
+.topbar nav a:focus-visible,
+.siteFooter a:hover,
+.siteFooter a:focus-visible {
+  color: #741316 !important;
+}
+
+.brandLogo,
+.siteFooter .footerLogo {
+  background: #f8f4ea !important;
+  border-color: rgba(98, 86, 87, 0.22) !important;
+}
+
+.quietPanel::before,
+.articleGrid article::before,
+.readableArticles article::before {
+  opacity: 0;
+}
+
+.benefitGrid article::before {
+  background: #741316 !important;
+}
+
+.benefitGrid article span,
+.requestSummary svg,
+.checkList svg,
+.trustGrid svg,
+.articleGrid svg {
+  color: #741316 !important;
+}
+
+.benefitGrid article p,
+.trustGrid article p,
+.articleGrid article p,
+.readableArticles article p,
+.requestSummary span,
+.checkList span {
+  color: #625657 !important;
+}
+
+.benefitGrid article h3,
+.trustGrid article h3,
+.articleGrid article h3,
+.readableArticles article h3,
+.checkList strong {
+  color: #3b3030 !important;
+}
+
+/* Product images and all existing media keep their sizing and crop. */
+#product .productCards article {
+  color: #3b3030 !important;
+  background: #f8f4ea !important;
+  border-color: rgba(98, 86, 87, 0.24) !important;
+  border-radius: 8px;
+  box-shadow: 0 22px 58px rgba(98, 86, 87, 0.14) !important;
+}
+
+#product .productCards strong {
+  color: #3b3030 !important;
+}
+
+#product .productCards span {
+  color: #625657 !important;
+}
+
+.productInfoCard .productSpecRow,
+.productInfoCard .productDetailList,
+.productDocumentStrip span,
+.modelChemCard,
+.techPassport {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(98, 86, 87, 0.2) !important;
+}
+
+.productInfoCard .productSpecRow span {
+  color: #766b68 !important;
+}
+
+.productInfoCard .productSpecRow strong,
+.productInfoCard .productDetailList span {
+  color: #3b3030 !important;
+}
+
+.productModelPanel,
+.productModelViewport,
+.productModelPanel .localModelViewer,
+.localModelViewer {
+  background: #e2dbce !important;
+}
+
+/* Photo cards stay photographic and readable. */
+.routeMap article,
+.galleryGrid article {
+  border-color: rgba(116, 19, 22, 0.26) !important;
+  border-radius: 8px;
+  box-shadow: 0 20px 48px rgba(98, 86, 87, 0.16) !important;
+}
+
+#route .routeMap article h3,
+#route .routeMap article p,
+#gallery .galleryGrid article h3,
+#gallery .galleryGrid article p {
+  color: #f8f4ea !important;
+}
+
+.routeMap article > span,
+.galleryGrid article > span {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(116, 19, 22, 0.34) !important;
+}
+
+.productStandalonePage .productStandaloneIntro h1 {
+  color: #3b3030 !important;
+}
+
+.productStandalonePage .productInfoCard .productDetailBody {
+  color: #3b3030 !important;
+  background: #f8f4ea !important;
+  border-color: rgba(98, 86, 87, 0.24) !important;
+}
+
+.productStandalonePage .productInfoCard .productDetailHeader h2,
+.productStandalonePage .productInfoCard .productDetailHeader p:not(.eyebrow) {
+  color: #3b3030 !important;
+}
+
+/* Document and article cards are light until the existing red hover state. */
+.trustGrid article:hover,
+.trustGrid article:focus-within,
+.articleGrid article:hover,
+.articleGrid article:focus-within,
+.readableArticles article:hover,
+.readableArticles article:focus-within {
+  color: #f8f4ea !important;
+  background: #741316 !important;
+  border-color: rgba(116, 19, 22, 0.72) !important;
+  box-shadow: 0 0 34px rgba(116, 19, 22, 0.28) !important;
+}
+
+.trustGrid article:hover h3,
+.trustGrid article:hover p,
+.trustGrid article:focus-within h3,
+.trustGrid article:focus-within p,
+.articleGrid article:hover h3,
+.articleGrid article:hover p,
+.articleGrid article:focus-within h3,
+.articleGrid article:focus-within p,
+.readableArticles article:hover h3,
+.readableArticles article:hover p,
+.readableArticles article:focus-within h3,
+.readableArticles article:focus-within p {
+  color: #f8f4ea !important;
+}
+
+.trustGrid article:hover button,
+.trustGrid article:focus-within button,
+.articleGrid article:hover button,
+.articleGrid article:focus-within button,
+.readableArticles article:hover button,
+.readableArticles article:focus-within button {
+  color: #f8f4ea !important;
+  background: #741316 !important;
+  border-color: rgba(248, 244, 234, 0.66) !important;
+  box-shadow: 0 0 26px rgba(116, 19, 22, 0.34) !important;
+}
+
+.contacts label {
+  color: #3b3030 !important;
+}
+
+.contacts input,
+.contacts textarea {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(98, 86, 87, 0.28) !important;
+}
+
+.contacts input::placeholder,
+.contacts textarea::placeholder {
+  color: rgba(98, 86, 87, 0.62) !important;
+}
+
+.contactPanel a,
+.messengerButton,
+.topContacts > a {
+  color: #3b3030 !important;
+  background: #e2dbce !important;
+  border-color: rgba(98, 86, 87, 0.25) !important;
+}
+
+.topContacts > a:hover,
+.topContacts > a:focus-visible,
+.contactPanel a:hover,
+.contactPanel a:focus-visible {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(187, 170, 150, 0.82) !important;
+  box-shadow: 0 0 28px rgba(187, 170, 150, 0.48) !important;
+}
+
+.primaryButton,
+.primaryAction,
+.floatingWriteCta,
+#product .productCards a,
+.trustGrid button,
+.articleGrid button,
+.readableArticles button,
+.siteFooter .footerAction {
+  color: #3b3030 !important;
+  background: #bbaa96 !important;
+  border-color: rgba(98, 86, 87, 0.24) !important;
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible,
+.primaryAction:hover,
+.primaryAction:focus-visible,
+.floatingWriteCta:hover,
+.floatingWriteCta:focus-visible,
+#product .productCards a:hover,
+#product .productCards a:focus-visible,
+.siteFooter .footerAction:hover,
+.siteFooter .footerAction:focus-visible {
+  color: #3b3030 !important;
+  background: #eee8d8 !important;
+  border-color: rgba(187, 170, 150, 0.88) !important;
+  box-shadow: 0 0 32px rgba(187, 170, 150, 0.58) !important;
+}
+
+.hero .secondaryButton {
+  color: #f8f4ea !important;
+  background: rgba(43, 36, 34, 0.72) !important;
+  border-color: rgba(248, 244, 234, 0.3) !important;
+}
+
+.hero .secondaryButton:hover,
+.hero .secondaryButton:focus-visible {
+  color: #f8f4ea !important;
+  background: #741316 !important;
+  border-color: rgba(248, 244, 234, 0.58) !important;
+  box-shadow: 0 0 30px rgba(116, 19, 22, 0.5) !important;
+}
+
+.passportHead {
+  color: #f8f4ea !important;
+  background: #741316 !important;
+}
+
+.techPassport td,
+.tableWrap td {
+  color: #3b3030 !important;
+  background: #f8f4ea !important;
+}
+
+.techPassport tr:nth-child(even) td,
+.tableWrap tr:nth-child(even) td {
+  background: #eee8d8 !important;
+}
+
+.siteFooter::before {
+  background: rgba(98, 86, 87, 0.18) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar,
+  .snapSlide.is-current {
+    animation: none;
+  }
+}
