@@ -2902,13 +2902,25 @@ body,
 
 .productStandalonePage .productDetailMedia {
   padding: 8px !important;
-  background: #bdb2a1 !important;
-  border-color: rgba(98, 86, 87, 0.18) !important;
-  box-shadow: 0 18px 42px rgba(98, 86, 87, 0.1) !important;
+  background: var(--surface-bg) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: 0 18px 44px rgba(98, 86, 87, 0.11) !important;
 }
 
-.productStandalonePage[id="/manganese-flux"] .productDetailMedia img {
+.productStandalonePage .productDetailMedia::before,
+.productStandalonePage .productDetailMedia::after {
+  display: none !important;
+}
+
+.productStandalonePage .productDetailMedia img {
   filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+.productStandalonePage[id="/gypsum-stone"] .productDetailMedia img {
+  object-fit: cover !important;
+  background: transparent !important;
 }
 
 .productStandalonePage .productInfoCard .productDetailBody,
