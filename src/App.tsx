@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import './App.css'
+import './review-overrides.css'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
 
