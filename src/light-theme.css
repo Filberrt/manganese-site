@@ -2925,3 +2925,20 @@ body,
 .productStandalonePage .productDetailBody {
   background: var(--surface-bg) !important;
 }
+
+/* Keep the first-screen aerial footage fully visible. */
+.hero .heroShade,
+.hero::before,
+.hero::after {
+  display: none !important;
+}
+
+.hero .heroVideo {
+  filter: none !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+.heroInner :is(.heroCompanyEyebrow, h1) {
+  text-shadow: 0 2px 18px rgba(24, 21, 20, 0.38);
+}
