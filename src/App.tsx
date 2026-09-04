@@ -1034,7 +1034,7 @@ function App() {
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
           <p className="eyebrow">Производственный цикл</p>
-          <h2>От карьера<br />до отгрузки</h2>
+          <h2>От карьера<br />{' '}до отгрузки</h2>
           <p className="videoLead">
             В ролике показан полный цикл подготовки минерального сырья: добыча в карьере, переработка,
             лабораторный контроль партии и отгрузка автомобильным или железнодорожным транспортом.
