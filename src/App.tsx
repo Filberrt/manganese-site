@@ -37,7 +37,6 @@ const company = {
   legalName: 'ООО «БашМинералРесурс»',
   subtitle: 'Добыча гипсового камня и марганцовистого флюса',
   subtitleLines: ['Добыча гипсового камня', 'и марганцовистого флюса'],
-  contactName: 'Банаев Александр',
   phonePrimary: '+7 (912) 286-71-11',
   phoneSecondary: '+7 (347) 246-39-13',
   email: 'info@bashmineral.ru',
@@ -1288,7 +1287,6 @@ function App() {
           <div className="contactDirectory" aria-label="Контактная информация">
             <div className="contactDirectoryHeader">
               <span>Связаться напрямую</span>
-              <strong>{company.contactName}</strong>
               <p>Ответим на вопросы по сырью, документам, объемам и логистике.</p>
             </div>
 
@@ -1296,29 +1294,24 @@ function App() {
               <a className="contactCard" href="tel:+79122867111">
                 <span className="contactIcon"><Phone size={20} aria-hidden="true" /></span>
                 <span className="contactCardText"><small>Основной телефон</small><strong>{company.phonePrimary}</strong></span>
-                <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a className="contactCard" href="tel:+73472463913">
                 <span className="contactIcon"><Phone size={20} aria-hidden="true" /></span>
                 <span className="contactCardText"><small>Офис</small><strong>{company.phoneSecondary}</strong></span>
-                <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a className="contactCard" href={`mailto:${company.email}`}>
                 <span className="contactIcon"><Mail size={20} aria-hidden="true" /></span>
                 <span className="contactCardText"><small>Электронная почта</small><strong>{company.email}</strong></span>
-                <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a className="contactCard" href={company.mapUrl} target="_blank" rel="noreferrer">
                 <span className="contactIcon"><MapPin size={20} aria-hidden="true" /></span>
                 <span className="contactCardText"><small>Расположение</small><strong>Открыть Яндекс Карты</strong></span>
-                <ArrowRight size={17} aria-hidden="true" />
               </a>
             </div>
 
             <a className="contactLocation" href={company.mapUrl} target="_blank" rel="noreferrer">
               <MapPin size={22} aria-hidden="true" />
               <span><small>Адрес производства</small><strong>{company.location}</strong></span>
-              <ArrowRight size={18} aria-hidden="true" />
             </a>
           </div>
         </div>
