@@ -2910,3 +2910,8 @@ body,
 .productStandalonePage[id="/manganese-flux"] .productDetailMedia img {
   filter: none !important;
 }
+
+.productStandalonePage .productInfoCard .productDetailBody,
+.productStandalonePage .productDetailBody {
+  background: var(--surface-bg) !important;
+}
