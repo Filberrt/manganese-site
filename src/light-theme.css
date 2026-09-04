@@ -1800,3 +1800,348 @@ body:has(.videoModal) .floatingWriteCta {
     pointer-events: none;
   }
 }
+
+/* 2026 palette refinement: neutral light base, graphite type, burgundy as an accent. */
+:root {
+  color: #292526;
+  background: #f2f0eb;
+  --ink: #292526;
+  --deep: #625d5a;
+  --graphite: #625d5a;
+  --steel: #b8b5af;
+  --moss: #817b75;
+  --acid: #f2f0eb;
+  --rust: #c8b995;
+  --paper: #fbfaf7;
+  --limestone: #e8e4dd;
+  --muted: #746e69;
+  --wine: #70171b;
+  --umber: #625d5a;
+  --stone: #b8b5af;
+  --sand: #c8b995;
+  --line: rgba(54, 47, 46, 0.13);
+  --shadow: 0 24px 64px rgba(67, 57, 52, 0.09);
+  --page-bg: #f2f0eb;
+  --section-bg: #f7f5f0;
+  --surface-bg: #fbfaf7;
+  --surface-muted: #e8e4dd;
+  --surface-border: rgba(54, 47, 46, 0.13);
+  --surface-shadow: 0 20px 54px rgba(67, 57, 52, 0.08);
+}
+
+html,
+body {
+  color: var(--ink);
+  background: var(--page-bg);
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Onest Variable", "Onest", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.hero h1,
+.sectionIntro h2,
+.section > div:first-child > h2,
+.productStandaloneIntro h1,
+.productPassportIntro h2,
+.contactLead h2 {
+  color: var(--ink) !important;
+  font-weight: 690 !important;
+  line-height: 1.04 !important;
+}
+
+.hero h1 {
+  color: #f7f4ec !important;
+}
+
+.section h3,
+.productCards strong,
+.trustGrid h3,
+.articleGrid h3,
+.checkList strong {
+  font-weight: 620 !important;
+}
+
+.eyebrow,
+.articleMeta,
+.productDetailList small {
+  color: var(--wine) !important;
+  font-weight: 640 !important;
+}
+
+.slideDeck,
+.darkSlide:not(.hero),
+.productStandalonePage,
+.analysisBand,
+.productPassportPage {
+  color: var(--ink);
+  background: var(--page-bg) !important;
+}
+
+#product.elevatedSection,
+#gallery.gallerySlide,
+#articles.articlesBand,
+.productPassportPage {
+  background: #f7f5f0 !important;
+}
+
+#video.videoSlide,
+#route.routeBand,
+#documents.documentsSlide,
+#contacts.contacts,
+.productStandalonePage {
+  background: #ece9e3 !important;
+}
+
+#benefits.benefitsSlide,
+.analysisBand {
+  background: #f3f1ec !important;
+}
+
+.topbar {
+  color: var(--ink) !important;
+  background: rgba(251, 250, 247, 0.96) !important;
+  border-color: rgba(54, 47, 46, 0.11) !important;
+  box-shadow: 0 18px 54px rgba(54, 47, 46, 0.08) !important;
+}
+
+.brandLogoOnly .brandLogo,
+.brandLogo,
+.siteFooter .footerLogo {
+  background: #fbfaf7 !important;
+  border-color: rgba(54, 47, 46, 0.08) !important;
+}
+
+.topbar nav,
+.topbar nav a {
+  color: #393435 !important;
+  font-weight: 570 !important;
+}
+
+.topbar nav a:hover,
+.topbar nav a:focus-visible {
+  color: var(--wine) !important;
+}
+
+.topContacts > a.topCall,
+.topContacts > a.topMail,
+.topAddress:is(a).topMapButton,
+.contactPanel a,
+.messengerButton {
+  color: #393435 !important;
+  background: #efede8 !important;
+  border-color: rgba(54, 47, 46, 0.12) !important;
+  box-shadow: none !important;
+}
+
+.topContacts > a:hover,
+.topContacts > a:focus-visible,
+.topAddress:is(a).topMapButton:hover,
+.topAddress:is(a).topMapButton:focus-visible,
+.contactPanel a:hover,
+.contactPanel a:focus-visible {
+  color: var(--ink) !important;
+  background: #fbfaf7 !important;
+  border-color: rgba(184, 162, 112, 0.7) !important;
+  box-shadow: 0 10px 30px rgba(159, 133, 79, 0.16) !important;
+}
+
+.quietPanel,
+.productInfoCard,
+.productModelPanel,
+.videoFrame,
+.compositionNote,
+.tableWrap,
+.contactPanel,
+.contacts form,
+.siteFooter {
+  color: var(--ink) !important;
+  background: var(--surface-bg) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: var(--surface-shadow) !important;
+}
+
+#product .productMatrix {
+  padding: 18px 0 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#product .productMatrix > h3 {
+  margin-left: 4px;
+  color: var(--ink) !important;
+  font-size: 18px !important;
+  font-weight: 620 !important;
+}
+
+#product .productCards article {
+  background: rgba(251, 250, 247, 0.92) !important;
+  border-color: rgba(54, 47, 46, 0.12) !important;
+  box-shadow: 0 14px 38px rgba(67, 57, 52, 0.07) !important;
+  transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+#product .productCards article:hover,
+#product .productCards article:focus-within {
+  box-shadow: 0 24px 56px rgba(67, 57, 52, 0.12) !important;
+  transform: translateY(-3px);
+}
+
+.productOverview article {
+  border-color: rgba(54, 47, 46, 0.14) !important;
+}
+
+.productOverview strong {
+  color: var(--wine) !important;
+  font-weight: 620 !important;
+}
+
+.requestSummary span,
+.checkList span,
+.productInfoCard .productSpecRow,
+.productInfoCard .productDetailList,
+.productDocumentStrip span,
+.modelChemCard,
+.techPassport,
+.videoPlan span {
+  color: var(--ink) !important;
+  background: #e9e6e0 !important;
+  border-color: rgba(54, 47, 46, 0.11) !important;
+}
+
+.productModelPanel,
+.productModelViewport,
+.productModelPanel .localModelViewer,
+.localModelViewer {
+  background: #e3dfd7 !important;
+}
+
+.primaryButton,
+.primaryAction,
+.floatingWriteCta,
+#product .productCards a,
+.trustGrid button,
+.articleGrid button,
+.readableArticles button,
+.siteFooter .footerAction {
+  color: #2c2827 !important;
+  background: #c9bb9c !important;
+  border-color: rgba(130, 109, 70, 0.2) !important;
+  box-shadow: 0 10px 28px rgba(157, 132, 79, 0.12) !important;
+  font-weight: 650 !important;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), background-color 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible,
+.primaryAction:hover,
+.primaryAction:focus-visible,
+.floatingWriteCta:hover,
+.floatingWriteCta:focus-visible,
+#product .productCards a:hover,
+#product .productCards a:focus-visible,
+.siteFooter .footerAction:hover,
+.siteFooter .footerAction:focus-visible {
+  color: #282423 !important;
+  background: #d8ccad !important;
+  border-color: rgba(160, 134, 77, 0.38) !important;
+  box-shadow: 0 14px 36px rgba(157, 132, 79, 0.22), 0 0 24px rgba(204, 182, 131, 0.22) !important;
+  transform: translateY(-2px);
+}
+
+.hero .primaryButton,
+.hero .secondaryButton {
+  color: #302b2a !important;
+  background: rgba(247, 244, 236, 0.96) !important;
+  border-color: rgba(255, 255, 255, 0.36) !important;
+  box-shadow: 0 14px 34px rgba(10, 10, 9, 0.2) !important;
+}
+
+.hero .primaryButton:hover,
+.hero .primaryButton:focus-visible,
+.hero .secondaryButton:hover,
+.hero .secondaryButton:focus-visible {
+  color: #2c2827 !important;
+  background: #d8ccad !important;
+  box-shadow: 0 14px 36px rgba(157, 132, 79, 0.28), 0 0 26px rgba(216, 204, 173, 0.24) !important;
+}
+
+.heroFactStrip {
+  color: var(--ink) !important;
+  background: rgba(251, 250, 247, 0.94) !important;
+  border-color: rgba(255, 255, 255, 0.44) !important;
+  box-shadow: 0 22px 54px rgba(10, 10, 9, 0.2) !important;
+}
+
+#benefits .benefitGrid::before {
+  background: rgba(112, 23, 27, 0.23);
+}
+
+#benefits .benefitGrid article:not(:last-child)::after {
+  background: #f3f1ec;
+}
+
+#benefits .benefitGrid article span {
+  background: var(--wine) !important;
+  border-color: rgba(112, 23, 27, 0.22) !important;
+  box-shadow: 0 10px 26px rgba(112, 23, 27, 0.14) !important;
+}
+
+#documents .trustGrid article,
+#articles .readableArticles article,
+#contacts .contactPanel,
+#contacts form {
+  background: rgba(251, 250, 247, 0.94) !important;
+  border-color: rgba(54, 47, 46, 0.12) !important;
+  box-shadow: 0 18px 46px rgba(67, 57, 52, 0.07) !important;
+}
+
+#documents .trustGrid article:hover,
+#documents .trustGrid article:focus-within,
+#articles .readableArticles article:hover,
+#articles .readableArticles article:focus-within {
+  background: var(--wine) !important;
+  border-color: rgba(112, 23, 27, 0.74) !important;
+  box-shadow: 0 22px 48px rgba(112, 23, 27, 0.18) !important;
+}
+
+.contacts input,
+.contacts textarea {
+  color: var(--ink) !important;
+  background: #fdfcf9 !important;
+  border-color: rgba(54, 47, 46, 0.16) !important;
+}
+
+.passportHead {
+  background: var(--wine) !important;
+}
+
+.techPassport td,
+.tableWrap td {
+  color: var(--ink) !important;
+  background: #fbfaf7 !important;
+}
+
+.techPassport tr:nth-child(even) td,
+.tableWrap tr:nth-child(even) td {
+  background: #efede8 !important;
+}
+
+.siteFooter {
+  background: #e7e3dc !important;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    background: rgba(251, 250, 247, 0.98) !important;
+  }
+
+  #product .productMatrix {
+    padding-top: 8px !important;
+  }
+}
