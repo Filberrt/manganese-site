@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import type { Object3D } from 'three'
 import {
   ArrowLeft,
@@ -737,26 +737,6 @@ function App() {
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
   const activeProductPage = productPageCards.find((product) => product.id === activeProductPageId) ?? null
   const openArticle = (index: number) => setActiveArticle(index)
-  const submitSupplyRequest = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
-    const form = new FormData(event.currentTarget)
-    const contactName = String(form.get('contactName') ?? '').trim()
-    const contact = String(form.get('contact') ?? '').trim()
-    const organization = String(form.get('organization') ?? '').trim()
-    const question = String(form.get('question') ?? '').trim()
-    const subject = organization ? `Запрос расчета партии - ${organization}` : 'Запрос расчета партии'
-    const body = [
-      `Контактное лицо: ${contactName}`,
-      `Телефон или email: ${contact}`,
-      `Организация: ${organization}`,
-      '',
-      'Вопрос:',
-      question,
-    ].join('\n')
-
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-  }
   const copyWithTextarea = (value: string) => {
     const textarea = document.createElement('textarea')
     textarea.value = value
@@ -1109,6 +1089,20 @@ function App() {
           </div>
         </div>
         <div className="videoFrame cinematic" data-reveal>
+          <video
+            className="videoPreview"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={asset('hero-drone-poster.webp')}
+            aria-hidden="true"
+          >
+            <source src={asset('hero-drone.mp4')} type="video/mp4" media="(min-width: 900px)" />
+            <source src={asset('hero-drone-mobile.mp4')} type="video/mp4" />
+          </video>
+          <div className="videoPreviewShade" aria-hidden="true" />
           <button type="button" aria-label="Смотреть видеоролик о компании" onClick={() => setIsVideoOpen(true)}>
             <Play size={34} aria-hidden="true" />
           </button>
@@ -1275,51 +1269,59 @@ function App() {
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
         <div className="contactLead" data-reveal>
-          <div>
-            <p className="eyebrow">Расчет поставки</p>
-            <h2>Запросить<br />расчет партии</h2>
+          <div className="contactIntro">
+            <div>
+              <p className="eyebrow">Контакты</p>
+              <h2>Связаться<br />с нами</h2>
+            </div>
             <p>
-              Позвоните или напишите: подберем продукт, фракцию и удобную схему отгрузки.
-              Для старта достаточно объема и станции назначения.
+              Позвоните или напишите напрямую. Подберем продукт и фракцию, отправим документы
+              по партии и согласуем удобную схему отгрузки.
             </p>
+            <div className="requestSummary" aria-label="Что подготовим">
+              <span><CheckCircle2 size={18} /> Подберем продукт и фракцию</span>
+              <span><CheckCircle2 size={18} /> Отправим документы по партии</span>
+              <span><CheckCircle2 size={18} /> Согласуем автомобильную или ЖД отгрузку</span>
+            </div>
           </div>
-          <div className="requestSummary" aria-label="Что подготовим">
-            <span><CheckCircle2 size={18} /> Подобрать продукт и фракцию</span>
-            <span><CheckCircle2 size={18} /> Запросить документы по партии</span>
-            <span><CheckCircle2 size={18} /> Согласовать свои авто или ЖД</span>
-          </div>
-          <div className="contactPanel">
-            <a href="tel:+79122867111"><Phone size={18} /> {company.phonePrimary}</a>
-            <a href={`mailto:${company.email}`}><Mail size={18} /> {company.email}</a>
-            <a href={company.mapUrl} target="_blank" rel="noreferrer"><MapPin size={18} /> Яндекс Карты</a>
-          </div>
-          <div className="messengerPanel" aria-label="Мессенджеры">
-            <span className="messengerButton telegram" aria-disabled="true">Telegram</span>
-            <span className="messengerButton max" aria-disabled="true">Max</span>
+
+          <div className="contactDirectory" aria-label="Контактная информация">
+            <div className="contactDirectoryHeader">
+              <span>Связаться напрямую</span>
+              <strong>{company.contactName}</strong>
+              <p>Ответим на вопросы по сырью, документам, объемам и логистике.</p>
+            </div>
+
+            <div className="contactPanel">
+              <a className="contactCard" href="tel:+79122867111">
+                <span className="contactIcon"><Phone size={20} aria-hidden="true" /></span>
+                <span className="contactCardText"><small>Основной телефон</small><strong>{company.phonePrimary}</strong></span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </a>
+              <a className="contactCard" href="tel:+73472463913">
+                <span className="contactIcon"><Phone size={20} aria-hidden="true" /></span>
+                <span className="contactCardText"><small>Офис</small><strong>{company.phoneSecondary}</strong></span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </a>
+              <a className="contactCard" href={`mailto:${company.email}`}>
+                <span className="contactIcon"><Mail size={20} aria-hidden="true" /></span>
+                <span className="contactCardText"><small>Электронная почта</small><strong>{company.email}</strong></span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </a>
+              <a className="contactCard" href={company.mapUrl} target="_blank" rel="noreferrer">
+                <span className="contactIcon"><MapPin size={20} aria-hidden="true" /></span>
+                <span className="contactCardText"><small>Расположение</small><strong>Открыть Яндекс Карты</strong></span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+
+            <a className="contactLocation" href={company.mapUrl} target="_blank" rel="noreferrer">
+              <MapPin size={22} aria-hidden="true" />
+              <span><small>Адрес производства</small><strong>{company.location}</strong></span>
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
           </div>
         </div>
-        <form data-reveal onSubmit={submitSupplyRequest}>
-          <label>
-            Контактное лицо
-            <input name="contactName" placeholder="ФИО" autoComplete="name" required />
-          </label>
-          <label>
-            Телефон или email
-            <input name="contact" placeholder="+7 ___ ___-__-__ / email" autoComplete="email" required />
-          </label>
-          <label>
-            Наименование организации
-            <input name="organization" placeholder="ООО, ИП или название предприятия" autoComplete="organization" required />
-          </label>
-          <label>
-            Опишите подробно ваш вопрос
-            <textarea name="question" placeholder="Укажите продукт, объем, фракцию, станцию назначения или нужные документы" required />
-          </label>
-          <button className="primaryButton" type="submit">
-            Запросить расчет партии
-            <ArrowRight size={18} aria-hidden="true" />
-          </button>
-        </form>
       </section>
 
       {isVideoOpen && (
