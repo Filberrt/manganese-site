@@ -92,13 +92,13 @@ const productCards = [
   {
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
-    text: 'Mn 7-10%, ТУ 0751-001-38476082-2025, ДСК 40 тыс. т/мес и поставка под металлургию.',
+    text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
     image: 'product/manganese-flux-line-wide.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
-    text: 'ГОСТ 4013-2019, ресурсы 434 млн т, ДСУ до 45 тыс. т/мес и применение в стройматериалах.',
+    text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
     image: 'product/gypsum-anhydrite-line-wide.png',
   },
 ]
@@ -249,8 +249,8 @@ const articlePlan = [
 
 const slideItems = [
   ['top', 'Старт'],
-  ['video', 'Ролик'],
   ['product', 'Наши продукты'],
+  ['video', 'Ролик'],
   ['benefits', 'Выгоды'],
   ['route', 'О компании'],
   ['gallery', 'Фото'],
@@ -1031,6 +1031,51 @@ function App() {
         <a className="scrollCue" href="#product" aria-label="Перейти к продукту" />
       </section>
 
+      <section className="section split elevatedSection snapSlide" id="product" data-slide>
+        <div data-reveal>
+          <p className="eyebrow">Продукция</p>
+          <h2>Два вида сырья<br />для промышленности</h2>
+          <p>
+            Каждая партия сопровождается паспортом качества и протоколом анализа. До расчета поставки
+            согласуем назначение сырья, требуемую фракцию, влажность и схему отгрузки.
+          </p>
+          <div className="productOverview">
+            <article>
+              <strong>Марганцовистый флюс</strong>
+              <p>
+                Mn 7,6-7,9%, CaO 32,7-34,5%, SiO2 14,9-17,0%. Фракция, влажность и показатели партии
+                фиксируются в документах. Переработка на ДСК - до 40 тыс. тонн в месяц.
+              </p>
+            </article>
+            <article>
+              <strong>Гипсовый и ангидритовый камень</strong>
+              <p>
+                Сырье по ГОСТ 4013-2019. Содержание CaSO4, фракция, влажность и примеси подтверждаются
+                документами партии. Переработка на ДСУ - до 45 тыс. тонн в месяц.
+              </p>
+            </article>
+          </div>
+        </div>
+        <aside className="quietPanel productMatrix" data-reveal>
+          <h3>Выберите вид сырья</h3>
+          <div className="productCards">
+            {productCards.map(({ productId, title, text, image }) => (
+              <article key={title}>
+                <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
+                <div>
+                  <strong>{title}</strong>
+                  <span>{text}</span>
+                  <a href={`#/${productId}`}>
+                    Изучить подробнее
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </aside>
+      </section>
+
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
         <div data-reveal>
           <p className="eyebrow">Производственный цикл</p>
@@ -1052,41 +1097,6 @@ function App() {
           </button>
           <strong>Добыча, подготовка и поставка сырья</strong>
         </div>
-      </section>
-
-      <section className="section split elevatedSection snapSlide" id="product" data-slide>
-        <div data-reveal>
-          <p className="eyebrow">Наши продукты</p>
-          <h2>Сырье<br />с паспортом партии</h2>
-          <p>
-            Мы предлагаем два направления поставки: марганцовистый флюс для металлургии и гипсовый камень
-            для строительных материалов.
-          </p>
-          <div className="checkList">
-            <span><CheckCircle2 size={20} /> Полный цикл: добыча, переработка, контроль и отгрузка</span>
-            <span><CheckCircle2 size={20} /> Собственные карьеры и площадка в Башкортостане</span>
-            <span><CheckCircle2 size={20} /> Паспорт качества и протокол анализа</span>
-            <span><CheckCircle2 size={20} /> Отгрузка своими авто и через ЖД площадку</span>
-          </div>
-        </div>
-        <aside className="quietPanel productMatrix" data-reveal>
-          <h3>Продуктовая линейка</h3>
-          <div className="productCards">
-            {productCards.map(({ productId, title, text, image }) => (
-              <article key={title}>
-                <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
-                <div>
-                  <strong>{title}</strong>
-                  <span>{text}</span>
-                  <a href={`#/${productId}`}>
-                    Открыть подробнее
-                    <ArrowRight size={16} aria-hidden="true" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </aside>
       </section>
 
       <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
