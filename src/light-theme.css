@@ -22,6 +22,14 @@
   --sand: #bbaa96;
   --line: rgba(98, 86, 87, 0.22);
   --shadow: 0 22px 58px rgba(98, 86, 87, 0.14);
+  --page-bg: #eee8d8;
+  --section-bg: #f3eee3;
+  --surface-bg: #f8f4ea;
+  --surface-muted: #e2dbce;
+  --surface-border: rgba(98, 86, 87, 0.22);
+  --surface-shadow: 0 18px 48px rgba(98, 86, 87, 0.12);
+  --surface-radius: 8px;
+  --control-radius: 6px;
 }
 
 html,
@@ -37,9 +45,69 @@ textarea {
   letter-spacing: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+input,
+textarea,
+label,
+small,
+strong,
+span {
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+.hero h1,
+.sectionIntro h2,
+.productStandaloneIntro h1,
+.contactLead h2 {
+  font-weight: 800;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.section h3,
+.productCards strong,
+.checkList strong,
+.trustGrid h3,
+.articleGrid h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.section p,
+.productCards span,
+.checkList span,
+.trustGrid p,
+.articleGrid p,
+.contactLead p {
+  font-weight: 400;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.eyebrow,
+.articleMeta,
+button,
+.primaryButton,
+.secondaryButton,
+.primaryAction,
+.contactPanel a,
+.topContacts > a {
+  font-weight: 700;
+}
+
 .slideDeck {
   color: #3b3030;
-  background: #eee8d8;
+  background: var(--page-bg);
   scrollbar-color: #bbaa96 rgba(98, 86, 87, 0.12);
 }
 
@@ -65,7 +133,7 @@ textarea {
 .analysisBand,
 .productPassportPage {
   color: #3b3030;
-  background: #eee8d8 !important;
+  background: var(--page-bg) !important;
 }
 
 #product.elevatedSection,
@@ -73,7 +141,7 @@ textarea {
 #documents.documentsSlide,
 #contacts.contacts,
 .productStandalonePage {
-  background: #f8f4ea !important;
+  background: var(--section-bg) !important;
 }
 
 .darkSlide:not(.hero) h2,
@@ -122,21 +190,32 @@ textarea {
 .articleGrid article,
 .readableArticles article,
 .contactPanel,
-.requestSummary span,
-.checkList span,
 .contacts form,
 .compositionNote,
 .tableWrap,
 .siteFooter {
   color: #3b3030 !important;
-  background: #f8f4ea !important;
-  border-color: rgba(98, 86, 87, 0.24) !important;
-  border-radius: 8px;
-  box-shadow: 0 22px 58px rgba(98, 86, 87, 0.14) !important;
+  background: var(--surface-bg) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: var(--surface-radius);
+  box-shadow: var(--surface-shadow) !important;
+}
+
+.requestSummary span,
+.checkList span,
+.productInfoCard .productSpecRow,
+.productInfoCard .productDetailList,
+.productDocumentStrip span,
+.modelChemCard,
+.techPassport {
+  background: var(--surface-muted) !important;
+  border: 1px solid rgba(98, 86, 87, 0.18) !important;
+  border-radius: var(--control-radius);
+  box-shadow: none !important;
 }
 
 .topbar {
-  background: rgba(248, 244, 234, 0.94) !important;
+  background: rgba(248, 244, 234, 0.96) !important;
   backdrop-filter: blur(18px);
 }
 
@@ -199,10 +278,10 @@ textarea {
 /* Product images and all existing media keep their sizing and crop. */
 #product .productCards article {
   color: #3b3030 !important;
-  background: #f8f4ea !important;
-  border-color: rgba(98, 86, 87, 0.24) !important;
-  border-radius: 8px;
-  box-shadow: 0 22px 58px rgba(98, 86, 87, 0.14) !important;
+  background: var(--surface-bg) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: var(--surface-radius);
+  box-shadow: var(--surface-shadow) !important;
 }
 
 #product .productCards strong {
@@ -219,8 +298,8 @@ textarea {
 .modelChemCard,
 .techPassport {
   color: #3b3030 !important;
-  background: #eee8d8 !important;
-  border-color: rgba(98, 86, 87, 0.2) !important;
+  background: var(--surface-muted) !important;
+  border-color: rgba(98, 86, 87, 0.18) !important;
 }
 
 .productInfoCard .productSpecRow span {
@@ -243,7 +322,7 @@ textarea {
 .routeMap article,
 .galleryGrid article {
   border-color: rgba(116, 19, 22, 0.26) !important;
-  border-radius: 8px;
+  border-radius: var(--surface-radius);
   box-shadow: 0 20px 48px rgba(98, 86, 87, 0.16) !important;
 }
 
@@ -323,8 +402,9 @@ textarea {
 .contacts input,
 .contacts textarea {
   color: #3b3030 !important;
-  background: #eee8d8 !important;
+  background: #fdfaf3 !important;
   border-color: rgba(98, 86, 87, 0.28) !important;
+  border-radius: var(--control-radius);
 }
 
 .contacts input::placeholder,
@@ -336,8 +416,9 @@ textarea {
 .messengerButton,
 .topContacts > a {
   color: #3b3030 !important;
-  background: #e2dbce !important;
+  background: var(--surface-muted) !important;
   border-color: rgba(98, 86, 87, 0.25) !important;
+  border-radius: var(--control-radius);
 }
 
 .topContacts > a:hover,
@@ -361,6 +442,7 @@ textarea {
   color: #3b3030 !important;
   background: #bbaa96 !important;
   border-color: rgba(98, 86, 87, 0.24) !important;
+  border-radius: var(--control-radius);
 }
 
 .primaryButton:hover,
