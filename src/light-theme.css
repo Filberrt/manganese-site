@@ -2145,3 +2145,21 @@ textarea {
     padding-top: 8px !important;
   }
 }
+
+/* Center the complete product and passport compositions on tall desktop screens. */
+@media (min-width: 1181px) {
+  .productStandalonePage,
+  .productPassportPage {
+    min-height: 100svh;
+    align-content: safe center !important;
+    padding: 122px 0 54px !important;
+  }
+
+  .productStandalonePage {
+    gap: 28px !important;
+  }
+
+  .productPassportPage {
+    gap: 26px !important;
+  }
+}
