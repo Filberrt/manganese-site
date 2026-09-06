@@ -3745,6 +3745,15 @@ body,
   color: var(--wine) !important;
 }
 
+@media (min-width: 981px) {
+  #product > div:first-child > .eyebrow {
+    margin: 0 0 14px !important;
+    font-size: clamp(18px, 1.28vw, 22px) !important;
+    font-weight: 650 !important;
+    line-height: 1.2 !important;
+  }
+}
+
 .productStandalonePage .productModelPanelHeader strong {
   font-size: clamp(18px, 1.25vw, 21px) !important;
   font-weight: 650 !important;
