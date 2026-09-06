@@ -3726,6 +3726,7 @@ body,
 
 #product .productMatrix {
   border-color: transparent !important;
+  overflow: visible !important;
 }
 
 #product .productCards article {
@@ -3742,10 +3743,6 @@ body,
 #product .eyebrow,
 #product .productMatrix > h3 {
   color: var(--wine) !important;
-}
-
-#product .productOverview article:last-child {
-  padding-bottom: 26px !important;
 }
 
 .productStandalonePage .productModelPanelHeader strong {
