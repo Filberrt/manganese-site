@@ -1107,7 +1107,6 @@ function App() {
           <button type="button" aria-label="Смотреть видеоролик о компании" onClick={() => setIsVideoOpen(true)}>
             <Play size={34} aria-hidden="true" />
           </button>
-          <strong>Добыча, подготовка и поставка сырья</strong>
         </div>
       </section>
 
@@ -1279,11 +1278,6 @@ function App() {
               Позвоните или напишите напрямую. Подберем продукт и фракцию, отправим документы
               по партии и согласуем удобную схему отгрузки.
             </p>
-            <div className="requestSummary" aria-label="Что подготовим">
-              <span><CheckCircle2 size={18} /> Подберем продукт и фракцию</span>
-              <span><CheckCircle2 size={18} /> Отправим документы по партии</span>
-              <span><CheckCircle2 size={18} /> Согласуем автомобильную или ЖД отгрузку</span>
-            </div>
           </div>
 
           <div className="contactDirectory" aria-label="Контактная информация">
