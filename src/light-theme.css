@@ -3739,6 +3739,15 @@ body,
   color: var(--ink) !important;
 }
 
+#product .eyebrow,
+#product .productMatrix > h3 {
+  color: var(--wine) !important;
+}
+
+#product .productOverview article:last-child {
+  padding-bottom: 26px !important;
+}
+
 .productStandalonePage .productModelPanelHeader strong {
   font-size: clamp(18px, 1.25vw, 21px) !important;
   font-weight: 650 !important;
@@ -3816,7 +3825,7 @@ body,
 }
 
 .sectionIntro > p:not(.eyebrow),
-#product > div:first-child > p,
+#product > div:first-child > p:not(.eyebrow),
 .contactIntro > p:not(.eyebrow) {
   max-width: 64ch;
   color: var(--deep) !important;
@@ -3832,7 +3841,7 @@ body,
 
 @media (max-width: 700px) {
   .sectionIntro > p:not(.eyebrow),
-  #product > div:first-child > p,
+  #product > div:first-child > p:not(.eyebrow),
   .contactIntro > p:not(.eyebrow) {
     text-align: left;
   }
