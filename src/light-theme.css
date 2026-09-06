@@ -3747,6 +3747,8 @@ body,
 
 @media (min-width: 981px) {
   #product > div:first-child > .eyebrow {
+    position: relative;
+    top: -3px;
     margin: 0 0 14px !important;
     font-size: clamp(18px, 1.28vw, 22px) !important;
     font-weight: 650 !important;
