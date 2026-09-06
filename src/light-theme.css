@@ -2948,3 +2948,584 @@ body,
 .heroInner :is(.heroCompanyEyebrow, h1) {
   text-shadow: 0 2px 18px rgba(24, 21, 20, 0.38);
 }
+
+/* Review pass: one warm material system and a quieter information hierarchy. */
+:root {
+  --page-bg: #eee6d3;
+  --section-bg: #e9dfca;
+  --surface-bg: #e6dcc6;
+  --surface-muted: #dcd0b8;
+  --surface-border: rgba(73, 58, 48, 0.16);
+  --ink: #332d2b;
+  --deep: #665b54;
+  --wine: #7d1d22;
+  --paper: #f5eedf;
+  --sand: #cfbd98;
+}
+
+html,
+body,
+.slideDeck,
+#product.elevatedSection,
+#video.videoSlide,
+#benefits.benefitsSlide,
+#route.routeBand,
+#gallery.gallerySlide,
+#documents.documentsSlide,
+#articles.articlesBand,
+#contacts.contacts,
+.productStandalonePage,
+.productPassportPage {
+  background: var(--page-bg) !important;
+}
+
+.topbar {
+  min-height: 94px;
+  padding: 12px 22px !important;
+  background: rgba(238, 230, 211, 0.97) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: 0 14px 38px rgba(77, 60, 47, 0.08) !important;
+}
+
+.brandLogoOnly {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center;
+  gap: 3px;
+  width: 142px;
+  min-width: 142px;
+  text-decoration: none;
+}
+
+.brandLogoOnly .brandLogo,
+.brandLogo,
+.siteFooter .footerLogo {
+  width: 86px !important;
+  height: 52px !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.brandLogoOnly .brandLogo img,
+.brandLogo img,
+.siteFooter .footerLogo img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  background: transparent !important;
+  mix-blend-mode: multiply;
+  box-shadow: none !important;
+}
+
+.brandLegalLabel {
+  display: block;
+  max-width: 142px;
+  overflow: hidden;
+  color: var(--deep);
+  font-size: 10px;
+  font-weight: 560;
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar nav,
+.topbar nav a {
+  color: var(--ink) !important;
+  font-size: 13px !important;
+  font-weight: 560 !important;
+}
+
+.topContacts > a.topCall,
+.topContacts > a.topMail,
+.topAddress:is(a).topMapButton {
+  color: var(--ink) !important;
+  background: var(--sand) !important;
+  border-color: rgba(73, 58, 48, 0.15) !important;
+  box-shadow: none !important;
+}
+
+.topContacts > a:hover,
+.topContacts > a:focus-visible {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 10px 24px rgba(125, 29, 34, 0.18) !important;
+}
+
+.sectionIntro h2,
+#product > div:first-child > h2,
+.contactLead h2 {
+  color: var(--ink) !important;
+  font-size: clamp(46px, 4.2vw, 68px) !important;
+  font-weight: 680 !important;
+  letter-spacing: 0 !important;
+  line-height: 1.03 !important;
+}
+
+.eyebrow,
+.sectionIntro .eyebrow,
+#product .eyebrow,
+.contactIntro .eyebrow,
+.videoSlide .eyebrow {
+  color: var(--wine) !important;
+  font-weight: 720 !important;
+}
+
+.hero .heroCompanyEyebrow {
+  display: none !important;
+}
+
+.heroInner h1 {
+  max-width: 760px;
+  color: var(--paper) !important;
+  font-size: clamp(54px, 5.3vw, 82px) !important;
+  font-weight: 700 !important;
+  line-height: 0.98 !important;
+  text-wrap: balance;
+}
+
+.hero .heroFactStrip {
+  background: rgba(238, 230, 211, 0.92) !important;
+  border-color: rgba(245, 238, 223, 0.52) !important;
+}
+
+.hero .heroFactStrip article {
+  min-width: 0;
+}
+
+.hero .heroFactStrip strong {
+  white-space: nowrap;
+}
+
+#product.elevatedSection {
+  align-items: start !important;
+  padding-top: 118px !important;
+}
+
+#product .productMatrix {
+  align-self: start !important;
+  padding-top: 44px !important;
+}
+
+#product .productMatrix > h3 {
+  margin: 0 0 14px !important;
+  color: var(--wine) !important;
+  font-size: clamp(18px, 1.28vw, 22px) !important;
+  font-weight: 650 !important;
+  line-height: 1.2 !important;
+}
+
+.productOverview {
+  border-color: rgba(73, 58, 48, 0.18) !important;
+}
+
+.productOverview article {
+  gap: 10px !important;
+  padding: 20px 0 !important;
+  border-color: rgba(73, 58, 48, 0.18) !important;
+}
+
+.productOverview strong,
+.productStandalonePage .productModelPanelHeader strong {
+  color: var(--wine) !important;
+  font-size: clamp(18px, 1.25vw, 22px) !important;
+  font-weight: 650 !important;
+  line-height: 1.22 !important;
+}
+
+.productOverview ul {
+  display: grid;
+  gap: 6px;
+  max-width: 64ch;
+  margin: 0;
+  padding: 0;
+  color: var(--deep);
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.46;
+  list-style: none;
+}
+
+.productOverview li {
+  position: relative;
+  padding-left: 17px;
+}
+
+.productOverview li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  content: "";
+  background: var(--wine);
+  border-radius: 50%;
+}
+
+#product .productCards article,
+.productStandalonePage .productModelPanel,
+.productStandalonePage .productDetailBody,
+.productStandalonePage .productDetailMedia,
+#documents .trustGrid article,
+#articles .readableArticles article,
+#contacts .contactDirectory {
+  background: var(--surface-bg) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: 0 16px 36px rgba(77, 60, 47, 0.08) !important;
+}
+
+#product .productCards article {
+  background: rgba(230, 220, 198, 0.94) !important;
+}
+
+#product .productCards article img {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+#product .productCards strong {
+  color: var(--wine) !important;
+  font-size: clamp(17px, 1.12vw, 20px) !important;
+  font-weight: 650 !important;
+}
+
+.productStandalonePage .productModelPanel .localModelViewer,
+.productStandalonePage .productModelPanel .localModelViewer canvas,
+.productStandalonePage .productModelViewport,
+.productStandalonePage .productSpecRow,
+.productStandalonePage .productDetailActions .ghostAction {
+  background: var(--surface-muted) !important;
+  border-color: rgba(73, 58, 48, 0.14) !important;
+}
+
+.productStandalonePage .productModelPanelHeader span,
+.productStandalonePage .productDetailHeader p:not(.eyebrow) {
+  color: var(--deep) !important;
+  font-size: clamp(14px, 1vw, 16px) !important;
+  font-weight: 450 !important;
+  line-height: 1.48 !important;
+}
+
+.productStandalonePage .productDetailList span {
+  color: var(--deep) !important;
+  font-size: 15px !important;
+  line-height: 1.46 !important;
+}
+
+.productStandalonePage .productDetailMedia,
+.productStandalonePage .productInfoCard .productDetailMedia {
+  background: var(--surface-bg) !important;
+}
+
+.productStandalonePage .productDetailMedia img,
+.productStandalonePage .productInfoCard .productDetailMedia img,
+.productStandalonePage[id="/gypsum-stone"] .productDetailMedia img {
+  filter: none !important;
+  opacity: 1 !important;
+  background: transparent !important;
+}
+
+#video.videoSlide {
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 0.82fr) !important;
+  align-items: end !important;
+}
+
+#video .videoFrame {
+  width: min(560px, 100%) !important;
+  min-height: 0 !important;
+  height: auto !important;
+  aspect-ratio: 16 / 10 !important;
+  justify-self: end;
+  align-self: end;
+  background: #302a28 !important;
+  border-color: rgba(73, 58, 48, 0.24) !important;
+  box-shadow: 0 18px 42px rgba(77, 60, 47, 0.14) !important;
+}
+
+#video .videoFrame strong {
+  max-width: 74%;
+  margin-top: auto !important;
+  color: var(--paper) !important;
+  font-size: clamp(26px, 2.35vw, 42px) !important;
+  line-height: 1.05 !important;
+  text-align: center;
+}
+
+#video .videoFrame button {
+  width: 58px !important;
+  height: 58px !important;
+  margin-bottom: 18px !important;
+  color: var(--ink) !important;
+  background: rgba(238, 230, 211, 0.94) !important;
+  border-color: rgba(245, 238, 223, 0.72) !important;
+}
+
+#benefits .benefitGrid {
+  margin-top: 38px !important;
+}
+
+#benefits .benefitGrid::before {
+  top: 22px !important;
+  background: rgba(125, 29, 34, 0.3) !important;
+}
+
+#benefits .benefitGrid article {
+  grid-template-rows: 46px minmax(48px, auto) auto !important;
+  gap: 12px !important;
+}
+
+#benefits .benefitGrid article span {
+  width: 46px !important;
+  height: 46px !important;
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  font-size: 11px !important;
+}
+
+#benefits .benefitGrid article:not(:last-child)::after {
+  top: 5px !important;
+  background: transparent !important;
+}
+
+#benefits .benefitGrid h3 {
+  color: var(--ink) !important;
+  font-size: clamp(17px, 1.12vw, 20px) !important;
+  font-weight: 650 !important;
+}
+
+#benefits .benefitGrid p {
+  color: var(--deep) !important;
+  font-size: 15px !important;
+  line-height: 1.46 !important;
+}
+
+#route .routeMap article {
+  background: #766d61 !important;
+  border-color: rgba(73, 58, 48, 0.22) !important;
+  box-shadow: 0 14px 34px rgba(77, 60, 47, 0.12) !important;
+}
+
+#route .routeMap .routeVisual {
+  filter: saturate(1) contrast(1) brightness(1.06) !important;
+}
+
+#route .routeMap article::after {
+  background: linear-gradient(180deg, rgba(38, 32, 29, 0.03) 28%, rgba(38, 32, 29, 0.58) 100%) !important;
+}
+
+#route .routeMap article span {
+  width: 44px !important;
+  height: 44px !important;
+  margin-bottom: 30px !important;
+  color: var(--ink) !important;
+  background: rgba(238, 230, 211, 0.9) !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+}
+
+#route .routeMap article h3,
+#route .routeMap article p {
+  padding: 0 2px;
+  text-wrap: balance;
+}
+
+#route .routeMap article h3 {
+  color: var(--paper) !important;
+  font-size: clamp(17px, 1.14vw, 20px) !important;
+  line-height: 1.18 !important;
+}
+
+#route .routeMap article p {
+  color: rgba(245, 238, 223, 0.94) !important;
+  font-size: 14px !important;
+  line-height: 1.44 !important;
+}
+
+#gallery .galleryGrid article::before {
+  filter: saturate(1.02) brightness(1.08) !important;
+}
+
+#gallery .galleryGrid article::after {
+  background: linear-gradient(180deg, transparent 44%, rgba(38, 32, 29, 0.46) 100%) !important;
+}
+
+#gallery .galleryGrid h3 {
+  color: var(--paper) !important;
+  background: rgba(48, 41, 38, 0.42) !important;
+  border-color: rgba(245, 238, 223, 0.32) !important;
+  font-size: 15px !important;
+  font-weight: 620 !important;
+  backdrop-filter: blur(5px);
+}
+
+#documents .sectionIntro,
+#articles .sectionIntro,
+#contacts .contactIntro {
+  align-self: start;
+}
+
+#documents .trustGrid {
+  align-items: stretch;
+}
+
+#documents .trustGrid article {
+  min-height: 246px !important;
+  padding: 22px !important;
+}
+
+#documents .trustGrid h3,
+#articles .readableArticles h3 {
+  color: var(--ink) !important;
+  font-size: 19px !important;
+  font-weight: 650 !important;
+}
+
+#documents .trustGrid p,
+#articles .readableArticles p,
+#contacts .contactLead > div > p:not(.eyebrow) {
+  color: var(--deep) !important;
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+}
+
+#contacts .contactDirectory {
+  padding: clamp(26px, 3vw, 34px) !important;
+  background: rgba(230, 220, 198, 0.9) !important;
+}
+
+#contacts .contactPanel {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+#contacts .contactPanel .contactCard,
+#contacts .contactLocation {
+  color: var(--ink) !important;
+  background: var(--sand) !important;
+  border-color: rgba(73, 58, 48, 0.16) !important;
+  box-shadow: none !important;
+}
+
+#contacts .contactPanel .contactCard:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+#contacts .contactPanel .contactCard:nth-child(4) {
+  grid-column: auto;
+}
+
+#contacts .contactIcon {
+  color: var(--wine) !important;
+  background: rgba(245, 238, 223, 0.72) !important;
+  border-color: rgba(73, 58, 48, 0.1) !important;
+}
+
+#contacts .contactCardText small,
+#contacts .contactLocation small {
+  color: var(--deep) !important;
+}
+
+#contacts .contactCardText strong,
+#contacts .contactLocation strong {
+  color: var(--ink) !important;
+}
+
+#contacts .contactLocation {
+  min-height: 84px !important;
+}
+
+#contacts .contactPanel .contactCard:hover,
+#contacts .contactPanel .contactCard:focus-visible,
+#contacts .contactLocation:hover,
+#contacts .contactLocation:focus-visible {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+}
+
+.siteFooter {
+  background: var(--section-bg) !important;
+  border-top-color: var(--surface-border) !important;
+}
+
+.siteFooter .footerLogo {
+  display: grid;
+  width: 86px !important;
+  height: 58px !important;
+  place-items: center;
+}
+
+.siteFooter .footerContactItem > a,
+.siteFooter .footerLocation {
+  background: var(--surface-bg) !important;
+  border-color: var(--surface-border) !important;
+}
+
+@media (max-width: 980px) {
+  .topbar {
+    min-height: 0;
+  }
+
+  #product .productMatrix {
+    padding-top: 0 !important;
+  }
+
+  #video.videoSlide {
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+  }
+
+  #video .videoFrame {
+    justify-self: stretch;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .slideNav {
+    display: none !important;
+  }
+
+  .brandLogoOnly {
+    width: 112px;
+    min-width: 112px;
+  }
+
+  .brandLogoOnly .brandLogo {
+    width: 68px !important;
+    height: 42px !important;
+  }
+
+  .brandLegalLabel {
+    max-width: 112px;
+    font-size: 8px;
+  }
+
+  .sectionIntro h2,
+  #product > div:first-child > h2,
+  .contactLead h2 {
+    font-size: clamp(38px, 11vw, 52px) !important;
+  }
+
+  #product > div:first-child > h2 {
+    font-size: 32px !important;
+  }
+
+  .heroInner h1 {
+    font-size: clamp(42px, 12vw, 58px) !important;
+  }
+
+  #benefits .benefitGrid article span {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  #contacts .contactPanel {
+    grid-template-columns: 1fr !important;
+  }
+}

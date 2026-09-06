@@ -937,6 +937,7 @@ function App() {
           <span className="brandLogo">
             <img src={asset('logo-bashmineral.png')} alt="" />
           </span>
+          <span className="brandLegalLabel">{company.legalName}</span>
         </a>
         <nav aria-label="Основная навигация">
           <a href="#/manganese-flux">Флюс</a>
@@ -1001,7 +1002,6 @@ function App() {
         </video>
         <div className="heroShade" />
         <div className="heroInner">
-          <p className="heroCompanyEyebrow" data-reveal>{company.legalName}</p>
           <h1 data-reveal>Марганцовистый<br />флюс для металлургии</h1>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#/manganese-flux/passport">
@@ -1032,23 +1032,25 @@ function App() {
           <p className="eyebrow">Продукция</p>
           <h2>Два вида сырья<br />для промышленности</h2>
           <p>
-            Каждая партия сопровождается паспортом качества и протоколом анализа. До расчета поставки
-            согласуем назначение сырья, требуемую фракцию, влажность и схему отгрузки.
+            Каждая партия сопровождается паспортом качества и протоколом анализа. Для расчета поставки
+            согласуются назначение сырья, требуемая фракция, влажность и схема отгрузки.
           </p>
           <div className="productOverview">
             <article>
               <strong>Марганцовистый флюс</strong>
-              <p>
-                Mn 7,6-7,9%, CaO 32,7-34,5%, SiO2 14,9-17,0%. Фракция, влажность и показатели партии
-                фиксируются в документах. Переработка на ДСК - до 40 тыс. тонн в месяц.
-              </p>
+              <ul>
+                <li>Mn 7,6-7,9%, CaO 32,7-34,5%, SiO2 14,9-17,0%.</li>
+                <li>Фракция, влажность и показатели партии фиксируются в документах.</li>
+                <li>Переработка на ДСК - до 40 тыс. тонн в месяц.</li>
+              </ul>
             </article>
             <article>
               <strong>Гипсовый и ангидритовый камень</strong>
-              <p>
-                Сырье по ГОСТ 4013-2019. Содержание CaSO4, фракция, влажность и примеси подтверждаются
-                документами партии. Переработка на ДСУ - до 45 тыс. тонн в месяц.
-              </p>
+              <ul>
+                <li>Сырье соответствует ГОСТ 4013-2019.</li>
+                <li>CaSO4, фракция, влажность и примеси подтверждаются документами партии.</li>
+                <li>Переработка на ДСУ - до 45 тыс. тонн в месяц.</li>
+              </ul>
             </article>
           </div>
         </div>
@@ -1302,10 +1304,6 @@ function App() {
               <a className="contactCard" href={`mailto:${company.email}`}>
                 <span className="contactIcon"><Mail size={20} aria-hidden="true" /></span>
                 <span className="contactCardText"><small>Электронная почта</small><strong>{company.email}</strong></span>
-              </a>
-              <a className="contactCard" href={company.mapUrl} target="_blank" rel="noreferrer">
-                <span className="contactIcon"><MapPin size={20} aria-hidden="true" /></span>
-                <span className="contactCardText"><small>Расположение</small><strong>Открыть Яндекс Карты</strong></span>
               </a>
             </div>
 
