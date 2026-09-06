@@ -3549,3 +3549,164 @@ body,
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Final pass for the numbered review: shared alignment and quieter media panels. */
+@media (min-width: 981px) {
+  .sectionIntro h2,
+  #product > div:first-child > h2,
+  .contactLead h2 {
+    font-size: clamp(52px, 4.45vw, 74px) !important;
+  }
+
+  #product.elevatedSection {
+    align-items: start !important;
+    padding-top: 124px !important;
+  }
+
+  #product .productMatrix {
+    padding-top: 0 !important;
+  }
+
+  #product .productMatrix > h3 {
+    min-height: 2.4em;
+    display: flex;
+    align-items: end;
+  }
+}
+
+#product > div:first-child > p,
+#product .productOverview li {
+  text-align: justify;
+  text-align-last: left;
+}
+
+#product .productCards span {
+  text-align: left;
+}
+
+.productOverview ul {
+  max-width: none;
+}
+
+.productStandalonePage .productModelPanelHeader strong {
+  font-size: clamp(19px, 1.38vw, 23px) !important;
+  line-height: 1.18 !important;
+}
+
+.productStandalonePage .productModelPanelHeader span,
+.productStandalonePage .productDetailHeader p:not(.eyebrow) {
+  font-size: clamp(15px, 1.05vw, 17px) !important;
+  line-height: 1.5 !important;
+}
+
+.productStandalonePage .productDetailList {
+  background: transparent !important;
+  border-color: rgba(73, 58, 48, 0.16) !important;
+}
+
+.productStandalonePage .productDetailList span {
+  min-height: 48px;
+  padding: 12px 0 !important;
+  border-color: rgba(73, 58, 48, 0.16) !important;
+}
+
+#video.videoSlide {
+  align-items: end !important;
+}
+
+#video .videoFrame {
+  width: min(520px, 100%) !important;
+  margin-bottom: 10px;
+}
+
+#video .videoFrame strong {
+  max-width: 70%;
+  font-size: clamp(24px, 2vw, 36px) !important;
+}
+
+#benefits .benefitGrid article {
+  background: transparent !important;
+  border-color: rgba(73, 58, 48, 0.2) !important;
+  box-shadow: none !important;
+}
+
+#benefits .benefitGrid article span {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+#benefits .benefitGrid article:not(:last-child)::after {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#route .routeMap article {
+  background: rgba(73, 58, 48, 0.2) !important;
+  box-shadow: 0 12px 28px rgba(77, 60, 47, 0.1) !important;
+}
+
+#route .routeMap .routeVisual {
+  filter: saturate(1.03) contrast(1) brightness(1.14) !important;
+}
+
+#route .routeMap article::after {
+  background: linear-gradient(180deg, rgba(38, 32, 29, 0.01) 32%, rgba(38, 32, 29, 0.46) 100%) !important;
+}
+
+#route .routeMap article span {
+  width: 40px !important;
+  height: 40px !important;
+  margin-bottom: 44px !important;
+  background: rgba(245, 238, 223, 0.82) !important;
+}
+
+#route .routeMap article h3 {
+  font-size: clamp(18px, 1.2vw, 21px) !important;
+}
+
+#route .routeMap article p {
+  font-size: 15px !important;
+  line-height: 1.46 !important;
+}
+
+#documents .trustGrid article,
+#articles .readableArticles article {
+  min-height: 218px !important;
+  background: rgba(245, 238, 223, 0.5) !important;
+  box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
+}
+
+#documents .trustGrid article {
+  padding: 20px !important;
+}
+
+#contacts .contactDirectory {
+  background: rgba(245, 238, 223, 0.44) !important;
+  box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
+}
+
+#contacts .contactPanel .contactCard,
+#contacts .contactLocation {
+  background: color-mix(in srgb, var(--sand) 84%, var(--paper)) !important;
+}
+
+@media (max-width: 700px) {
+  #product > div:first-child > p,
+  #product .productOverview li {
+    text-align: left;
+  }
+
+  #video .videoFrame {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 981px) {
+  #product > div:first-child > h2 {
+    font-size: clamp(50px, 3.9vw, 64px) !important;
+  }
+}
+
+#gallery .galleryGrid h3 {
+  background: rgba(48, 41, 38, 0.3) !important;
+}
