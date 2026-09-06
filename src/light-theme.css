@@ -3021,6 +3021,24 @@ body,
   box-shadow: none !important;
 }
 
+/* Final visual QA: use the original mark without its raster white matte. */
+.brandLogoOnly .brandLogo img,
+.brandLogo img,
+.siteFooter .footerLogo img {
+  mix-blend-mode: normal;
+}
+
+/* Keep these short-section intros clear of the persistent header. */
+#route.routeBand .sectionIntro,
+#documents.documentsSlide .sectionIntro {
+  margin-top: 34px;
+}
+
+/* The persistent contact action must never cover a document action. */
+.slideDeck:has(.snapSlide.is-current:not(#top)) .floatingWriteCta {
+  display: none !important;
+}
+
 .brandLegalLabel {
   display: block;
   max-width: 142px;
@@ -3517,7 +3535,9 @@ body,
   }
 
   .heroInner h1 {
-    font-size: clamp(42px, 12vw, 58px) !important;
+    font-size: clamp(38px, 10.5vw, 48px) !important;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   #benefits .benefitGrid article span {

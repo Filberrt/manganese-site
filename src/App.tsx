@@ -935,7 +935,7 @@ function App() {
       <header className="topbar">
         <a className="brand brandLogoOnly" href="#top" aria-label="БашМинералРесурс: на главную">
           <span className="brandLogo">
-            <img src={asset('logo-bashmineral.png')} alt="" />
+            <img src={asset('logo-bashmineral-transparent.png')} alt="" />
           </span>
           <span className="brandLegalLabel">{company.legalName}</span>
         </a>
