@@ -3793,6 +3793,31 @@ body,
   padding-top: 11px;
 }
 
+@media (min-width: 701px) {
+  #benefits .benefitGrid::before {
+    top: 28px !important;
+  }
+
+  #benefits .benefitGrid article {
+    grid-template-rows: 56px minmax(48px, auto) auto !important;
+  }
+
+  #benefits .benefitGrid article span {
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 12px !important;
+  }
+
+  #benefits .benefitGrid article:not(:last-child)::after {
+    top: 11px !important;
+    height: 34px !important;
+  }
+
+  #benefits .benefitGrid article:first-child h3 {
+    padding-top: 4px;
+  }
+}
+
 #route .routeMap article,
 #gallery .galleryGrid article {
   box-shadow: 0 0 0 1px rgba(207, 189, 152, 0.76), 0 16px 36px rgba(207, 189, 152, 0.24) !important;
