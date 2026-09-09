@@ -3812,11 +3812,12 @@ body,
 
 @media (min-width: 701px) {
   #benefits .benefitGrid::before {
-    top: 28px !important;
+    top: 27px !important;
   }
 
   #benefits .benefitGrid article {
     grid-template-rows: 56px minmax(48px, auto) auto !important;
+    align-content: start !important;
   }
 
   #benefits .benefitGrid article span {
