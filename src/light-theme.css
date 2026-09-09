@@ -4,37 +4,37 @@
  */
 
 :root {
-  color: #3b3030;
-  background: #eee8d8;
-  --ink: #3b3030;
-  --deep: #625657;
-  --graphite: #625657;
-  --steel: #bbb8b2;
-  --moss: #8d8075;
-  --acid: #eee8d8;
-  --rust: #bbaa96;
-  --paper: #f8f4ea;
-  --limestone: #e2dbce;
-  --muted: #766b68;
-  --wine: #741316;
-  --umber: #625657;
-  --stone: #bbb8b2;
-  --sand: #bbaa96;
-  --line: rgba(98, 86, 87, 0.22);
-  --shadow: 0 22px 58px rgba(98, 86, 87, 0.14);
-  --page-bg: #eee8d8;
-  --section-bg: #f3eee3;
-  --surface-bg: #f8f4ea;
-  --surface-muted: #e2dbce;
-  --surface-border: rgba(98, 86, 87, 0.22);
-  --surface-shadow: 0 18px 48px rgba(98, 86, 87, 0.12);
+  color: #252724;
+  background: #d4d6d2;
+  --ink: #252724;
+  --deep: #555852;
+  --graphite: #555852;
+  --steel: #a6a69f;
+  --moss: #7e827a;
+  --acid: #d4d6d2;
+  --rust: #a4a59c;
+  --paper: #e7e9e4;
+  --limestone: #bfc3bd;
+  --muted: #6d706a;
+  --wine: #81242c;
+  --umber: #555852;
+  --stone: #a6a69f;
+  --sand: #a4a59c;
+  --line: rgba(85, 88, 82, 0.22);
+  --shadow: 0 22px 58px rgba(85, 88, 82, 0.14);
+  --page-bg: #d4d6d2;
+  --section-bg: #c9ccc7;
+  --surface-bg: #e7e9e4;
+  --surface-muted: #bfc3bd;
+  --surface-border: rgba(85, 88, 82, 0.22);
+  --surface-shadow: 0 18px 48px rgba(85, 88, 82, 0.12);
   --surface-radius: 8px;
   --control-radius: 6px;
 }
 
 html,
 body {
-  background: #eee8d8;
+  background: #d4d6d2;
 }
 
 body,
@@ -106,18 +106,18 @@ button,
 }
 
 .slideDeck {
-  color: #3b3030;
+  color: #252724;
   background: var(--page-bg);
-  scrollbar-color: #bbaa96 rgba(98, 86, 87, 0.12);
+  scrollbar-color: #a4a59c rgba(85, 88, 82, 0.12);
 }
 
 .slideDeck::-webkit-scrollbar-track {
-  background: rgba(98, 86, 87, 0.1);
+  background: rgba(85, 88, 82, 0.1);
 }
 
 .slideDeck::-webkit-scrollbar-thumb {
-  background: #bbaa96;
-  border-color: #eee8d8;
+  background: #a4a59c;
+  border-color: #d4d6d2;
 }
 
 /* The photographic opening remains dark; the content slides use the light system. */
@@ -132,7 +132,7 @@ button,
 .productStandalonePage,
 .analysisBand,
 .productPassportPage {
-  color: #3b3030;
+  color: #252724;
   background: var(--page-bg) !important;
 }
 
@@ -155,7 +155,7 @@ button,
 .productPassportIntro h2,
 .analysisBand h2,
 .analysisBand h3 {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 .darkSlide:not(.hero) p,
@@ -166,7 +166,7 @@ button,
 .contactLead p,
 .analysisBand p,
 .productPassportIntro p:not(.eyebrow) {
-  color: #625657 !important;
+  color: #555852 !important;
 }
 
 .eyebrow,
@@ -175,7 +175,7 @@ button,
 .productModelPanelHeader small,
 .articleMeta,
 .productDetailList small {
-  color: #741316 !important;
+  color: #81242c !important;
 }
 
 /* One consistent light window treatment. */
@@ -194,7 +194,7 @@ button,
 .compositionNote,
 .tableWrap,
 .siteFooter {
-  color: #3b3030 !important;
+  color: #252724 !important;
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius);
@@ -209,13 +209,13 @@ button,
 .modelChemCard,
 .techPassport {
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(98, 86, 87, 0.18) !important;
+  border: 1px solid rgba(85, 88, 82, 0.18) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
 
 .topbar {
-  background: rgba(248, 244, 234, 0.96) !important;
+  background: rgba(231, 233, 228, 0.96) !important;
   backdrop-filter: blur(18px);
 }
 
@@ -224,20 +224,20 @@ button,
 .siteFooter a,
 .siteFooter span,
 .siteFooter strong {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 .topbar nav a:hover,
 .topbar nav a:focus-visible,
 .siteFooter a:hover,
 .siteFooter a:focus-visible {
-  color: #741316 !important;
+  color: #81242c !important;
 }
 
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #f8f4ea !important;
-  border-color: rgba(98, 86, 87, 0.22) !important;
+  background: #e7e9e4 !important;
+  border-color: rgba(85, 88, 82, 0.22) !important;
 }
 
 .quietPanel::before,
@@ -247,7 +247,7 @@ button,
 }
 
 .benefitGrid article::before {
-  background: #741316 !important;
+  background: #81242c !important;
 }
 
 .benefitGrid article span,
@@ -255,7 +255,7 @@ button,
 .checkList svg,
 .trustGrid svg,
 .articleGrid svg {
-  color: #741316 !important;
+  color: #81242c !important;
 }
 
 .benefitGrid article p,
@@ -264,7 +264,7 @@ button,
 .readableArticles article p,
 .requestSummary span,
 .checkList span {
-  color: #625657 !important;
+  color: #555852 !important;
 }
 
 .benefitGrid article h3,
@@ -272,12 +272,12 @@ button,
 .articleGrid article h3,
 .readableArticles article h3,
 .checkList strong {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 /* Product images and all existing media keep their sizing and crop. */
 #product .productCards article {
-  color: #3b3030 !important;
+  color: #252724 !important;
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius);
@@ -285,11 +285,11 @@ button,
 }
 
 #product .productCards strong {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 #product .productCards span {
-  color: #625657 !important;
+  color: #555852 !important;
 }
 
 .productInfoCard .productSpecRow,
@@ -297,62 +297,62 @@ button,
 .productDocumentStrip span,
 .modelChemCard,
 .techPassport {
-  color: #3b3030 !important;
+  color: #252724 !important;
   background: var(--surface-muted) !important;
-  border-color: rgba(98, 86, 87, 0.18) !important;
+  border-color: rgba(85, 88, 82, 0.18) !important;
 }
 
 .productInfoCard .productSpecRow span {
-  color: #766b68 !important;
+  color: #6d706a !important;
 }
 
 .productInfoCard .productSpecRow strong,
 .productInfoCard .productDetailList span {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 .productModelPanel,
 .productModelViewport,
 .productModelPanel .localModelViewer,
 .localModelViewer {
-  background: #e2dbce !important;
+  background: #bfc3bd !important;
 }
 
 /* Photo cards stay photographic and readable. */
 .routeMap article,
 .galleryGrid article {
-  border-color: rgba(116, 19, 22, 0.26) !important;
+  border-color: rgba(129, 36, 44, 0.26) !important;
   border-radius: var(--surface-radius);
-  box-shadow: 0 20px 48px rgba(98, 86, 87, 0.16) !important;
+  box-shadow: 0 20px 48px rgba(85, 88, 82, 0.16) !important;
 }
 
 #route .routeMap article h3,
 #route .routeMap article p,
 #gallery .galleryGrid article h3,
 #gallery .galleryGrid article p {
-  color: #f8f4ea !important;
+  color: #e7e9e4 !important;
 }
 
 .routeMap article > span,
 .galleryGrid article > span {
-  color: #3b3030 !important;
-  background: #eee8d8 !important;
-  border-color: rgba(116, 19, 22, 0.34) !important;
+  color: #252724 !important;
+  background: #d4d6d2 !important;
+  border-color: rgba(129, 36, 44, 0.34) !important;
 }
 
 .productStandalonePage .productStandaloneIntro h1 {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 .productStandalonePage .productInfoCard .productDetailBody {
-  color: #3b3030 !important;
-  background: #f8f4ea !important;
-  border-color: rgba(98, 86, 87, 0.24) !important;
+  color: #252724 !important;
+  background: #e7e9e4 !important;
+  border-color: rgba(85, 88, 82, 0.24) !important;
 }
 
 .productStandalonePage .productInfoCard .productDetailHeader h2,
 .productStandalonePage .productInfoCard .productDetailHeader p:not(.eyebrow) {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 /* Document and article cards are light until the existing red hover state. */
@@ -362,10 +362,10 @@ button,
 .articleGrid article:focus-within,
 .readableArticles article:hover,
 .readableArticles article:focus-within {
-  color: #f8f4ea !important;
-  background: #741316 !important;
-  border-color: rgba(116, 19, 22, 0.72) !important;
-  box-shadow: 0 0 34px rgba(116, 19, 22, 0.28) !important;
+  color: #e7e9e4 !important;
+  background: #81242c !important;
+  border-color: rgba(129, 36, 44, 0.72) !important;
+  box-shadow: 0 0 34px rgba(129, 36, 44, 0.28) !important;
 }
 
 .trustGrid article:hover h3,
@@ -380,7 +380,7 @@ button,
 .readableArticles article:hover p,
 .readableArticles article:focus-within h3,
 .readableArticles article:focus-within p {
-  color: #f8f4ea !important;
+  color: #e7e9e4 !important;
 }
 
 .trustGrid article:hover button,
@@ -389,35 +389,35 @@ button,
 .articleGrid article:focus-within button,
 .readableArticles article:hover button,
 .readableArticles article:focus-within button {
-  color: #f8f4ea !important;
-  background: #741316 !important;
-  border-color: rgba(248, 244, 234, 0.66) !important;
-  box-shadow: 0 0 26px rgba(116, 19, 22, 0.34) !important;
+  color: #e7e9e4 !important;
+  background: #81242c !important;
+  border-color: rgba(231, 233, 228, 0.66) !important;
+  box-shadow: 0 0 26px rgba(129, 36, 44, 0.34) !important;
 }
 
 .contacts label {
-  color: #3b3030 !important;
+  color: #252724 !important;
 }
 
 .contacts input,
 .contacts textarea {
-  color: #3b3030 !important;
-  background: #fdfaf3 !important;
-  border-color: rgba(98, 86, 87, 0.28) !important;
+  color: #252724 !important;
+  background: #f1f3ef !important;
+  border-color: rgba(85, 88, 82, 0.28) !important;
   border-radius: var(--control-radius);
 }
 
 .contacts input::placeholder,
 .contacts textarea::placeholder {
-  color: rgba(98, 86, 87, 0.62) !important;
+  color: rgba(85, 88, 82, 0.62) !important;
 }
 
 .contactPanel a,
 .messengerButton,
 .topContacts > a {
-  color: #3b3030 !important;
+  color: #252724 !important;
   background: var(--surface-muted) !important;
-  border-color: rgba(98, 86, 87, 0.25) !important;
+  border-color: rgba(85, 88, 82, 0.25) !important;
   border-radius: var(--control-radius);
 }
 
@@ -425,10 +425,10 @@ button,
 .topContacts > a:focus-visible,
 .contactPanel a:hover,
 .contactPanel a:focus-visible {
-  color: #3b3030 !important;
-  background: #eee8d8 !important;
-  border-color: rgba(187, 170, 150, 0.82) !important;
-  box-shadow: 0 0 28px rgba(187, 170, 150, 0.48) !important;
+  color: #252724 !important;
+  background: #d4d6d2 !important;
+  border-color: rgba(164, 165, 156, 0.82) !important;
+  box-shadow: 0 0 28px rgba(164, 165, 156, 0.48) !important;
 }
 
 .primaryButton,
@@ -439,9 +439,9 @@ button,
 .articleGrid button,
 .readableArticles button,
 .siteFooter .footerAction {
-  color: #3b3030 !important;
-  background: #bbaa96 !important;
-  border-color: rgba(98, 86, 87, 0.24) !important;
+  color: #252724 !important;
+  background: #a4a59c !important;
+  border-color: rgba(85, 88, 82, 0.24) !important;
   border-radius: var(--control-radius);
 }
 
@@ -455,44 +455,44 @@ button,
 #product .productCards a:focus-visible,
 .siteFooter .footerAction:hover,
 .siteFooter .footerAction:focus-visible {
-  color: #3b3030 !important;
-  background: #eee8d8 !important;
-  border-color: rgba(187, 170, 150, 0.88) !important;
-  box-shadow: 0 0 32px rgba(187, 170, 150, 0.58) !important;
+  color: #252724 !important;
+  background: #d4d6d2 !important;
+  border-color: rgba(164, 165, 156, 0.88) !important;
+  box-shadow: 0 0 32px rgba(164, 165, 156, 0.58) !important;
 }
 
 .hero .secondaryButton {
-  color: #f8f4ea !important;
+  color: #e7e9e4 !important;
   background: rgba(43, 36, 34, 0.72) !important;
-  border-color: rgba(248, 244, 234, 0.3) !important;
+  border-color: rgba(231, 233, 228, 0.3) !important;
 }
 
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
-  color: #f8f4ea !important;
-  background: #741316 !important;
-  border-color: rgba(248, 244, 234, 0.58) !important;
-  box-shadow: 0 0 30px rgba(116, 19, 22, 0.5) !important;
+  color: #e7e9e4 !important;
+  background: #81242c !important;
+  border-color: rgba(231, 233, 228, 0.58) !important;
+  box-shadow: 0 0 30px rgba(129, 36, 44, 0.5) !important;
 }
 
 .passportHead {
-  color: #f8f4ea !important;
-  background: #741316 !important;
+  color: #e7e9e4 !important;
+  background: #81242c !important;
 }
 
 .techPassport td,
 .tableWrap td {
-  color: #3b3030 !important;
-  background: #f8f4ea !important;
+  color: #252724 !important;
+  background: #e7e9e4 !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #eee8d8 !important;
+  background: #d4d6d2 !important;
 }
 
 .siteFooter::before {
-  background: rgba(98, 86, 87, 0.18) !important;
+  background: rgba(85, 88, 82, 0.18) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -504,7 +504,7 @@ button,
 
 /* Header and opening slide refinements from the annotated review. */
 .brandLogoOnly .brandLogo {
-  background: #f3eee3 !important;
+  background: #c9ccc7 !important;
   border-color: transparent !important;
   box-shadow: none !important;
 }
@@ -514,7 +514,7 @@ button,
 }
 
 .topbar nav {
-  color: #3b3030 !important;
+  color: #252724 !important;
   font-size: 13px;
   font-weight: 650;
 }
@@ -522,9 +522,9 @@ button,
 .topContacts > a.topCall,
 .topContacts > a.topMail,
 .topAddress:is(a).topMapButton {
-  color: #3b3030 !important;
-  background: #e2dbce !important;
-  border-color: rgba(98, 86, 87, 0.22) !important;
+  color: #252724 !important;
+  background: #bfc3bd !important;
+  border-color: rgba(85, 88, 82, 0.22) !important;
   box-shadow: none !important;
   font-weight: 650;
 }
@@ -535,15 +535,15 @@ button,
 .topContacts > a.topMail:focus-visible,
 .topAddress:is(a).topMapButton:hover,
 .topAddress:is(a).topMapButton:focus-visible {
-  color: #3b3030 !important;
-  background: #eee8d8 !important;
-  border-color: rgba(187, 170, 150, 0.82) !important;
-  box-shadow: 0 0 24px rgba(187, 170, 150, 0.42) !important;
+  color: #252724 !important;
+  background: #d4d6d2 !important;
+  border-color: rgba(164, 165, 156, 0.82) !important;
+  box-shadow: 0 0 24px rgba(164, 165, 156, 0.42) !important;
 }
 
 .heroCompanyEyebrow {
   margin-bottom: 16px;
-  color: #e8e1d2 !important;
+  color: #d9dcd6 !important;
   font-size: clamp(15px, 1.1vw, 18px) !important;
   font-weight: 750 !important;
   line-height: 1.2;
@@ -551,15 +551,15 @@ button,
 }
 
 .heroInner h1 {
-  color: #e8e1d2 !important;
+  color: #d9dcd6 !important;
   font-weight: 780;
 }
 
 .hero .primaryButton,
 .hero .secondaryButton {
-  color: #3b3030 !important;
-  background: rgba(238, 232, 216, 0.94) !important;
-  border: 1px solid rgba(248, 244, 234, 0.64) !important;
+  color: #252724 !important;
+  background: rgba(212, 214, 210, 0.94) !important;
+  border: 1px solid rgba(231, 233, 228, 0.64) !important;
   box-shadow: 0 12px 28px rgba(24, 21, 20, 0.2) !important;
 }
 
@@ -567,28 +567,28 @@ button,
 .hero .primaryButton:focus-visible,
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
-  color: #3b3030 !important;
-  background: #bbaa96 !important;
-  border-color: rgba(238, 232, 216, 0.9) !important;
-  box-shadow: 0 0 28px rgba(187, 170, 150, 0.58) !important;
+  color: #252724 !important;
+  background: #a4a59c !important;
+  border-color: rgba(212, 214, 210, 0.9) !important;
+  box-shadow: 0 0 28px rgba(164, 165, 156, 0.58) !important;
 }
 
 .heroFactStrip {
-  color: #3b3030 !important;
-  background: rgba(248, 244, 234, 0.93) !important;
-  border-color: rgba(238, 232, 216, 0.62) !important;
+  color: #252724 !important;
+  background: rgba(231, 233, 228, 0.93) !important;
+  border-color: rgba(212, 214, 210, 0.62) !important;
   box-shadow: 0 18px 44px rgba(24, 21, 20, 0.22) !important;
 }
 
 .heroFactStrip article {
   min-height: 62px;
   padding: 10px 16px;
-  border-color: rgba(98, 86, 87, 0.16) !important;
+  border-color: rgba(85, 88, 82, 0.16) !important;
 }
 
 .heroFactStrip span,
 .heroFactStrip strong {
-  color: #3b3030 !important;
+  color: #252724 !important;
   font-family: inherit;
   letter-spacing: 0;
 }
@@ -605,9 +605,9 @@ button,
 }
 
 .floatingWriteCta {
-  color: #3b3030 !important;
-  background: #bbaa96 !important;
-  border-color: rgba(98, 86, 87, 0.22) !important;
+  color: #252724 !important;
+  background: #a4a59c !important;
+  border-color: rgba(85, 88, 82, 0.22) !important;
 }
 
 /* The video slide uses the same light surface language as the product slide. */
@@ -615,14 +615,14 @@ button,
   display: block !important;
   max-width: 58ch;
   margin: 18px 0 0;
-  color: #625657 !important;
+  color: #555852 !important;
   font-size: clamp(15px, 1.05vw, 18px);
   font-weight: 400;
   line-height: 1.55;
 }
 
 .videoSlide h2 {
-  color: #3b3030 !important;
+  color: #252724 !important;
   font-weight: 760;
 }
 
@@ -634,9 +634,9 @@ button,
 .videoPlan span {
   min-height: 44px;
   padding: 9px 16px 9px 42px;
-  color: #3b3030 !important;
-  background: #e2dbce !important;
-  border: 1px solid rgba(98, 86, 87, 0.18) !important;
+  color: #252724 !important;
+  background: #bfc3bd !important;
+  border: 1px solid rgba(85, 88, 82, 0.18) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
   font-family: inherit;
@@ -648,17 +648,17 @@ button,
 .videoPlan span::before {
   width: 9px;
   height: 9px;
-  background: #741316 !important;
+  background: #81242c !important;
 }
 
 .videoSlide .videoFrame {
-  border: 1px solid rgba(98, 86, 87, 0.24) !important;
+  border: 1px solid rgba(85, 88, 82, 0.24) !important;
   border-radius: var(--surface-radius);
   box-shadow: var(--surface-shadow) !important;
 }
 
 .videoSlide .videoFrame strong {
-  color: #eee8d8 !important;
+  color: #d4d6d2 !important;
   font-family: inherit;
   font-weight: 700;
   line-height: 1.12;
@@ -698,7 +698,7 @@ button,
     height: 36px !important;
     min-height: 36px !important;
     padding-inline: 8px !important;
-    border: 1px solid rgba(98, 86, 87, 0.22) !important;
+    border: 1px solid rgba(85, 88, 82, 0.22) !important;
     border-radius: var(--control-radius) !important;
     font-size: 10.5px !important;
   }
@@ -750,7 +750,7 @@ button,
 /* Modal content follows the same light material system as the main slides. */
 .articleModal,
 .documentModal {
-  background: rgba(59, 48, 48, 0.82) !important;
+  background: rgba(37, 39, 36, 0.82) !important;
   backdrop-filter: blur(16px);
 }
 
@@ -760,7 +760,7 @@ button,
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 30px 90px rgba(59, 48, 48, 0.26) !important;
+  box-shadow: 0 30px 90px rgba(37, 39, 36, 0.26) !important;
 }
 
 .articleModalInner > span,
@@ -787,7 +787,7 @@ button,
 .modalClose {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(98, 86, 87, 0.22) !important;
+  border: 1px solid rgba(85, 88, 82, 0.22) !important;
   box-shadow: none !important;
 }
 
@@ -797,13 +797,13 @@ button,
 .modalClose:focus-visible {
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border-color: rgba(116, 19, 22, 0.72) !important;
-  box-shadow: 0 0 26px rgba(116, 19, 22, 0.28) !important;
+  border-color: rgba(129, 36, 44, 0.72) !important;
+  box-shadow: 0 0 26px rgba(129, 36, 44, 0.28) !important;
 }
 
 .documentModalInner iframe {
   background: var(--section-bg) !important;
-  border-color: rgba(98, 86, 87, 0.2) !important;
+  border-color: rgba(85, 88, 82, 0.2) !important;
 }
 
 body:has(.articleModal) .floatingWriteCta,
@@ -848,18 +848,18 @@ body:has(.videoModal) .floatingWriteCta {
 .productOverview {
   display: grid;
   margin-top: clamp(24px, 3vh, 34px);
-  border-top: 1px solid rgba(98, 86, 87, 0.22);
+  border-top: 1px solid rgba(85, 88, 82, 0.22);
 }
 
 .productOverview article {
   display: grid;
   gap: 8px;
   padding: 18px 0;
-  border-bottom: 1px solid rgba(98, 86, 87, 0.22);
+  border-bottom: 1px solid rgba(85, 88, 82, 0.22);
 }
 
 .productOverview strong {
-  color: #741316;
+  color: #81242c;
   font-family: inherit;
   font-size: clamp(16px, 1.18vw, 20px);
   font-weight: 700;
@@ -869,7 +869,7 @@ body:has(.videoModal) .floatingWriteCta {
 .productOverview p {
   max-width: 62ch;
   margin: 0;
-  color: #625657 !important;
+  color: #555852 !important;
   font-family: inherit;
   font-size: clamp(14px, 0.96vw, 16px);
   font-weight: 400;
@@ -986,18 +986,18 @@ body:has(.videoModal) .floatingWriteCta {
   padding: 0 16px;
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border: 1px solid rgba(116, 19, 22, 0.72) !important;
+  border: 1px solid rgba(129, 36, 44, 0.72) !important;
   border-radius: var(--control-radius);
   font-size: 14px;
   font-weight: 700;
-  box-shadow: 0 12px 28px rgba(116, 19, 22, 0.2);
+  box-shadow: 0 12px 28px rgba(129, 36, 44, 0.2);
   transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
 }
 
 .productStandaloneIntro .productBackButton:hover,
 .productStandaloneIntro .productBackButton:focus-visible {
-  background: #8b2427 !important;
-  box-shadow: 0 0 26px rgba(116, 19, 22, 0.34);
+  background: #9a3236 !important;
+  box-shadow: 0 0 26px rgba(129, 36, 44, 0.34);
   transform: translateY(-1px);
 }
 
@@ -1041,7 +1041,7 @@ body:has(.videoModal) .floatingWriteCta {
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(98, 86, 87, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
 }
 
 .productStandalonePage .productModelPanel {
@@ -1136,7 +1136,7 @@ body:has(.videoModal) .floatingWriteCta {
   gap: 5px !important;
   padding: 10px 12px !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(98, 86, 87, 0.16) !important;
+  border: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: var(--control-radius);
 }
 
@@ -1174,7 +1174,7 @@ body:has(.videoModal) .floatingWriteCta {
   gap: 10px !important;
   padding: 10px 0;
   color: var(--deep) !important;
-  border-top: 1px solid rgba(98, 86, 87, 0.16);
+  border-top: 1px solid rgba(85, 88, 82, 0.16);
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 1.42 !important;
@@ -1204,16 +1204,16 @@ body:has(.videoModal) .floatingWriteCta {
 .productStandalonePage .productDetailActions .ghostAction {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(98, 86, 87, 0.24) !important;
-  box-shadow: 0 10px 26px rgba(98, 86, 87, 0.1) !important;
+  border: 1px solid rgba(85, 88, 82, 0.24) !important;
+  box-shadow: 0 10px 26px rgba(85, 88, 82, 0.1) !important;
 }
 
 .productStandalonePage .productDetailActions .ghostAction:hover,
 .productStandalonePage .productDetailActions .ghostAction:focus-visible {
   color: var(--ink) !important;
   background: var(--paper) !important;
-  border-color: rgba(187, 170, 150, 0.82) !important;
-  box-shadow: 0 0 28px rgba(187, 170, 150, 0.48) !important;
+  border-color: rgba(164, 165, 156, 0.82) !important;
+  box-shadow: 0 0 28px rgba(164, 165, 156, 0.48) !important;
 }
 
 .productStandalonePage .productDetailMedia {
@@ -1278,7 +1278,7 @@ body:has(.videoModal) .floatingWriteCta {
 
 .passportBackLink:hover,
 .passportBackLink:focus-visible {
-  color: #8b2427 !important;
+  color: #9a3236 !important;
 }
 
 .productPassportIntro h2 {
@@ -1316,7 +1316,7 @@ body:has(.videoModal) .floatingWriteCta {
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(98, 86, 87, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
 }
 
 .productPassportPage .passportHead {
@@ -1337,7 +1337,7 @@ body:has(.videoModal) .floatingWriteCta {
 .productPassportPage th {
   padding: 12px 14px !important;
   color: var(--wine) !important;
-  background: #eee8d8 !important;
+  background: #d4d6d2 !important;
   font-size: 12px !important;
   font-weight: 700 !important;
   text-align: left;
@@ -1348,7 +1348,7 @@ body:has(.videoModal) .floatingWriteCta {
   padding: 12px 14px !important;
   color: var(--deep) !important;
   background: var(--surface-bg) !important;
-  border-top: 1px solid rgba(98, 86, 87, 0.14);
+  border-top: 1px solid rgba(85, 88, 82, 0.14);
   font-size: 13px !important;
   font-weight: 400 !important;
   line-height: 1.4 !important;
@@ -1373,7 +1373,7 @@ body:has(.videoModal) .floatingWriteCta {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
   border: 0 !important;
-  border-top: 1px solid rgba(98, 86, 87, 0.16) !important;
+  border-top: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   font-size: 13px;
@@ -1527,7 +1527,7 @@ body:has(.videoModal) .floatingWriteCta {
 
   .productPassportPage tr {
     padding: 12px 14px;
-    border-top: 1px solid rgba(98, 86, 87, 0.14);
+    border-top: 1px solid rgba(85, 88, 82, 0.14);
   }
 
   .productPassportPage td,
@@ -1557,7 +1557,7 @@ body:has(.videoModal) .floatingWriteCta {
   left: 12.5%;
   height: 2px;
   content: "";
-  background: rgba(116, 19, 22, 0.34);
+  background: rgba(129, 36, 44, 0.34);
 }
 
 #benefits .benefitGrid article {
@@ -1608,9 +1608,9 @@ body:has(.videoModal) .floatingWriteCta {
   margin: 0 !important;
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border: 1px solid rgba(116, 19, 22, 0.36) !important;
+  border: 1px solid rgba(129, 36, 44, 0.36) !important;
   border-radius: 50% !important;
-  box-shadow: 0 8px 22px rgba(116, 19, 22, 0.18) !important;
+  box-shadow: 0 8px 22px rgba(129, 36, 44, 0.18) !important;
   font-size: 12px !important;
   font-weight: 700 !important;
   font-variant-numeric: tabular-nums;
@@ -1640,7 +1640,7 @@ body:has(.videoModal) .floatingWriteCta {
 #gallery .galleryGrid h3 {
   color: var(--paper) !important;
   background: rgba(43, 36, 34, 0.52) !important;
-  border: 1px solid rgba(248, 244, 234, 0.34) !important;
+  border: 1px solid rgba(231, 233, 228, 0.34) !important;
   box-shadow: none !important;
   backdrop-filter: blur(8px);
 }
@@ -1651,10 +1651,10 @@ body:has(.videoModal) .floatingWriteCta {
 #contacts .contactPanel,
 #contacts form {
   color: var(--ink) !important;
-  background: rgba(248, 244, 234, 0.88) !important;
+  background: rgba(231, 233, 228, 0.88) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(98, 86, 87, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
 }
 
 #documents .trustGrid h3,
@@ -1680,8 +1680,8 @@ body:has(.videoModal) .floatingWriteCta {
 #articles .readableArticles article:focus-within {
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border-color: rgba(116, 19, 22, 0.72) !important;
-  box-shadow: 0 0 34px rgba(116, 19, 22, 0.28) !important;
+  border-color: rgba(129, 36, 44, 0.72) !important;
+  box-shadow: 0 0 34px rgba(129, 36, 44, 0.28) !important;
   transform: translateY(-2px);
 }
 
@@ -1698,14 +1698,14 @@ body:has(.videoModal) .floatingWriteCta {
 #contacts form .primaryButton:focus-visible {
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border-color: rgba(116, 19, 22, 0.72) !important;
-  box-shadow: 0 0 30px rgba(116, 19, 22, 0.28) !important;
+  border-color: rgba(129, 36, 44, 0.72) !important;
+  box-shadow: 0 0 30px rgba(129, 36, 44, 0.28) !important;
 }
 
 #contacts input:focus,
 #contacts textarea:focus {
-  border-color: rgba(116, 19, 22, 0.72) !important;
-  box-shadow: 0 0 0 3px rgba(116, 19, 22, 0.1) !important;
+  border-color: rgba(129, 36, 44, 0.72) !important;
+  box-shadow: 0 0 0 3px rgba(129, 36, 44, 0.1) !important;
 }
 
 @media (min-width: 1181px) {
@@ -1803,28 +1803,28 @@ body:has(.videoModal) .floatingWriteCta {
 
 /* 2026 palette refinement: neutral light base, graphite type, burgundy as an accent. */
 :root {
-  color: #292526;
-  background: #f2f0eb;
-  --ink: #292526;
+  color: #252724;
+  background: #e1e4df;
+  --ink: #252724;
   --deep: #625d5a;
   --graphite: #625d5a;
-  --steel: #b8b5af;
-  --moss: #817b75;
-  --acid: #f2f0eb;
-  --rust: #c8b995;
-  --paper: #fbfaf7;
-  --limestone: #e8e4dd;
-  --muted: #746e69;
-  --wine: #70171b;
+  --steel: #a5a8a3;
+  --moss: #7b8078;
+  --acid: #e1e4df;
+  --rust: #a6a69b;
+  --paper: #edf0eb;
+  --limestone: #d7dad4;
+  --muted: #6b7069;
+  --wine: #752128;
   --umber: #625d5a;
-  --stone: #b8b5af;
-  --sand: #c8b995;
+  --stone: #a5a8a3;
+  --sand: #a6a69b;
   --line: rgba(54, 47, 46, 0.13);
   --shadow: 0 24px 64px rgba(67, 57, 52, 0.09);
-  --page-bg: #f2f0eb;
-  --section-bg: #f7f5f0;
-  --surface-bg: #fbfaf7;
-  --surface-muted: #e8e4dd;
+  --page-bg: #e1e4df;
+  --section-bg: #e5e7e2;
+  --surface-bg: #edf0eb;
+  --surface-muted: #d7dad4;
   --surface-border: rgba(54, 47, 46, 0.13);
   --surface-shadow: 0 20px 54px rgba(67, 57, 52, 0.08);
 }
@@ -1855,7 +1855,7 @@ textarea {
 }
 
 .hero h1 {
-  color: #f7f4ec !important;
+  color: #e6e8e4 !important;
 }
 
 .section h3,
@@ -1886,7 +1886,7 @@ textarea {
 #gallery.gallerySlide,
 #articles.articlesBand,
 .productPassportPage {
-  background: #f7f5f0 !important;
+  background: #e5e7e2 !important;
 }
 
 #video.videoSlide,
@@ -1894,12 +1894,12 @@ textarea {
 #documents.documentsSlide,
 #contacts.contacts,
 .productStandalonePage {
-  background: #ece9e3 !important;
+  background: #dcdfda !important;
 }
 
 #benefits.benefitsSlide,
 .analysisBand {
-  background: #f3f1ec !important;
+  background: #e4e6e1 !important;
 }
 
 .topbar {
@@ -1912,13 +1912,13 @@ textarea {
 .brandLogoOnly .brandLogo,
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #fbfaf7 !important;
+  background: #edf0eb !important;
   border-color: rgba(54, 47, 46, 0.08) !important;
 }
 
 .topbar nav,
 .topbar nav a {
-  color: #393435 !important;
+  color: #3a3d37 !important;
   font-weight: 570 !important;
 }
 
@@ -1932,8 +1932,8 @@ textarea {
 .topAddress:is(a).topMapButton,
 .contactPanel a,
 .messengerButton {
-  color: #393435 !important;
-  background: #efede8 !important;
+  color: #3a3d37 !important;
+  background: #d9dcd7 !important;
   border-color: rgba(54, 47, 46, 0.12) !important;
   box-shadow: none !important;
 }
@@ -1945,7 +1945,7 @@ textarea {
 .contactPanel a:hover,
 .contactPanel a:focus-visible {
   color: var(--ink) !important;
-  background: #fbfaf7 !important;
+  background: #edf0eb !important;
   border-color: rgba(184, 162, 112, 0.7) !important;
   box-shadow: 0 10px 30px rgba(159, 133, 79, 0.16) !important;
 }
@@ -2010,7 +2010,7 @@ textarea {
 .techPassport,
 .videoPlan span {
   color: var(--ink) !important;
-  background: #e9e6e0 !important;
+  background: #d9dcd6 !important;
   border-color: rgba(54, 47, 46, 0.11) !important;
 }
 
@@ -2018,7 +2018,7 @@ textarea {
 .productModelViewport,
 .productModelPanel .localModelViewer,
 .localModelViewer {
-  background: #e3dfd7 !important;
+  background: #d2d5cf !important;
 }
 
 .primaryButton,
@@ -2029,8 +2029,8 @@ textarea {
 .articleGrid button,
 .readableArticles button,
 .siteFooter .footerAction {
-  color: #2c2827 !important;
-  background: #c9bb9c !important;
+  color: #2d302c !important;
+  background: #a9aba1 !important;
   border-color: rgba(130, 109, 70, 0.2) !important;
   box-shadow: 0 10px 28px rgba(157, 132, 79, 0.12) !important;
   font-weight: 650 !important;
@@ -2047,8 +2047,8 @@ textarea {
 #product .productCards a:focus-visible,
 .siteFooter .footerAction:hover,
 .siteFooter .footerAction:focus-visible {
-  color: #282423 !important;
-  background: #d8ccad !important;
+  color: #2a2e2a !important;
+  background: #b9bcb4 !important;
   border-color: rgba(160, 134, 77, 0.38) !important;
   box-shadow: 0 14px 36px rgba(157, 132, 79, 0.22), 0 0 24px rgba(204, 182, 131, 0.22) !important;
   transform: translateY(-2px);
@@ -2056,7 +2056,7 @@ textarea {
 
 .hero .primaryButton,
 .hero .secondaryButton {
-  color: #302b2a !important;
+  color: #333530 !important;
   background: rgba(247, 244, 236, 0.96) !important;
   border-color: rgba(255, 255, 255, 0.36) !important;
   box-shadow: 0 14px 34px rgba(10, 10, 9, 0.2) !important;
@@ -2066,8 +2066,8 @@ textarea {
 .hero .primaryButton:focus-visible,
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
-  color: #2c2827 !important;
-  background: #d8ccad !important;
+  color: #2d302c !important;
+  background: #b9bcb4 !important;
   box-shadow: 0 14px 36px rgba(157, 132, 79, 0.28), 0 0 26px rgba(216, 204, 173, 0.24) !important;
 }
 
@@ -2083,7 +2083,7 @@ textarea {
 }
 
 #benefits .benefitGrid article:not(:last-child)::after {
-  background: #f3f1ec;
+  background: #e4e6e1;
 }
 
 #benefits .benefitGrid article span {
@@ -2113,7 +2113,7 @@ textarea {
 .contacts input,
 .contacts textarea {
   color: var(--ink) !important;
-  background: #fdfcf9 !important;
+  background: #f4f6f2 !important;
   border-color: rgba(54, 47, 46, 0.16) !important;
 }
 
@@ -2124,16 +2124,16 @@ textarea {
 .techPassport td,
 .tableWrap td {
   color: var(--ink) !important;
-  background: #fbfaf7 !important;
+  background: #edf0eb !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #efede8 !important;
+  background: #d9dcd7 !important;
 }
 
 .siteFooter {
-  background: #e7e3dc !important;
+  background: #d5d8d2 !important;
 }
 
 @media (max-width: 760px) {
@@ -2172,7 +2172,7 @@ textarea {
   align-content: center !important;
   padding-top: 122px !important;
   padding-bottom: 58px !important;
-  background: #ece9e3 !important;
+  background: #dcdfda !important;
 }
 
 #contacts .contactLead {
@@ -2215,7 +2215,7 @@ textarea {
 #contacts .requestSummary span {
   min-height: 52px;
   padding: 13px 0;
-  color: #403b39 !important;
+  color: #454842 !important;
   background: transparent !important;
   border: 0 !important;
   border-top: 1px solid rgba(54, 47, 46, 0.14) !important;
@@ -2289,7 +2289,7 @@ textarea {
   padding: 15px;
   color: var(--ink) !important;
   white-space: normal;
-  background: #efede8 !important;
+  background: #d9dcd7 !important;
   border: 1px solid rgba(54, 47, 46, 0.11) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
@@ -2306,7 +2306,7 @@ textarea {
   height: 42px;
   place-items: center;
   color: var(--wine);
-  background: #fbfaf7;
+  background: #edf0eb;
   border: 1px solid rgba(54, 47, 46, 0.1);
   border-radius: 50%;
 }
@@ -2361,7 +2361,7 @@ textarea {
   gap: 14px;
   padding: 18px 20px;
   color: var(--paper) !important;
-  background: #373233 !important;
+  background: #3a3c37 !important;
   border: 1px solid rgba(54, 47, 46, 0.18);
   border-radius: var(--control-radius);
   box-shadow: 0 16px 34px rgba(54, 47, 46, 0.12);
@@ -2373,7 +2373,7 @@ textarea {
 }
 
 #contacts .contactLocation small {
-  color: #d5c9aa;
+  color: #b5b7ad;
   font-size: 11px;
   font-weight: 600;
 }
@@ -2400,7 +2400,7 @@ textarea {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background: #202425 !important;
+  background: #1e2422 !important;
   border-color: rgba(42, 45, 45, 0.28) !important;
   box-shadow: 0 24px 64px rgba(42, 45, 45, 0.16) !important;
 }
@@ -2434,7 +2434,7 @@ textarea {
 }
 
 .videoSlide .videoFrame strong {
-  color: #f7f4ec !important;
+  color: #e6e8e4 !important;
   text-shadow: 0 2px 18px rgba(15, 17, 17, 0.54);
 }
 
@@ -2488,11 +2488,11 @@ textarea {
 
 /* Final warm-light palette and footer system. */
 :root {
-  --page-bg: #eee8d8;
-  --section-bg: #e5e0d7;
-  --surface-bg: #e9e5dc;
-  --surface-muted: #d9d3c8;
-  --surface-border: rgba(98, 86, 87, 0.2);
+  --page-bg: #d4d6d2;
+  --section-bg: #d4d7d1;
+  --surface-bg: #dcdfd9;
+  --surface-muted: #c7cac4;
+  --surface-border: rgba(85, 88, 82, 0.2);
 }
 
 html,
@@ -2519,22 +2519,22 @@ body,
 }
 
 .topbar {
-  background: rgba(233, 229, 220, 0.97) !important;
-  border-color: rgba(98, 86, 87, 0.16) !important;
+  background: rgba(220, 223, 217, 0.97) !important;
+  border-color: rgba(85, 88, 82, 0.16) !important;
 }
 
 .brandLogoOnly .brandLogo,
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #eee8d8 !important;
-  border-color: rgba(98, 86, 87, 0.16) !important;
+  background: #d4d6d2 !important;
+  border-color: rgba(85, 88, 82, 0.16) !important;
 }
 
 .topContacts > a.topCall,
 .topContacts > a.topMail,
 .topAddress:is(a).topMapButton {
-  background: #dcd7ce !important;
-  border-color: rgba(98, 86, 87, 0.16) !important;
+  background: #cfd2cc !important;
+  border-color: rgba(85, 88, 82, 0.16) !important;
 }
 
 .quietPanel,
@@ -2551,7 +2551,7 @@ body,
 .articleGrid article,
 .readableArticles article,
 .documentGrid article {
-  background: rgba(233, 229, 220, 0.96) !important;
+  background: rgba(220, 223, 217, 0.96) !important;
 }
 
 #contacts .contactPanel .contactCard {
@@ -2570,12 +2570,12 @@ body,
 
 .techPassport td,
 .tableWrap td {
-  background: #e9e5dc !important;
+  background: #dcdfd9 !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #dcd7ce !important;
+  background: #cfd2cc !important;
 }
 
 .siteFooter {
@@ -2585,9 +2585,9 @@ body,
   gap: 32px;
   padding: clamp(38px, 4vw, 58px) clamp(24px, 5vw, 72px) clamp(44px, 5vw, 68px);
   color: var(--ink) !important;
-  background: #dcd7ce !important;
+  background: #cfd2cc !important;
   border: 0 !important;
-  border-top: 1px solid rgba(98, 86, 87, 0.18) !important;
+  border-top: 1px solid rgba(85, 88, 82, 0.18) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
@@ -2602,7 +2602,7 @@ body,
   align-items: center;
   gap: 30px;
   padding: 0 0 30px;
-  border-bottom: 1px solid rgba(98, 86, 87, 0.18);
+  border-bottom: 1px solid rgba(85, 88, 82, 0.18);
 }
 
 .siteFooter .footerBrand {
@@ -2619,9 +2619,9 @@ body,
   height: 82px;
   place-items: center;
   padding: 9px;
-  border: 1px solid rgba(98, 86, 87, 0.16) !important;
+  border: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: var(--control-radius);
-  box-shadow: 0 12px 28px rgba(98, 86, 87, 0.1);
+  box-shadow: 0 12px 28px rgba(85, 88, 82, 0.1);
 }
 
 .siteFooter .footerLogo img {
@@ -2660,10 +2660,10 @@ body,
   min-height: 48px;
   padding: 0 20px;
   color: var(--ink) !important;
-  background: #bdb2a1 !important;
-  border: 1px solid rgba(98, 86, 87, 0.18) !important;
+  background: #a7a89f !important;
+  border: 1px solid rgba(85, 88, 82, 0.18) !important;
   border-radius: var(--control-radius);
-  box-shadow: 0 12px 28px rgba(98, 86, 87, 0.12) !important;
+  box-shadow: 0 12px 28px rgba(85, 88, 82, 0.12) !important;
 }
 
 .siteFooter .footerRails {
@@ -2718,8 +2718,8 @@ body,
   padding: 9px 12px;
   overflow-wrap: anywhere;
   color: var(--ink) !important;
-  background: #e9e5dc !important;
-  border: 1px solid rgba(98, 86, 87, 0.16) !important;
+  background: #dcdfd9 !important;
+  border: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
   font-size: 13px;
@@ -2738,8 +2738,8 @@ body,
   min-height: 42px;
   place-items: center;
   color: var(--wine) !important;
-  background: #bdb2a1 !important;
-  border: 1px solid rgba(98, 86, 87, 0.16) !important;
+  background: #a7a89f !important;
+  border: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
@@ -2757,8 +2757,8 @@ body,
   margin: 0;
   padding: 16px;
   color: var(--ink) !important;
-  background: #e9e5dc !important;
-  border: 1px solid rgba(98, 86, 87, 0.16) !important;
+  background: #dcdfd9 !important;
+  border: 1px solid rgba(85, 88, 82, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
@@ -2780,7 +2780,7 @@ body,
   align-items: center;
   padding: 8px 12px;
   color: var(--ink) !important;
-  background: #bdb2a1 !important;
+  background: #a7a89f !important;
   border-radius: var(--control-radius);
   font-size: 12px;
   font-weight: 650;
@@ -2788,17 +2788,17 @@ body,
 
 .siteFooter :is(.footerContactItem > a, .footerBlock > a, .footerLocation, .copyContactButton, .footerAction):hover,
 .siteFooter :is(.footerContactItem > a, .footerBlock > a, .footerLocation, .copyContactButton, .footerAction):focus-visible {
-  color: #f2ecdc !important;
+  color: #e0e2dc !important;
   background: var(--wine) !important;
   border-color: var(--wine) !important;
-  box-shadow: 0 14px 30px rgba(116, 19, 22, 0.18) !important;
+  box-shadow: 0 14px 30px rgba(129, 36, 44, 0.18) !important;
 }
 
 .siteFooter .footerLocation:hover :is(span, strong, svg),
 .siteFooter .footerLocation:focus-visible :is(span, strong, svg),
 .siteFooter .footerContactItem > a:hover svg,
 .siteFooter .footerContactItem > a:focus-visible svg {
-  color: #f2ecdc !important;
+  color: #e0e2dc !important;
 }
 
 .siteFooter .footerLocation:hover strong,
@@ -2814,7 +2814,7 @@ body,
 
 @media (max-width: 700px) {
   .topbar {
-    background: rgba(233, 229, 220, 0.98) !important;
+    background: rgba(220, 223, 217, 0.98) !important;
   }
 
   .siteFooter {
@@ -2863,14 +2863,14 @@ body,
 .hero .primaryButton,
 .hero .secondaryButton {
   color: var(--ink) !important;
-  background: #d9d3c8 !important;
-  border-color: rgba(238, 232, 216, 0.52) !important;
+  background: #c7cac4 !important;
+  border-color: rgba(212, 214, 210, 0.52) !important;
 }
 
 .hero .heroFactStrip {
   color: var(--ink) !important;
   background: rgba(217, 211, 200, 0.94) !important;
-  border-color: rgba(238, 232, 216, 0.46) !important;
+  border-color: rgba(212, 214, 210, 0.46) !important;
 }
 
 /* Product detail: warm application panel and an unobscured material photo. */
@@ -2895,14 +2895,14 @@ body,
   padding: 11px 0 !important;
   color: var(--ink) !important;
   background: transparent !important;
-  border-top-color: rgba(98, 86, 87, 0.15) !important;
+  border-top-color: rgba(85, 88, 82, 0.15) !important;
 }
 
 .productStandalonePage .productDetailMedia {
   padding: 8px !important;
   background: var(--surface-bg) !important;
   border-color: var(--surface-border) !important;
-  box-shadow: 0 18px 44px rgba(98, 86, 87, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
 }
 
 .productStandalonePage .productDetailMedia::before,
@@ -2951,16 +2951,16 @@ body,
 
 /* Review pass: one warm material system and a quieter information hierarchy. */
 :root {
-  --page-bg: #eee6d3;
-  --section-bg: #e9dfca;
-  --surface-bg: #e6dcc6;
-  --surface-muted: #dcd0b8;
+  --page-bg: #d5d8d2;
+  --section-bg: #d2d5ce;
+  --surface-bg: #ced1ca;
+  --surface-muted: #c0c3bc;
   --surface-border: rgba(73, 58, 48, 0.16);
-  --ink: #332d2b;
-  --deep: #665b54;
-  --wine: #7d1d22;
-  --paper: #f5eedf;
-  --sand: #cfbd98;
+  --ink: #363833;
+  --deep: #686b64;
+  --wine: #81242c;
+  --paper: #e1e3dc;
+  --sand: #aeb0a5;
 }
 
 html,
@@ -2982,7 +2982,7 @@ body,
 .topbar {
   min-height: 94px;
   padding: 12px 22px !important;
-  background: rgba(238, 230, 211, 0.97) !important;
+  background: rgba(231, 233, 228, 0.97) !important;
   border-color: var(--surface-border) !important;
   box-shadow: 0 14px 38px rgba(77, 60, 47, 0.08) !important;
 }
@@ -3110,8 +3110,8 @@ body,
 }
 
 .hero .heroFactStrip {
-  background: rgba(238, 230, 211, 0.92) !important;
-  border-color: rgba(245, 238, 223, 0.52) !important;
+  background: rgba(231, 233, 228, 0.92) !important;
+  border-color: rgba(231, 233, 228, 0.52) !important;
 }
 
 .hero .heroFactStrip article {
@@ -3261,7 +3261,7 @@ body,
   aspect-ratio: 16 / 10 !important;
   justify-self: end;
   align-self: end;
-  background: #302a28 !important;
+  background: #333530 !important;
   border-color: rgba(73, 58, 48, 0.24) !important;
   box-shadow: 0 18px 42px rgba(77, 60, 47, 0.14) !important;
 }
@@ -3280,8 +3280,8 @@ body,
   height: 58px !important;
   margin-bottom: 18px !important;
   color: var(--ink) !important;
-  background: rgba(238, 230, 211, 0.94) !important;
-  border-color: rgba(245, 238, 223, 0.72) !important;
+  background: rgba(231, 233, 228, 0.94) !important;
+  border-color: rgba(231, 233, 228, 0.72) !important;
 }
 
 #benefits .benefitGrid {
@@ -3342,7 +3342,7 @@ body,
   height: 44px !important;
   margin-bottom: 30px !important;
   color: var(--ink) !important;
-  background: rgba(238, 230, 211, 0.9) !important;
+  background: rgba(231, 233, 228, 0.9) !important;
   box-shadow: none !important;
   font-size: 12px !important;
 }
@@ -3360,7 +3360,7 @@ body,
 }
 
 #route .routeMap article p {
-  color: rgba(245, 238, 223, 0.94) !important;
+  color: rgba(231, 233, 228, 0.94) !important;
   font-size: 14px !important;
   line-height: 1.44 !important;
 }
@@ -3376,7 +3376,7 @@ body,
 #gallery .galleryGrid h3 {
   color: var(--paper) !important;
   background: rgba(48, 41, 38, 0.42) !important;
-  border-color: rgba(245, 238, 223, 0.32) !important;
+  border-color: rgba(231, 233, 228, 0.32) !important;
   font-size: 15px !important;
   font-weight: 620 !important;
   backdrop-filter: blur(5px);
@@ -3439,7 +3439,7 @@ body,
 
 #contacts .contactIcon {
   color: var(--wine) !important;
-  background: rgba(245, 238, 223, 0.72) !important;
+  background: rgba(231, 233, 228, 0.72) !important;
   border-color: rgba(73, 58, 48, 0.1) !important;
 }
 
@@ -3657,7 +3657,7 @@ body,
   width: 40px !important;
   height: 40px !important;
   margin-bottom: 44px !important;
-  background: rgba(245, 238, 223, 0.82) !important;
+  background: rgba(231, 233, 228, 0.82) !important;
 }
 
 #route .routeMap article h3 {
@@ -3672,7 +3672,7 @@ body,
 #documents .trustGrid article,
 #articles .readableArticles article {
   min-height: 218px !important;
-  background: rgba(245, 238, 223, 0.5) !important;
+  background: rgba(231, 233, 228, 0.5) !important;
   box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
 }
 
@@ -3681,7 +3681,7 @@ body,
 }
 
 #contacts .contactDirectory {
-  background: rgba(245, 238, 223, 0.44) !important;
+  background: rgba(231, 233, 228, 0.44) !important;
   box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
 }
 
@@ -3872,7 +3872,7 @@ body,
 
 #gallery .galleryGrid h3 {
   background: rgba(48, 41, 38, 0.18) !important;
-  border-color: rgba(245, 238, 223, 0.26) !important;
+  border-color: rgba(231, 233, 228, 0.26) !important;
 }
 
 .sectionIntro > p:not(.eyebrow),
