@@ -3754,6 +3754,23 @@ body,
     font-weight: 650 !important;
     line-height: 1.2 !important;
   }
+
+  #product .productMatrix {
+    align-self: stretch !important;
+  }
+
+  #product .productCards {
+    height: calc(100% - 18px) !important;
+  }
+
+  #video.videoSlide {
+    align-items: start !important;
+  }
+
+  #video .videoFrame {
+    align-self: start;
+    margin-top: 41px;
+  }
 }
 
 .productStandalonePage .productModelPanelHeader strong {
