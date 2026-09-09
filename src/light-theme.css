@@ -5,36 +5,36 @@
 
 :root {
   color: #252724;
-  background: #d4d6d2;
+  background: #c7c8c6;
   --ink: #252724;
   --deep: #555852;
   --graphite: #555852;
-  --steel: #a6a69f;
+  --steel: #a0a19d;
   --moss: #7e827a;
-  --acid: #d4d6d2;
-  --rust: #a4a59c;
-  --paper: #e7e9e4;
-  --limestone: #bfc3bd;
+  --acid: #c7c8c6;
+  --rust: #a7a7a3;
+  --paper: #dedfdd;
+  --limestone: #b2b3b0;
   --muted: #6d706a;
   --wine: #81242c;
   --umber: #555852;
-  --stone: #a6a69f;
-  --sand: #a4a59c;
-  --line: rgba(85, 88, 82, 0.22);
-  --shadow: 0 22px 58px rgba(85, 88, 82, 0.14);
-  --page-bg: #d4d6d2;
-  --section-bg: #c9ccc7;
-  --surface-bg: #e7e9e4;
-  --surface-muted: #bfc3bd;
-  --surface-border: rgba(85, 88, 82, 0.22);
-  --surface-shadow: 0 18px 48px rgba(85, 88, 82, 0.12);
+  --stone: #a0a19d;
+  --sand: #a7a7a3;
+  --line: rgba(78, 79, 76, 0.22);
+  --shadow: 0 22px 58px rgba(78, 79, 76, 0.14);
+  --page-bg: #c7c8c6;
+  --section-bg: #b7b8b6;
+  --surface-bg: #dedfdd;
+  --surface-muted: #b2b3b0;
+  --surface-border: rgba(78, 79, 76, 0.22);
+  --surface-shadow: 0 18px 48px rgba(78, 79, 76, 0.12);
   --surface-radius: 8px;
   --control-radius: 6px;
 }
 
 html,
 body {
-  background: #d4d6d2;
+  background: #c7c8c6;
 }
 
 body,
@@ -108,16 +108,16 @@ button,
 .slideDeck {
   color: #252724;
   background: var(--page-bg);
-  scrollbar-color: #a4a59c rgba(85, 88, 82, 0.12);
+  scrollbar-color: #a7a7a3 rgba(78, 79, 76, 0.12);
 }
 
 .slideDeck::-webkit-scrollbar-track {
-  background: rgba(85, 88, 82, 0.1);
+  background: rgba(78, 79, 76, 0.1);
 }
 
 .slideDeck::-webkit-scrollbar-thumb {
-  background: #a4a59c;
-  border-color: #d4d6d2;
+  background: #a7a7a3;
+  border-color: #c7c8c6;
 }
 
 /* The photographic opening remains dark; the content slides use the light system. */
@@ -209,13 +209,13 @@ button,
 .modelChemCard,
 .techPassport {
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(85, 88, 82, 0.18) !important;
+  border: 1px solid rgba(78, 79, 76, 0.18) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
 
 .topbar {
-  background: rgba(231, 233, 228, 0.96) !important;
+  background: rgba(222, 223, 221, 0.96) !important;
   backdrop-filter: blur(18px);
 }
 
@@ -236,8 +236,8 @@ button,
 
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #e7e9e4 !important;
-  border-color: rgba(85, 88, 82, 0.22) !important;
+  background: #dedfdd !important;
+  border-color: rgba(78, 79, 76, 0.22) !important;
 }
 
 .quietPanel::before,
@@ -299,7 +299,7 @@ button,
 .techPassport {
   color: #252724 !important;
   background: var(--surface-muted) !important;
-  border-color: rgba(85, 88, 82, 0.18) !important;
+  border-color: rgba(78, 79, 76, 0.18) !important;
 }
 
 .productInfoCard .productSpecRow span {
@@ -315,7 +315,7 @@ button,
 .productModelViewport,
 .productModelPanel .localModelViewer,
 .localModelViewer {
-  background: #bfc3bd !important;
+  background: #b2b3b0 !important;
 }
 
 /* Photo cards stay photographic and readable. */
@@ -323,20 +323,20 @@ button,
 .galleryGrid article {
   border-color: rgba(129, 36, 44, 0.26) !important;
   border-radius: var(--surface-radius);
-  box-shadow: 0 20px 48px rgba(85, 88, 82, 0.16) !important;
+  box-shadow: 0 20px 48px rgba(78, 79, 76, 0.16) !important;
 }
 
 #route .routeMap article h3,
 #route .routeMap article p,
 #gallery .galleryGrid article h3,
 #gallery .galleryGrid article p {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
 }
 
 .routeMap article > span,
 .galleryGrid article > span {
   color: #252724 !important;
-  background: #d4d6d2 !important;
+  background: #c7c8c6 !important;
   border-color: rgba(129, 36, 44, 0.34) !important;
 }
 
@@ -346,8 +346,8 @@ button,
 
 .productStandalonePage .productInfoCard .productDetailBody {
   color: #252724 !important;
-  background: #e7e9e4 !important;
-  border-color: rgba(85, 88, 82, 0.24) !important;
+  background: #dedfdd !important;
+  border-color: rgba(78, 79, 76, 0.24) !important;
 }
 
 .productStandalonePage .productInfoCard .productDetailHeader h2,
@@ -362,7 +362,7 @@ button,
 .articleGrid article:focus-within,
 .readableArticles article:hover,
 .readableArticles article:focus-within {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
   background: #81242c !important;
   border-color: rgba(129, 36, 44, 0.72) !important;
   box-shadow: 0 0 34px rgba(129, 36, 44, 0.28) !important;
@@ -380,7 +380,7 @@ button,
 .readableArticles article:hover p,
 .readableArticles article:focus-within h3,
 .readableArticles article:focus-within p {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
 }
 
 .trustGrid article:hover button,
@@ -389,9 +389,9 @@ button,
 .articleGrid article:focus-within button,
 .readableArticles article:hover button,
 .readableArticles article:focus-within button {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
   background: #81242c !important;
-  border-color: rgba(231, 233, 228, 0.66) !important;
+  border-color: rgba(222, 223, 221, 0.66) !important;
   box-shadow: 0 0 26px rgba(129, 36, 44, 0.34) !important;
 }
 
@@ -402,14 +402,14 @@ button,
 .contacts input,
 .contacts textarea {
   color: #252724 !important;
-  background: #f1f3ef !important;
-  border-color: rgba(85, 88, 82, 0.28) !important;
+  background: #eaebe8 !important;
+  border-color: rgba(78, 79, 76, 0.28) !important;
   border-radius: var(--control-radius);
 }
 
 .contacts input::placeholder,
 .contacts textarea::placeholder {
-  color: rgba(85, 88, 82, 0.62) !important;
+  color: rgba(78, 79, 76, 0.62) !important;
 }
 
 .contactPanel a,
@@ -417,7 +417,7 @@ button,
 .topContacts > a {
   color: #252724 !important;
   background: var(--surface-muted) !important;
-  border-color: rgba(85, 88, 82, 0.25) !important;
+  border-color: rgba(78, 79, 76, 0.25) !important;
   border-radius: var(--control-radius);
 }
 
@@ -426,9 +426,9 @@ button,
 .contactPanel a:hover,
 .contactPanel a:focus-visible {
   color: #252724 !important;
-  background: #d4d6d2 !important;
-  border-color: rgba(164, 165, 156, 0.82) !important;
-  box-shadow: 0 0 28px rgba(164, 165, 156, 0.48) !important;
+  background: #c7c8c6 !important;
+  border-color: rgba(167, 167, 163, 0.82) !important;
+  box-shadow: 0 0 28px rgba(167, 167, 163, 0.48) !important;
 }
 
 .primaryButton,
@@ -440,8 +440,8 @@ button,
 .readableArticles button,
 .siteFooter .footerAction {
   color: #252724 !important;
-  background: #a4a59c !important;
-  border-color: rgba(85, 88, 82, 0.24) !important;
+  background: #a7a7a3 !important;
+  border-color: rgba(78, 79, 76, 0.24) !important;
   border-radius: var(--control-radius);
 }
 
@@ -456,43 +456,43 @@ button,
 .siteFooter .footerAction:hover,
 .siteFooter .footerAction:focus-visible {
   color: #252724 !important;
-  background: #d4d6d2 !important;
-  border-color: rgba(164, 165, 156, 0.88) !important;
-  box-shadow: 0 0 32px rgba(164, 165, 156, 0.58) !important;
+  background: #c7c8c6 !important;
+  border-color: rgba(167, 167, 163, 0.88) !important;
+  box-shadow: 0 0 32px rgba(167, 167, 163, 0.58) !important;
 }
 
 .hero .secondaryButton {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
   background: rgba(43, 36, 34, 0.72) !important;
-  border-color: rgba(231, 233, 228, 0.3) !important;
+  border-color: rgba(222, 223, 221, 0.3) !important;
 }
 
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
   background: #81242c !important;
-  border-color: rgba(231, 233, 228, 0.58) !important;
+  border-color: rgba(222, 223, 221, 0.58) !important;
   box-shadow: 0 0 30px rgba(129, 36, 44, 0.5) !important;
 }
 
 .passportHead {
-  color: #e7e9e4 !important;
+  color: #dedfdd !important;
   background: #81242c !important;
 }
 
 .techPassport td,
 .tableWrap td {
   color: #252724 !important;
-  background: #e7e9e4 !important;
+  background: #dedfdd !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #d4d6d2 !important;
+  background: #c7c8c6 !important;
 }
 
 .siteFooter::before {
-  background: rgba(85, 88, 82, 0.18) !important;
+  background: rgba(78, 79, 76, 0.18) !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -504,7 +504,7 @@ button,
 
 /* Header and opening slide refinements from the annotated review. */
 .brandLogoOnly .brandLogo {
-  background: #c9ccc7 !important;
+  background: #b7b8b6 !important;
   border-color: transparent !important;
   box-shadow: none !important;
 }
@@ -523,8 +523,8 @@ button,
 .topContacts > a.topMail,
 .topAddress:is(a).topMapButton {
   color: #252724 !important;
-  background: #bfc3bd !important;
-  border-color: rgba(85, 88, 82, 0.22) !important;
+  background: #b2b3b0 !important;
+  border-color: rgba(78, 79, 76, 0.22) !important;
   box-shadow: none !important;
   font-weight: 650;
 }
@@ -536,14 +536,14 @@ button,
 .topAddress:is(a).topMapButton:hover,
 .topAddress:is(a).topMapButton:focus-visible {
   color: #252724 !important;
-  background: #d4d6d2 !important;
-  border-color: rgba(164, 165, 156, 0.82) !important;
-  box-shadow: 0 0 24px rgba(164, 165, 156, 0.42) !important;
+  background: #c7c8c6 !important;
+  border-color: rgba(167, 167, 163, 0.82) !important;
+  box-shadow: 0 0 24px rgba(167, 167, 163, 0.42) !important;
 }
 
 .heroCompanyEyebrow {
   margin-bottom: 16px;
-  color: #d9dcd6 !important;
+  color: #d1d2cf !important;
   font-size: clamp(15px, 1.1vw, 18px) !important;
   font-weight: 750 !important;
   line-height: 1.2;
@@ -551,15 +551,15 @@ button,
 }
 
 .heroInner h1 {
-  color: #d9dcd6 !important;
+  color: #d1d2cf !important;
   font-weight: 780;
 }
 
 .hero .primaryButton,
 .hero .secondaryButton {
   color: #252724 !important;
-  background: rgba(212, 214, 210, 0.94) !important;
-  border: 1px solid rgba(231, 233, 228, 0.64) !important;
+  background: rgba(199, 200, 198, 0.94) !important;
+  border: 1px solid rgba(222, 223, 221, 0.64) !important;
   box-shadow: 0 12px 28px rgba(24, 21, 20, 0.2) !important;
 }
 
@@ -568,22 +568,22 @@ button,
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
   color: #252724 !important;
-  background: #a4a59c !important;
-  border-color: rgba(212, 214, 210, 0.9) !important;
-  box-shadow: 0 0 28px rgba(164, 165, 156, 0.58) !important;
+  background: #a7a7a3 !important;
+  border-color: rgba(199, 200, 198, 0.9) !important;
+  box-shadow: 0 0 28px rgba(167, 167, 163, 0.58) !important;
 }
 
 .heroFactStrip {
   color: #252724 !important;
-  background: rgba(231, 233, 228, 0.93) !important;
-  border-color: rgba(212, 214, 210, 0.62) !important;
+  background: rgba(222, 223, 221, 0.93) !important;
+  border-color: rgba(199, 200, 198, 0.62) !important;
   box-shadow: 0 18px 44px rgba(24, 21, 20, 0.22) !important;
 }
 
 .heroFactStrip article {
   min-height: 62px;
   padding: 10px 16px;
-  border-color: rgba(85, 88, 82, 0.16) !important;
+  border-color: rgba(78, 79, 76, 0.16) !important;
 }
 
 .heroFactStrip span,
@@ -606,8 +606,8 @@ button,
 
 .floatingWriteCta {
   color: #252724 !important;
-  background: #a4a59c !important;
-  border-color: rgba(85, 88, 82, 0.22) !important;
+  background: #a7a7a3 !important;
+  border-color: rgba(78, 79, 76, 0.22) !important;
 }
 
 /* The video slide uses the same light surface language as the product slide. */
@@ -635,8 +635,8 @@ button,
   min-height: 44px;
   padding: 9px 16px 9px 42px;
   color: #252724 !important;
-  background: #bfc3bd !important;
-  border: 1px solid rgba(85, 88, 82, 0.18) !important;
+  background: #b2b3b0 !important;
+  border: 1px solid rgba(78, 79, 76, 0.18) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
   font-family: inherit;
@@ -652,13 +652,13 @@ button,
 }
 
 .videoSlide .videoFrame {
-  border: 1px solid rgba(85, 88, 82, 0.24) !important;
+  border: 1px solid rgba(78, 79, 76, 0.24) !important;
   border-radius: var(--surface-radius);
   box-shadow: var(--surface-shadow) !important;
 }
 
 .videoSlide .videoFrame strong {
-  color: #d4d6d2 !important;
+  color: #c7c8c6 !important;
   font-family: inherit;
   font-weight: 700;
   line-height: 1.12;
@@ -698,7 +698,7 @@ button,
     height: 36px !important;
     min-height: 36px !important;
     padding-inline: 8px !important;
-    border: 1px solid rgba(85, 88, 82, 0.22) !important;
+    border: 1px solid rgba(78, 79, 76, 0.22) !important;
     border-radius: var(--control-radius) !important;
     font-size: 10.5px !important;
   }
@@ -787,7 +787,7 @@ button,
 .modalClose {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(85, 88, 82, 0.22) !important;
+  border: 1px solid rgba(78, 79, 76, 0.22) !important;
   box-shadow: none !important;
 }
 
@@ -803,7 +803,7 @@ button,
 
 .documentModalInner iframe {
   background: var(--section-bg) !important;
-  border-color: rgba(85, 88, 82, 0.2) !important;
+  border-color: rgba(78, 79, 76, 0.2) !important;
 }
 
 body:has(.articleModal) .floatingWriteCta,
@@ -848,14 +848,14 @@ body:has(.videoModal) .floatingWriteCta {
 .productOverview {
   display: grid;
   margin-top: clamp(24px, 3vh, 34px);
-  border-top: 1px solid rgba(85, 88, 82, 0.22);
+  border-top: 1px solid rgba(78, 79, 76, 0.22);
 }
 
 .productOverview article {
   display: grid;
   gap: 8px;
   padding: 18px 0;
-  border-bottom: 1px solid rgba(85, 88, 82, 0.22);
+  border-bottom: 1px solid rgba(78, 79, 76, 0.22);
 }
 
 .productOverview strong {
@@ -1041,7 +1041,7 @@ body:has(.videoModal) .floatingWriteCta {
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(78, 79, 76, 0.11) !important;
 }
 
 .productStandalonePage .productModelPanel {
@@ -1136,7 +1136,7 @@ body:has(.videoModal) .floatingWriteCta {
   gap: 5px !important;
   padding: 10px 12px !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(85, 88, 82, 0.16) !important;
+  border: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: var(--control-radius);
 }
 
@@ -1174,7 +1174,7 @@ body:has(.videoModal) .floatingWriteCta {
   gap: 10px !important;
   padding: 10px 0;
   color: var(--deep) !important;
-  border-top: 1px solid rgba(85, 88, 82, 0.16);
+  border-top: 1px solid rgba(78, 79, 76, 0.16);
   font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 1.42 !important;
@@ -1204,16 +1204,16 @@ body:has(.videoModal) .floatingWriteCta {
 .productStandalonePage .productDetailActions .ghostAction {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
-  border: 1px solid rgba(85, 88, 82, 0.24) !important;
-  box-shadow: 0 10px 26px rgba(85, 88, 82, 0.1) !important;
+  border: 1px solid rgba(78, 79, 76, 0.24) !important;
+  box-shadow: 0 10px 26px rgba(78, 79, 76, 0.1) !important;
 }
 
 .productStandalonePage .productDetailActions .ghostAction:hover,
 .productStandalonePage .productDetailActions .ghostAction:focus-visible {
   color: var(--ink) !important;
   background: var(--paper) !important;
-  border-color: rgba(164, 165, 156, 0.82) !important;
-  box-shadow: 0 0 28px rgba(164, 165, 156, 0.48) !important;
+  border-color: rgba(167, 167, 163, 0.82) !important;
+  box-shadow: 0 0 28px rgba(167, 167, 163, 0.48) !important;
 }
 
 .productStandalonePage .productDetailMedia {
@@ -1316,7 +1316,7 @@ body:has(.videoModal) .floatingWriteCta {
   background: var(--surface-bg) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(78, 79, 76, 0.11) !important;
 }
 
 .productPassportPage .passportHead {
@@ -1337,7 +1337,7 @@ body:has(.videoModal) .floatingWriteCta {
 .productPassportPage th {
   padding: 12px 14px !important;
   color: var(--wine) !important;
-  background: #d4d6d2 !important;
+  background: #c7c8c6 !important;
   font-size: 12px !important;
   font-weight: 700 !important;
   text-align: left;
@@ -1348,7 +1348,7 @@ body:has(.videoModal) .floatingWriteCta {
   padding: 12px 14px !important;
   color: var(--deep) !important;
   background: var(--surface-bg) !important;
-  border-top: 1px solid rgba(85, 88, 82, 0.14);
+  border-top: 1px solid rgba(78, 79, 76, 0.14);
   font-size: 13px !important;
   font-weight: 400 !important;
   line-height: 1.4 !important;
@@ -1373,7 +1373,7 @@ body:has(.videoModal) .floatingWriteCta {
   color: var(--ink) !important;
   background: var(--surface-muted) !important;
   border: 0 !important;
-  border-top: 1px solid rgba(85, 88, 82, 0.16) !important;
+  border-top: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
   font-size: 13px;
@@ -1527,7 +1527,7 @@ body:has(.videoModal) .floatingWriteCta {
 
   .productPassportPage tr {
     padding: 12px 14px;
-    border-top: 1px solid rgba(85, 88, 82, 0.14);
+    border-top: 1px solid rgba(78, 79, 76, 0.14);
   }
 
   .productPassportPage td,
@@ -1640,7 +1640,7 @@ body:has(.videoModal) .floatingWriteCta {
 #gallery .galleryGrid h3 {
   color: var(--paper) !important;
   background: rgba(43, 36, 34, 0.52) !important;
-  border: 1px solid rgba(231, 233, 228, 0.34) !important;
+  border: 1px solid rgba(222, 223, 221, 0.34) !important;
   box-shadow: none !important;
   backdrop-filter: blur(8px);
 }
@@ -1651,10 +1651,10 @@ body:has(.videoModal) .floatingWriteCta {
 #contacts .contactPanel,
 #contacts form {
   color: var(--ink) !important;
-  background: rgba(231, 233, 228, 0.88) !important;
+  background: rgba(222, 223, 221, 0.88) !important;
   border: 1px solid var(--surface-border) !important;
   border-radius: var(--surface-radius) !important;
-  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(78, 79, 76, 0.11) !important;
 }
 
 #documents .trustGrid h3,
@@ -1804,27 +1804,27 @@ body:has(.videoModal) .floatingWriteCta {
 /* 2026 palette refinement: neutral light base, graphite type, burgundy as an accent. */
 :root {
   color: #252724;
-  background: #e1e4df;
+  background: #dbdcda;
   --ink: #252724;
   --deep: #625d5a;
   --graphite: #625d5a;
-  --steel: #a5a8a3;
+  --steel: #a0a19e;
   --moss: #7b8078;
-  --acid: #e1e4df;
-  --rust: #a6a69b;
-  --paper: #edf0eb;
-  --limestone: #d7dad4;
+  --acid: #dbdcda;
+  --rust: #a0a19b;
+  --paper: #e7e8e5;
+  --limestone: #cfd0cd;
   --muted: #6b7069;
   --wine: #752128;
   --umber: #625d5a;
-  --stone: #a5a8a3;
-  --sand: #a6a69b;
+  --stone: #a0a19e;
+  --sand: #a0a19b;
   --line: rgba(54, 47, 46, 0.13);
   --shadow: 0 24px 64px rgba(67, 57, 52, 0.09);
-  --page-bg: #e1e4df;
-  --section-bg: #e5e7e2;
-  --surface-bg: #edf0eb;
-  --surface-muted: #d7dad4;
+  --page-bg: #dbdcda;
+  --section-bg: #dddedb;
+  --surface-bg: #e7e8e5;
+  --surface-muted: #cfd0cd;
   --surface-border: rgba(54, 47, 46, 0.13);
   --surface-shadow: 0 20px 54px rgba(67, 57, 52, 0.08);
 }
@@ -1855,7 +1855,7 @@ textarea {
 }
 
 .hero h1 {
-  color: #e6e8e4 !important;
+  color: #dedfdd !important;
 }
 
 .section h3,
@@ -1886,7 +1886,7 @@ textarea {
 #gallery.gallerySlide,
 #articles.articlesBand,
 .productPassportPage {
-  background: #e5e7e2 !important;
+  background: #dddedb !important;
 }
 
 #video.videoSlide,
@@ -1894,12 +1894,12 @@ textarea {
 #documents.documentsSlide,
 #contacts.contacts,
 .productStandalonePage {
-  background: #dcdfda !important;
+  background: #d5d6d4 !important;
 }
 
 #benefits.benefitsSlide,
 .analysisBand {
-  background: #e4e6e1 !important;
+  background: #dcddda !important;
 }
 
 .topbar {
@@ -1912,7 +1912,7 @@ textarea {
 .brandLogoOnly .brandLogo,
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #edf0eb !important;
+  background: #e7e8e5 !important;
   border-color: rgba(54, 47, 46, 0.08) !important;
 }
 
@@ -1933,7 +1933,7 @@ textarea {
 .contactPanel a,
 .messengerButton {
   color: #3a3d37 !important;
-  background: #d9dcd7 !important;
+  background: #d1d2cf !important;
   border-color: rgba(54, 47, 46, 0.12) !important;
   box-shadow: none !important;
 }
@@ -1945,7 +1945,7 @@ textarea {
 .contactPanel a:hover,
 .contactPanel a:focus-visible {
   color: var(--ink) !important;
-  background: #edf0eb !important;
+  background: #e7e8e5 !important;
   border-color: rgba(184, 162, 112, 0.7) !important;
   box-shadow: 0 10px 30px rgba(159, 133, 79, 0.16) !important;
 }
@@ -2010,7 +2010,7 @@ textarea {
 .techPassport,
 .videoPlan span {
   color: var(--ink) !important;
-  background: #d9dcd6 !important;
+  background: #d1d2cf !important;
   border-color: rgba(54, 47, 46, 0.11) !important;
 }
 
@@ -2018,7 +2018,7 @@ textarea {
 .productModelViewport,
 .productModelPanel .localModelViewer,
 .localModelViewer {
-  background: #d2d5cf !important;
+  background: #c9cac7 !important;
 }
 
 .primaryButton,
@@ -2030,7 +2030,7 @@ textarea {
 .readableArticles button,
 .siteFooter .footerAction {
   color: #2d302c !important;
-  background: #a9aba1 !important;
+  background: #a4a5a1 !important;
   border-color: rgba(130, 109, 70, 0.2) !important;
   box-shadow: 0 10px 28px rgba(157, 132, 79, 0.12) !important;
   font-weight: 650 !important;
@@ -2048,7 +2048,7 @@ textarea {
 .siteFooter .footerAction:hover,
 .siteFooter .footerAction:focus-visible {
   color: #2a2e2a !important;
-  background: #b9bcb4 !important;
+  background: #b1b2af !important;
   border-color: rgba(160, 134, 77, 0.38) !important;
   box-shadow: 0 14px 36px rgba(157, 132, 79, 0.22), 0 0 24px rgba(204, 182, 131, 0.22) !important;
   transform: translateY(-2px);
@@ -2067,7 +2067,7 @@ textarea {
 .hero .secondaryButton:hover,
 .hero .secondaryButton:focus-visible {
   color: #2d302c !important;
-  background: #b9bcb4 !important;
+  background: #b1b2af !important;
   box-shadow: 0 14px 36px rgba(157, 132, 79, 0.28), 0 0 26px rgba(216, 204, 173, 0.24) !important;
 }
 
@@ -2083,7 +2083,7 @@ textarea {
 }
 
 #benefits .benefitGrid article:not(:last-child)::after {
-  background: #e4e6e1;
+  background: #dcddda;
 }
 
 #benefits .benefitGrid article span {
@@ -2113,7 +2113,7 @@ textarea {
 .contacts input,
 .contacts textarea {
   color: var(--ink) !important;
-  background: #f4f6f2 !important;
+  background: #eeefec !important;
   border-color: rgba(54, 47, 46, 0.16) !important;
 }
 
@@ -2124,16 +2124,16 @@ textarea {
 .techPassport td,
 .tableWrap td {
   color: var(--ink) !important;
-  background: #edf0eb !important;
+  background: #e7e8e5 !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #d9dcd7 !important;
+  background: #d1d2cf !important;
 }
 
 .siteFooter {
-  background: #d5d8d2 !important;
+  background: #cdcecb !important;
 }
 
 @media (max-width: 760px) {
@@ -2172,7 +2172,7 @@ textarea {
   align-content: center !important;
   padding-top: 122px !important;
   padding-bottom: 58px !important;
-  background: #dcdfda !important;
+  background: #d5d6d4 !important;
 }
 
 #contacts .contactLead {
@@ -2289,7 +2289,7 @@ textarea {
   padding: 15px;
   color: var(--ink) !important;
   white-space: normal;
-  background: #d9dcd7 !important;
+  background: #d1d2cf !important;
   border: 1px solid rgba(54, 47, 46, 0.11) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
@@ -2306,7 +2306,7 @@ textarea {
   height: 42px;
   place-items: center;
   color: var(--wine);
-  background: #edf0eb;
+  background: #e7e8e5;
   border: 1px solid rgba(54, 47, 46, 0.1);
   border-radius: 50%;
 }
@@ -2373,7 +2373,7 @@ textarea {
 }
 
 #contacts .contactLocation small {
-  color: #b5b7ad;
+  color: #acaeaa;
   font-size: 11px;
   font-weight: 600;
 }
@@ -2434,7 +2434,7 @@ textarea {
 }
 
 .videoSlide .videoFrame strong {
-  color: #e6e8e4 !important;
+  color: #dedfdd !important;
   text-shadow: 0 2px 18px rgba(15, 17, 17, 0.54);
 }
 
@@ -2488,11 +2488,11 @@ textarea {
 
 /* Final warm-light palette and footer system. */
 :root {
-  --page-bg: #d4d6d2;
-  --section-bg: #d4d7d1;
-  --surface-bg: #dcdfd9;
-  --surface-muted: #c7cac4;
-  --surface-border: rgba(85, 88, 82, 0.2);
+  --page-bg: #c7c8c6;
+  --section-bg: #cdceca;
+  --surface-bg: #d5d6d3;
+  --surface-muted: #c0c1be;
+  --surface-border: rgba(78, 79, 76, 0.2);
 }
 
 html,
@@ -2519,22 +2519,22 @@ body,
 }
 
 .topbar {
-  background: rgba(220, 223, 217, 0.97) !important;
-  border-color: rgba(85, 88, 82, 0.16) !important;
+  background: rgba(213, 214, 211, 0.97) !important;
+  border-color: rgba(78, 79, 76, 0.16) !important;
 }
 
 .brandLogoOnly .brandLogo,
 .brandLogo,
 .siteFooter .footerLogo {
-  background: #d4d6d2 !important;
-  border-color: rgba(85, 88, 82, 0.16) !important;
+  background: #c7c8c6 !important;
+  border-color: rgba(78, 79, 76, 0.16) !important;
 }
 
 .topContacts > a.topCall,
 .topContacts > a.topMail,
 .topAddress:is(a).topMapButton {
-  background: #cfd2cc !important;
-  border-color: rgba(85, 88, 82, 0.16) !important;
+  background: #c8c9c6 !important;
+  border-color: rgba(78, 79, 76, 0.16) !important;
 }
 
 .quietPanel,
@@ -2551,7 +2551,7 @@ body,
 .articleGrid article,
 .readableArticles article,
 .documentGrid article {
-  background: rgba(220, 223, 217, 0.96) !important;
+  background: rgba(213, 214, 211, 0.96) !important;
 }
 
 #contacts .contactPanel .contactCard {
@@ -2570,12 +2570,12 @@ body,
 
 .techPassport td,
 .tableWrap td {
-  background: #dcdfd9 !important;
+  background: #d5d6d3 !important;
 }
 
 .techPassport tr:nth-child(even) td,
 .tableWrap tr:nth-child(even) td {
-  background: #cfd2cc !important;
+  background: #c8c9c6 !important;
 }
 
 .siteFooter {
@@ -2585,9 +2585,9 @@ body,
   gap: 32px;
   padding: clamp(38px, 4vw, 58px) clamp(24px, 5vw, 72px) clamp(44px, 5vw, 68px);
   color: var(--ink) !important;
-  background: #cfd2cc !important;
+  background: #c8c9c6 !important;
   border: 0 !important;
-  border-top: 1px solid rgba(85, 88, 82, 0.18) !important;
+  border-top: 1px solid rgba(78, 79, 76, 0.18) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
 }
@@ -2602,7 +2602,7 @@ body,
   align-items: center;
   gap: 30px;
   padding: 0 0 30px;
-  border-bottom: 1px solid rgba(85, 88, 82, 0.18);
+  border-bottom: 1px solid rgba(78, 79, 76, 0.18);
 }
 
 .siteFooter .footerBrand {
@@ -2619,9 +2619,9 @@ body,
   height: 82px;
   place-items: center;
   padding: 9px;
-  border: 1px solid rgba(85, 88, 82, 0.16) !important;
+  border: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: var(--control-radius);
-  box-shadow: 0 12px 28px rgba(85, 88, 82, 0.1);
+  box-shadow: 0 12px 28px rgba(78, 79, 76, 0.1);
 }
 
 .siteFooter .footerLogo img {
@@ -2660,10 +2660,10 @@ body,
   min-height: 48px;
   padding: 0 20px;
   color: var(--ink) !important;
-  background: #a7a89f !important;
-  border: 1px solid rgba(85, 88, 82, 0.18) !important;
+  background: #a3a39f !important;
+  border: 1px solid rgba(78, 79, 76, 0.18) !important;
   border-radius: var(--control-radius);
-  box-shadow: 0 12px 28px rgba(85, 88, 82, 0.12) !important;
+  box-shadow: 0 12px 28px rgba(78, 79, 76, 0.12) !important;
 }
 
 .siteFooter .footerRails {
@@ -2718,8 +2718,8 @@ body,
   padding: 9px 12px;
   overflow-wrap: anywhere;
   color: var(--ink) !important;
-  background: #dcdfd9 !important;
-  border: 1px solid rgba(85, 88, 82, 0.16) !important;
+  background: #d5d6d3 !important;
+  border: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
   font-size: 13px;
@@ -2738,8 +2738,8 @@ body,
   min-height: 42px;
   place-items: center;
   color: var(--wine) !important;
-  background: #a7a89f !important;
-  border: 1px solid rgba(85, 88, 82, 0.16) !important;
+  background: #a3a39f !important;
+  border: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
@@ -2757,8 +2757,8 @@ body,
   margin: 0;
   padding: 16px;
   color: var(--ink) !important;
-  background: #dcdfd9 !important;
-  border: 1px solid rgba(85, 88, 82, 0.16) !important;
+  background: #d5d6d3 !important;
+  border: 1px solid rgba(78, 79, 76, 0.16) !important;
   border-radius: var(--control-radius);
   box-shadow: none !important;
 }
@@ -2780,7 +2780,7 @@ body,
   align-items: center;
   padding: 8px 12px;
   color: var(--ink) !important;
-  background: #a7a89f !important;
+  background: #a3a39f !important;
   border-radius: var(--control-radius);
   font-size: 12px;
   font-weight: 650;
@@ -2788,7 +2788,7 @@ body,
 
 .siteFooter :is(.footerContactItem > a, .footerBlock > a, .footerLocation, .copyContactButton, .footerAction):hover,
 .siteFooter :is(.footerContactItem > a, .footerBlock > a, .footerLocation, .copyContactButton, .footerAction):focus-visible {
-  color: #e0e2dc !important;
+  color: #d9dad7 !important;
   background: var(--wine) !important;
   border-color: var(--wine) !important;
   box-shadow: 0 14px 30px rgba(129, 36, 44, 0.18) !important;
@@ -2798,7 +2798,7 @@ body,
 .siteFooter .footerLocation:focus-visible :is(span, strong, svg),
 .siteFooter .footerContactItem > a:hover svg,
 .siteFooter .footerContactItem > a:focus-visible svg {
-  color: #e0e2dc !important;
+  color: #d9dad7 !important;
 }
 
 .siteFooter .footerLocation:hover strong,
@@ -2814,7 +2814,7 @@ body,
 
 @media (max-width: 700px) {
   .topbar {
-    background: rgba(220, 223, 217, 0.98) !important;
+    background: rgba(213, 214, 211, 0.98) !important;
   }
 
   .siteFooter {
@@ -2863,14 +2863,14 @@ body,
 .hero .primaryButton,
 .hero .secondaryButton {
   color: var(--ink) !important;
-  background: #c7cac4 !important;
-  border-color: rgba(212, 214, 210, 0.52) !important;
+  background: #c0c1be !important;
+  border-color: rgba(199, 200, 198, 0.52) !important;
 }
 
 .hero .heroFactStrip {
   color: var(--ink) !important;
   background: rgba(217, 211, 200, 0.94) !important;
-  border-color: rgba(212, 214, 210, 0.46) !important;
+  border-color: rgba(199, 200, 198, 0.46) !important;
 }
 
 /* Product detail: warm application panel and an unobscured material photo. */
@@ -2895,14 +2895,14 @@ body,
   padding: 11px 0 !important;
   color: var(--ink) !important;
   background: transparent !important;
-  border-top-color: rgba(85, 88, 82, 0.15) !important;
+  border-top-color: rgba(78, 79, 76, 0.15) !important;
 }
 
 .productStandalonePage .productDetailMedia {
   padding: 8px !important;
   background: var(--surface-bg) !important;
   border-color: var(--surface-border) !important;
-  box-shadow: 0 18px 44px rgba(85, 88, 82, 0.11) !important;
+  box-shadow: 0 18px 44px rgba(78, 79, 76, 0.11) !important;
 }
 
 .productStandalonePage .productDetailMedia::before,
@@ -2951,16 +2951,16 @@ body,
 
 /* Review pass: one warm material system and a quieter information hierarchy. */
 :root {
-  --page-bg: #d5d8d2;
-  --section-bg: #d2d5ce;
-  --surface-bg: #ced1ca;
-  --surface-muted: #c0c3bc;
+  --page-bg: #cdcecb;
+  --section-bg: #c9cac7;
+  --surface-bg: #c6c7c4;
+  --surface-muted: #b9bab7;
   --surface-border: rgba(73, 58, 48, 0.16);
   --ink: #363833;
   --deep: #686b64;
   --wine: #81242c;
-  --paper: #e1e3dc;
-  --sand: #aeb0a5;
+  --paper: #dadbd8;
+  --sand: #a7a8a4;
 }
 
 html,
@@ -2982,7 +2982,7 @@ body,
 .topbar {
   min-height: 94px;
   padding: 12px 22px !important;
-  background: rgba(231, 233, 228, 0.97) !important;
+  background: rgba(222, 223, 221, 0.97) !important;
   border-color: var(--surface-border) !important;
   box-shadow: 0 14px 38px rgba(77, 60, 47, 0.08) !important;
 }
@@ -3110,8 +3110,8 @@ body,
 }
 
 .hero .heroFactStrip {
-  background: rgba(231, 233, 228, 0.92) !important;
-  border-color: rgba(231, 233, 228, 0.52) !important;
+  background: rgba(222, 223, 221, 0.92) !important;
+  border-color: rgba(222, 223, 221, 0.52) !important;
 }
 
 .hero .heroFactStrip article {
@@ -3280,8 +3280,8 @@ body,
   height: 58px !important;
   margin-bottom: 18px !important;
   color: var(--ink) !important;
-  background: rgba(231, 233, 228, 0.94) !important;
-  border-color: rgba(231, 233, 228, 0.72) !important;
+  background: rgba(222, 223, 221, 0.94) !important;
+  border-color: rgba(222, 223, 221, 0.72) !important;
 }
 
 #benefits .benefitGrid {
@@ -3342,7 +3342,7 @@ body,
   height: 44px !important;
   margin-bottom: 30px !important;
   color: var(--ink) !important;
-  background: rgba(231, 233, 228, 0.9) !important;
+  background: rgba(222, 223, 221, 0.9) !important;
   box-shadow: none !important;
   font-size: 12px !important;
 }
@@ -3360,7 +3360,7 @@ body,
 }
 
 #route .routeMap article p {
-  color: rgba(231, 233, 228, 0.94) !important;
+  color: rgba(222, 223, 221, 0.94) !important;
   font-size: 14px !important;
   line-height: 1.44 !important;
 }
@@ -3376,7 +3376,7 @@ body,
 #gallery .galleryGrid h3 {
   color: var(--paper) !important;
   background: rgba(48, 41, 38, 0.42) !important;
-  border-color: rgba(231, 233, 228, 0.32) !important;
+  border-color: rgba(222, 223, 221, 0.32) !important;
   font-size: 15px !important;
   font-weight: 620 !important;
   backdrop-filter: blur(5px);
@@ -3439,7 +3439,7 @@ body,
 
 #contacts .contactIcon {
   color: var(--wine) !important;
-  background: rgba(231, 233, 228, 0.72) !important;
+  background: rgba(222, 223, 221, 0.72) !important;
   border-color: rgba(73, 58, 48, 0.1) !important;
 }
 
@@ -3657,7 +3657,7 @@ body,
   width: 40px !important;
   height: 40px !important;
   margin-bottom: 44px !important;
-  background: rgba(231, 233, 228, 0.82) !important;
+  background: rgba(222, 223, 221, 0.82) !important;
 }
 
 #route .routeMap article h3 {
@@ -3672,7 +3672,7 @@ body,
 #documents .trustGrid article,
 #articles .readableArticles article {
   min-height: 218px !important;
-  background: rgba(231, 233, 228, 0.5) !important;
+  background: rgba(222, 223, 221, 0.5) !important;
   box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
 }
 
@@ -3681,7 +3681,7 @@ body,
 }
 
 #contacts .contactDirectory {
-  background: rgba(231, 233, 228, 0.44) !important;
+  background: rgba(222, 223, 221, 0.44) !important;
   box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
 }
 
@@ -3872,7 +3872,7 @@ body,
 
 #gallery .galleryGrid h3 {
   background: rgba(48, 41, 38, 0.18) !important;
-  border-color: rgba(231, 233, 228, 0.26) !important;
+  border-color: rgba(222, 223, 221, 0.26) !important;
 }
 
 .sectionIntro > p:not(.eyebrow),
