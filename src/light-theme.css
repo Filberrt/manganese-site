@@ -3997,6 +3997,21 @@ body,
   opacity: 0.1;
 }
 
+@media (min-width: 701px) {
+  .sectionBackdrop {
+    right: 0;
+    width: min(42vw, 620px);
+  }
+
+  #benefits .sectionBackdrop {
+    opacity: 0.2;
+  }
+
+  #documents .sectionBackdrop {
+    opacity: 0.16;
+  }
+}
+
 @media (max-width: 700px) {
   .sectionBackdrop {
     width: 62vw;
