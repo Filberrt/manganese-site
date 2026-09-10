@@ -4101,27 +4101,3 @@ body,
     min-height: 300px !important;
   }
 }
-
-@media (min-width: 701px) {
-  #route .sectionIntro h2 {
-    max-width: 1000px;
-  }
-
-  #route .routeMap {
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    gap: 16px;
-  }
-
-  #route .routeMap article,
-  #route .routeMap article:nth-child(4),
-  #route .routeMap article:nth-child(5) {
-    height: clamp(224px, 26vh, 250px) !important;
-    min-height: clamp(224px, 26vh, 250px) !important;
-    grid-column: span 2;
-  }
-
-  #route .routeMap article:nth-child(4),
-  #route .routeMap article:nth-child(5) {
-    grid-column: span 3;
-  }
-}
