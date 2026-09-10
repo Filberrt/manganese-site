@@ -4101,3 +4101,16 @@ body,
     min-height: 300px !important;
   }
 }
+
+@media (min-width: 701px) {
+  #route .sectionIntro h2 {
+    max-width: 1000px;
+  }
+
+  #route .routeMap article,
+  #route .routeMap article:nth-child(4),
+  #route .routeMap article:nth-child(5) {
+    height: clamp(410px, 48vh, 460px) !important;
+    min-height: clamp(410px, 48vh, 460px) !important;
+  }
+}
