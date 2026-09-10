@@ -3959,13 +3959,17 @@ body,
 
 /* Give the open information slides a quiet trace of the actual production process. */
 #benefits,
-#documents {
+#documents,
+#articles,
+#contacts {
   isolation: isolate;
   overflow: hidden;
 }
 
 #benefits > :not(.sectionBackdrop),
-#documents > :not(.sectionBackdrop) {
+#documents > :not(.sectionBackdrop),
+#articles > :not(.sectionBackdrop),
+#contacts > :not(.sectionBackdrop) {
   position: relative;
   z-index: 1;
 }
@@ -3976,6 +3980,7 @@ body,
   inset: 0;
   max-width: none !important;
   pointer-events: none;
+  animation: none !important;
   background-color: #686b66;
   background-position: center;
   background-size: cover;
@@ -3991,6 +3996,14 @@ body,
 
 #documents .sectionBackdrop {
   opacity: 0.14;
+}
+
+#articles .sectionBackdrop {
+  opacity: 0.12;
+}
+
+#contacts .sectionBackdrop {
+  opacity: 0.16;
 }
 
 @media (max-width: 700px) {

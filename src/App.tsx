@@ -1228,6 +1228,7 @@ function App() {
       )}
 
       <section className="section articlesBand snapSlide" id="articles" data-slide>
+        <div className="sectionBackdrop" aria-hidden="true" style={{ backgroundImage: `url(${asset('backdrops/articles-steel.png')})` }} />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Материалы для первичной оценки</p>
           <h2>Что проверить<br />перед заказом сырья</h2>
@@ -1278,6 +1279,7 @@ function App() {
       )}
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
+        <div className="sectionBackdrop" aria-hidden="true" style={{ backgroundImage: `url(${asset('backdrops/contacts-steel.png')})` }} />
         <div className="contactLead" data-reveal>
           <div className="contactIntro">
             <div>
