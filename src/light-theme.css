@@ -3956,3 +3956,54 @@ body,
     linear-gradient(90deg, rgba(28, 29, 28, 0.62) 0%, rgba(28, 29, 28, 0.35) 43%, rgba(28, 29, 28, 0.1) 76%),
     linear-gradient(0deg, rgba(21, 22, 21, 0.48) 0%, rgba(21, 22, 21, 0.13) 57%, rgba(21, 22, 21, 0.16) 100%) !important;
 }
+
+/* Give the open information slides a quiet trace of the actual production process. */
+#benefits,
+#documents,
+#contacts {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+#benefits > :not(.sectionBackdrop),
+#documents > :not(.sectionBackdrop),
+#contacts > :not(.sectionBackdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.sectionBackdrop {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(34vw, 560px);
+  pointer-events: none;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1) contrast(1.06);
+  mix-blend-mode: multiply;
+  opacity: 0.16;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 38%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 38%, #000 100%);
+}
+
+#benefits .sectionBackdrop {
+  opacity: 0.12;
+}
+
+#documents .sectionBackdrop {
+  opacity: 0.1;
+}
+
+#contacts .sectionBackdrop {
+  opacity: 0.13;
+}
+
+@media (max-width: 700px) {
+  .sectionBackdrop {
+    width: 62vw;
+    opacity: 0.08 !important;
+  }
+}

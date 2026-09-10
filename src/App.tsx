@@ -1111,6 +1111,11 @@ function App() {
       </section>
 
       <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('route-stage-04.webp')})` }}
+        />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Подготовка партии</p>
           <h2>От анализа до отгрузки</h2>
@@ -1175,6 +1180,11 @@ function App() {
       </section>
 
       <section className="section documentsSlide snapSlide darkSlide" id="documents" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('route-stage-03.webp')})` }}
+        />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Документы</p>
           <h2>Документы для<br />проверки партии</h2>
@@ -1268,6 +1278,11 @@ function App() {
       )}
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('route-stage-05.webp')})` }}
+        />
         <div className="contactLead" data-reveal>
           <div className="contactIntro">
             <div>
