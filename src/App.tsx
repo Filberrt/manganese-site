@@ -1114,7 +1114,7 @@ function App() {
         <div
           className="sectionBackdrop"
           aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('route-stage-04.webp')})` }}
+          style={{ backgroundImage: `url(${asset('backdrops/processing-steel.png')})` }}
         />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Подготовка партии</p>
@@ -1183,7 +1183,7 @@ function App() {
         <div
           className="sectionBackdrop"
           aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('route-stage-03.webp')})` }}
+          style={{ backgroundImage: `url(${asset('backdrops/laboratory-steel.png')})` }}
         />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Документы</p>
@@ -1281,7 +1281,7 @@ function App() {
         <div
           className="sectionBackdrop"
           aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('route-stage-05.webp')})` }}
+          style={{ backgroundImage: `url(${asset('backdrops/rail-loading-steel.png')})` }}
         />
         <div className="contactLead" data-reveal>
           <div className="contactIntro">
