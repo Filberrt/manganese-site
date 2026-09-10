@@ -3973,48 +3973,28 @@ body,
 .sectionBackdrop {
   position: absolute;
   z-index: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(34vw, 560px);
+  inset: 0;
+  max-width: none !important;
   pointer-events: none;
   background-color: #686b66;
   background-position: center;
   background-size: cover;
   background-blend-mode: multiply;
-  filter: grayscale(1) brightness(0.86) contrast(1.08);
+  filter: grayscale(1) brightness(0.8) contrast(1.08);
   mix-blend-mode: normal;
-  opacity: 0.16;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 38%, #000 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.72) 38%, #000 100%);
+  opacity: 0.11;
 }
 
 #benefits .sectionBackdrop {
-  opacity: 0.12;
+  opacity: 0.18;
 }
 
 #documents .sectionBackdrop {
-  opacity: 0.1;
-}
-
-@media (min-width: 701px) {
-  .sectionBackdrop {
-    right: 0;
-    width: min(42vw, 620px);
-  }
-
-  #benefits .sectionBackdrop {
-    opacity: 0.2;
-  }
-
-  #documents .sectionBackdrop {
-    opacity: 0.16;
-  }
+  opacity: 0.14;
 }
 
 @media (max-width: 700px) {
   .sectionBackdrop {
-    width: 62vw;
-    opacity: 0.08 !important;
+    opacity: 0.07 !important;
   }
 }
