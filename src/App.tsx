@@ -1278,11 +1278,6 @@ function App() {
       )}
 
       <section className="section contacts snapSlide" id="contacts" data-slide>
-        <div
-          className="sectionBackdrop"
-          aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('backdrops/rail-loading-steel.png')})` }}
-        />
         <div className="contactLead" data-reveal>
           <div className="contactIntro">
             <div>

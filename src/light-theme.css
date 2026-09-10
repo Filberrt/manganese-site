@@ -3959,15 +3959,13 @@ body,
 
 /* Give the open information slides a quiet trace of the actual production process. */
 #benefits,
-#documents,
-#contacts {
+#documents {
   isolation: isolate;
   overflow: hidden;
 }
 
 #benefits > :not(.sectionBackdrop),
-#documents > :not(.sectionBackdrop),
-#contacts > :not(.sectionBackdrop) {
+#documents > :not(.sectionBackdrop) {
   position: relative;
   z-index: 1;
 }
@@ -3997,13 +3995,81 @@ body,
   opacity: 0.1;
 }
 
-#contacts .sectionBackdrop {
-  opacity: 0.13;
-}
-
 @media (max-width: 700px) {
   .sectionBackdrop {
     width: 62vw;
     opacity: 0.08 !important;
   }
+}
+
+/* Treat generated imagery as a quiet industrial side field, not a hazy wash over the page. */
+.sectionBackdrop {
+  top: 116px;
+  width: min(32vw, 520px);
+  background-color: #5f625e;
+  background-blend-mode: multiply;
+  background-position: right center;
+  filter: grayscale(1) brightness(0.82) contrast(1.12);
+  mix-blend-mode: normal;
+  opacity: 0.24;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.48) 18%, #000 42%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.48) 18%, #000 42%, #000 100%);
+}
+
+.sectionBackdrop::before {
+  position: absolute;
+  top: 8%;
+  bottom: 8%;
+  left: 0;
+  width: 1px;
+  content: "";
+  background: rgba(38, 40, 38, 0.34);
+}
+
+#benefits .sectionBackdrop {
+  opacity: 0.2;
+}
+
+#documents .sectionBackdrop {
+  opacity: 0.19;
+}
+
+@media (max-width: 700px) {
+  .sectionBackdrop {
+    top: 92px;
+    width: 56vw;
+    opacity: 0.1 !important;
+  }
+
+  .sectionBackdrop::before {
+    display: none;
+  }
+}
+
+/* On wide screens, use the generated photo as a deliberate editorial crop instead of a full-height wash. */
+@media (min-width: 701px) {
+  .sectionBackdrop,
+  #benefits .sectionBackdrop,
+  #documents .sectionBackdrop {
+    top: 150px;
+    right: 0;
+    bottom: auto;
+    width: min(30vw, 480px);
+    height: 210px;
+    background-color: #565955;
+    background-blend-mode: multiply;
+    background-position: right center;
+    filter: grayscale(1) brightness(0.82) contrast(1.1);
+    mix-blend-mode: normal;
+    opacity: 0.46;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .sectionBackdrop::before {
+    top: 0;
+    bottom: 0;
+    background: rgba(38, 40, 38, 0.5);
+  }
+
 }
