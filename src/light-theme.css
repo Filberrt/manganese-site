@@ -3929,3 +3929,30 @@ body,
     linear-gradient(0deg, rgba(21, 22, 21, 0.32), transparent 62%);
   pointer-events: none;
 }
+
+/* A denser steel range keeps the photographic quarry opening and the content slides in one system. */
+:root {
+  --page-bg: #afb1af;
+  --section-bg: #a6a8a6;
+  --surface-bg: #c0c2bf;
+  --surface-muted: #9fa19e;
+  --sand: #aeb0ad;
+  --surface-border: rgba(46, 48, 46, 0.24);
+  --surface-shadow: 0 18px 48px rgba(38, 40, 38, 0.16);
+}
+
+.topbar {
+  background: rgba(193, 195, 192, 0.97) !important;
+  box-shadow: 0 14px 38px rgba(38, 40, 38, 0.18) !important;
+}
+
+.hero .heroFactStrip {
+  background: rgba(192, 194, 191, 0.94) !important;
+  border-color: rgba(224, 225, 222, 0.26) !important;
+}
+
+.hero .heroShade {
+  background:
+    linear-gradient(90deg, rgba(28, 29, 28, 0.62) 0%, rgba(28, 29, 28, 0.35) 43%, rgba(28, 29, 28, 0.1) 76%),
+    linear-gradient(0deg, rgba(21, 22, 21, 0.48) 0%, rgba(21, 22, 21, 0.13) 57%, rgba(21, 22, 21, 0.16) 100%) !important;
+}
