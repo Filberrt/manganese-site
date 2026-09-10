@@ -4034,3 +4034,70 @@ body,
 #contacts :is(.contactCard, .contactLocation):is(:hover, :focus-visible) {
   box-shadow: 0 16px 38px rgba(129, 36, 44, 0.26), 0 0 22px rgba(129, 36, 44, 0.2) !important;
 }
+
+/* Route stages read as a single industrial image rather than a photo stacked on a blank panel. */
+#route .routeMap article {
+  display: grid;
+  min-height: clamp(350px, 42vh, 430px) !important;
+  grid-template-rows: auto 1fr auto;
+  padding: 0;
+  overflow: hidden;
+  background: #343634 !important;
+}
+
+#route .routeMap .routeVisual {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  border: 0;
+  filter: grayscale(0.72) contrast(1.06) brightness(0.78) !important;
+}
+
+#route .routeMap article::after {
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(20, 22, 21, 0.12) 0%, rgba(20, 22, 21, 0.34) 42%, rgba(20, 22, 21, 0.92) 100%) !important;
+}
+
+#route .routeMap article > :not(.routeVisual) {
+  position: relative;
+  z-index: 2;
+}
+
+#route .routeMap article span {
+  width: 44px !important;
+  height: 44px !important;
+  margin: 18px 18px 0;
+  background: var(--paper) !important;
+  border-color: rgba(129, 36, 44, 0.34) !important;
+}
+
+#route .routeMap article h3,
+#route .routeMap article:nth-child(5) h3 {
+  align-self: end;
+  min-height: auto !important;
+  margin: 0 18px 10px;
+  padding: 0;
+  color: var(--paper) !important;
+  font-size: clamp(17px, 1.14vw, 20px) !important;
+  line-height: 1.18 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.38) !important;
+}
+
+#route .routeMap article p,
+#route .routeMap article:nth-child(5) p {
+  grid-row: 3;
+  min-height: auto !important;
+  margin: 0 18px 18px;
+  padding: 0;
+  color: rgba(236, 237, 234, 0.9) !important;
+  font-size: 14px !important;
+  line-height: 1.42 !important;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.34) !important;
+}
+
+@media (max-width: 700px) {
+  #route .routeMap article {
+    min-height: 300px !important;
+  }
+}
