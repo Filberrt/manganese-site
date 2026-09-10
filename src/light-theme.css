@@ -4011,3 +4011,26 @@ body,
     opacity: 0.07 !important;
   }
 }
+
+/* The wine accent confirms an actionable control without making the steel palette noisy. */
+:is(
+  .primaryButton,
+  .primaryAction,
+  .floatingWriteCta,
+  .hero .secondaryButton,
+  #product .productCards a,
+  .trustGrid button,
+  .articleGrid button,
+  .readableArticles button,
+  .siteFooter .footerAction
+):is(:hover, :focus-visible) {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: #9a3236 !important;
+  box-shadow: 0 14px 36px rgba(129, 36, 44, 0.3), 0 0 24px rgba(129, 36, 44, 0.28) !important;
+  transform: translateY(-2px);
+}
+
+#contacts :is(.contactCard, .contactLocation):is(:hover, :focus-visible) {
+  box-shadow: 0 16px 38px rgba(129, 36, 44, 0.26), 0 0 22px rgba(129, 36, 44, 0.2) !important;
+}
