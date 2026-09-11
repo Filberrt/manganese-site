@@ -4506,34 +4506,37 @@ option {
     height: clamp(420px, 48vh, 500px) !important;
     width: 100% !important;
     align-self: stretch !important;
-    grid-template-rows: 1fr 56px 104px !important;
+    display: block !important;
+    padding: 0 !important;
   }
 
   #route .routeMap.supplyRoute article h3,
   #route .routeMap.supplyRoute article:nth-child(5) h3 {
-    grid-row: 2 !important;
+    position: absolute !important;
+    right: 22px;
+    bottom: 108px;
+    left: 22px;
     min-height: 0 !important;
     height: auto !important;
-    margin: 0 20px 10px !important;
+    margin: 0 !important;
     font-size: clamp(19px, 1.25vw, 24px) !important;
     line-height: 1.12 !important;
     text-align: left !important;
-    justify-self: stretch;
-    align-self: end;
     transform: none !important;
   }
 
   #route .routeMap.supplyRoute article p,
   #route .routeMap.supplyRoute article:nth-child(5) p {
-    grid-row: 3 !important;
-    min-height: 0 !important;
+    position: absolute !important;
+    right: 22px;
+    bottom: 20px;
+    left: 22px;
+    min-height: 70px !important;
     height: auto !important;
-    margin: 0 20px 20px !important;
+    margin: 0 !important;
     font-size: 14px !important;
     line-height: 1.42 !important;
     text-align: left !important;
-    justify-self: stretch;
-    align-self: start;
     transform: none !important;
   }
 }
