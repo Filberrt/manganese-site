@@ -1002,7 +1002,7 @@ function App() {
         </video>
         <div className="heroShade" />
         <div className="heroInner">
-          <h1 data-reveal>Марганцовистый<br />флюс для металлургии</h1>
+          <h1 data-reveal>Марганцовистый флюс<br />для металлургии</h1>
           <div className="heroActions" data-reveal>
             <a className="primaryButton magnetButton" href="#/manganese-flux/passport">
               Смотреть состав
