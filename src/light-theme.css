@@ -4303,3 +4303,19 @@ body:has(.videoModal) #root .slideDeck .floatingWriteCta {
 .hero .heroFactStrip article:hover + article {
   border-left-color: var(--wine) !important;
 }
+
+/* Override the legacy per-button gradients on contact controls. */
+#root .topContacts > a.topCall:is(:hover, :focus-visible),
+#root .topContacts > a.topMail:is(:hover, :focus-visible),
+#root .topContacts > a.topAddress.topMapButton:is(:hover, :focus-visible),
+#root .hero .heroFactStrip article:hover {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 14px 34px rgba(116, 19, 22, 0.3) !important;
+}
+
+#root .topContacts > a:is(:hover, :focus-visible) svg,
+#root .hero .heroFactStrip article:hover :is(span, strong) {
+  color: var(--paper) !important;
+}
