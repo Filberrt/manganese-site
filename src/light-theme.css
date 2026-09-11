@@ -4480,3 +4480,52 @@ option {
   border-color: var(--wine) !important;
   box-shadow: 0 0 16px rgba(129, 36, 44, 0.3);
 }
+
+/* The route needs generous stages, not five cramped thumbnails. */
+@media (min-width: 1181px) {
+  #route .routeMap.supplyRoute {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    width: min(1680px, calc(100vw - 88px)) !important;
+    gap: 18px !important;
+    margin-top: 38px !important;
+  }
+
+  #route .routeMap.supplyRoute article,
+  #route .routeMap.supplyRoute article:nth-child(4),
+  #route .routeMap.supplyRoute article:nth-child(5) {
+    grid-column: span 2 !important;
+    min-height: clamp(230px, 25vh, 280px) !important;
+    height: clamp(230px, 25vh, 280px) !important;
+    grid-template-rows: 1fr 46px 66px !important;
+  }
+
+  #route .routeMap.supplyRoute article:nth-child(4) {
+    grid-column: 2 / span 2 !important;
+  }
+
+  #route .routeMap.supplyRoute article:nth-child(5) {
+    grid-column: 4 / span 2 !important;
+  }
+
+  #route .routeMap.supplyRoute article h3,
+  #route .routeMap.supplyRoute article:nth-child(5) h3 {
+    grid-row: 2 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 22px 8px !important;
+    font-size: clamp(19px, 1.2vw, 23px) !important;
+    line-height: 1.12 !important;
+    transform: none !important;
+  }
+
+  #route .routeMap.supplyRoute article p,
+  #route .routeMap.supplyRoute article:nth-child(5) p {
+    grid-row: 3 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 22px 18px !important;
+    font-size: 14px !important;
+    line-height: 1.42 !important;
+    transform: none !important;
+  }
+}
