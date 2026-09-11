@@ -4247,3 +4247,12 @@ body,
     gap: clamp(10px, 0.9vw, 18px) !important;
   }
 }
+
+/* The floating contact action belongs to the opening slide only. */
+.slideDeck > .floatingWriteCta {
+  display: none !important;
+}
+
+.slideDeck:has(#top.is-current) > .floatingWriteCta {
+  display: inline-flex !important;
+}
