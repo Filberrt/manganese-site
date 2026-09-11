@@ -1075,6 +1075,11 @@ function App() {
       </section>
 
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('backdrops/processing-steel.png')})` }}
+        />
         <div data-reveal>
           <p className="eyebrow">Производственный цикл</p>
           <h2>От карьера<br />{' '}до отгрузки</h2>

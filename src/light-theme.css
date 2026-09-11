@@ -3959,6 +3959,7 @@ body,
 
 /* Give the open information slides a quiet trace of the actual production process. */
 #benefits,
+#video,
 #documents,
 #articles,
 #contacts {
@@ -3967,6 +3968,7 @@ body,
 }
 
 #benefits > :not(.sectionBackdrop),
+#video > :not(.sectionBackdrop),
 #documents > :not(.sectionBackdrop),
 #articles > :not(.sectionBackdrop),
 #contacts > :not(.sectionBackdrop) {
@@ -3992,6 +3994,11 @@ body,
 
 #benefits .sectionBackdrop {
   opacity: 0.18;
+}
+
+#video .sectionBackdrop {
+  opacity: 0.09;
+  background-position: 68% center;
 }
 
 #documents .sectionBackdrop {
@@ -4148,5 +4155,17 @@ body,
     height: clamp(388px, 29.5vw, 438px) !important;
     aspect-ratio: auto !important;
     justify-self: start;
+  }
+}
+
+/* Wide displays need a tighter editorial composition, not two isolated islands. */
+@media (min-width: 1600px) {
+  #video.videoSlide {
+    grid-template-columns: minmax(0, 0.88fr) minmax(760px, 1.12fr) !important;
+  }
+
+  #video .videoFrame {
+    width: clamp(700px, 36vw, 820px) !important;
+    height: clamp(410px, 18vw, 438px) !important;
   }
 }
