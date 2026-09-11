@@ -661,7 +661,6 @@ function ProductPassportSlide({ product }: { product: ProductPageCard }) {
           К описанию сырья
         </a>
         <h2>{isGypsum ? 'Паспорт качества гипсового камня' : 'Паспорт качества флюса'}</h2>
-        <p>Показатели относятся к конкретной партии и сверяются по комплекту отгрузочных документов.</p>
       </div>
       <div className="analysisLayout productPassportLayout">
         <div className="tableWrap techPassport" data-reveal>
