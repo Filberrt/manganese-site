@@ -4257,6 +4257,10 @@ body,
   pointer-events: auto !important;
 }
 
+.slideDeck:has(.snapSlide.is-current:not(#top)) .floatingWriteCta {
+  display: inline-flex !important;
+}
+
 body:has(.articleModal) .floatingWriteCta,
 body:has(.documentModal) .floatingWriteCta,
 body:has(.videoModal) .floatingWriteCta {
