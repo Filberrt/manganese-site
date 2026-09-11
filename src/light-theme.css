@@ -4483,11 +4483,19 @@ option {
 
 /* The route stays a single left-to-right production chain. */
 @media (min-width: 1181px) {
+  #route .sectionIntro {
+    width: min(1900px, calc(100vw - 80px)) !important;
+    max-width: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
   #route .routeMap.supplyRoute {
     grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
     width: min(1900px, calc(100vw - 80px)) !important;
     gap: 16px !important;
     margin-top: 38px !important;
+    grid-auto-rows: clamp(420px, 48vh, 500px) !important;
   }
 
   #route .routeMap.supplyRoute article,
@@ -4496,6 +4504,8 @@ option {
     grid-column: auto !important;
     min-height: clamp(420px, 48vh, 500px) !important;
     height: clamp(420px, 48vh, 500px) !important;
+    width: 100% !important;
+    align-self: stretch !important;
     grid-template-rows: 1fr 56px 104px !important;
   }
 
@@ -4507,6 +4517,9 @@ option {
     margin: 0 20px 10px !important;
     font-size: clamp(19px, 1.25vw, 24px) !important;
     line-height: 1.12 !important;
+    text-align: left !important;
+    justify-self: stretch;
+    align-self: end;
     transform: none !important;
   }
 
@@ -4518,6 +4531,9 @@ option {
     margin: 0 20px 20px !important;
     font-size: 14px !important;
     line-height: 1.42 !important;
+    text-align: left !important;
+    justify-self: stretch;
+    align-self: start;
     transform: none !important;
   }
 }
