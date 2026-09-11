@@ -4155,6 +4155,8 @@ body,
     height: clamp(388px, 29.5vw, 438px) !important;
     aspect-ratio: auto !important;
     justify-self: start;
+    align-self: end;
+    margin-top: 0;
   }
 }
 
@@ -4165,7 +4167,10 @@ body,
   }
 
   #video .videoFrame {
-    width: clamp(700px, 36vw, 820px) !important;
+    width: clamp(760px, 38vw, 900px) !important;
     height: clamp(410px, 18vw, 438px) !important;
+    justify-self: end;
+    align-self: end;
+    margin-top: 0;
   }
 }
