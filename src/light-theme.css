@@ -4174,3 +4174,76 @@ body,
     margin-top: 0;
   }
 }
+
+/* Route labels sit on a shared baseline regardless of title and copy length. */
+#route .routeMap article span {
+  position: absolute !important;
+  top: 18px;
+  left: 18px;
+  align-self: start;
+  justify-self: start;
+  margin: 0 !important;
+}
+
+@media (min-width: 701px) {
+  #route .routeMap article,
+  #route .routeMap article:nth-child(4),
+  #route .routeMap article:nth-child(5) {
+    grid-template-rows: auto 1fr 94px !important;
+  }
+
+  #route .routeMap article h3,
+  #route .routeMap article:nth-child(5) h3 {
+    grid-row: 2;
+    display: block;
+    height: 48px;
+    min-height: 48px !important;
+    align-self: end;
+    margin: 0 18px 10px !important;
+    transform: none !important;
+  }
+
+  #route .routeMap article p,
+  #route .routeMap article:nth-child(5) p {
+    grid-row: 3;
+    height: 94px;
+    min-height: 94px !important;
+    align-self: start;
+    margin: 0 18px 18px !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 700px) {
+  #route .routeMap article h3,
+  #route .routeMap article:nth-child(5) h3 {
+    position: absolute;
+    top: 84px;
+    left: 18px;
+    right: 18px;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  #route .routeMap article p,
+  #route .routeMap article:nth-child(5) p {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    margin: 0 !important;
+    transform: none !important;
+  }
+}
+
+@media (min-width: 981px) {
+  .topbar nav,
+  .topbar nav a {
+    font-size: clamp(14px, 0.75vw, 16px) !important;
+    font-weight: 600 !important;
+  }
+
+  .topbar nav {
+    gap: clamp(10px, 0.9vw, 18px) !important;
+  }
+}

@@ -942,8 +942,8 @@ function App() {
         <nav aria-label="Основная навигация">
           <a href="#/manganese-flux">Флюс</a>
           <a href="#/gypsum-stone">Гипсовый камень</a>
-          <a href="#documents">Документы</a>
           <a href="#route">О компании</a>
+          <a href="#documents">Документы</a>
           <a href="#gallery">Фотогалерея</a>
           <a href="#articles">Статьи</a>
           <a href="#contacts">Контакты</a>
@@ -964,10 +964,12 @@ function App() {
         </div>
       </header>
 
-      <a className="floatingWriteCta shineAction" href="#contacts">
-        Написать нам
-        <ArrowRight size={16} aria-hidden="true" />
-      </a>
+      {activeSlide === 'top' && !activeProductPage && (
+        <a className="floatingWriteCta shineAction" href="#contacts">
+          Написать нам
+          <ArrowRight size={16} aria-hidden="true" />
+        </a>
+      )}
 
       {activeProductPage && <ProductStandalonePage product={activeProductPage} />}
 
