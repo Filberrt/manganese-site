@@ -4541,3 +4541,10 @@ option {
     transform: none !important;
   }
 }
+
+/* Keep the specified two-line hero title intact on desktop widths. */
+@media (min-width: 701px) {
+  .heroInner h1 {
+    max-width: 1040px !important;
+  }
+}
