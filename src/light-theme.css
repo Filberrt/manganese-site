@@ -4437,3 +4437,46 @@ option {
     align-self: start !important;
   }
 }
+
+/* Secondary material actions use the same clear red response as all CTAs. */
+#root .productStandalonePage .productDetailActions .ghostAction:hover,
+#root .productStandalonePage .productDetailActions .ghostAction:focus-visible {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 12px 28px rgba(129, 36, 44, 0.24) !important;
+}
+
+/* Make the supporting production photography present, but never dominant. */
+#video .sectionBackdrop {
+  opacity: 0.14 !important;
+}
+
+#route .sectionBackdrop {
+  opacity: 0.12 !important;
+}
+
+#gallery .sectionBackdrop {
+  opacity: 0.1 !important;
+}
+
+@media (max-width: 700px) {
+  #video .sectionBackdrop,
+  #route .sectionBackdrop,
+  #gallery .sectionBackdrop {
+    opacity: 0.08 !important;
+  }
+}
+
+/* The slide position marker is part of the red brand language too. */
+#root .slideNav a {
+  background: rgba(129, 36, 44, 0.42) !important;
+  border-color: rgba(129, 36, 44, 0.64) !important;
+}
+
+#root .slideNav a:hover,
+#root .slideNav a.active {
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 0 16px rgba(129, 36, 44, 0.3);
+}
