@@ -4514,7 +4514,8 @@ option {
   #route .routeMap.supplyRoute article:nth-child(5) h3 {
     position: absolute !important;
     right: 22px;
-    bottom: 108px;
+    top: calc(100% - 160px);
+    bottom: auto;
     left: 22px;
     min-height: 0 !important;
     height: auto !important;
