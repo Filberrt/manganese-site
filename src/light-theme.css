@@ -4141,4 +4141,12 @@ body,
     height: 100% !important;
     max-height: none !important;
   }
+
+  /* Keep the production film optically paired with the heading and its checklist. */
+  #video .videoFrame {
+    width: min(100%, clamp(584px, 34vw, 700px)) !important;
+    height: clamp(388px, 29.5vw, 438px) !important;
+    aspect-ratio: auto !important;
+    justify-self: start;
+  }
 }
