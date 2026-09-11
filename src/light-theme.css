@@ -4319,3 +4319,25 @@ body:has(.videoModal) #root .slideDeck .floatingWriteCta {
 #root .hero .heroFactStrip article:hover :is(span, strong) {
   color: var(--paper) !important;
 }
+
+/* Product-page imagery uses the full studio composition rather than a vertical crop. */
+.productDetailMedia {
+  background: #171918 !important;
+}
+
+#root .productStandalonePage .productInfoCard .productDetailMedia {
+  align-self: start !important;
+  min-height: 0 !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+#root .productStandalonePage .productInfoCard .productDetailMedia img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  background: #171918 !important;
+}
