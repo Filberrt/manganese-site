@@ -964,12 +964,10 @@ function App() {
         </div>
       </header>
 
-      {activeSlide === 'top' && !activeProductPage && (
-        <a className="floatingWriteCta shineAction" href="#contacts">
-          Написать нам
-          <ArrowRight size={16} aria-hidden="true" />
-        </a>
-      )}
+      <a className="floatingWriteCta shineAction" href="#contacts">
+        Написать нам
+        <ArrowRight size={16} aria-hidden="true" />
+      </a>
 
       {activeProductPage && <ProductStandalonePage product={activeProductPage} />}
 
