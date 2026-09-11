@@ -4114,3 +4114,27 @@ body,
     min-height: clamp(410px, 48vh, 460px) !important;
   }
 }
+
+/* Matched studio frames keep the entire mineral sample visible in both catalog cards. */
+#product .productCards {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+#product .productCards img {
+  background: #171918 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media (min-width: 981px) {
+  #product .productCards article {
+    grid-template-columns: minmax(0, 1.24fr) minmax(238px, 0.76fr) !important;
+    height: 100%;
+    min-height: 0 !important;
+  }
+
+  #product .productCards article img {
+    height: 100% !important;
+    max-height: none !important;
+  }
+}
