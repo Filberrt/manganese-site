@@ -4408,3 +4408,32 @@ option {
     opacity: 0.045 !important;
   }
 }
+
+/* Keep all three material panels aligned on spacious screens. */
+@media (min-width: 1400px) {
+  #root .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(280px, 0.72fr) minmax(480px, 1.28fr) minmax(400px, 0.94fr) !important;
+    align-items: stretch !important;
+  }
+
+  #root .productStandalonePage .productInfoCard .productDetailMedia {
+    align-self: stretch !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
+}
+
+/* A two-column layout is clearer than squeezed panels on compact desktops. */
+@media (min-width: 1181px) and (max-width: 1399px) {
+  #root .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.28fr) !important;
+  }
+
+  #root .productStandalonePage .productInfoCard .productDetailMedia {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: min(440px, 100%) !important;
+    justify-self: end;
+    align-self: start !important;
+  }
+}
