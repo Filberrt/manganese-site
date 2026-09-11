@@ -4261,9 +4261,16 @@ body,
   display: inline-flex !important;
 }
 
-body:has(.articleModal) .floatingWriteCta,
-body:has(.documentModal) .floatingWriteCta,
-body:has(.videoModal) .floatingWriteCta {
+#root .slideDeck .floatingWriteCta:not(#persistent-contact-action) {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+body:has(.articleModal) #root .slideDeck .floatingWriteCta,
+body:has(.documentModal) #root .slideDeck .floatingWriteCta,
+body:has(.videoModal) #root .slideDeck .floatingWriteCta {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
