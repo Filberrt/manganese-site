@@ -4320,24 +4320,26 @@ body:has(.videoModal) #root .slideDeck .floatingWriteCta {
   color: var(--paper) !important;
 }
 
-/* Product-page imagery uses the full studio composition rather than a vertical crop. */
+/* Keep the three desktop product panels equal in visual weight. */
 .productDetailMedia {
   background: #171918 !important;
 }
 
-#root .productStandalonePage .productInfoCard .productDetailMedia {
-  align-self: start !important;
-  min-height: 0 !important;
-  height: auto !important;
-  aspect-ratio: 16 / 9 !important;
-}
+@media (min-width: 1181px) {
+  #root .productStandalonePage .productInfoCard .productDetailMedia {
+    align-self: stretch !important;
+    min-height: 510px !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+  }
 
-#root .productStandalonePage .productInfoCard .productDetailMedia img {
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 0 !important;
-  aspect-ratio: auto !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  background: #171918 !important;
+  #root .productStandalonePage .productInfoCard .productDetailMedia img {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    background: #171918 !important;
+  }
 }

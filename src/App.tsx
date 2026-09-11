@@ -108,7 +108,7 @@ const productPageCards = [
     eyebrow: 'Марганцовистый флюс',
     title: 'Марганцовистый флюс для металлургии',
     lead: 'Марганцовистый флюс Улу-Телякского месторождения. Состав, фракция и влажность фиксируются в документах конкретной партии.',
-    image: 'product/manganese-flux-product-v4.png',
+    image: 'product/manganese-flux-product-v5.png',
     model: {
       title: 'Марганцовистый флюс',
       subtitle: '3D-модель сырья',
@@ -142,7 +142,7 @@ const productPageCards = [
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product-v4.png',
+    image: 'product/gypsum-anhydrite-product-v5.png',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-модель сырья',
