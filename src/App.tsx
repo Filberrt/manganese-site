@@ -1078,7 +1078,7 @@ function App() {
         <div
           className="sectionBackdrop"
           aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('backdrops/processing-steel.png')})` }}
+          style={{ backgroundImage: `url(${asset('backdrops/video-processing-v1.png')})` }}
         />
         <div data-reveal>
           <p className="eyebrow">Производственный цикл</p>
@@ -1138,6 +1138,11 @@ function App() {
       </section>
 
       <section className="section routeBand snapSlide darkSlide" id="route" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('backdrops/route-logistics-v1.png')})` }}
+        />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">О компании</p>
           <h2>Маршрут партии<br />до предприятия клиента</h2>
@@ -1163,6 +1168,11 @@ function App() {
       </section>
 
       <section className="section gallerySlide snapSlide darkSlide" id="gallery" data-slide>
+        <div
+          className="sectionBackdrop"
+          aria-hidden="true"
+          style={{ backgroundImage: `url(${asset('backdrops/gallery-quarry-v1.png')})` }}
+        />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Производство и карьеры</p>
           <h2>Фотогалерея</h2>
