@@ -1389,6 +1389,9 @@ function App() {
             </div>
             <div className="footerContactItem">
               <a href={company.mapUrl} target="_blank" rel="noreferrer"><MapPin size={16} /> Яндекс Карты</a>
+              <button type="button" className="copyContactButton" onClick={() => void copyContact(company.mapUrl)} aria-label="Скопировать ссылку на Яндекс Карты" title="Скопировать ссылку">
+                {copiedContact === company.mapUrl ? <Check size={15} /> : <Copy size={15} />}
+              </button>
             </div>
           </div>
           <div className="footerBlock">

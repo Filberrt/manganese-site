@@ -3841,8 +3841,9 @@ body,
   box-shadow: 0 0 0 1px rgba(207, 189, 152, 0.76), 0 16px 36px rgba(207, 189, 152, 0.24) !important;
 }
 
-/* The route stages use a neutral industrial frame instead of the old gold tint. */
-#route .routeMap article {
+/* Photo collections use a neutral industrial frame instead of the old gold tint. */
+#route .routeMap article,
+#gallery .galleryGrid article {
   border-color: rgba(73, 78, 75, 0.64) !important;
   box-shadow: 0 0 0 1px rgba(73, 78, 75, 0.56), 0 16px 34px rgba(38, 42, 39, 0.16) !important;
 }
