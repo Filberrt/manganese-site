@@ -4564,20 +4564,21 @@ option {
   }
 }
 
-/* A clear light edge stays visible when a material tile changes to the accent color. */
+/* Article and document actions remain neutral while their parent tile is highlighted. */
 #documents .trustGrid article:is(:hover, :focus-within) button,
 #articles .readableArticles article:is(:hover, :focus-within) button {
-  color: var(--paper) !important;
-  background: transparent !important;
-  border: 1px solid rgba(246, 241, 230, 0.78) !important;
-  box-shadow: inset 0 0 0 1px rgba(246, 241, 230, 0.18) !important;
+  color: var(--ink) !important;
+  background: #a4a5a1 !important;
+  border-color: rgba(73, 78, 75, 0.48) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16) !important;
 }
 
-#documents .trustGrid article:is(:hover, :focus-within) button:is(:hover, :focus-visible),
-#articles .readableArticles article:is(:hover, :focus-within) button:is(:hover, :focus-visible) {
-  color: var(--wine) !important;
-  background: var(--paper) !important;
-  border-color: var(--paper) !important;
+#documents .trustGrid article button:is(:hover, :focus-visible),
+#articles .readableArticles article button:is(:hover, :focus-visible) {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 10px 24px rgba(129, 36, 44, 0.28) !important;
 }
 
 /* Reuse the footer's identity where the contact section has reserved breathing room. */
@@ -4591,9 +4592,9 @@ option {
 
 #contacts .contactCompanyLogo {
   display: grid;
-  width: 56px;
-  height: 56px;
-  flex: 0 0 56px;
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
   place-items: center;
 }
 
@@ -4602,6 +4603,7 @@ option {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  mix-blend-mode: normal;
 }
 
 #contacts .contactCompanyMark > div {
@@ -4641,8 +4643,8 @@ option {
     line-height: 1.14 !important;
   }
 
-  #route .routeMap.supplyRoute article p,
-  #route .routeMap.supplyRoute article:nth-child(5) p {
+#route .routeMap.supplyRoute article p,
+#route .routeMap.supplyRoute article:nth-child(5) p {
     height: 108px !important;
     min-height: 108px !important;
     overflow: hidden;

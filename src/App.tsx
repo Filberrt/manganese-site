@@ -1306,7 +1306,7 @@ function App() {
             </p>
             <div className="contactCompanyMark" aria-label={company.name}>
               <span className="contactCompanyLogo">
-                <img src={asset('logo-bashmineral.png')} alt="" />
+                <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
               </span>
               <div>
                 <strong>{company.name}</strong>
