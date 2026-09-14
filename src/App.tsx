@@ -826,9 +826,7 @@ function GalleryArchivePage() {
           <ArrowLeft size={16} aria-hidden="true" />
           Назад
         </button>
-        <p className="eyebrow">Производство и карьеры</p>
         <h1>Все фотографии</h1>
-        <p>Карьер, дробильно-сортировочный комплекс, подготовка сырья и отгрузка.</p>
       </div>
       <div className="galleryArchiveGrid" aria-label="Все фотографии производства">
         {galleryArchiveImageIds.map((id, index) => (
