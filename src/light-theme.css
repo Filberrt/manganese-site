@@ -4581,6 +4581,26 @@ option {
   box-shadow: 0 10px 24px rgba(129, 36, 44, 0.28) !important;
 }
 
+/* Opening a document is a button action, so its tile keeps the resting treatment. */
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) {
+  color: var(--ink) !important;
+  background: rgba(222, 223, 221, 0.5) !important;
+  border-color: rgba(46, 48, 46, 0.24) !important;
+  box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
+}
+
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > :is(h3, p, svg) {
+  color: inherit !important;
+}
+
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > p {
+  color: var(--deep) !important;
+}
+
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > svg {
+  color: var(--wine) !important;
+}
+
 /* Reuse the footer's identity where the contact section has reserved breathing room. */
 #contacts .contactCompanyMark {
   display: flex;
