@@ -4581,23 +4581,39 @@ option {
   box-shadow: 0 10px 24px rgba(129, 36, 44, 0.28) !important;
 }
 
-/* Opening a document is a button action, so its tile keeps the resting treatment. */
-#documents .trustGrid article:has(button:is(:hover, :focus-visible)) {
+/* A direct action keeps its surrounding tile in the resting treatment. */
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)),
+#articles .readableArticles article:has(button:is(:hover, :focus-visible)) {
   color: var(--ink) !important;
   background: rgba(222, 223, 221, 0.5) !important;
   border-color: rgba(46, 48, 46, 0.24) !important;
   box-shadow: 0 12px 28px rgba(77, 60, 47, 0.06) !important;
 }
 
-#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > :is(h3, p, svg) {
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > :is(h3, p, svg),
+#articles .readableArticles article:has(button:is(:hover, :focus-visible)) > :is(h3, p, svg) {
   color: inherit !important;
 }
 
-#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > p {
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > p,
+#articles .readableArticles article:has(button:is(:hover, :focus-visible)) > p {
   color: var(--deep) !important;
 }
 
-#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > svg {
+#documents .trustGrid article:has(button:is(:hover, :focus-visible)) > svg,
+#articles .readableArticles article:has(button:is(:hover, :focus-visible)) > svg {
+  color: var(--wine) !important;
+}
+
+#root #articles .readableArticles article:has(button:is(:hover, :focus-visible)) > :is(h3, .articleMeta) {
+  color: var(--ink) !important;
+}
+
+#root #articles .readableArticles article:has(button:is(:hover, :focus-visible)) > p {
+  color: var(--deep) !important;
+}
+
+#root #articles .readableArticles article:has(button:is(:hover, :focus-visible)) > svg {
   color: var(--wine) !important;
 }
 
@@ -4612,9 +4628,9 @@ option {
 
 #contacts .contactCompanyLogo {
   display: grid;
-  width: 72px;
-  height: 72px;
-  flex: 0 0 72px;
+  width: 92px;
+  height: 92px;
+  flex: 0 0 92px;
   place-items: center;
 }
 
@@ -4649,6 +4665,12 @@ option {
 @media (max-width: 700px) {
   #contacts .contactCompanyMark {
     margin-top: 0;
+  }
+
+  #contacts .contactCompanyLogo {
+    width: 80px;
+    height: 80px;
+    flex-basis: 80px;
   }
 }
 
