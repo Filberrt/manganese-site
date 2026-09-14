@@ -1304,6 +1304,16 @@ function App() {
               Позвоните или напишите напрямую. Подберем продукт и фракцию, отправим документы
               по партии и согласуем удобную схему отгрузки.
             </p>
+            <div className="contactCompanyMark" aria-label={company.name}>
+              <span className="contactCompanyLogo">
+                <img src={asset('logo-bashmineral.png')} alt="" />
+              </span>
+              <div>
+                <strong>{company.name}</strong>
+                <span>{company.legalName}</span>
+                <small>{company.subtitle}</small>
+              </div>
+            </div>
           </div>
 
           <div className="contactDirectory" aria-label="Контактная информация">
