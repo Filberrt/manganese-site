@@ -32,6 +32,12 @@ const getProductRouteId = () => {
   return route?.[1] ?? null
 }
 
+const getGalleryArchiveRoute = () => {
+  if (typeof window === 'undefined') return false
+
+  return window.location.hash.replace('#', '') === '/gallery'
+}
+
 const company = {
   name: 'БашМинералРесурс',
   legalName: 'ООО «БашМинералРесурс»',
@@ -189,12 +195,95 @@ const routeStageImages = [
 ]
 
 const galleryItems = [
-  ['Дробление гипсового камня', 'gallery/gallery-gypsum-crushing.webp'],
-  ['Переработка гипсового камня', 'gallery/gallery-gypsum-processing.webp'],
-  ['Добыча гипсового камня', 'gallery/gallery-gypsum-mining.webp'],
-  ['Добыча марганцовистых флюсовых руд', 'gallery/gallery-manganese-flux-ore.webp'],
-  ['Карьер Ново-Северный', 'gallery/gallery-novo-severny.webp'],
-  ['Карьер Северный', 'gallery/gallery-severny-v2.webp'],
+  ['Карьер: общий план', 'gallery-bmr/AZA07117.jpg'],
+  ['Добыча и погрузка', 'gallery-bmr/AZA07129.jpg'],
+  ['Дробильно-сортировочный комплекс', 'gallery-bmr/AZA07318.jpg'],
+  ['Экскаватор в карьере', 'gallery-bmr/AZA07419.jpg'],
+  ['Отгрузка автотранспортом', 'gallery-bmr/AZA07613.jpg'],
+  ['Погрузка на ЖД площадке', 'gallery-bmr/AZA07809.jpg'],
+]
+
+const galleryArchiveImageIds = [
+  'AZA07117',
+  'AZA07129',
+  'AZA07146',
+  'AZA07161',
+  'AZA07180',
+  'AZA07193',
+  'AZA07207',
+  'AZA07223',
+  'AZA07269',
+  'AZA07283',
+  'AZA07318',
+  'AZA07320',
+  'AZA07344',
+  'AZA07350',
+  'AZA07353',
+  'AZA07367',
+  'AZA07369',
+  'AZA07377',
+  'AZA07383',
+  'AZA07407',
+  'AZA07419',
+  'AZA07425',
+  'AZA07427',
+  'AZA07433',
+  'AZA07435',
+  'AZA07439',
+  'AZA07441',
+  'AZA07447',
+  'AZA07463',
+  'AZA07513',
+  'AZA07519',
+  'AZA07530',
+  'AZA07544',
+  'AZA07554',
+  'AZA07556',
+  'AZA07602',
+  'AZA07613',
+  'AZA07632',
+  'AZA07634',
+  'AZA07640',
+  'AZA07661',
+  'AZA07675',
+  'AZA07692',
+  'AZA07714',
+  'AZA07723',
+  'AZA07731',
+  'AZA07789',
+  'AZA07809',
+  'AZA07850',
+  'AZA07864',
+  'AZA07876',
+  'AZA07885',
+  'AZA07888',
+  'AZA07906',
+  'AZA07918',
+  'AZA07920',
+  'AZA07928',
+  'AZA07932',
+  'AZA07938',
+  'AZA07953',
+  'AZA07958',
+  'AZA07962',
+  'AZA07973',
+  'AZA07983',
+  'AZA07987',
+  'AZA07991',
+  'AZA08016',
+  'AZA08018',
+  'AZA08065',
+  'AZA08074',
+  'AZA08086',
+  'AZA08111',
+  'AZA08115',
+  'AZA08142',
+  'AZA08157',
+  'AZA08172',
+  'AZA08175',
+  'AZA08192',
+  'AZA08201',
+  'AZA08205',
 ]
 
 const articlePlan = [
@@ -723,9 +812,39 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
   )
 }
 
+function GalleryArchivePage() {
+  const goBack = () => {
+    if (typeof window === 'undefined') return
+
+    window.location.hash = 'gallery'
+  }
+
+  return (
+    <section className="galleryArchivePage" id="/gallery" data-slide>
+      <div className="galleryArchiveIntro" data-reveal>
+        <button className="productBackButton" type="button" onClick={goBack}>
+          <ArrowLeft size={16} aria-hidden="true" />
+          Назад
+        </button>
+        <p className="eyebrow">Производство и карьеры</p>
+        <h1>Все фотографии</h1>
+        <p>Карьер, дробильно-сортировочный комплекс, подготовка сырья и отгрузка.</p>
+      </div>
+      <div className="galleryArchiveGrid" aria-label="Все фотографии производства">
+        {galleryArchiveImageIds.map((id, index) => (
+          <figure key={id} data-reveal style={{ '--delay': `${Math.min(index, 12) * 30}ms` } as CSSProperties}>
+            <img src={asset(`gallery-bmr/${id}.jpg`)} alt={`Производственная площадка БашМинералРесурс, фото ${index + 1}`} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const [activeSlide, setActiveSlide] = useState('top')
   const [activeProductPageId, setActiveProductPageId] = useState<string | null>(() => getProductRouteId())
+  const [isGalleryArchive, setIsGalleryArchive] = useState(() => getGalleryArchiveRoute())
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
@@ -765,12 +884,14 @@ function App() {
   }
 
   useEffect(() => {
-    const syncProductRoute = () => {
+    const syncStandaloneRoute = () => {
       const productRouteId = getProductRouteId()
+      const galleryArchiveRoute = getGalleryArchiveRoute()
       setActiveProductPageId(productRouteId)
+      setIsGalleryArchive(galleryArchiveRoute)
 
-      if (productRouteId) {
-        const syncProductScroll = () => {
+      if (productRouteId || galleryArchiveRoute) {
+        const syncStandaloneScroll = () => {
           const targetId = window.location.hash.replace('#', '')
           const target = document.getElementById(targetId)
 
@@ -787,19 +908,19 @@ function App() {
           document.querySelector('.slideDeck')?.scrollTo({ top: 0, left: 0, behavior: 'auto' })
         }
 
-        window.setTimeout(syncProductScroll, 0)
-        window.setTimeout(syncProductScroll, 120)
+        window.setTimeout(syncStandaloneScroll, 0)
+        window.setTimeout(syncStandaloneScroll, 120)
       }
     }
 
-    syncProductRoute()
-    window.addEventListener('hashchange', syncProductRoute)
+    syncStandaloneRoute()
+    window.addEventListener('hashchange', syncStandaloneRoute)
 
-    return () => window.removeEventListener('hashchange', syncProductRoute)
+    return () => window.removeEventListener('hashchange', syncStandaloneRoute)
   }, [])
 
   useEffect(() => {
-    if (!activeProductPageId) return
+    if (!activeProductPageId && !isGalleryArchive) return
 
     window.setTimeout(() => {
       document
@@ -808,8 +929,11 @@ function App() {
       document
         .querySelectorAll('.productPassportPage [data-reveal]')
         .forEach((element) => element.classList.add('is-visible'))
+      document
+        .querySelectorAll('.galleryArchivePage [data-reveal]')
+        .forEach((element) => element.classList.add('is-visible'))
     }, 40)
-  }, [activeProductPageId])
+  }, [activeProductPageId, isGalleryArchive])
 
   useEffect(() => {
     void heroVideoRef.current?.play().catch(() => undefined)
@@ -926,7 +1050,7 @@ function App() {
 
   return (
     <main
-      className={`slideDeck${activeProductPage ? ' productRouteDeck' : ''}`}
+      className={`slideDeck${activeProductPage || isGalleryArchive ? ' productRouteDeck' : ''}`}
       style={{
         '--hero-image': `url("${asset('hero-quarry.webp')}")`,
       } as CSSProperties}
@@ -969,6 +1093,7 @@ function App() {
       </a>
 
       {activeProductPage && <ProductStandalonePage product={activeProductPage} />}
+      {isGalleryArchive && <GalleryArchivePage />}
 
       <div className="slideNav" aria-label="Навигация по слайдам">
         {slideItems.map(([id, label]) => (
@@ -1190,6 +1315,12 @@ function App() {
               <h3>{title}</h3>
             </article>
           ))}
+        </div>
+        <div className="galleryActions" data-reveal>
+          <a className="galleryMoreButton" href="#/gallery">
+            Смотреть больше фото
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
         </div>
       </section>
 

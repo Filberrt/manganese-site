@@ -4694,3 +4694,147 @@ option {
     line-height: 1.34 !important;
   }
 }
+
+/* The preview leads to a complete, locally hosted production photo archive. */
+#gallery .galleryActions {
+  display: flex;
+  width: min(1500px, calc(100vw - 120px));
+  margin: 18px auto 0;
+}
+
+#gallery .galleryMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 18px;
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border: 1px solid var(--wine) !important;
+  border-radius: var(--control-radius);
+  box-shadow: 0 12px 26px rgba(129, 36, 44, 0.22);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+#gallery .galleryMoreButton:is(:hover, :focus-visible) {
+  color: var(--paper) !important;
+  background: #671c23 !important;
+  border-color: #671c23 !important;
+  box-shadow: 0 16px 32px rgba(129, 36, 44, 0.3);
+  transform: translateY(-2px);
+}
+
+.galleryArchivePage {
+  width: 100%;
+  min-height: 100svh;
+  padding: clamp(126px, 15vh, 168px) 0 72px;
+  color: var(--ink);
+  background: var(--section-bg) !important;
+}
+
+.productRouteDeck:has(.galleryArchivePage) {
+  scroll-snap-type: none;
+}
+
+#root .productRouteDeck:has(.galleryArchivePage) > :not(.topbar):not(.galleryArchivePage) {
+  display: none !important;
+}
+
+.galleryArchiveIntro,
+.galleryArchiveGrid {
+  width: min(1500px, calc(100vw - 120px));
+  margin-inline: auto;
+}
+
+.galleryArchiveIntro {
+  margin-bottom: 28px;
+}
+
+.galleryArchiveIntro .productBackButton {
+  margin-bottom: 26px;
+}
+
+.galleryArchiveIntro h1 {
+  max-width: 680px;
+  margin: 0;
+  color: var(--ink) !important;
+  font-size: clamp(44px, 5vw, 74px);
+  font-weight: 800;
+  line-height: 1.02;
+}
+
+.galleryArchiveIntro > p:not(.eyebrow) {
+  max-width: 560px;
+  margin: 16px 0 0;
+  color: var(--deep) !important;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.galleryArchiveGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.galleryArchiveGrid figure {
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+  background: #c7c8c6;
+  border: 1px solid rgba(54, 56, 51, 0.24);
+  border-radius: var(--surface-radius);
+  box-shadow: 0 12px 28px rgba(77, 60, 47, 0.08);
+}
+
+.galleryArchiveGrid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.galleryArchiveGrid figure:is(:hover, :focus-within) img {
+  filter: contrast(1.03) saturate(1.04);
+  transform: scale(1.035);
+}
+
+@media (max-width: 1180px) {
+  .galleryArchiveGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  #gallery .galleryActions,
+  .galleryArchiveIntro,
+  .galleryArchiveGrid {
+    width: min(100% - 48px, 620px);
+  }
+
+  .galleryArchivePage {
+    padding-top: 112px;
+    padding-bottom: 48px;
+  }
+
+  .galleryArchiveIntro {
+    margin-bottom: 20px;
+  }
+
+  .galleryArchiveIntro h1 {
+    font-size: clamp(36px, 11vw, 48px);
+  }
+
+  .galleryArchiveIntro > p:not(.eyebrow) {
+    font-size: 15px;
+  }
+
+  .galleryArchiveGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
