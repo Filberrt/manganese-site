@@ -5812,68 +5812,29 @@ option {
 
 .productStorySlide {
   display: grid;
-  width: 100vw !important;
-  max-width: none !important;
-  box-sizing: border-box;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  grid-template-columns: minmax(270px, 0.8fr) minmax(0, 1.2fr);
   align-items: center;
   gap: clamp(40px, 7vw, 120px);
   min-height: 100svh;
   padding: clamp(118px, 14vh, 154px) max(6vw, 72px) clamp(72px, 9vh, 112px);
   color: var(--ink);
   background: var(--page-bg) !important;
-  isolation: isolate;
-  overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 .productAdvantagesSlide {
   background: var(--section-bg) !important;
-  padding-right: clamp(320px, 28vw, 560px);
-}
-
-.productStoryVisual {
-  position: absolute;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.productStorySlide > :not(.productStoryVisual) {
-  position: relative;
-  z-index: 1;
-}
-
-.productProcessSlide .productStoryVisual {
-  display: none;
-}
-
-.productProcessSlide {
-  background:
-    linear-gradient(rgba(16, 20, 19, 0.91), rgba(16, 20, 19, 0.91)),
-    var(--story-image) center / cover no-repeat !important;
-}
-
-.productAdvantagesSlide .productStoryVisual {
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: clamp(320px, 28vw, 560px);
-  background:
-    linear-gradient(90deg, var(--section-bg) 0%, rgba(239, 237, 229, 0.2) 28%, rgba(239, 237, 229, 0) 66%),
-    var(--story-image) center / cover no-repeat;
 }
 
 .productStoryIntro {
   max-width: 500px;
-  padding-top: 20px;
-  border-top: 3px solid var(--wine);
 }
 
 .productStoryIntro h2 {
   margin: 10px 0 20px;
   color: var(--ink) !important;
-  font-size: clamp(42px, 4vw, 64px);
+  font-size: clamp(42px, 4.4vw, 72px);
   line-height: 1.02;
   text-wrap: balance;
 }
@@ -5883,20 +5844,6 @@ option {
   color: var(--deep) !important;
   font-size: 17px;
   line-height: 1.5;
-}
-
-.productProcessSlide .productStoryIntro {
-  border-color: var(--wine);
-}
-
-.productProcessSlide .productStoryIntro h2,
-.productProcessSlide .productStoryIntro > p:not(.eyebrow),
-.productProcessSlide .productProcessList p {
-  color: var(--paper) !important;
-}
-
-.productProcessSlide .productStoryIntro .eyebrow {
-  color: #dfded8 !important;
 }
 
 .productProcessList,
@@ -5910,23 +5857,15 @@ option {
   border-top: 1px solid var(--line);
 }
 
-.productProcessSlide .productProcessList {
-  border-color: rgba(239, 237, 229, 0.28);
-}
-
 .productProcessList li,
 .productAdvantageList li {
   display: grid;
   grid-template-columns: 74px minmax(0, 1fr);
   gap: 22px;
   align-items: start;
-  min-height: 112px;
-  padding: 20px 0;
+  min-height: 126px;
+  padding: 22px 0;
   border-bottom: 1px solid var(--line);
-}
-
-.productProcessSlide .productProcessList li {
-  border-color: rgba(239, 237, 229, 0.28);
 }
 
 .productProcessList span {
@@ -5990,19 +5929,6 @@ option {
     padding: 108px 24px 72px;
   }
 
-  .productAdvantagesSlide {
-    padding-right: 24px;
-  }
-
-  .productAdvantagesSlide .productStoryVisual {
-    top: 0;
-    right: 0;
-    bottom: auto;
-    left: 0;
-    width: auto;
-    height: 230px;
-    opacity: 0.16;
-  }
 }
 
 @media (max-width: 620px) {
