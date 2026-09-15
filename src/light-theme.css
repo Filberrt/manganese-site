@@ -5378,7 +5378,7 @@ option {
 }
 
 #root .topbar {
-  min-height: 72px !important;
+  min-height: 82px !important;
   padding: 10px 24px !important;
   grid-template-columns: 142px minmax(0, 1fr) auto !important;
   gap: 24px !important;
@@ -5395,11 +5395,18 @@ option {
 }
 
 #root .brandLogoOnly .brandLogo {
-  width: 104px !important;
-  height: 52px !important;
+  display: grid !important;
+  width: 116px !important;
+  height: 58px !important;
   padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
+}
+
+#root .brandLogoOnly .brandLogo img {
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: translateY(-9px);
 }
 
 #root .brandLegalLabel {
@@ -5447,13 +5454,20 @@ option {
 #root .topContacts > a.topMail {
   width: auto !important;
   min-width: 0 !important;
-  height: 38px !important;
-  min-height: 38px !important;
-  padding: 0 12px !important;
+  height: 46px !important;
+  min-height: 46px !important;
+  padding: 0 16px !important;
+  font-size: 14px !important;
   color: var(--ink) !important;
   background: transparent !important;
   border: 1px solid rgba(36, 39, 34, 0.15) !important;
   box-shadow: none !important;
+}
+
+#root .topContacts > a.topCall svg,
+#root .topContacts > a.topMail svg {
+  width: 20px !important;
+  height: 20px !important;
 }
 
 #root .topContacts .topAddress {
@@ -5796,7 +5810,8 @@ option {
 
   #root .topContacts > a.topCall,
   #root .topContacts > a.topMail {
-    width: 40px !important;
+    width: 46px !important;
+    height: 46px !important;
     padding: 0 !important;
     font-size: 0 !important;
   }
@@ -5809,14 +5824,18 @@ option {
 
 @media (max-width: 800px) {
   #root .topbar {
-    min-height: 62px !important;
+    min-height: 66px !important;
     padding: 8px 14px !important;
     grid-template-columns: 92px 1fr auto !important;
   }
 
   #root .brandLogoOnly .brandLogo {
-    width: 78px !important;
-    height: 42px !important;
+    width: 84px !important;
+    height: 46px !important;
+  }
+
+  #root .brandLogoOnly .brandLogo img {
+    transform: translateY(-5px);
   }
 
   #root .topbar nav {
@@ -5825,8 +5844,8 @@ option {
 
   #root .topContacts > a.topCall,
   #root .topContacts > a.topMail {
-    width: 38px !important;
-    height: 38px !important;
+    width: 42px !important;
+    height: 42px !important;
   }
 
   #root .slideDeck .floatingWriteCta:not(#persistent-contact-action) {
