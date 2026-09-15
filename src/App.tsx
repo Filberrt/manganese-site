@@ -72,10 +72,22 @@ const gypsumCompositionRows = [
 ]
 
 const heroFacts = [
-  ['Ресурсы флюса', '140 млн тонн'],
+  ['Балансовые запасы', '35 млн тонн'],
   ['Производительность', 'До 500 тыс. тонн\nв год'],
-  ['Логистика', 'Свои авто и\nЖД площадка'],
-  ['Контроль партии', 'Паспорт и\nпротокол'],
+  ['Контроль качества', 'Лабораторные\nиспытания'],
+  ['Логистика', 'Авто- и\nЖД-отгрузка'],
+]
+
+const companyHighlights = [
+  ['Лицензия и запасы', 'Право пользования недрами действует до 2045 года. Балансовые запасы - 35 млн тонн, перспективные - более 140 млн тонн.'],
+  ['Имущественный комплекс', 'Карьерная техника, дробильные комплексы, складская и железнодорожная инфраструктура объединены в один производственный контур.'],
+  ['Контроль качества', 'Для конкретной партии проводятся лабораторные испытания, оформляются паспорт качества и протокол анализа.'],
+]
+
+const consumerHighlights = [
+  ['Действующие контракты', 'Кейсы и наименования партнеров публикуются после согласования с каждой компанией.'],
+  ['Параметры поставки', 'Для каждого клиента заранее согласуются продукт, фракция, объем, график и комплект документов.'],
+  ['Результат сотрудничества', 'В публичных кейсах будут отражены сроки работы, достигнутые объемы и дальнейшие планы поставок.'],
 ]
 
 const documentCards = [
@@ -136,6 +148,16 @@ const productPageCards = [
       'Технолог заказчика оценивает состав, фракцию и влажность по документам конкретной партии.',
       'Для расчета поставки согласуется схема подготовки и отгрузки.',
     ],
+    process: [
+      'Добыча ведется на карьерах Северный и Ново-Северный.',
+      'Материал проходит дробление и рассев на ДСК под согласованную фракцию.',
+      'Перед отгрузкой партия проходит лабораторные испытания и оформляется комплект документов.',
+    ],
+    advantages: [
+      'Ресурсная база и производственная мощность позволяют планировать регулярные объемы.',
+      'Фракция, влажность и химический состав фиксируются для конкретной партии.',
+      'Автомобильная и железнодорожная логистика подбирается под объем и маршрут клиента.',
+    ],
     documents: [
       'ТУ 0751-001-38476082-2025',
       'Паспорт качества партии',
@@ -170,6 +192,16 @@ const productPageCards = [
       'Соответствие требованиям производства оценивается по паспорту качества и протоколу анализа партии.',
       'Для расчета поставки согласуется схема отгрузки с учетом фракции и объема.',
     ],
+    process: [
+      'Добыча ведется на Тюлько-Тюбинском месторождении.',
+      'Подготовка камня выполняется на ДСУ под согласованную фракцию и объем.',
+      'Показатели партии подтверждаются паспортом качества и протоколом лабораторного анализа.',
+    ],
+    advantages: [
+      'Ресурсная база подходит для регулярных поставок строительным производствам.',
+      'Подготовка материала учитывает технологические требования конкретного заказчика.',
+      'Автомобильная или железнодорожная отгрузка согласуется до подготовки партии.',
+    ],
     documents: [
       'ГОСТ 4013-2019',
       'Паспорт качества партии',
@@ -177,13 +209,6 @@ const productPageCards = [
       'Схема отгрузки под объем и станцию клиента',
     ],
   },
-]
-
-const benefitCards = [
-  ['01', 'Анализ химического состава', 'Состав партии сверяют по паспорту качества и протоколу лабораторного анализа.'],
-  ['02', 'Определение фракции', 'Фракцию и влажность согласуют с требованиями оборудования и способом подачи сырья.'],
-  ['03', 'Оформление документации', 'На партию готовят паспорт качества, протокол анализа и документы для отгрузки.'],
-  ['04', 'Отгрузка клиенту', 'После согласования объема и маршрута партию отгружают автомобильным или железнодорожным транспортом.'],
 ]
 
 const routeStageImages = [
@@ -330,15 +355,15 @@ const articlePlan = [
 ]
 
 const slideItems = [
-  ['top', 'Старт'],
-  ['product', 'Наши продукты'],
-  ['video', 'Ролик'],
-  ['benefits', 'Выгоды'],
-  ['route', 'О компании'],
+  ['top', 'Главная'],
+  ['company', 'О компании'],
+  ['product', 'Продукция'],
+  ['video', 'Производство'],
+  ['benefits', 'Потребители'],
+  ['route', 'Процессы'],
   ['gallery', 'Фото'],
-  ['documents', 'Документы'],
-  ['articles', 'Статьи'],
-  ['contacts', 'Заявка'],
+  ['greeting', 'Слово'],
+  ['contacts', 'Контакты'],
 ]
 
 type RockVariant = 'limestone' | 'flux' | 'gypsum'
@@ -659,7 +684,7 @@ function RockSample({
 type ProductPageCard = (typeof productPageCards)[number]
 
 function ProductDetailCard({ product }: { product: ProductPageCard }) {
-  const { lead, image, model, specs, useCases } = product
+  const { lead, image, model, specs, useCases, process, advantages } = product
 
   return (
     <article className="productDetailCard" data-reveal>
@@ -731,6 +756,27 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
           />
         </div>
       </aside>
+
+      <div className="productNarrative" aria-label="Производственный процесс и преимущества">
+        <section>
+          <p className="eyebrow">Производственный процесс</p>
+          <h2>От добычи до отгрузки</h2>
+          <ol>
+            {process.map((item, index) => (
+              <li key={item}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>
+            ))}
+          </ol>
+        </section>
+        <section>
+          <p className="eyebrow">Преимущества</p>
+          <h2>Для планирования поставки</h2>
+          <ul>
+            {advantages.map((item) => (
+              <li key={item}><CheckCircle2 size={18} aria-hidden="true" />{item}</li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </article>
   )
 }
@@ -1063,10 +1109,9 @@ function App() {
         <nav aria-label="Основная навигация">
           <a href="#/manganese-flux">Флюс</a>
           <a href="#/gypsum-stone">Гипсовый камень</a>
-          <a href="#route">О компании</a>
-          <a href="#documents">Документы</a>
+          <a href="#company">О компании</a>
+          <a href="#benefits">Потребители</a>
           <a href="#gallery">Фотогалерея</a>
-          <a href="#articles">Статьи</a>
           <a href="#contacts">Контакты</a>
         </nav>
         <div className="topContacts" aria-label="Контакты">
@@ -1124,17 +1169,19 @@ function App() {
         </video>
         <div className="heroShade" />
         <div className="heroInner">
-          <h1 data-reveal>Марганцовистый флюс<br />для металлургии</h1>
+          <p className="heroKicker" data-reveal>Добыча и подготовка минерального сырья</p>
+          <h1 data-reveal>БашМинералРесурс</h1>
+          <p className="heroSummary" data-reveal>Предприятие по добыче гипсового и гипсоангидритового камня, а также марганцовистого флюса.</p>
           <div className="heroActions" data-reveal>
-            <a className="primaryButton magnetButton" href="#/manganese-flux/passport">
-              Смотреть состав
+            <a className="primaryButton magnetButton" href="#company">
+              О компании
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="secondaryButton" href="#documents">
-              Документы
+            <a className="secondaryButton" href="#product">
+              Продукция
             </a>
             <a className="secondaryButton" href="#contacts">
-              Запросить пробную партию
+              Связаться с нами
             </a>
           </div>
           <div className="heroFactStrip" aria-label="Ключевые факты о поставке" data-reveal>
@@ -1146,54 +1193,59 @@ function App() {
             ))}
           </div>
         </div>
-        <a className="scrollCue" href="#product" aria-label="Перейти к продукту" />
+        <a className="scrollCue" href="#company" aria-label="Перейти к информации о компании" />
       </section>
 
-      <section className="section split elevatedSection snapSlide" id="product" data-slide>
+      <section className="section companySlide elevatedSection snapSlide" id="company" data-slide>
         <div data-reveal>
-          <p className="eyebrow">Продукция</p>
-          <h2>Два вида сырья<br />для промышленности</h2>
+          <p className="eyebrow">О компании</p>
+          <h2>Предприятие<br />с полным циклом</h2>
           <p>
-            Каждая партия сопровождается паспортом качества и протоколом анализа. Для расчета поставки
-            согласуется схема поставки с учетом назначения сырья, требуемой фракции и влажности.
+            БашМинералРесурс объединяет добычу, подготовку минерального сырья, лабораторный контроль и отгрузку.
+            Основные процессы находятся в одном производственном контуре.
           </p>
-          <div className="productOverview">
-            <article>
-              <strong>Марганцовистый флюс</strong>
-              <ul>
-                <li>Mn 7,6-7,9%, CaO 32,7-34,5%, SiO2 14,9-17,0%.</li>
-                <li>Фракция, влажность и показатели партии фиксируются в документах.</li>
-                <li>Переработка на ДСК - до 40 тыс. тонн в месяц.</li>
-              </ul>
-            </article>
-            <article>
-              <strong>Гипсовый и ангидритовый камень</strong>
-              <ul>
-                <li>Сырье соответствует ГОСТ 4013-2019.</li>
-                <li>CaSO4, фракция, влажность и примеси подтверждаются документами партии.</li>
-                <li>Переработка на ДСУ - до 45 тыс. тонн в месяц.</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-        <aside className="quietPanel productMatrix" data-reveal>
-          <h3>Выберите вид сырья</h3>
-          <div className="productCards">
-            {productCards.map(({ productId, title, text, image }) => (
+          <div className="companyHighlights">
+            {companyHighlights.map(([title, text]) => (
               <article key={title}>
-                <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
-                <div>
-                  <strong>{title}</strong>
-                  <span>{text}</span>
-                  <a href={`#/${productId}`}>
-                    Изучить подробнее
-                    <ArrowRight size={16} aria-hidden="true" />
-                  </a>
-                </div>
+                <h3>{title}</h3>
+                <p>{text}</p>
               </article>
             ))}
           </div>
+        </div>
+        <aside className="quietPanel companyProof" data-reveal>
+          <p className="eyebrow">История и масштаб</p>
+          <h3>Основа для регулярных поставок</h3>
+          <p>Подробная историческая справка и данные о штате будут добавлены после согласования материалов компании.</p>
+          <dl>
+            <div><dt>Лицензия</dt><dd>до 2045 года</dd></div>
+            <div><dt>Подготовка</dt><dd>ДСК и ДСУ</dd></div>
+            <div><dt>Отгрузка</dt><dd>авто и ЖД</dd></div>
+          </dl>
         </aside>
+      </section>
+
+      <section className="section productSlide snapSlide" id="product" data-slide>
+        <div className="sectionIntro" data-reveal>
+          <p className="eyebrow">Продукция</p>
+          <h2>Сырье для промышленного производства</h2>
+          <p>Для каждого направления собраны описание продукта, производственный процесс, применение, преимущества и паспорт партии.</p>
+        </div>
+        <div className="productCards productCardsLarge">
+          {productCards.map(({ productId, title, text, image }, index) => (
+            <article data-reveal style={{ '--delay': `${index * 100}ms` } as CSSProperties} key={title}>
+              <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
+              <div>
+                <strong>{title}</strong>
+                <span>{text}</span>
+                <a href={`#/${productId}`}>
+                  Открыть страницу продукта
+                  <ArrowRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="section videoSlide snapSlide darkSlide" id="video" data-slide>
@@ -1237,21 +1289,21 @@ function App() {
         </div>
       </section>
 
-      <section className="section benefitsSlide snapSlide darkSlide" id="benefits" data-slide>
+      <section className="section consumersSlide snapSlide darkSlide" id="benefits" data-slide>
         <div
           className="sectionBackdrop"
           aria-hidden="true"
           style={{ backgroundImage: `url(${asset('backdrops/processing-steel.png')})` }}
         />
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Подготовка партии</p>
-          <h2>От анализа до отгрузки</h2>
-          <p>Четыре последовательных этапа подготовки сырья к поставке.</p>
+          <p className="eyebrow">Потребители</p>
+          <h2>Партнерство на понятных условиях</h2>
+          <p>Кейсы поставок будут дополняться по мере согласования публикаций с действующими партнерами.</p>
         </div>
-        <div className="benefitGrid">
-          {benefitCards.map(([number, title, text], index) => (
+        <div className="benefitGrid consumerGrid">
+          {consumerHighlights.map(([title, text], index) => (
             <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
-              <span>{number}</span>
+              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{title}</h3>
               <p>{text}</p>
             </article>
@@ -1266,8 +1318,8 @@ function App() {
           style={{ backgroundImage: `url(${asset('backdrops/route-logistics-v1.png')})` }}
         />
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">О компании</p>
-          <h2>Маршрут партии<br />до предприятия клиента</h2>
+          <p className="eyebrow">Производственные возможности</p>
+          <h2>От карьера<br />до отгрузки</h2>
         </div>
         <div className="routeMap supplyRoute">
           {routeSteps.map(([number, title, text], index) => (
@@ -1319,6 +1371,18 @@ function App() {
             Смотреть больше фото
             <ArrowRight size={18} aria-hidden="true" />
           </a>
+        </div>
+      </section>
+
+      <section className="section greetingSlide snapSlide" id="greeting" data-slide>
+        <div className="greetingMark" aria-hidden="true">
+          <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+        </div>
+        <div className="greetingCopy" data-reveal>
+          <p className="eyebrow">БашМинералРесурс</p>
+          <h2>Приветственное слово</h2>
+          <p>Обращение руководителя, портрет и видеозапись будут добавлены после согласования материалов.</p>
+          <a className="secondaryButton" href="#contacts">Связаться с нами <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </section>
 
@@ -1542,12 +1606,13 @@ function App() {
             <a href="#/manganese-flux/passport">Паспорт флюса</a>
           </div>
           <div className="footerBlock">
-            <small>Материалы</small>
-            <a href="#documents">Документы</a>
-            <a href="#benefits">Преимущества</a>
-            <a href="#articles">Статьи</a>
-            <a href="#route">О компании</a>
-            <a href="#contacts">Заявка</a>
+            <small>О предприятии</small>
+            <a href="#company">О компании</a>
+            <a href="#video">Производство</a>
+            <a href="#route">Производственный процесс</a>
+            <a href="#benefits">Потребители</a>
+            <a href="#greeting">Приветственное слово</a>
+            <a href="#contacts">Контакты</a>
           </div>
           <div className="footerBlock footerRegion">
             <small>Работаем в</small>
