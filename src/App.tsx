@@ -761,7 +761,13 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
 
 function ProductProcessSlide({ product }: { product: ProductPageCard }) {
   return (
-    <section className="section productStorySlide productProcessSlide snapSlide" id={`/${product.id}/process`} data-slide>
+    <section
+      className="section productStorySlide productProcessSlide snapSlide"
+      id={`/${product.id}/process`}
+      data-slide
+      style={{ '--story-image': `url("${asset('backdrops/video-processing-v1.png')}")` } as CSSProperties}
+    >
+      <div className="productStoryVisual" aria-hidden="true" />
       <div className="productStoryIntro" data-reveal>
         <p className="eyebrow">Подготовка партии</p>
         <h2>Добыча,<br />подготовка,<br />отгрузка</h2>
@@ -781,7 +787,13 @@ function ProductProcessSlide({ product }: { product: ProductPageCard }) {
 
 function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
   return (
-    <section className="section productStorySlide productAdvantagesSlide snapSlide" id={`/${product.id}/advantages`} data-slide>
+    <section
+      className="section productStorySlide productAdvantagesSlide snapSlide"
+      id={`/${product.id}/advantages`}
+      data-slide
+      style={{ '--story-image': `url("${asset(product.image)}")` } as CSSProperties}
+    >
+      <div className="productStoryVisual" aria-hidden="true" />
       <div className="productStoryIntro" data-reveal>
         <p className="eyebrow">Условия поставки</p>
         <h2>Что получает<br />заказчик</h2>
