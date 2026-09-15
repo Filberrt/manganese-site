@@ -683,7 +683,7 @@ function RockSample({
 type ProductPageCard = (typeof productPageCards)[number]
 
 function ProductDetailCard({ product }: { product: ProductPageCard }) {
-  const { lead, image, model, specs, useCases, process, advantages } = product
+  const { lead, image, model, specs, useCases } = product
 
   return (
     <article className="productDetailCard" data-reveal>
@@ -719,8 +719,8 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
           </div>
 
           <div className="productDetailActions">
-            <a className="primaryAction shineAction" href="#contacts">
-              Запросить расчет партии
+            <a className="primaryAction shineAction" href={`#/${product.id}/process`}>
+              Производственный процесс
               <ArrowRight size={18} aria-hidden="true" />
             </a>
             <a className="ghostAction" href={`#/${product.id}/passport`}>Паспорт и состав</a>
@@ -755,28 +755,58 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
           />
         </div>
       </aside>
-
-      <div className="productNarrative" aria-label="Производственный процесс и преимущества">
-        <section>
-          <p className="eyebrow">Производственный процесс</p>
-          <h2>От добычи до отгрузки</h2>
-          <ol>
-            {process.map((item, index) => (
-              <li key={item}><span>{String(index + 1).padStart(2, '0')}</span>{item}</li>
-            ))}
-          </ol>
-        </section>
-        <section>
-          <p className="eyebrow">Преимущества</p>
-          <h2>Для планирования поставки</h2>
-          <ul>
-            {advantages.map((item) => (
-              <li key={item}><CheckCircle2 size={18} aria-hidden="true" />{item}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
     </article>
+  )
+}
+
+function ProductProcessSlide({ product }: { product: ProductPageCard }) {
+  return (
+    <section className="section productStorySlide productProcessSlide snapSlide" id={`/${product.id}/process`} data-slide>
+      <div className="productStoryIntro" data-reveal>
+        <p className="eyebrow">Производственный процесс</p>
+        <h2>От добычи<br />до отгрузки</h2>
+        <p>Каждый этап подготовки связан с параметрами конкретной партии и согласованной схемой поставки.</p>
+      </div>
+      <ol className="productProcessList" aria-label="Этапы подготовки сырья">
+        {product.process.map((item, index) => (
+          <li data-reveal style={{ '--delay': `${index * 90}ms` } as CSSProperties} key={item}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </li>
+        ))}
+      </ol>
+      <a className="productStoryAction" href={`#/${product.id}/advantages`}>
+        Преимущества поставки
+        <ArrowRight size={18} aria-hidden="true" />
+      </a>
+    </section>
+  )
+}
+
+function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
+  return (
+    <section className="section productStorySlide productAdvantagesSlide snapSlide" id={`/${product.id}/advantages`} data-slide>
+      <div className="productStoryIntro" data-reveal>
+        <p className="eyebrow">Преимущества</p>
+        <h2>Для планирования<br />поставки</h2>
+        <p>Сырье, подготовка и документы работают как одна понятная цепочка для технолога и отдела закупок.</p>
+      </div>
+      <ul className="productAdvantageList" aria-label="Преимущества продукта">
+        {product.advantages.map((item, index) => (
+          <li data-reveal style={{ '--delay': `${index * 90}ms` } as CSSProperties} key={item}>
+            <CheckCircle2 size={22} aria-hidden="true" />
+            <p>{item}</p>
+          </li>
+        ))}
+      </ul>
+      <div className="productStoryActions" data-reveal>
+        <a className="primaryAction shineAction" href="#contacts">
+          Запросить расчет партии
+          <ArrowRight size={18} aria-hidden="true" />
+        </a>
+        <a className="ghostAction" href={`#/${product.id}/passport`}>Паспорт и состав</a>
+      </div>
+    </section>
   )
 }
 
@@ -852,6 +882,8 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
         </div>
         <ProductDetailCard product={product} />
       </section>
+      <ProductProcessSlide product={product} />
+      <ProductAdvantagesSlide product={product} />
       <ProductPassportSlide product={product} />
     </>
   )
@@ -971,6 +1003,9 @@ function App() {
         .forEach((element) => element.classList.add('is-visible'))
       document
         .querySelectorAll('.productPassportPage [data-reveal]')
+        .forEach((element) => element.classList.add('is-visible'))
+      document
+        .querySelectorAll('.productProcessSlide [data-reveal], .productAdvantagesSlide [data-reveal]')
         .forEach((element) => element.classList.add('is-visible'))
       document
         .querySelectorAll('.galleryArchivePage [data-reveal]')
@@ -1229,8 +1264,8 @@ function App() {
       <section className="section productSlide snapSlide" id="product" data-slide>
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Продукция</p>
-          <h2>Сырье для промышленного производства</h2>
-          <p>Для каждого направления собраны описание продукта, производственный процесс, применение, преимущества и паспорт партии.</p>
+          <h2>Два вида сырья</h2>
+          <p>Для металлургии и строительных производств. На странице продукта собраны характеристики, применение, производственный процесс, преимущества и паспорт партии.</p>
         </div>
         <div className="productCards productCardsLarge">
           {productCards.map(({ productId, title, text, image }, index) => (
@@ -1240,7 +1275,7 @@ function App() {
                 <strong>{title}</strong>
                 <span>{text}</span>
                 <a href={`#/${productId}`}>
-                  Открыть страницу продукта
+                  Подробнее
                   <ArrowRight size={16} aria-hidden="true" />
                 </a>
               </div>

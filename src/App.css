@@ -6967,7 +6967,7 @@ footer .footerDocs a {
   animation: diagonalShine 5.8s ease-in-out infinite;
 }
 
-.productRouteDeck > section:not(.productStandalonePage):not(.productPassportPage):not(.galleryArchivePage),
+.productRouteDeck > section:not(.productStandalonePage):not(.productProcessSlide):not(.productAdvantagesSlide):not(.productPassportPage):not(.galleryArchivePage),
 .productRouteDeck .slideNav {
   display: none !important;
 }
