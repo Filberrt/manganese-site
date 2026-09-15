@@ -763,9 +763,9 @@ function ProductProcessSlide({ product }: { product: ProductPageCard }) {
   return (
     <section className="section productStorySlide productProcessSlide snapSlide" id={`/${product.id}/process`} data-slide>
       <div className="productStoryIntro" data-reveal>
-        <p className="eyebrow">Производственный процесс</p>
-        <h2>От добычи<br />до отгрузки</h2>
-        <p>Каждый этап подготовки связан с параметрами конкретной партии и согласованной схемой поставки.</p>
+        <p className="eyebrow">Подготовка партии</p>
+        <h2>Добыча,<br />подготовка,<br />отгрузка</h2>
+        <p>Параметры сырья, способ подготовки и документы согласуются до отправки конкретной партии.</p>
       </div>
       <ol className="productProcessList" aria-label="Этапы подготовки сырья">
         {product.process.map((item, index) => (
@@ -775,10 +775,6 @@ function ProductProcessSlide({ product }: { product: ProductPageCard }) {
           </li>
         ))}
       </ol>
-      <a className="productStoryAction" href={`#/${product.id}/advantages`}>
-        Преимущества поставки
-        <ArrowRight size={18} aria-hidden="true" />
-      </a>
     </section>
   )
 }
@@ -787,9 +783,9 @@ function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
   return (
     <section className="section productStorySlide productAdvantagesSlide snapSlide" id={`/${product.id}/advantages`} data-slide>
       <div className="productStoryIntro" data-reveal>
-        <p className="eyebrow">Преимущества</p>
-        <h2>Для планирования<br />поставки</h2>
-        <p>Сырье, подготовка и документы работают как одна понятная цепочка для технолога и отдела закупок.</p>
+        <p className="eyebrow">Условия поставки</p>
+        <h2>Что получает<br />заказчик</h2>
+        <p>Ресурс, подготовка и документы выстраиваются в одну понятную цепочку для технолога и отдела закупок.</p>
       </div>
       <ul className="productAdvantageList" aria-label="Преимущества продукта">
         {product.advantages.map((item, index) => (
@@ -799,13 +795,6 @@ function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
           </li>
         ))}
       </ul>
-      <div className="productStoryActions" data-reveal>
-        <a className="primaryAction shineAction" href="#contacts">
-          Запросить расчет партии
-          <ArrowRight size={18} aria-hidden="true" />
-        </a>
-        <a className="ghostAction" href={`#/${product.id}/passport`}>Паспорт и состав</a>
-      </div>
     </section>
   )
 }
