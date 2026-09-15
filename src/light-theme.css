@@ -5032,6 +5032,13 @@ option {
   box-shadow: var(--surface-shadow) !important;
 }
 
+#product .productCardsLarge article {
+  min-height: 480px !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
 .productCardsLarge article img {
   width: 100%;
   height: 100%;
@@ -5348,5 +5355,552 @@ option {
 
   .greetingCopy {
     padding: 30px 24px;
+  }
+}
+
+/* Cohesive visual reset: editorial industrial, not a presentation deck. */
+:root {
+  --page-bg: #eeece5;
+  --section-bg: #e4e1d8;
+  --surface-bg: #f7f5ef;
+  --surface-muted: #d8d5cc;
+  --paper: #f7f5ef;
+  --ink: #242722;
+  --deep: #5d615a;
+  --line: rgba(36, 39, 34, 0.16);
+  --surface-border: rgba(36, 39, 34, 0.15);
+  --shadow: 0 26px 64px rgba(47, 44, 37, 0.12);
+  --surface-shadow: 0 18px 42px rgba(47, 44, 37, 0.1);
+}
+
+#root .slideDeck {
+  background: var(--page-bg);
+}
+
+#root .topbar {
+  min-height: 72px !important;
+  padding: 10px 24px !important;
+  grid-template-columns: 142px minmax(0, 1fr) auto !important;
+  gap: 24px !important;
+  background: rgba(247, 245, 239, 0.94) !important;
+  border: 1px solid rgba(36, 39, 34, 0.11) !important;
+  box-shadow: 0 12px 38px rgba(47, 44, 37, 0.1) !important;
+}
+
+#root .brandLogoOnly {
+  align-self: stretch;
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#root .brandLogoOnly .brandLogo {
+  width: 104px !important;
+  height: 52px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+#root .brandLegalLabel {
+  display: none !important;
+}
+
+#root .topbar nav {
+  justify-self: start;
+  gap: clamp(14px, 1.4vw, 28px) !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+}
+
+#root .topbar nav a {
+  position: relative;
+  padding: 6px 0;
+}
+
+#root .topbar nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  content: '';
+  background: var(--wine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+#root .topbar nav a:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+
+#root .topContacts {
+  width: auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 6px !important;
+}
+
+#root .topContacts > a.topCall,
+#root .topContacts > a.topMail {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 12px !important;
+  color: var(--ink) !important;
+  background: transparent !important;
+  border: 1px solid rgba(36, 39, 34, 0.15) !important;
+  box-shadow: none !important;
+}
+
+#root .topContacts .topAddress {
+  display: none !important;
+}
+
+#root .topContacts > a:is(:hover, :focus-visible) {
+  color: var(--paper) !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+#root .slideNav {
+  display: none !important;
+}
+
+#root .floatingWriteCta {
+  right: 28px !important;
+  bottom: 28px !important;
+  padding: 13px 16px !important;
+  color: #fff !important;
+  background: var(--wine) !important;
+  border-color: var(--wine) !important;
+  box-shadow: 0 14px 32px rgba(112, 23, 27, 0.22) !important;
+}
+
+#root .floatingWriteCta:is(:hover, :focus-visible) {
+  color: #fff !important;
+  background: #6d1720 !important;
+  border-color: #6d1720 !important;
+  transform: translateY(-2px) !important;
+}
+
+#root .slideDeck.productRouteDeck .floatingWriteCta {
+  display: none !important;
+}
+
+#company.companySlide,
+#product.productSlide,
+#benefits.consumersSlide {
+  padding-right: max(6vw, 72px);
+  padding-left: max(6vw, 72px);
+}
+
+#company.companySlide {
+  grid-template-columns: minmax(0, 0.9fr) minmax(480px, 1.1fr);
+  gap: clamp(56px, 7vw, 136px);
+  padding-top: clamp(100px, 12vh, 132px);
+  padding-bottom: clamp(78px, 9vh, 108px);
+  background: var(--page-bg) !important;
+}
+
+#company.companySlide h2,
+#product.productSlide h2,
+#benefits.consumersSlide h2 {
+  max-width: 900px;
+  margin: 8px 0 20px;
+  font-size: clamp(46px, 4.2vw, 72px);
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+#company.companySlide > div:first-child > p:not(.eyebrow) {
+  max-width: 590px;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.companyHighlights {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 0;
+  margin-top: 36px;
+}
+
+.companyHighlights article {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.55fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 18px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.companyHighlights h3 {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.companyHighlights p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.companyProof {
+  position: relative;
+  display: block !important;
+  min-height: 560px !important;
+  padding: 0 !important;
+  overflow: hidden;
+  background: #252823 !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.companyProof::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background: linear-gradient(180deg, rgba(20, 22, 19, 0.05) 28%, rgba(20, 22, 19, 0.9) 100%);
+  pointer-events: none;
+}
+
+.companyProofImage {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+  filter: saturate(0.68) contrast(1.05);
+}
+
+.companyProofContent {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 34px 38px;
+  color: #f7f5ef;
+}
+
+.companyProofContent .eyebrow,
+.companyProofContent h3,
+.companyProofContent dt,
+.companyProofContent dd {
+  color: #f7f5ef !important;
+}
+
+.companyProofContent h3 {
+  max-width: 360px;
+  margin: 8px 0 26px;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.companyProofContent dl {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+}
+
+.companyProofContent dl div {
+  display: block;
+  padding-top: 10px;
+  border-top-color: rgba(247, 245, 239, 0.34);
+}
+
+.companyProofContent dd {
+  display: block;
+  margin-top: 5px;
+  text-align: left;
+  font-size: 15px;
+}
+
+#product.productSlide {
+  min-height: auto;
+  padding-top: clamp(96px, 11vh, 124px);
+  padding-bottom: clamp(100px, 12vh, 144px);
+  background: var(--section-bg) !important;
+}
+
+#product.productSlide .sectionIntro {
+  width: min(1060px, 100%);
+  margin-bottom: 46px;
+}
+
+#product.productSlide .sectionIntro > p:not(.eyebrow) {
+  max-width: 600px;
+  text-align: left !important;
+}
+
+.productCardsLarge {
+  width: min(1320px, 100%);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(18px, 2.2vw, 34px);
+}
+
+.productCardsLarge article {
+  display: flex !important;
+  flex-direction: column;
+  min-height: 480px !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: var(--surface-bg) !important;
+  border: 0 !important;
+  border-radius: 4px !important;
+  box-shadow: var(--surface-shadow) !important;
+}
+
+.productCardsLarge article:nth-child(2) {
+  margin-top: 54px;
+}
+
+.productCardsLarge article img {
+  flex: 0 0 268px !important;
+  min-height: 268px !important;
+  height: 268px !important;
+  object-position: center;
+}
+
+.productCardsLarge article > div {
+  flex: 1;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 26px 30px 30px;
+}
+
+.productCardsLarge strong {
+  max-width: 18ch;
+  font-size: clamp(24px, 2.1vw, 34px);
+  line-height: 1.05;
+}
+
+.productCardsLarge span {
+  max-width: 40ch;
+  font-size: 15px;
+}
+
+.productCardsLarge a {
+  margin-top: 10px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+}
+
+#benefits.consumersSlide {
+  padding-top: clamp(96px, 11vh, 124px);
+  padding-bottom: clamp(100px, 12vh, 144px);
+  background: var(--page-bg) !important;
+}
+
+#benefits .sectionBackdrop {
+  opacity: 0.055 !important;
+}
+
+#benefits .consumerGrid {
+  width: min(1300px, 100%);
+  gap: 0 !important;
+  margin-top: 46px;
+}
+
+#benefits .consumerGrid article {
+  min-height: 220px !important;
+  padding: 0 28px 0 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 2px solid var(--wine) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+#benefits .consumerGrid article + article {
+  padding-left: 28px !important;
+  border-left: 1px solid var(--line) !important;
+}
+
+#benefits .consumerGrid article > span {
+  width: auto;
+  height: auto;
+  margin-top: 18px;
+  color: var(--wine) !important;
+  background: transparent !important;
+  border-radius: 0;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+#benefits .consumerGrid h3 {
+  margin: 28px 0 12px !important;
+  font-size: 25px;
+  line-height: 1.08;
+}
+
+#benefits .consumerGrid p {
+  max-width: 34ch !important;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+#route.routeBand,
+#gallery.gallerySlide {
+  background-color: var(--section-bg) !important;
+}
+
+#route .sectionBackdrop,
+#gallery .sectionBackdrop {
+  opacity: 0.06 !important;
+}
+
+#route .sectionIntro,
+#gallery .sectionIntro {
+  padding-top: 20px;
+}
+
+#gallery .galleryGrid article {
+  border: 0 !important;
+  border-radius: 3px !important;
+  box-shadow: 0 12px 30px rgba(47, 44, 37, 0.12) !important;
+}
+
+#gallery .galleryGrid h3 {
+  padding: 8px 10px !important;
+  color: #fff !important;
+  background: rgba(35, 37, 33, 0.78) !important;
+  border: 0 !important;
+  border-radius: 2px !important;
+}
+
+#greeting.greetingSlide {
+  display: none !important;
+}
+
+@media (max-width: 1100px) {
+  #root .topbar {
+    grid-template-columns: 104px minmax(0, 1fr) auto !important;
+    gap: 14px !important;
+  }
+
+  #root .topbar nav {
+    gap: 12px !important;
+    font-size: 12px !important;
+  }
+
+  #root .topContacts > a.topCall,
+  #root .topContacts > a.topMail {
+    width: 40px !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+  }
+
+  #company.companySlide {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+    gap: 44px;
+  }
+}
+
+@media (max-width: 800px) {
+  #root .topbar {
+    min-height: 62px !important;
+    padding: 8px 14px !important;
+    grid-template-columns: 92px 1fr auto !important;
+  }
+
+  #root .brandLogoOnly .brandLogo {
+    width: 78px !important;
+    height: 42px !important;
+  }
+
+  #root .topbar nav {
+    display: none !important;
+  }
+
+  #root .topContacts > a.topCall,
+  #root .topContacts > a.topMail {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  #root .slideDeck .floatingWriteCta:not(#persistent-contact-action) {
+    display: none !important;
+  }
+
+  #company.companySlide,
+  #product.productSlide,
+  #benefits.consumersSlide {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  #company.companySlide {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 94px;
+  }
+
+  #company.companySlide h2,
+  #product.productSlide h2,
+  #benefits.consumersSlide h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .companyHighlights article {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .companyProof,
+  .companyProofImage {
+    min-height: 430px !important;
+  }
+
+  .companyProofContent {
+    padding: 24px;
+  }
+
+  .companyProofContent h3 {
+    font-size: 24px;
+  }
+
+  .companyProofContent dl {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .productCardsLarge {
+    grid-template-columns: 1fr;
+  }
+
+  .productCardsLarge article,
+  .productCardsLarge article:nth-child(2) {
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .productCardsLarge article img {
+    flex-basis: 230px !important;
+    height: 230px !important;
+    min-height: 230px !important;
+  }
+
+  #benefits .consumerGrid {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+
+  #benefits .consumerGrid article,
+  #benefits .consumerGrid article + article {
+    min-height: 0 !important;
+    padding: 0 !important;
+    border-top: 2px solid var(--wine) !important;
+    border-left: 0 !important;
   }
 }

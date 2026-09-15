@@ -362,7 +362,6 @@ const slideItems = [
   ['benefits', 'Потребители'],
   ['route', 'Процессы'],
   ['gallery', 'Фото'],
-  ['greeting', 'Слово'],
   ['contacts', 'Контакты'],
 ]
 
@@ -1214,14 +1213,16 @@ function App() {
           </div>
         </div>
         <aside className="quietPanel companyProof" data-reveal>
-          <p className="eyebrow">История и масштаб</p>
-          <h3>Основа для регулярных поставок</h3>
-          <p>Подробная историческая справка и данные о штате будут добавлены после согласования материалов компании.</p>
-          <dl>
-            <div><dt>Лицензия</dt><dd>до 2045 года</dd></div>
-            <div><dt>Подготовка</dt><dd>ДСК и ДСУ</dd></div>
-            <div><dt>Отгрузка</dt><dd>авто и ЖД</dd></div>
-          </dl>
+          <img className="companyProofImage" src={asset('gallery-bmr/AZA07117.jpg')} alt="Карьер БашМинералРесурс" loading="lazy" decoding="async" />
+          <div className="companyProofContent">
+            <p className="eyebrow">Производственная площадка</p>
+            <h3>Ресурсная база и подготовка партии</h3>
+            <dl>
+              <div><dt>Лицензия</dt><dd>до 2045 года</dd></div>
+              <div><dt>Подготовка</dt><dd>ДСК и ДСУ</dd></div>
+              <div><dt>Отгрузка</dt><dd>авто и ЖД</dd></div>
+            </dl>
+          </div>
         </aside>
       </section>
 
@@ -1374,7 +1375,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section greetingSlide snapSlide" id="greeting" data-slide>
+      <section className="section greetingSlide snapSlide" id="greeting" data-slide aria-hidden="true">
         <div className="greetingMark" aria-hidden="true">
           <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
         </div>
@@ -1611,7 +1612,6 @@ function App() {
             <a href="#video">Производство</a>
             <a href="#route">Производственный процесс</a>
             <a href="#benefits">Потребители</a>
-            <a href="#greeting">Приветственное слово</a>
             <a href="#contacts">Контакты</a>
           </div>
           <div className="footerBlock footerRegion">
