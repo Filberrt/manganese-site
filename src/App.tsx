@@ -1365,14 +1365,20 @@ function App() {
         </div>
       </section>
 
-      <section className="section greetingSlide snapSlide" id="greeting" data-slide>
+      <section
+        className="section greetingSlide snapSlide"
+        id="greeting"
+        data-slide
+        style={{ '--greeting-image': `url(${asset('gallery-bmr/AZA07117.jpg')})` } as CSSProperties}
+      >
         <div className="greetingMark" aria-hidden="true">
           <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+          <span>Республика Башкортостан</span>
         </div>
         <div className="greetingCopy" data-reveal>
-          <p className="eyebrow">БашМинералРесурс</p>
+          <p className="eyebrow">Обращение руководителя</p>
           <h2>Приветственное слово</h2>
-          <p>Обращение руководителя, портрет и видеозапись будут добавлены после согласования материалов.</p>
+          <p>Материал готовится к публикации. После согласования здесь появятся обращение руководителя компании, портрет и видеозапись.</p>
           <a className="secondaryButton" href="#contacts">Связаться с нами <ArrowRight size={16} aria-hidden="true" /></a>
         </div>
       </section>

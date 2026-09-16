@@ -6549,3 +6549,196 @@ option {
     font-size: 23px !important;
   }
 }
+
+/* Greeting: full-width editorial split with a real production image. */
+#greeting.greetingSlide {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(430px, 0.92fr);
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  padding: clamp(112px, 13vh, 150px) max(6vw, 48px) clamp(68px, 8vh, 96px);
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  background: var(--section-bg) !important;
+  box-shadow: none;
+}
+
+#greeting.greetingSlide::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(129, 36, 44, 0.035), transparent 42%),
+    radial-gradient(circle at 88% 14%, rgba(45, 49, 45, 0.07), transparent 28%);
+  pointer-events: none;
+}
+
+#greeting .greetingMark,
+#greeting .greetingCopy {
+  position: relative;
+  z-index: 1;
+  min-height: clamp(500px, 66vh, 680px);
+}
+
+#greeting .greetingMark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: clamp(28px, 3vw, 46px);
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(25, 28, 26, 0.08) 22%, rgba(25, 28, 26, 0.82) 100%),
+    var(--greeting-image);
+  background-position: center;
+  background-size: cover;
+  border-radius: 4px 0 0 4px;
+}
+
+#greeting .greetingMark::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-right: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+#greeting .greetingMark img {
+  width: clamp(96px, 8vw, 138px);
+  height: auto;
+  margin: 0 0 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.28));
+}
+
+#greeting .greetingMark span {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#greeting .greetingCopy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(48px, 6vw, 104px);
+  background: rgba(247, 245, 238, 0.86);
+  border: 1px solid rgba(45, 49, 45, 0.16);
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+#greeting .greetingCopy .eyebrow {
+  margin-bottom: 18px;
+  color: var(--wine) !important;
+}
+
+#greeting.greetingSlide h2 {
+  max-width: 9ch;
+  margin: 0 0 28px;
+  color: var(--ink) !important;
+  font-size: clamp(52px, 5vw, 82px);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+#greeting .greetingCopy > p:not(.eyebrow) {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--deep) !important;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+#greeting .greetingCopy .secondaryButton {
+  margin-top: 36px;
+}
+
+@media (min-width: 901px) and (max-width: 1500px) {
+  #greeting.greetingSlide {
+    grid-template-columns: 1fr 0.85fr;
+  }
+
+  #greeting .greetingCopy {
+    padding: 52px;
+  }
+
+  #greeting.greetingSlide h2 {
+    max-width: none;
+    font-size: 52px;
+  }
+}
+
+@media (max-width: 900px) {
+  #greeting.greetingSlide {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 100px 20px 68px;
+  }
+
+  #greeting .greetingMark,
+  #greeting .greetingCopy {
+    min-height: 0;
+  }
+
+  #greeting .greetingMark {
+    min-height: 300px;
+    padding: 28px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  #greeting .greetingMark::after {
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom: 0;
+  }
+
+  #greeting .greetingCopy {
+    padding: 38px 28px 44px;
+    border-top: 0;
+    border-left: 1px solid rgba(45, 49, 45, 0.16);
+    border-radius: 0 0 4px 4px;
+  }
+
+  #greeting.greetingSlide h2 {
+    max-width: none;
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 520px) {
+  #greeting .greetingMark {
+    min-height: 250px;
+  }
+
+  #greeting .greetingMark img {
+    width: 92px;
+  }
+
+  #greeting .greetingCopy {
+    padding: 34px 24px 40px;
+  }
+
+  #greeting.greetingSlide h2 {
+    margin-bottom: 22px;
+    font-size: 34px;
+  }
+
+  #greeting .greetingCopy > p:not(.eyebrow) {
+    font-size: 16px;
+  }
+
+  #greeting .greetingCopy .secondaryButton {
+    width: 100%;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
