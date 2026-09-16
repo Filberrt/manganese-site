@@ -1365,7 +1365,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section greetingSlide snapSlide" id="greeting" data-slide aria-hidden="true">
+      <section className="section greetingSlide snapSlide" id="greeting" data-slide>
         <div className="greetingMark" aria-hidden="true">
           <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
         </div>

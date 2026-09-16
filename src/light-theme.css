@@ -6193,10 +6193,6 @@ option {
   border-radius: 2px !important;
 }
 
-#greeting.greetingSlide {
-  display: none !important;
-}
-
 @media (max-width: 1100px) {
   #root .topbar {
     grid-template-columns: 104px minmax(0, 1fr) auto !important;
