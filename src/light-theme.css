@@ -5877,6 +5877,10 @@ option {
   border-top: 2px solid var(--wine);
 }
 
+.productStoryIntro .eyebrow {
+  color: var(--wine) !important;
+}
+
 .productStoryIntro h2 {
   margin: 10px 0 20px;
   color: var(--ink) !important;
