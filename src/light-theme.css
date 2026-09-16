@@ -6335,8 +6335,8 @@ option {
   padding-top: clamp(112px, 13vh, 150px);
   padding-bottom: clamp(66px, 8vh, 94px);
   overflow: hidden;
-  color: #f3f1e9;
-  background: #242724 !important;
+  color: var(--ink);
+  background: var(--section-bg) !important;
 }
 
 #benefits.consumersSlide::after {
@@ -6345,14 +6345,14 @@ option {
   inset: 0;
   content: "";
   background:
-    linear-gradient(90deg, rgba(24, 27, 25, 0.94) 0%, rgba(24, 27, 25, 0.82) 52%, rgba(24, 27, 25, 0.58) 100%),
-    linear-gradient(180deg, rgba(24, 27, 25, 0.1) 0%, rgba(24, 27, 25, 0.78) 100%);
+    linear-gradient(90deg, rgba(239, 237, 229, 0.97) 0%, rgba(239, 237, 229, 0.91) 52%, rgba(239, 237, 229, 0.83) 100%),
+    linear-gradient(180deg, rgba(239, 237, 229, 0.8) 0%, rgba(239, 237, 229, 0.94) 100%);
   pointer-events: none;
 }
 
 #benefits .sectionBackdrop {
-  opacity: 0.62 !important;
-  filter: grayscale(1) contrast(1.1);
+  opacity: 0.28 !important;
+  filter: grayscale(1) contrast(1.02);
 }
 
 #benefits > :not(.sectionBackdrop) {
@@ -6367,13 +6367,13 @@ option {
 }
 
 #benefits .sectionIntro .eyebrow {
-  color: #d16a70 !important;
+  color: var(--wine) !important;
 }
 
 #benefits .sectionIntro h2 {
   max-width: 980px;
   margin: 10px 0 22px;
-  color: #f3f1e9 !important;
+  color: var(--ink) !important;
   font-size: clamp(52px, 5vw, 82px);
   line-height: 0.98;
   text-wrap: balance;
@@ -6382,7 +6382,7 @@ option {
 #benefits.consumersSlide .sectionIntro > p:not(.eyebrow) {
   max-width: 62ch;
   margin: 0;
-  color: rgba(243, 241, 233, 0.76) !important;
+  color: var(--deep) !important;
   text-align: left !important;
   word-spacing: 0;
   font-size: 16px;
@@ -6397,8 +6397,8 @@ option {
   width: min(1800px, 100%);
   max-width: none;
   margin: 0 auto;
-  border-top: 1px solid rgba(243, 241, 233, 0.34);
-  border-bottom: 1px solid rgba(243, 241, 233, 0.2);
+  border-top: 1px solid rgba(45, 49, 45, 0.28);
+  border-bottom: 1px solid rgba(45, 49, 45, 0.2);
 }
 
 #benefits .consumerGrid article,
@@ -6414,8 +6414,8 @@ option {
   margin: 0;
   padding: 28px clamp(26px, 2.6vw, 46px) 34px !important;
   text-align: left !important;
-  color: #f3f1e9 !important;
-  background: rgba(29, 32, 30, 0.36) !important;
+  color: var(--ink) !important;
+  background: rgba(249, 247, 240, 0.42) !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
@@ -6423,7 +6423,7 @@ option {
 }
 
 #benefits .consumerGrid article + article {
-  border-left: 1px solid rgba(243, 241, 233, 0.18) !important;
+  border-left: 1px solid rgba(45, 49, 45, 0.18) !important;
 }
 
 #benefits .consumerGrid article::before,
@@ -6434,7 +6434,7 @@ option {
 }
 
 #benefits .consumerGrid article:is(:hover, :focus-within) {
-  background: rgba(129, 36, 44, 0.22) !important;
+  background: rgba(129, 36, 44, 0.08) !important;
 }
 
 #benefits .consumerGrid article > span {
@@ -6444,7 +6444,7 @@ option {
   width: auto !important;
   height: auto !important;
   margin: 0 0 30px !important;
-  color: #d16a70 !important;
+  color: var(--wine) !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
@@ -6460,7 +6460,7 @@ option {
   max-width: 20ch;
   margin: 0 0 16px !important;
   padding: 0;
-  color: #f3f1e9 !important;
+  color: var(--ink) !important;
   font-size: clamp(23px, 1.6vw, 30px) !important;
   line-height: 1.1 !important;
   text-wrap: balance;
@@ -6471,7 +6471,7 @@ option {
   grid-row: 3 !important;
   max-width: 42ch !important;
   margin: 0 !important;
-  color: rgba(243, 241, 233, 0.72) !important;
+  color: var(--deep) !important;
   font-size: 15px !important;
   line-height: 1.56 !important;
 }
@@ -6527,7 +6527,7 @@ option {
     padding: 24px 0 28px !important;
     background: transparent !important;
     border-left: 0 !important;
-    border-bottom: 1px solid rgba(243, 241, 233, 0.18) !important;
+    border-bottom: 1px solid rgba(45, 49, 45, 0.18) !important;
   }
 
   #benefits .consumerGrid article > span {
