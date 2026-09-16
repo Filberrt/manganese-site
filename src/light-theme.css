@@ -6742,3 +6742,119 @@ option {
     margin-top: 30px;
   }
 }
+
+/* Production film: larger typography and a stronger video presence. */
+#video.videoSlide {
+  grid-template-columns: minmax(470px, 0.82fr) minmax(0, 1.18fr) !important;
+  align-items: center !important;
+  gap: clamp(52px, 4vw, 76px) !important;
+}
+
+#video > div:nth-of-type(2) {
+  width: 100%;
+  max-width: 760px;
+}
+
+#video h2 {
+  margin: 10px 0 22px;
+  font-size: clamp(64px, 4.2vw, 78px) !important;
+  line-height: 0.98 !important;
+}
+
+#video .videoLead {
+  max-width: 62ch;
+  margin-bottom: 24px;
+  font-size: 19px !important;
+  line-height: 1.52 !important;
+}
+
+#video .videoPlan {
+  gap: 10px;
+}
+
+#video .videoPlan span {
+  min-height: 52px;
+  padding: 13px 20px 13px 46px !important;
+  font-size: 16px !important;
+  line-height: 1.35 !important;
+}
+
+#video .videoFrame {
+  width: 100% !important;
+  max-width: 920px;
+  height: auto !important;
+  aspect-ratio: 16 / 10 !important;
+  align-self: center !important;
+  justify-self: end !important;
+  margin: 0 !important;
+}
+
+#video .videoFrame[data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (min-width: 981px) and (max-height: 820px) {
+  #video.videoSlide {
+    padding-top: 100px;
+    padding-bottom: 46px;
+  }
+
+  #video h2 {
+    font-size: 62px !important;
+  }
+
+  #video .videoLead {
+    margin-bottom: 18px;
+    font-size: 18px !important;
+  }
+
+  #video .videoPlan span {
+    min-height: 48px;
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+  }
+}
+
+@media (max-width: 1100px) {
+  #video.videoSlide {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+    min-height: auto;
+    padding: 108px 24px 72px;
+  }
+
+  #video > div:nth-of-type(2) {
+    max-width: none;
+  }
+
+  #video h2 {
+    font-size: 56px !important;
+  }
+
+  #video .videoFrame {
+    max-width: none;
+    aspect-ratio: 16 / 9 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #video.videoSlide {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #video h2 {
+    font-size: 44px !important;
+  }
+
+  #video .videoLead {
+    font-size: 17px !important;
+  }
+
+  #video .videoPlan span {
+    min-height: 50px;
+    padding-right: 14px !important;
+    font-size: 15px !important;
+  }
+}
