@@ -5811,6 +5811,8 @@ option {
 }
 
 .productStorySlide {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.15fr);
   align-items: center;
@@ -5819,12 +5821,53 @@ option {
   padding: clamp(118px, 13vh, 148px) max(6vw, 72px) clamp(60px, 7vh, 96px);
   color: var(--ink);
   background: var(--page-bg) !important;
+  overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
-.productAdvantagesSlide {
-  background: var(--section-bg) !important;
+.productStorySlide::before,
+.productStorySlide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.productStorySlide::before {
+  z-index: -2;
+  background-image: var(--story-image);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(0.18) saturate(0.82);
+  transform: scale(1.015);
+}
+
+.productStorySlide::after {
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(239, 237, 229, 0.97) 0%, rgba(239, 237, 229, 0.91) 42%, rgba(239, 237, 229, 0.76) 100%),
+    linear-gradient(rgba(239, 237, 229, 0.2), rgba(239, 237, 229, 0.62));
+}
+
+.productProcessSlide::before {
+  background-position: center 54%;
+}
+
+.productProcessSlide::after {
+  background:
+    linear-gradient(90deg, rgba(239, 237, 229, 0.92) 0%, rgba(239, 237, 229, 0.82) 44%, rgba(239, 237, 229, 0.56) 100%),
+    linear-gradient(rgba(239, 237, 229, 0.12), rgba(239, 237, 229, 0.46));
+}
+
+.productAdvantagesSlide::before {
+  background-position: center 56%;
+}
+
+.productAdvantagesSlide::after {
+  background:
+    linear-gradient(90deg, rgba(235, 233, 225, 0.96) 0%, rgba(235, 233, 225, 0.88) 43%, rgba(235, 233, 225, 0.69) 100%),
+    linear-gradient(rgba(235, 233, 225, 0.28), rgba(235, 233, 225, 0.58));
 }
 
 .productStoryIntro {
@@ -5847,30 +5890,6 @@ option {
   max-width: 48ch;
   font-size: 16px;
   line-height: 1.5;
-}
-
-.productStoryPhoto {
-  width: 100%;
-  height: clamp(156px, 22vh, 230px);
-  margin: clamp(26px, 4vh, 40px) 0 0;
-  overflow: hidden;
-  border-radius: 4px;
-  background: #d5d7d2;
-}
-
-.productStoryPhoto img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.productProcessPhoto img {
-  object-position: 62% center;
-}
-
-.productAdvantagePhoto img {
-  object-position: center 54%;
 }
 
 .productProcessList,
@@ -5910,6 +5929,12 @@ option {
   border-bottom: 1px solid var(--line);
 }
 
+.productProcessList li {
+  padding-right: clamp(18px, 2.5vw, 36px);
+  background: rgba(239, 237, 229, 0.46);
+  backdrop-filter: blur(3px);
+}
+
 .productProcessList li:first-child {
   border-top: 1px solid var(--line);
 }
@@ -5944,7 +5969,8 @@ option {
   min-height: 116px;
   padding: 22px clamp(16px, 2vw, 30px);
   border-left: 3px solid var(--wine);
-  background: rgba(196, 200, 194, 0.3);
+  background: rgba(226, 225, 217, 0.76);
+  backdrop-filter: blur(5px);
 }
 
 .productAdvantageList li + li {
@@ -6024,8 +6050,12 @@ option {
     min-height: 0;
   }
 
-  .productStoryPhoto {
-    height: 190px;
+  .productStorySlide::after {
+    background: rgba(239, 237, 229, 0.84);
+  }
+
+  .productAdvantagesSlide::after {
+    background: rgba(235, 233, 225, 0.82);
   }
 
   .productProcessList li {

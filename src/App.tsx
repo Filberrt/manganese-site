@@ -761,17 +761,18 @@ function ProductDetailCard({ product }: { product: ProductPageCard }) {
 
 function ProductProcessSlide({ product }: { product: ProductPageCard }) {
   return (
-    <section className="section productStorySlide productProcessSlide snapSlide" id={`/${product.id}/process`} data-slide>
+    <section
+      className="section productStorySlide productProcessSlide snapSlide"
+      id={`/${product.id}/process`}
+      data-slide
+      style={{
+        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'gallery/gallery-gypsum-processing.webp' : 'backdrops/video-processing-v1.png')}")`,
+      } as CSSProperties}
+    >
       <div className="productStoryIntro" data-reveal>
         <p className="eyebrow">Производственный процесс</p>
         <h2>От добычи<br />до отгрузки</h2>
         <p>Каждый этап подготовки связан с параметрами конкретной партии и согласованной схемой поставки.</p>
-        <figure className="productStoryPhoto productProcessPhoto">
-          <img
-            src={asset(product.id === 'gypsum-stone' ? 'gallery/gallery-gypsum-processing.webp' : 'backdrops/video-processing-v1.png')}
-            alt={product.id === 'gypsum-stone' ? 'Переработка гипсового камня на производстве' : 'Дробильно-сортировочный комплекс и подготовленное сырье'}
-          />
-        </figure>
       </div>
       <ol className="productProcessList" aria-label="Этапы подготовки сырья">
         {product.process.map((item, index) => (
@@ -787,14 +788,16 @@ function ProductProcessSlide({ product }: { product: ProductPageCard }) {
 
 function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
   return (
-    <section className="section productStorySlide productAdvantagesSlide snapSlide" id={`/${product.id}/advantages`} data-slide>
+    <section
+      className="section productStorySlide productAdvantagesSlide snapSlide"
+      id={`/${product.id}/advantages`}
+      data-slide
+      style={{ '--story-image': `url("${asset(product.image)}")` } as CSSProperties}
+    >
       <div className="productStoryIntro" data-reveal>
         <p className="eyebrow">Преимущества</p>
         <h2>Для планирования<br />поставки</h2>
         <p>Сырье, подготовка и документы работают как одна понятная цепочка для технолога и отдела закупок.</p>
-        <figure className="productStoryPhoto productAdvantagePhoto">
-          <img src={asset(product.image)} alt={product.title} />
-        </figure>
       </div>
       <ul className="productAdvantageList" aria-label="Преимущества продукта">
         {product.advantages.map((item, index) => (
