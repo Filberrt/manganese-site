@@ -1355,7 +1355,7 @@ function App() {
           style={{ backgroundImage: `url(${asset('backdrops/route-logistics-v1.png')})` }}
         />
         <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Производственные возможности</p>
+          <p className="eyebrow">Производственные процессы</p>
           <h2>От карьера<br />до отгрузки</h2>
         </div>
         <div className="routeMap supplyRoute">
