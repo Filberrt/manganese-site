@@ -110,13 +110,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-    image: 'product/manganese-flux-catalog.png',
+    image: 'product/manganese-flux-catalog.webp',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
-    image: 'product/gypsum-anhydrite-catalog.png',
+    image: 'product/gypsum-anhydrite-catalog.webp',
   },
 ]
 
