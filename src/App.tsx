@@ -97,14 +97,6 @@ const documentCards = [
   ['Условия отгрузки', 'Поставка своими авто и через железнодорожную площадку с веткой до станции Аша', 'documents/shipping-terms.html'],
 ]
 
-const routeSteps = [
-  ['01', 'Геологоразведка и лицензия', 'Действующая лицензия на пользование недрами оформлена до 2045 года. Запасы и происхождение сырья фиксируются до добычи.'],
-  ['02', 'Вскрышные работы', 'Вскрышные породы вывозятся собственным парком техники. По проекту средний коэффициент вскрыши составляет 2,1 куб.м/т.'],
-  ['03', 'Карьерная добыча', 'Марганцевый флюс добывается на участках Северный и Ново-Северный, гипсовый камень - на Тюлько-Тюбинском месторождении.'],
-  ['04', 'Переработка на ДСК и ДСУ', 'Флюс проходит 3 стадии дробления и рассева на ДСК до 40 тыс. т/мес, гипсовый камень - на ДСУ\nдо 45 тыс. т/мес.'],
-  ['05', 'Отгрузка клиенту', 'Поставка идет своими авто или через ЖД площадку: ветка до станции Аша 7,7 км, склад 15 тыс. т, погрузка\nдо 100 тыс. т/мес.'],
-]
-
 const productCards = [
   {
     productId: 'manganese-flux',
@@ -209,14 +201,6 @@ const productPageCards = [
       'Схема отгрузки под объем и станцию клиента',
     ],
   },
-]
-
-const routeStageImages = [
-  'route-stage-01.webp',
-  'route-stage-02.webp',
-  'route-stage-03.webp',
-  'route-stage-04.webp',
-  'route-stage-05.webp',
 ]
 
 const galleryItems = [
@@ -1348,36 +1332,6 @@ function App() {
         </div>
       </section>
 
-      <section className="section routeBand snapSlide darkSlide" id="route" data-slide>
-        <div
-          className="sectionBackdrop"
-          aria-hidden="true"
-          style={{ backgroundImage: `url(${asset('backdrops/route-logistics-v1.png')})` }}
-        />
-        <div className="sectionIntro" data-reveal>
-          <p className="eyebrow">Производственные процессы</p>
-          <h2>От карьера<br />до отгрузки</h2>
-        </div>
-        <div className="routeMap supplyRoute">
-          {routeSteps.map(([number, title, text], index) => (
-            <article
-              data-reveal
-              style={{
-                '--delay': `${index * 80}ms`,
-              } as CSSProperties}
-              data-lazy-bg-url={asset(routeStageImages[index])}
-              data-lazy-bg-var="--stage-image"
-              key={title}
-            >
-              <div className="routeVisual" aria-hidden="true" />
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="section gallerySlide snapSlide darkSlide" id="gallery" data-slide>
         <div
           className="sectionBackdrop"
@@ -1646,7 +1600,6 @@ function App() {
             <small>О предприятии</small>
             <a href="#company">О компании</a>
             <a href="#video">Производство</a>
-            <a href="#route">Производственный процесс</a>
             <a href="#benefits">Потребители</a>
             <a href="#contacts">Контакты</a>
           </div>
