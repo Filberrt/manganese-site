@@ -5640,7 +5640,7 @@ option {
 }
 
 #product.productSlide {
-  min-height: auto;
+  min-height: 100svh;
   padding-top: clamp(96px, 11vh, 124px);
   padding-bottom: clamp(100px, 12vh, 144px);
   background: var(--section-bg) !important;
@@ -5712,8 +5712,9 @@ option {
 
 /* Product discovery should be one calm choice, then one topic per screen. */
 #product.productSlide .sectionIntro {
-  width: min(980px, 100%);
-  margin-bottom: 36px;
+  width: min(1800px, 100%);
+  max-width: none;
+  margin: 0 auto 36px;
 }
 
 #product.productSlide .sectionIntro > p:not(.eyebrow) {
@@ -5721,17 +5722,21 @@ option {
 }
 
 #product .productCardsLarge {
-  width: min(1320px, 100%);
+  width: min(1800px, 100%);
+  height: auto !important;
+  margin-inline: auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(18px, 2vw, 30px);
+  grid-template-rows: none !important;
+  grid-auto-rows: auto;
+  gap: clamp(22px, 2.2vw, 40px);
 }
 
 #product .productCardsLarge article,
 #product .productCardsLarge article:nth-child(2) {
   display: grid !important;
   grid-template-columns: 1fr !important;
-  grid-template-rows: 164px 136px !important;
-  height: 300px;
+  grid-template-rows: clamp(220px, 25vh, 290px) minmax(176px, auto) !important;
+  height: auto;
   min-height: 0 !important;
   margin-top: 0;
   overflow: hidden;
@@ -5746,7 +5751,7 @@ option {
   grid-row: 1;
   width: 100%;
   min-height: 0 !important;
-  height: 164px !important;
+  height: 100% !important;
   aspect-ratio: auto;
   object-fit: cover !important;
 }
@@ -5760,10 +5765,10 @@ option {
   grid-template-areas:
     'title link'
     'copy link';
-  align-items: end;
+  align-items: center;
   min-height: 0;
-  gap: 8px 20px;
-  padding: 16px 22px 18px;
+  gap: 10px 24px;
+  padding: 24px 28px 26px;
   background: var(--surface-bg);
 }
 
@@ -5771,7 +5776,7 @@ option {
   grid-area: title;
   max-width: none;
   color: var(--ink) !important;
-  font-size: clamp(20px, 1.75vw, 26px);
+  font-size: clamp(22px, 1.6vw, 28px);
   line-height: 1.06;
 }
 
@@ -5779,16 +5784,16 @@ option {
   grid-area: copy;
   max-width: 42ch;
   color: var(--deep) !important;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.4;
 }
 
 #product .productCardsLarge a {
   grid-area: link;
   align-self: center;
-  min-height: 42px;
+  min-height: 46px;
   margin: 0;
-  padding: 0 12px;
+  padding: 0 16px;
   color: var(--ink) !important;
   background: #c4c8c2;
   border: 1px solid rgba(45, 49, 45, 0.2);
@@ -5808,6 +5813,30 @@ option {
   background: var(--wine);
   border-color: var(--wine);
   transform: translateX(2px);
+}
+
+@media (min-width: 901px) and (max-height: 820px) {
+  #root .slideDeck:has(#product.is-current) .floatingWriteCta,
+  #root .slideDeck:has(#product:target) .floatingWriteCta {
+    display: none !important;
+  }
+
+  #product.productSlide .sectionIntro {
+    margin-bottom: 24px;
+  }
+
+  #product .productCardsLarge article,
+  #product .productCardsLarge article:nth-child(2) {
+    grid-template-rows: 190px minmax(148px, auto) !important;
+  }
+
+  #product .productCardsLarge article > div {
+    padding: 18px 24px 20px;
+  }
+
+  #product .productCardsLarge a {
+    min-height: 42px;
+  }
 }
 
 .productStorySlide {
