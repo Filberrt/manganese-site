@@ -1271,7 +1271,7 @@ function App() {
         <div className="productCards productCardsLarge">
           {productCards.map(({ productId, title, text, image }, index) => (
             <article data-reveal style={{ '--delay': `${index * 100}ms` } as CSSProperties} key={title}>
-              <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
+              <img src={asset(image)} alt={title} loading="eager" decoding="async" />
               <div>
                 <strong>{title}</strong>
                 <span>{text}</span>
