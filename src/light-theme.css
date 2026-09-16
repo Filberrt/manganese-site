@@ -6324,144 +6324,150 @@ option {
   }
 }
 
-/* Product showcase: image-led tiles instead of stacked catalog cards. */
-#product.productSlide {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#product.productSlide .sectionIntro {
-  margin-bottom: clamp(28px, 4vh, 44px);
-}
-
-#product .productCardsLarge article,
-#product .productCardsLarge article:nth-child(2) {
-  position: relative;
-  isolation: isolate;
-  display: block !important;
-  height: clamp(360px, 44vh, 500px);
-  min-height: 360px !important;
-  overflow: hidden;
-  background: #171918 !important;
-  border: 1px solid rgba(45, 49, 45, 0.2) !important;
-  border-radius: 4px !important;
-  box-shadow: 0 18px 42px rgba(45, 49, 45, 0.13) !important;
-}
-
-#product .productCardsLarge article::after {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  content: "";
-  background: linear-gradient(
-    180deg,
-    rgba(19, 21, 20, 0.02) 30%,
-    rgba(19, 21, 20, 0.3) 58%,
-    rgba(19, 21, 20, 0.92) 100%
-  );
-  pointer-events: none;
-}
-
-#product .productCardsLarge article img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100% !important;
-  min-height: 0 !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-#product .productCardsLarge article:is(:hover, :focus-within) img {
-  transform: scale(1.025);
-}
-
-#product .productCardsLarge article > div {
-  position: absolute !important;
-  z-index: 2;
-  right: 0;
-  bottom: 0;
-  left: 0;
+/* Consumers: one connected editorial composition instead of a detached card row. */
+#benefits.consumersSlide {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    'title action'
-    'copy action';
-  align-items: end;
-  gap: 8px 28px;
-  padding: clamp(24px, 2.4vw, 38px);
-  background: transparent !important;
+  grid-template-columns: minmax(320px, 0.76fr) minmax(0, 1.24fr);
+  align-items: center;
+  align-content: center;
+  gap: clamp(56px, 7vw, 128px);
+  min-height: 100svh;
 }
 
-#product .productCardsLarge strong {
-  grid-area: title;
-  color: #f6f4ed !important;
-  font-size: clamp(24px, 1.75vw, 32px) !important;
-  line-height: 1.08;
-}
-
-#product .productCardsLarge span {
-  grid-area: copy;
-  max-width: 52ch;
-  color: rgba(246, 244, 237, 0.78) !important;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
-#product .productCardsLarge a {
-  grid-area: action;
-  align-self: end;
-  min-height: 46px;
+#benefits .sectionIntro {
+  width: 100%;
+  max-width: 610px;
   margin: 0;
-  padding: 0 17px;
-  color: var(--ink) !important;
-  background: rgba(222, 223, 221, 0.94) !important;
-  border: 1px solid rgba(255, 255, 255, 0.28) !important;
-  border-radius: var(--control-radius);
-  backdrop-filter: blur(8px);
 }
 
-#product .productCardsLarge a:is(:hover, :focus-visible) {
+#benefits .sectionIntro h2 {
+  margin-bottom: 24px;
+}
+
+#benefits .sectionIntro > p:not(.eyebrow) {
+  max-width: 52ch;
+  text-align: left !important;
+  word-spacing: 0;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+#benefits .consumerGrid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  width: 100%;
+  max-width: 980px;
+  margin: 0;
+}
+
+#benefits .consumerGrid article,
+#benefits .consumerGrid article + article {
+  display: grid !important;
+  grid-template-columns: 64px minmax(210px, 0.72fr) minmax(0, 1fr) !important;
+  grid-template-rows: 1fr !important;
+  align-items: center !important;
+  align-content: center !important;
+  justify-items: stretch !important;
+  min-height: 132px !important;
+  height: auto !important;
+  margin: 0;
+  padding: 24px 28px !important;
+  text-align: left !important;
+  color: var(--ink);
+  background: rgba(235, 233, 225, 0.72) !important;
+  border: 1px solid rgba(45, 49, 45, 0.12) !important;
+  border-left: 3px solid transparent !important;
+  border-radius: 4px !important;
+  box-shadow: 0 12px 32px rgba(45, 49, 45, 0.06) !important;
+  backdrop-filter: blur(6px);
+  transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+#benefits .consumerGrid article:is(:hover, :focus-within) {
+  background: rgba(239, 237, 229, 0.9) !important;
+  border-left-color: var(--wine) !important;
+  transform: translateX(4px);
+}
+
+#benefits .consumerGrid article > span {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  justify-self: start;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  place-items: center;
   color: var(--paper) !important;
   background: var(--wine) !important;
-  border-color: var(--wine) !important;
-  transform: translateX(2px);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
 }
 
-@media (min-width: 901px) and (max-height: 820px) {
-  #product .productCardsLarge article,
-  #product .productCardsLarge article:nth-child(2) {
-    height: 330px;
-    min-height: 330px !important;
-  }
+#benefits .consumerGrid h3 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+  padding-right: 24px;
+  color: var(--ink) !important;
+  font-size: clamp(21px, 1.45vw, 27px);
+  line-height: 1.12;
 }
 
-@media (max-width: 900px) {
-  #product.productSlide {
-    justify-content: flex-start;
-  }
+#benefits .consumerGrid p {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  max-width: 48ch !important;
+  margin: 0 !important;
+  color: var(--deep) !important;
+  font-size: 15px;
+  line-height: 1.5;
+}
 
-  #product .productCardsLarge article,
-  #product .productCardsLarge article:nth-child(2) {
-    height: clamp(390px, 68vh, 480px);
-    min-height: 390px !important;
-  }
-
-  #product .productCardsLarge article > div {
+@media (max-width: 1000px) {
+  #benefits.consumersSlide {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      'title'
-      'copy'
-      'action';
-    align-items: start;
-    gap: 10px;
-    padding: 24px;
+    gap: 36px;
+    min-height: auto;
+    padding: 108px 24px 72px;
   }
 
-  #product .productCardsLarge a {
-    justify-self: start;
-    margin-top: 6px;
+  #benefits .sectionIntro {
+    max-width: 720px;
+  }
+
+  #benefits .consumerGrid {
+    max-width: none;
+  }
+}
+
+@media (max-width: 680px) {
+  #benefits .consumerGrid article,
+  #benefits .consumerGrid article + article {
+    grid-template-columns: 50px minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    gap: 8px 14px;
+    min-height: 0 !important;
+    padding: 20px !important;
+  }
+
+  #benefits .consumerGrid article > span {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: start;
+  }
+
+  #benefits .consumerGrid h3 {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    padding-right: 0;
+    font-size: 21px;
+  }
+
+  #benefits .consumerGrid p {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
   }
 }

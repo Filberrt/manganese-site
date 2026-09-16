@@ -110,13 +110,13 @@ const productCards = [
     productId: 'manganese-flux',
     title: 'Марганцовистый флюс',
     text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-    image: 'product/manganese-flux-catalog.webp',
+    image: 'product/manganese-flux-catalog.png',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
-    image: 'product/gypsum-anhydrite-catalog.webp',
+    image: 'product/gypsum-anhydrite-catalog.png',
   },
 ]
 
@@ -1271,7 +1271,7 @@ function App() {
         <div className="productCards productCardsLarge">
           {productCards.map(({ productId, title, text, image }, index) => (
             <article data-reveal style={{ '--delay': `${index * 100}ms` } as CSSProperties} key={title}>
-              <img src={asset(image)} alt={title} loading="eager" decoding="async" />
+              <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
               <div>
                 <strong>{title}</strong>
                 <span>{text}</span>
