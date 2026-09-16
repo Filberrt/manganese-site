@@ -5903,8 +5903,12 @@ option {
 }
 
 .productProcessList {
+  --process-inset: clamp(20px, 2.2vw, 32px);
   position: relative;
-  padding-left: 8px;
+  padding: 0 var(--process-inset);
+  background: rgba(239, 237, 229, 0.64);
+  border: 1px solid rgba(45, 49, 45, 0.12);
+  backdrop-filter: blur(5px);
 }
 
 .productProcessList::before {
@@ -5912,7 +5916,7 @@ option {
   position: absolute;
   top: 42px;
   bottom: 42px;
-  left: 31px;
+  left: calc(var(--process-inset) + 23px);
   width: 2px;
   background: var(--wine);
   opacity: 0.52;
@@ -5930,9 +5934,7 @@ option {
 }
 
 .productProcessList li {
-  padding-right: clamp(18px, 2.5vw, 36px);
-  background: rgba(239, 237, 229, 0.46);
-  backdrop-filter: blur(3px);
+  background: transparent;
 }
 
 .productProcessList li:first-child {

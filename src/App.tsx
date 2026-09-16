@@ -792,7 +792,9 @@ function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
       className="section productStorySlide productAdvantagesSlide snapSlide"
       id={`/${product.id}/advantages`}
       data-slide
-      style={{ '--story-image': `url("${asset(product.image)}")` } as CSSProperties}
+      style={{
+        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'backdrops/advantages-gypsum-logistics-v1.webp' : 'backdrops/advantages-flux-logistics-v1.webp')}")`,
+      } as CSSProperties}
     >
       <div className="productStoryIntro" data-reveal>
         <p className="eyebrow">Преимущества</p>
