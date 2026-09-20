@@ -53,14 +53,16 @@ const company = {
 }
 
 const compositionRows = [
-  ['Марганец (Mn)', '7,6-7,9%', 'Фиксируется как часть химического состава партии'],
-  ['Оксид кальция (CaO)', '32,7-34,5%', 'Учитывается при оценке флюсующих свойств сырья'],
-  ['Диоксид кремния (SiO2)', '14,9-17,0%', 'Контролируется как компонент состава и технологическое ограничение'],
-  ['Сера (S)', 'до 0,17%', 'Сверяется с требованиями технологического процесса'],
-  ['Фосфор (P)', 'до 0,041%', 'Сверяется с требованиями технологического процесса'],
+  ['Марганец (Mn)', '7,9%', 'Типовой показатель флюса участка Северный'],
+  ['Оксид кальция (CaO)', '32,7%', 'Учитывается при оценке флюсующих свойств сырья'],
+  ['Диоксид кремния (SiO2)', '17,0%', 'Контролируется как компонент состава и технологическое ограничение'],
+  ['Оксид алюминия (Al2O3)', '3,8%', 'Фиксируется в лабораторном протоколе партии'],
+  ['Оксид железа (Fe2O3)', '1,6%', 'Фиксируется в лабораторном протоколе партии'],
+  ['Оксид магния (MgO)', '1,0%', 'Фиксируется в лабораторном протоколе партии'],
+  ['Сера (S)', '0,17%', 'Сверяется с требованиями технологического процесса'],
+  ['Фосфор (P)', '0,041%', 'Сверяется с требованиями технологического процесса'],
   ['Фракция', 'по паспорту партии', 'Подбирается под оборудование и способ подачи'],
   ['Влажность', 'по паспорту партии', 'Важна для хранения, перевозки и дозирования'],
-  ['Примеси', 'по протоколу лаборатории', 'Оксиды алюминия, железа, магния и другие показатели'],
 ]
 
 const gypsumCompositionRows = [
@@ -73,7 +75,7 @@ const gypsumCompositionRows = [
 
 const heroFacts = [
   ['Балансовые запасы', '35 млн тонн'],
-  ['Производительность', 'До 500 тыс. тонн\nв год'],
+  ['Производство', 'Карьер +\nДСК и ДСУ'],
   ['Контроль качества', 'Лабораторные\nиспытания'],
   ['Логистика', 'Авто- и\nЖД-отгрузка'],
 ]
@@ -84,10 +86,43 @@ const companyHighlights = [
   ['Контроль качества', 'Для конкретной партии проводятся лабораторные испытания, оформляются паспорт качества и протокол анализа.'],
 ]
 
-const consumerHighlights = [
-  ['Действующие контракты', 'Кейсы и наименования партнеров публикуются после согласования с каждой компанией.'],
-  ['Параметры поставки', 'Для каждого клиента заранее согласуются продукт, фракция, объем, график и комплект документов.'],
-  ['Результат сотрудничества', 'В публичных кейсах будут отражены сроки работы, достигнутые объемы и дальнейшие планы поставок.'],
+const companyHistory = [
+  ['1931', 'Начало геологических работ', 'На территории Республики Башкортостан открыты залежи марганцевых руд.'],
+  ['1942-1944', 'Северный и Ново-Северный', 'Разведаны участки, которые сформировали основу марганцевого направления предприятия.'],
+  ['2000', 'Переход к промышленной разработке', 'Получена лицензия на недропользование для гипсового камня и марганцевого сырья.'],
+  ['2012', 'Создание БашМинералРесурс', 'Зарегистрировано ООО «БашМинералРесурс», возобновлены исследования и промышленное освоение.'],
+  ['2016-2019', 'Модернизация и логистика', 'Обновлен дробильно-сортировочный комплекс и запущена железнодорожная ветка до станции Аша.'],
+  ['Сегодня', 'Полный производственный цикл', 'Добыча, подготовка, лабораторный контроль и отгрузка работают в едином контуре.'],
+]
+
+const infrastructureFacts = [
+  ['18', 'единиц карьерной и вспомогательной техники'],
+  ['10', 'профильных подразделений предприятия'],
+  ['7,7 км', 'железнодорожная ветка до станции Аша'],
+  ['6 км', 'до автомобильной дороги с твердым покрытием'],
+]
+
+const companyDepartments = [
+  'Администрация предприятия',
+  'Производственно-технический отдел',
+  'Участок разработки месторождений',
+  'Дробильно-сортировочный участок',
+  'Ремонтно-механическая служба',
+  'Химико-аналитическая лаборатория',
+  'Служба грузоперевозок',
+  'Маркшейдерская служба',
+  'Геологоразведка',
+  'Железнодорожный участок',
+]
+
+const consumerPartners = [
+  ['ЕВРАЗ', 'Металлургия'],
+  ['Цемрос', 'Цементное производство'],
+  ['Аккерманн Цемент', 'Цементное производство'],
+  ['СЛК Цемент', 'Цементное производство'],
+  ['Сибирский цемент', 'Цементное производство'],
+  ['МЦОЗ', 'Цемент и огнеупорные материалы'],
+  ['ГИФАС', 'Промышленное производство'],
 ]
 
 const documentCards = [
@@ -100,54 +135,56 @@ const documentCards = [
 const productCards = [
   {
     productId: 'manganese-flux',
-    title: 'Марганцовистый флюс',
+    title: 'Марганцовистый известняк',
     text: 'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-    image: 'product/manganese-flux-catalog.png',
+    image: 'content/flux-material.webp',
   },
   {
     productId: 'gypsum-stone',
     title: 'Гипсовый и ангидритовый камень',
     text: 'Для цемента, сухих смесей, гипсовых и других строительных материалов.',
-    image: 'product/gypsum-anhydrite-catalog.png',
+    image: 'content/gypsum-stone.webp',
   },
 ]
 
 const productPageCards = [
   {
     id: 'manganese-flux',
-    eyebrow: 'Марганцовистый флюс',
-    title: 'Марганцовистый флюс для металлургии',
-    lead: 'Марганцовистый флюс Улу-Телякского месторождения. Состав, фракция и влажность фиксируются в документах конкретной партии.',
-    image: 'product/manganese-flux-product-v5.png',
+    eyebrow: 'Марганцовистый известняк',
+    title: 'Марганцовистый известняк и флюс',
+    lead: 'Осадочная горная порода с природным содержанием марганца. Базовый продукт после дробления и рассева - марганцовистый флюс для металлургических процессов.',
+    image: 'content/flux-material.webp',
     model: {
-      title: 'Марганцовистый флюс',
+      title: 'Марганцовистый известняк',
       subtitle: '3D-модель сырья',
       model: 'models/fast/flux.glb',
       poster: 'models/posters/flux.webp',
       variant: 'flux',
     },
-    badges: ['Mn 7-10%', 'Фракция 0-6', 'ТУ 0751-001-38476082-2025', 'ДСК 40 тыс. т/мес', 'Ресурсы 140 млн т'],
+    badges: ['Mn 7,9%', 'CaO 32,7%', 'ТУ 0751-001-38476082-2025', '3 стадии дробления', 'Ресурсы более 140 млн т'],
     specs: [
       ['Месторождение', 'Улу-Телякское'],
       ['Карьеры', 'Северный и Ново-Северный'],
-      ['Ресурсы', '140 млн тонн'],
-      ['Добыча', 'до 500 тыс. тонн в год'],
-      ['Подготовка', 'ДСК до 40 тыс. тонн в месяц'],
+      ['Ресурсы', 'более 140 млн тонн'],
+      ['Базовый продукт', 'марганцовистый флюс'],
+      ['Подготовка', '3 стадии дробления и рассева'],
       ['Отгрузка', 'авто или ЖД площадка'],
     ],
     useCases: [
-      'Для агломерации, производства окатышей, доменных и сталеплавильных процессов.',
-      'Технолог заказчика оценивает состав, фракцию и влажность по документам конкретной партии.',
-      'Для расчета поставки согласуется схема подготовки и отгрузки.',
+      'В виде агломерата, окатышей и комплексного флюса для металлургического производства.',
+      'Карбонат кальция выполняет функцию флюсующей основы, а марганцевый компонент участвует в формировании свойств шихты.',
+      'Состав, фракция и влажность подтверждаются документами конкретной партии.',
     ],
     process: [
       'Добыча ведется на карьерах Северный и Ново-Северный.',
-      'Материал проходит дробление и рассев на ДСК под согласованную фракцию.',
-      'Перед отгрузкой партия проходит лабораторные испытания и оформляется комплект документов.',
+      'Сырье проходит три стадии дробления и рассева на дробильно-сортировочном комплексе.',
+      'Лаборатория определяет химический состав, влажность и соответствие согласованной фракции.',
+      'Партия получает паспорт качества и отгружается автомобильным или железнодорожным транспортом.',
     ],
     advantages: [
-      'Ресурсная база и производственная мощность позволяют планировать регулярные объемы.',
-      'Фракция, влажность и химический состав фиксируются для конкретной партии.',
+      'Природное сочетание марганцевого компонента и карбоната кальция формирует комплексное металлургическое сырье.',
+      'Физические свойства материала могут улучшать окомкование шихты и условия спекания агломерата.',
+      'Фракция, влажность и химический состав фиксируются для каждой отгружаемой партии.',
       'Автомобильная и железнодорожная логистика подбирается под объем и маршрут клиента.',
     ],
     documents: [
@@ -156,13 +193,22 @@ const productPageCards = [
       'Протокол лабораторного анализа',
       'Условия отгрузки своими авто или железнодорожным транспортом',
     ],
+    gallery: [
+      ['Исходное марганцовистое сырье', 'content/flux-material.webp'],
+      ['Подготовленный материал', 'content/flux-stockpile.webp'],
+      ['Дробильно-сортировочный комплекс', 'content/flux-processing.webp'],
+      ['Производственная площадка', 'content/flux-complex.webp'],
+      ['Отгрузка подготовленной партии', 'content/flux-shipping.webp'],
+      ['Линия рассева материала', 'content/flux-sorting.webp'],
+      ['Лабораторный контроль', 'content/flux-laboratory.webp'],
+    ],
   },
   {
     id: 'gypsum-stone',
     eyebrow: 'Гипсовый и ангидритовый камень',
     title: 'Гипсовый и ангидритовый камень',
     lead: 'Гипсовый и гипсоангидритовый камень Тюлько-Тюбинского месторождения для цемента, сухих смесей, гипсокартона и гипсовых изделий.',
-    image: 'product/gypsum-anhydrite-product-v5.png',
+    image: 'content/gypsum-stone.webp',
     model: {
       title: 'Гипсоангидритовый камень',
       subtitle: '3D-модель сырья',
@@ -180,17 +226,19 @@ const productPageCards = [
       ['Отгрузка', 'авто или железная дорога'],
     ],
     useCases: [
-      'Для производства цемента, сухих смесей и гипсовых материалов.',
+      'Для производства цемента, сухих строительных смесей, гипсокартона и гипсовых материалов.',
       'Соответствие требованиям производства оценивается по паспорту качества и протоколу анализа партии.',
-      'Для расчета поставки согласуется схема отгрузки с учетом фракции и объема.',
+      'Природное качество и белизна камня позволяют подбирать сырье под технологию заказчика.',
     ],
     process: [
-      'Добыча ведется на Тюлько-Тюбинском месторождении.',
-      'Подготовка камня выполняется на ДСУ под согласованную фракцию и объем.',
-      'Показатели партии подтверждаются паспортом качества и протоколом лабораторного анализа.',
+      'Добыча ведется на Тюлько-Тюбинском месторождении открытым способом.',
+      'Камень проходит дробление и подготовку на ДСУ под согласованную фракцию и объем.',
+      'Лаборатория контролирует показатели сырья и оформляет протокол анализа.',
+      'Подготовленная партия получает паспорт качества и передается на автомобильную или железнодорожную отгрузку.',
     ],
     advantages: [
-      'Ресурсная база подходит для регулярных поставок строительным производствам.',
+      'Высокое природное качество и белизна камня расширяют варианты применения в строительных материалах.',
+      'Ресурсная база подходит для регулярных поставок цементным и строительным производствам.',
       'Подготовка материала учитывает технологические требования конкретного заказчика.',
       'Автомобильная или железнодорожная отгрузка согласуется до подготовки партии.',
     ],
@@ -200,16 +248,26 @@ const productPageCards = [
       'Документы по происхождению сырья',
       'Схема отгрузки под объем и станцию клиента',
     ],
+    gallery: [
+      ['Тюлько-Тюбинское месторождение', 'content/gypsum-quarry.webp'],
+      ['Дробильно-сортировочная линия', 'content/gypsum-processing.webp'],
+      ['Гипсовый и ангидритовый камень', 'content/gypsum-stone.webp'],
+      ['Погрузка подготовленного камня', 'content/gypsum-loading.webp'],
+      ['Автомобильная отгрузка', 'content/gypsum-shipping.webp'],
+      ['Подготовка партии на площадке', 'content/gypsum-preparation.webp'],
+      ['Производственный комплекс', 'content/gypsum-complex.webp'],
+      ['Лабораторный контроль', 'content/gypsum-laboratory.webp'],
+    ],
   },
 ]
 
 const galleryItems = [
-  ['Карьер: общий план', 'gallery-bmr/AZA07117.jpg'],
-  ['Добыча и погрузка', 'gallery-bmr/AZA07129.jpg'],
-  ['Дробильно-сортировочный комплекс', 'gallery-bmr/AZA07318.jpg'],
-  ['Экскаватор в карьере', 'gallery-bmr/AZA07419.jpg'],
-  ['Отгрузка автотранспортом', 'gallery-bmr/AZA07613.jpg'],
-  ['Погрузка на ЖД площадке', 'gallery-bmr/AZA07809.jpg'],
+  ['Железнодорожная отгрузка', 'content/home-rail.webp'],
+  ['Карьерная техника', 'content/home-loaders.webp'],
+  ['Ремонт и обслуживание', 'content/home-service.webp'],
+  ['Экскаваторный парк', 'content/home-excavator.webp'],
+  ['Ремонтно-механический участок', 'content/home-workshop.webp'],
+  ['Химико-аналитическая лаборатория', 'content/home-laboratory.webp'],
 ]
 
 const galleryArchiveImageIds = [
@@ -295,6 +353,11 @@ const galleryArchiveImageIds = [
   'AZA08205',
 ]
 
+const galleryArchiveExtraItems = [
+  ['Железнодорожная площадка', 'content/home-rail.webp'],
+  ['Лабораторный контроль марганцовистого сырья', 'content/flux-laboratory.webp'],
+]
+
 const articlePlan = [
   {
     title: 'Что известно о сырьевой базе БашМинералРесурс',
@@ -341,6 +404,8 @@ const articlePlan = [
 const slideItems = [
   ['top', 'Главная'],
   ['company', 'О компании'],
+  ['history', 'История'],
+  ['infrastructure', 'Комплекс'],
   ['product', 'Продукция'],
   ['video', 'Производство'],
   ['benefits', 'Потребители'],
@@ -750,7 +815,7 @@ function ProductProcessSlide({ product }: { product: ProductPageCard }) {
       id={`/${product.id}/process`}
       data-slide
       style={{
-        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'gallery/gallery-gypsum-processing.webp' : 'backdrops/video-processing-v1.png')}")`,
+        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'content/gypsum-processing.webp' : 'content/flux-processing.webp')}")`,
       } as CSSProperties}
     >
       <div className="productStoryIntro" data-reveal>
@@ -776,7 +841,7 @@ function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
       id={`/${product.id}/advantages`}
       data-slide
       style={{
-        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'backdrops/advantages-gypsum-logistics-v1.webp' : 'backdrops/advantages-flux-logistics-v1.webp')}")`,
+        '--story-image': `url("${asset(product.id === 'gypsum-stone' ? 'content/gypsum-quarry.webp' : 'content/flux-complex.webp')}")`,
       } as CSSProperties}
     >
       <div className="productStoryIntro" data-reveal>
@@ -791,6 +856,26 @@ function ProductAdvantagesSlide({ product }: { product: ProductPageCard }) {
           </li>
         ))}
       </ul>
+    </section>
+  )
+}
+
+function ProductGallerySlide({ product }: { product: ProductPageCard }) {
+  return (
+    <section className="section productGallerySlide snapSlide" id={`/${product.id}/gallery`} data-slide>
+      <div className="productGalleryIntro" data-reveal>
+        <p className="eyebrow">Фотогалерея продукта</p>
+        <h2>{product.id === 'gypsum-stone' ? 'Камень, подготовка и отгрузка' : 'Сырье, переработка и партия'}</h2>
+        <p>Фотографии распределены по направлению продукта: от исходного сырья до лабораторного контроля и отгрузки.</p>
+      </div>
+      <div className="productPhotoGrid" aria-label={`Фотографии: ${product.title}`}>
+        {product.gallery.map(([title, image], index) => (
+          <figure data-reveal style={{ '--delay': `${index * 55}ms` } as CSSProperties} key={image}>
+            <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
+            <figcaption>{title}</figcaption>
+          </figure>
+        ))}
+      </div>
     </section>
   )
 }
@@ -865,10 +950,11 @@ function ProductStandalonePage({ product }: { product: ProductPageCard }) {
           </button>
           <h1>{product.title}</h1>
         </div>
-        <ProductDetailCard product={product} />
+      <ProductDetailCard product={product} />
       </section>
       <ProductProcessSlide product={product} />
       <ProductAdvantagesSlide product={product} />
+      <ProductGallerySlide product={product} />
       <ProductPassportSlide product={product} />
     </>
   )
@@ -894,6 +980,11 @@ function GalleryArchivePage() {
         {galleryArchiveImageIds.map((id, index) => (
           <figure key={id} data-reveal style={{ '--delay': `${Math.min(index, 12) * 30}ms` } as CSSProperties}>
             <img src={asset(`gallery-bmr/${id}.jpg`)} alt={`Производственная площадка БашМинералРесурс, фото ${index + 1}`} loading="lazy" />
+          </figure>
+        ))}
+        {galleryArchiveExtraItems.map(([title, image]) => (
+          <figure key={image} data-reveal>
+            <img src={asset(image)} alt={title} loading="lazy" decoding="async" />
           </figure>
         ))}
       </div>
@@ -950,27 +1041,34 @@ function App() {
       setActiveProductPageId(productRouteId)
       setIsGalleryArchive(galleryArchiveRoute)
 
-      if (productRouteId || galleryArchiveRoute) {
-        const syncStandaloneScroll = () => {
-          const targetId = window.location.hash.replace('#', '')
-          const target = document.getElementById(targetId)
+      const syncRouteScroll = () => {
+        const targetId = window.location.hash.replace('#', '')
+        const target = document.getElementById(targetId)
+        const deck = document.querySelector<HTMLElement>('.slideDeck')
 
-          if (target) {
-            document.querySelector<HTMLElement>('.slideDeck')?.scrollTo({
-              top: target.offsetTop,
-              left: 0,
-              behavior: 'auto',
-            })
-            target.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'))
-            return
-          }
-
-          document.querySelector('.slideDeck')?.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+        const jumpTo = (top: number) => {
+          if (!deck) return
+          const previousScrollBehavior = deck.style.scrollBehavior
+          deck.style.scrollBehavior = 'auto'
+          deck.scrollTo({ top, left: 0, behavior: 'auto' })
+          window.requestAnimationFrame(() => {
+            deck.style.scrollBehavior = previousScrollBehavior
+          })
         }
 
-        window.setTimeout(syncStandaloneScroll, 0)
-        window.setTimeout(syncStandaloneScroll, 120)
+        if (target) {
+          jumpTo(target.offsetTop)
+          target.querySelectorAll('[data-reveal]').forEach((element) => element.classList.add('is-visible'))
+          return
+        }
+
+        if (productRouteId || galleryArchiveRoute) {
+          jumpTo(0)
+        }
       }
+
+      window.setTimeout(syncRouteScroll, 0)
+      window.setTimeout(syncRouteScroll, 120)
     }
 
     syncStandaloneRoute()
@@ -990,7 +1088,7 @@ function App() {
         .querySelectorAll('.productPassportPage [data-reveal]')
         .forEach((element) => element.classList.add('is-visible'))
       document
-        .querySelectorAll('.productProcessSlide [data-reveal], .productAdvantagesSlide [data-reveal]')
+        .querySelectorAll('.productProcessSlide [data-reveal], .productAdvantagesSlide [data-reveal], .productGallerySlide [data-reveal]')
         .forEach((element) => element.classList.add('is-visible'))
       document
         .querySelectorAll('.galleryArchivePage [data-reveal]')
@@ -1233,7 +1331,7 @@ function App() {
           </div>
         </div>
         <aside className="quietPanel companyProof" data-reveal>
-          <img className="companyProofImage" src={asset('gallery-bmr/AZA07117.jpg')} alt="Карьер БашМинералРесурс" loading="lazy" decoding="async" />
+          <img className="companyProofImage" src={asset('content/home-excavator.webp')} alt="Экскаватор БашМинералРесурс на производственной площадке" loading="lazy" decoding="async" />
           <div className="companyProofContent">
             <p className="eyebrow">Производственная площадка</p>
             <h3>Ресурсная база и подготовка партии</h3>
@@ -1244,6 +1342,58 @@ function App() {
             </dl>
           </div>
         </aside>
+      </section>
+
+      <section className="section companyHistorySlide snapSlide" id="history" data-slide>
+        <div className="companyHistoryIntro" data-reveal>
+          <p className="eyebrow">История компании</p>
+          <h2>От геологоразведки<br />к полному циклу</h2>
+          <p>Промышленное освоение месторождений развивалось поэтапно: от первых исследований до современной добычи, подготовки и отгрузки двух видов минерального сырья.</p>
+          <a className="historyLicenseLink" href={asset('documents/license-info.html')} target="_blank" rel="noreferrer">
+            Лицензия и сведения по запасам
+            <ArrowRight size={17} aria-hidden="true" />
+          </a>
+          <figure className="companyHistoryPhoto">
+            <img src={asset('content/home-workshop.webp')} alt="Ремонтно-механический участок предприятия" loading="lazy" decoding="async" />
+            <figcaption>Ремонтно-механический участок</figcaption>
+          </figure>
+        </div>
+        <ol className="companyTimeline" aria-label="Основные этапы истории компании">
+          {companyHistory.map(([year, title, text], index) => (
+            <li data-reveal style={{ '--delay': `${index * 60}ms` } as CSSProperties} key={year}>
+              <time>{year}</time>
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section
+        className="section infrastructureSlide snapSlide"
+        id="infrastructure"
+        data-slide
+        style={{ '--infrastructure-image': `url(${asset('content/home-rail.webp')})` } as CSSProperties}
+      >
+        <div className="infrastructureIntro" data-reveal>
+          <p className="eyebrow">Имущественный комплекс</p>
+          <h2>Техника и инфраструктура<br />в одном контуре</h2>
+          <p>Карьерный парк, дробильно-сортировочные участки, лаборатория, ремонтная база и собственная железнодорожная инфраструктура обеспечивают подготовку партии внутри предприятия.</p>
+        </div>
+        <div className="infrastructureFacts">
+          {infrastructureFacts.map(([value, label], index) => (
+            <article data-reveal style={{ '--delay': `${index * 70}ms` } as CSSProperties} key={label}>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </article>
+          ))}
+        </div>
+        <div className="infrastructureDepartments" data-reveal>
+          <span>Подразделения</span>
+          <p>{companyDepartments.join(' · ')}</p>
+        </div>
       </section>
 
       <section className="section productSlide snapSlide" id="product" data-slide>
@@ -1318,15 +1468,15 @@ function App() {
         />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Потребители</p>
-          <h2>Партнерство на понятных условиях</h2>
-          <p>Кейсы поставок будут дополняться по мере согласования публикаций с действующими партнерами.</p>
+          <h2>Поставки для промышленного производства</h2>
+          <p>Компании, указанные в материалах предприятия как потребители минерального сырья. Подробные кейсы и результаты сотрудничества публикуются после согласования.</p>
         </div>
-        <div className="benefitGrid consumerGrid">
-          {consumerHighlights.map(([title, text], index) => (
-            <article data-reveal style={{ '--delay': `${index * 80}ms` } as CSSProperties} key={title}>
+        <div className="partnerGrid" aria-label="Потребители продукции">
+          {consumerPartners.map(([name, sector], index) => (
+            <article data-reveal style={{ '--delay': `${index * 55}ms` } as CSSProperties} key={name}>
               <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
+              <h3>{name}</h3>
+              <p>{sector}</p>
             </article>
           ))}
         </div>

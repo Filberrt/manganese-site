@@ -6862,3 +6862,479 @@ option {
 #company.companySlide > div:first-child > .eyebrow {
   color: var(--wine) !important;
 }
+
+/* 2026 content expansion: company history, infrastructure and product photography */
+.companyHistorySlide,
+.infrastructureSlide,
+.productGallerySlide {
+  min-height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.companyHistorySlide {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.78fr) minmax(560px, 1.22fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 116px);
+  padding: clamp(112px, 12vh, 142px) max(6vw, 72px) clamp(64px, 8vh, 104px);
+  background: #e4e3de !important;
+}
+
+.companyHistoryIntro {
+  max-width: 620px;
+}
+
+.companyHistoryIntro .eyebrow,
+.infrastructureIntro .eyebrow,
+.productGalleryIntro .eyebrow {
+  margin: 0 0 16px;
+  color: var(--wine) !important;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.companyHistoryIntro h2,
+.infrastructureIntro h2,
+.productGalleryIntro h2 {
+  margin: 0;
+  color: var(--ink) !important;
+  font-size: clamp(46px, 4.8vw, 78px);
+  font-weight: 800;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.companyHistoryIntro > p:not(.eyebrow),
+.infrastructureIntro > p:not(.eyebrow),
+.productGalleryIntro > p:not(.eyebrow) {
+  max-width: 58ch;
+  margin: 24px 0 0;
+  color: var(--deep) !important;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.historyLicenseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  color: var(--ink) !important;
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+  border-bottom: 1px solid var(--wine);
+  transition: color 180ms ease, gap 180ms ease;
+}
+
+.historyLicenseLink:hover,
+.historyLicenseLink:focus-visible {
+  gap: 14px;
+  color: var(--wine) !important;
+}
+
+.companyHistoryPhoto {
+  position: relative;
+  margin: 34px 0 0;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 16 / 7;
+}
+
+.companyHistoryPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.companyHistoryPhoto figcaption,
+.productPhotoGrid figcaption {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  width: fit-content;
+  max-width: calc(100% - 24px);
+  padding: 7px 10px;
+  color: #f5f3ed;
+  background: rgba(28, 29, 27, 0.78);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.companyTimeline {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(30px, 4vw, 68px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.companyTimeline li {
+  display: grid;
+  grid-template-columns: 98px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 150px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(37, 39, 36, 0.24);
+}
+
+.companyTimeline time {
+  color: var(--wine);
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.companyTimeline h3 {
+  margin: -4px 0 10px;
+  color: var(--ink) !important;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.companyTimeline p {
+  margin: 0;
+  color: var(--deep) !important;
+  font-size: 15px;
+  line-height: 1.48;
+}
+
+.infrastructureSlide {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(500px, 1.1fr);
+  grid-template-areas:
+    'intro facts'
+    'departments departments';
+  align-content: center;
+  gap: clamp(42px, 6vw, 94px);
+  padding: clamp(112px, 13vh, 148px) max(6vw, 72px) clamp(66px, 8vh, 100px);
+  overflow: hidden;
+  background: #e6e4dd !important;
+}
+
+.infrastructureSlide::before,
+.infrastructureSlide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.infrastructureSlide::before {
+  z-index: -2;
+  background-image: var(--infrastructure-image);
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(0.18) saturate(0.78);
+}
+
+.infrastructureSlide::after {
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(232, 230, 222, 0.97) 0%, rgba(232, 230, 222, 0.91) 48%, rgba(232, 230, 222, 0.8) 100%);
+}
+
+.infrastructureIntro {
+  grid-area: intro;
+  max-width: 700px;
+}
+
+.infrastructureFacts {
+  grid-area: facts;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-self: center;
+  border-top: 1px solid rgba(37, 39, 36, 0.26);
+  border-left: 1px solid rgba(37, 39, 36, 0.26);
+  background: rgba(232, 230, 222, 0.7);
+  backdrop-filter: blur(7px);
+}
+
+.infrastructureFacts article {
+  min-height: 170px;
+  padding: clamp(24px, 3vw, 40px);
+  border-right: 1px solid rgba(37, 39, 36, 0.26);
+  border-bottom: 1px solid rgba(37, 39, 36, 0.26);
+}
+
+.infrastructureFacts strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--wine);
+  font-size: clamp(38px, 4vw, 62px);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.infrastructureFacts span {
+  display: block;
+  max-width: 25ch;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.infrastructureDepartments {
+  grid-area: departments;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 28px;
+  padding-top: 26px;
+  border-top: 2px solid var(--wine);
+}
+
+.infrastructureDepartments > span {
+  color: var(--wine);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.infrastructureDepartments p {
+  margin: 0;
+  color: var(--ink) !important;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.65;
+}
+
+#benefits.consumersSlide {
+  grid-template-columns: minmax(340px, 0.72fr) minmax(620px, 1.28fr) !important;
+  color: var(--ink) !important;
+  background: #e4e3de !important;
+}
+
+#benefits.consumersSlide .sectionBackdrop {
+  opacity: 0.035 !important;
+}
+
+.partnerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-self: center;
+  border-top: 1px solid rgba(37, 39, 36, 0.24);
+  border-left: 1px solid rgba(37, 39, 36, 0.24);
+}
+
+.partnerGrid article {
+  position: relative;
+  min-height: 150px;
+  padding: 26px;
+  border-right: 1px solid rgba(37, 39, 36, 0.24);
+  border-bottom: 1px solid rgba(37, 39, 36, 0.24);
+  background: rgba(242, 240, 234, 0.36);
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.partnerGrid article:hover {
+  z-index: 1;
+  background: rgba(242, 240, 234, 0.78);
+  transform: translateY(-2px);
+}
+
+.partnerGrid article > span {
+  color: var(--wine);
+  font-size: 12px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.partnerGrid h3 {
+  margin: 28px 0 6px;
+  color: var(--ink) !important;
+  font-size: clamp(20px, 1.8vw, 29px);
+  line-height: 1.08;
+}
+
+.partnerGrid p {
+  margin: 0;
+  color: var(--deep) !important;
+  font-size: 13px;
+}
+
+.productRouteDeck > .productGallerySlide {
+  display: grid !important;
+}
+
+.productGallerySlide {
+  align-content: center;
+  gap: clamp(30px, 4vh, 46px);
+  padding: clamp(108px, 12vh, 136px) max(6vw, 72px) clamp(56px, 7vh, 82px);
+  background: #e4e3de !important;
+}
+
+.productGalleryIntro {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.82fr) minmax(420px, 1.18fr);
+  align-items: end;
+  gap: clamp(36px, 6vw, 100px);
+}
+
+.productGalleryIntro .eyebrow {
+  grid-column: 1;
+  margin-bottom: -26px;
+}
+
+.productGalleryIntro h2 {
+  grid-column: 1;
+  font-size: clamp(40px, 4vw, 66px);
+}
+
+.productGalleryIntro > p:not(.eyebrow) {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin: 0;
+}
+
+.productPhotoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(170px, 25vh));
+  gap: 10px;
+}
+
+.productPhotoGrid figure {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #d5d3cc;
+}
+
+.productPhotoGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 380ms ease;
+}
+
+.productPhotoGrid figure:hover img {
+  transform: scale(1.025);
+}
+
+.productStandalonePage .productDetailMedia img,
+.productStandalonePage .productInfoCard .productDetailMedia img {
+  object-fit: cover !important;
+  object-position: center !important;
+  filter: none !important;
+}
+
+@media (max-width: 1100px) {
+  .companyHistorySlide,
+  .infrastructureSlide {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 110px 24px 76px;
+  }
+
+  .companyHistoryIntro,
+  .infrastructureIntro {
+    max-width: 760px;
+  }
+
+  .companyTimeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .infrastructureSlide {
+    grid-template-areas:
+      'intro'
+      'facts'
+      'departments';
+  }
+
+  #benefits.consumersSlide {
+    grid-template-columns: 1fr !important;
+  }
+
+  .partnerGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .productGallerySlide {
+    min-height: auto;
+    padding: 108px 24px 72px;
+  }
+
+  .productPhotoGrid {
+    grid-template-rows: repeat(2, minmax(210px, 28vw));
+  }
+}
+
+@media (max-width: 720px) {
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    min-width: 0;
+  }
+
+  .heroInner > * {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .heroInner h1 {
+    font-size: clamp(30px, 8.2vw, 34px) !important;
+  }
+
+  .hero .heroFactStrip strong {
+    white-space: normal;
+  }
+
+  .companyHistoryIntro h2,
+  .infrastructureIntro h2,
+  .productGalleryIntro h2 {
+    font-size: clamp(40px, 12vw, 56px);
+  }
+
+  .companyTimeline,
+  .infrastructureFacts,
+  .partnerGrid,
+  .productPhotoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .companyTimeline li {
+    grid-template-columns: 82px minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .infrastructureFacts article,
+  .partnerGrid article {
+    min-height: 130px;
+  }
+
+  .infrastructureDepartments {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .productGalleryIntro {
+    display: block;
+  }
+
+  .productGalleryIntro .eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .productGalleryIntro > p:not(.eyebrow) {
+    margin-top: 20px;
+  }
+
+  .productPhotoGrid {
+    grid-template-rows: none;
+  }
+
+  .productPhotoGrid figure {
+    aspect-ratio: 4 / 3;
+  }
+}
