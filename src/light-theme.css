@@ -7553,23 +7553,26 @@ option {
 /* Strategy 2026 theme: deep mineral navy with a restrained light-gold accent. */
 :root {
   color-scheme: dark;
-  color: #f7f8fa;
+  color: #f8f8f8;
   background: #0c1e2f;
   --strategy-navy: #13293e;
   --strategy-deep: #0c1e2f;
   --strategy-panel: #17354f;
   --strategy-panel-soft: #1f4260;
   --strategy-accent: #f2d572;
-  --strategy-text: #f7f8fa;
+  --strategy-white: #f8f8f8;
+  --strategy-white-soft: #f0f2f4;
+  --strategy-light-muted: #526476;
+  --strategy-text: #f8f8f8;
   --strategy-muted: #afbdc8;
-  --ink: #f7f8fa;
+  --ink: #f8f8f8;
   --deep: #afbdc8;
   --graphite: #8fa2b1;
   --steel: #4a657a;
   --moss: #6f8291;
   --acid: #f2d572;
   --rust: #f2d572;
-  --paper: #f7f8fa;
+  --paper: #f8f8f8;
   --limestone: #244966;
   --muted: #afbdc8;
   --wine: #f2d572;
@@ -8257,4 +8260,87 @@ body,
   #root .productAdvantagesSlide::after {
     background: rgba(12, 30, 47, 0.9) !important;
   }
+}
+
+/* The strategy deck pairs navy framing with a warm-neutral white canvas. */
+#root :is(#company, #history, #product, #greeting, #documents, #articles) {
+  color: var(--strategy-navy) !important;
+  background-color: var(--strategy-white) !important;
+}
+
+#root :is(#company, #history, #product, #greeting, #documents, #articles)
+  :is(h1, h2, h3, h4) {
+  color: var(--strategy-navy) !important;
+}
+
+#root :is(#company, #history, #product, #greeting, #documents, #articles)
+  p:not(.eyebrow) {
+  color: var(--strategy-light-muted) !important;
+}
+
+#root :is(#company, #history, #product, #greeting, #documents, #articles)
+  .eyebrow {
+  color: #b47b12 !important;
+}
+
+#root #company .companyHighlights article,
+#root #company .companyProof,
+#root #product .productCardsLarge article > div,
+#root #greeting .greetingCopy,
+#root #documents .trustGrid article,
+#root #articles .articleList article {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-navy) !important;
+  border-color: rgba(19, 41, 62, 0.18) !important;
+  box-shadow: 0 20px 46px rgba(19, 41, 62, 0.13) !important;
+}
+
+#root #company :is(.companyHighlights article, .companyProof) :is(h3, strong, dt, dd),
+#root #product .productCardsLarge strong,
+#root #greeting .greetingCopy :is(h2, h3),
+#root #documents .trustGrid article :is(h3, svg),
+#root #articles .articleList article :is(h3, svg) {
+  color: var(--strategy-text) !important;
+}
+
+#root #company :is(.companyHighlights article, .companyProof) p,
+#root #product .productCardsLarge span,
+#root #greeting .greetingCopy > p:not(.eyebrow),
+#root #documents .trustGrid article p,
+#root #articles .articleList article p {
+  color: var(--strategy-muted) !important;
+}
+
+#root #history .companyTimeline li {
+  border-top-color: rgba(19, 41, 62, 0.18) !important;
+}
+
+#root #history .historyProductLinks a {
+  color: var(--strategy-navy) !important;
+}
+
+#root #history .historyProductLinks a:is(:hover, :focus-visible) {
+  color: #9b680c !important;
+}
+
+#root #greeting.greetingSlide::before {
+  background: linear-gradient(90deg, rgba(19, 41, 62, 0.045), transparent 46%) !important;
+}
+
+#root #documents .sectionBackdrop {
+  opacity: 0.055 !important;
+}
+
+#root #articles .articleList article button,
+#root #documents .trustGrid article button {
+  color: var(--strategy-navy) !important;
+  background: var(--strategy-white) !important;
+  border-color: var(--strategy-white) !important;
+}
+
+#root #articles .articleList article button:is(:hover, :focus-visible),
+#root #documents .trustGrid article button:is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
 }
