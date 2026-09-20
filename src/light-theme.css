@@ -8577,3 +8577,101 @@ body,
     font-size: clamp(42px, 3.2vw, 50px) !important;
   }
 }
+
+/* Annotated review: simplify information density and keep the brand mark consistent. */
+#root .infrastructureSlide {
+  grid-template-areas: 'intro facts';
+}
+
+#root #company .companyHighlights {
+  gap: 0;
+  padding: 8px 32px 8px 38px;
+  overflow: hidden;
+  background: var(--strategy-navy) !important;
+  border-top: 2px solid var(--strategy-accent);
+  box-shadow: 0 20px 46px rgba(19, 41, 62, 0.13);
+}
+
+#root #company .companyHighlights article {
+  grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.3fr);
+  gap: 30px;
+  padding: 22px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(222, 232, 239, 0.16) !important;
+  box-shadow: none !important;
+}
+
+#root #company .companyHighlights article:first-child {
+  border-top: 0 !important;
+}
+
+#root #company .companyHighlights h3 {
+  padding-left: 10px;
+}
+
+#root .productGalleryIntro {
+  grid-template-columns: minmax(0, 1fr) !important;
+  max-width: 940px;
+}
+
+#root .productGalleryIntro .eyebrow,
+#root .productGalleryIntro h2 {
+  grid-column: 1 !important;
+}
+
+#root #greeting .greetingCopy .eyebrow {
+  color: var(--strategy-accent) !important;
+}
+
+#root .brandLogoOnly .brandLogo,
+#root #contacts .contactCompanyLogo,
+#root .siteFooter .footerLogo {
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+#root .brandLogoOnly .brandLogo img,
+#root #contacts .contactCompanyLogo img,
+#root .siteFooter .footerLogo img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background: transparent !important;
+  transform: none !important;
+}
+
+#root .siteFooter .footerLogo {
+  width: 112px !important;
+  height: 74px !important;
+}
+
+@media (max-width: 1100px) {
+  #root .infrastructureSlide {
+    grid-template-areas:
+      'intro'
+      'facts';
+  }
+}
+
+@media (max-width: 700px) {
+  #root #company .companyHighlights {
+    padding: 6px 20px;
+  }
+
+  #root #company .companyHighlights article {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 20px 0 !important;
+  }
+
+  #root #company .companyHighlights h3 {
+    padding-left: 0;
+  }
+}

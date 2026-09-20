@@ -105,19 +105,6 @@ const infrastructureFacts = [
   ['6 км', 'до автомобильной дороги с твердым покрытием'],
 ]
 
-const companyDepartments = [
-  'Администрация предприятия',
-  'Производственно-технический отдел',
-  'Участок разработки месторождений',
-  'Дробильно-сортировочный участок',
-  'Ремонтно-механическая служба',
-  'Химико-аналитическая лаборатория',
-  'Служба грузоперевозок',
-  'Маркшейдерская служба',
-  'Геологоразведка',
-  'Железнодорожный участок',
-]
-
 const consumerDirections = [
   {
     index: '01',
@@ -880,7 +867,6 @@ function ProductGallerySlide({ product }: { product: ProductPageCard }) {
       <div className="productGalleryIntro" data-reveal>
         <p className="eyebrow">Фотогалерея продукта</p>
         <h2>{product.id === 'gypsum-stone' ? 'Камень, подготовка и отгрузка' : 'Сырье, переработка и партия'}</h2>
-        <p>Фотографии распределены по направлению продукта: от исходного сырья до лабораторного контроля и отгрузки.</p>
       </div>
       <div className="productPhotoGrid" aria-label={`Фотографии: ${product.title}`}>
         {product.gallery.map(([title, image], index) => (
@@ -1235,7 +1221,7 @@ function App() {
       <header className="topbar">
         <a className="brand brandLogoOnly" href="#top" aria-label="БашМинералРесурс: на главную">
           <span className="brandLogo">
-            <img src={asset('logo-bashmineral-transparent.png')} alt="" />
+            <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
           </span>
           <span className="brandLegalLabel">{company.legalName}</span>
         </a>
@@ -1416,10 +1402,6 @@ function App() {
               <span>{label}</span>
             </article>
           ))}
-        </div>
-        <div className="infrastructureDepartments" data-reveal>
-          <span>Подразделения</span>
-          <p>{companyDepartments.join(' · ')}</p>
         </div>
       </section>
 
@@ -1750,7 +1732,7 @@ function App() {
         <div className="footerMain">
           <div className="footerBrand">
             <span className="footerLogo">
-              <img src={asset('logo-bashmineral.png')} alt="" />
+              <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
             </span>
             <div>
               <strong>{company.name}</strong>
