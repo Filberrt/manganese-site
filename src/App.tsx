@@ -10,6 +10,7 @@ import {
   FlaskConical,
   Mail,
   MapPin,
+  Menu,
   Phone,
   Play,
   X,
@@ -88,15 +89,17 @@ const companyHighlights = [
 
 const companyHistory = [
   ['1931', 'Начало геологических работ', 'На территории Республики Башкортостан открыты залежи марганцевых руд.'],
-  ['1942-1944', 'Северный и Ново-Северный', 'Разведаны участки, которые сформировали основу марганцевого направления предприятия.'],
-  ['2000', 'Переход к промышленной разработке', 'Получена лицензия на недропользование для гипсового камня и марганцевого сырья.'],
-  ['2012', 'Создание БашМинералРесурс', 'Зарегистрировано ООО «БашМинералРесурс», возобновлены исследования и промышленное освоение.'],
-  ['2016-2019', 'Модернизация и логистика', 'Обновлен дробильно-сортировочный комплекс и запущена железнодорожная ветка до станции Аша.'],
-  ['Сегодня', 'Полный производственный цикл', 'Добыча, подготовка, лабораторный контроль и отгрузка работают в едином контуре.'],
+  ['1940-1944', 'Расширение разведки', 'После работ на Ржановском и Центральном участках разведаны более крупные Северный и Ново-Северный участки.'],
+  ['1952-1987', 'Исследования рудной базы', 'Поисковые и исследовательские работы продолжались на площади более 170 км².'],
+  ['1997', 'Возобновление работ', 'После перерыва геологоразведка и подготовка месторождений были возобновлены.'],
+  ['2000', 'Переход к промышленной разработке', 'Получена лицензия на Тюлько-Тюбинский и Северный участки, начались экспериментальные поставки сырья.'],
+  ['2012', 'Создание БашМинералРесурс', 'Зарегистрировано ООО «БашМинералРесурс», возобновлены исследования и промышленное освоение; к концу 2015 года вложения достигли 1 млрд рублей.'],
+  ['2016-2019', 'Модернизация и логистика', 'Обновлены производственные мощности, увеличен выпуск продукции и запущена железнодорожная ветка до станции Аша.'],
+  ['Сегодня', 'Полный производственный цикл', 'Добыча, подготовка, лабораторный контроль и отгрузка работают в едином контуре. Лицензия на пользование недрами действует до 2045 года.'],
 ]
 
 const infrastructureFacts = [
-  ['18', 'единиц карьерной и вспомогательной техники'],
+  ['17', 'единиц карьерной и вспомогательной техники'],
   ['10', 'профильных подразделений предприятия'],
   ['7,7 км', 'железнодорожная ветка до станции Аша'],
   ['6 км', 'до автомобильной дороги с твердым покрытием'],
@@ -409,7 +412,7 @@ const slideItems = [
   ['product', 'Продукция'],
   ['video', 'Производство'],
   ['benefits', 'Потребители'],
-  ['route', 'Процессы'],
+  ['greeting', 'Приветствие'],
   ['gallery', 'Фото'],
   ['contacts', 'Контакты'],
 ]
@@ -1000,6 +1003,7 @@ function App() {
   const [activeArticle, setActiveArticle] = useState<number | null>(null)
   const [activeDocument, setActiveDocument] = useState<number | null>(null)
   const [copiedContact, setCopiedContact] = useState<string | null>(null)
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
   const heroVideoRef = useRef<HTMLVideoElement | null>(null)
   const openedArticle = activeArticle === null ? null : articlePlan[activeArticle]
   const openedDocument = activeDocument === null ? null : documentCards[activeDocument]
@@ -1040,6 +1044,7 @@ function App() {
       const galleryArchiveRoute = getGalleryArchiveRoute()
       setActiveProductPageId(productRouteId)
       setIsGalleryArchive(galleryArchiveRoute)
+      setIsMobileNavOpen(false)
 
       const syncRouteScroll = () => {
         const targetId = window.location.hash.replace('#', '')
@@ -1223,13 +1228,14 @@ function App() {
           </span>
           <span className="brandLegalLabel">{company.legalName}</span>
         </a>
-        <nav aria-label="Основная навигация">
-          <a href="#/manganese-flux">Флюс</a>
-          <a href="#/gypsum-stone">Гипсовый камень</a>
-          <a href="#company">О компании</a>
-          <a href="#benefits">Потребители</a>
-          <a href="#gallery">Фотогалерея</a>
-          <a href="#contacts">Контакты</a>
+        <nav id="main-navigation" className={isMobileNavOpen ? 'is-open' : ''} aria-label="Основная навигация">
+          <a href="#/manganese-flux" onClick={() => setIsMobileNavOpen(false)}>Марганцовистый известняк</a>
+          <a href="#/gypsum-stone" onClick={() => setIsMobileNavOpen(false)}>Гипсовый камень</a>
+          <a href="#company" onClick={() => setIsMobileNavOpen(false)}>О компании</a>
+          <a href="#benefits" onClick={() => setIsMobileNavOpen(false)}>Потребители</a>
+          <a href="#greeting" onClick={() => setIsMobileNavOpen(false)}>Приветствие</a>
+          <a href="#gallery" onClick={() => setIsMobileNavOpen(false)}>Фотогалерея</a>
+          <a href="#contacts" onClick={() => setIsMobileNavOpen(false)}>Контакты</a>
         </nav>
         <div className="topContacts" aria-label="Контакты">
           <a className="topCall" href="tel:+79122867111">
@@ -1245,6 +1251,16 @@ function App() {
             Яндекс Карты
           </a>
         </div>
+        <button
+          className="mobileNavToggle"
+          type="button"
+          aria-controls="main-navigation"
+          aria-expanded={isMobileNavOpen}
+          aria-label={isMobileNavOpen ? 'Закрыть меню' : 'Открыть меню'}
+          onClick={() => setIsMobileNavOpen((isOpen) => !isOpen)}
+        >
+          {isMobileNavOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
+        </button>
       </header>
 
       <a className="floatingWriteCta shineAction" href="#contacts">
@@ -1349,10 +1365,10 @@ function App() {
           <p className="eyebrow">История компании</p>
           <h2>От геологоразведки<br />к полному циклу</h2>
           <p>Промышленное освоение месторождений развивалось поэтапно: от первых исследований до современной добычи, подготовки и отгрузки двух видов минерального сырья.</p>
-          <a className="historyLicenseLink" href={asset('documents/license-info.html')} target="_blank" rel="noreferrer">
-            Лицензия и сведения по запасам
-            <ArrowRight size={17} aria-hidden="true" />
-          </a>
+          <div className="historyProductLinks" aria-label="Продукция предприятия">
+            <a href="#/manganese-flux">Марганцовистый известняк <ArrowRight size={16} aria-hidden="true" /></a>
+            <a href="#/gypsum-stone">Гипсовый камень <ArrowRight size={16} aria-hidden="true" /></a>
+          </div>
           <figure className="companyHistoryPhoto">
             <img src={asset('content/home-workshop.webp')} alt="Ремонтно-механический участок предприятия" loading="lazy" decoding="async" />
             <figcaption>Ремонтно-механический участок</figcaption>

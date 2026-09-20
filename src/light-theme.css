@@ -6218,6 +6218,73 @@ option {
   }
 }
 
+@media (max-width: 1320px) {
+  #root .topbar {
+    grid-template-columns: 142px minmax(0, 1fr) auto !important;
+    overflow: visible !important;
+  }
+
+  #root .topbar nav {
+    display: none !important;
+  }
+
+  #root .mobileNavToggle {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--ink);
+    background: #b8b9b7;
+    border: 1px solid #9d9f9c;
+    border-radius: var(--control-radius);
+    cursor: pointer;
+    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  }
+
+  #root .mobileNavToggle:is(:hover, :focus-visible),
+  #root .mobileNavToggle[aria-expanded="true"] {
+    color: var(--paper);
+    background: var(--wine);
+    border-color: var(--wine);
+  }
+
+  #root .topbar nav.is-open {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    grid-column: auto !important;
+    width: auto !important;
+    justify-self: stretch !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 !important;
+    padding: 8px;
+    overflow: hidden;
+    z-index: 30;
+    background: #f7f5ef !important;
+    border: 1px solid rgba(36, 39, 34, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 18px 42px rgba(47, 44, 37, 0.18);
+  }
+
+  #root .topbar nav.is-open a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(36, 39, 34, 0.1);
+  }
+
+  #root .topbar nav.is-open a::after {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   #root .topbar {
     min-height: 66px !important;
@@ -7336,5 +7403,149 @@ option {
 
   .productPhotoGrid figure {
     aspect-ratio: 4 / 3;
+  }
+}
+
+/* Final audit fixes: reliable product columns, source links and mobile navigation. */
+.mobileNavToggle {
+  display: none;
+}
+
+.historyProductLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 24px;
+}
+
+.historyProductLinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 750;
+  text-decoration: none;
+  border-bottom: 1px solid var(--wine);
+  transition: color 180ms ease, gap 180ms ease;
+}
+
+.historyProductLinks a:is(:hover, :focus-visible) {
+  gap: 12px;
+  color: var(--wine);
+}
+
+@media (min-width: 1181px) {
+  #root .productStandalonePage .productDetailCard {
+    grid-template-columns: minmax(240px, 0.64fr) minmax(0, 1.18fr) minmax(280px, 0.72fr) !important;
+    grid-template-rows: auto !important;
+  }
+
+  #root .productStandalonePage .productModelPanel {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  #root .productStandalonePage .productInfoCard {
+    display: contents !important;
+  }
+
+  #root .productStandalonePage .productInfoCard .productDetailBody {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  #root .productStandalonePage .productInfoCard .productDetailMedia {
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-height: 510px !important;
+    height: auto !important;
+    align-self: stretch !important;
+    aspect-ratio: auto !important;
+  }
+}
+
+@media (max-width: 800px) {
+  #root .topbar {
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    overflow: visible !important;
+  }
+
+  #root .brandLogoOnly {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  #root .topContacts {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  #root .mobileNavToggle {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    color: var(--ink);
+    background: #b8b9b7;
+    border: 1px solid #9d9f9c;
+    border-radius: var(--control-radius);
+    cursor: pointer;
+    transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  }
+
+  #root .mobileNavToggle:is(:hover, :focus-visible),
+  #root .mobileNavToggle[aria-expanded="true"] {
+    color: var(--paper);
+    background: var(--wine);
+    border-color: var(--wine);
+  }
+
+  #root .topbar nav.is-open {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    grid-column: auto !important;
+    width: auto !important;
+    justify-self: stretch !important;
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 0 !important;
+    padding: 8px;
+    overflow: hidden;
+    z-index: 30;
+    background: #f7f5ef !important;
+    border: 1px solid rgba(36, 39, 34, 0.14);
+    border-radius: 6px;
+    box-shadow: 0 18px 42px rgba(47, 44, 37, 0.18);
+  }
+
+  #root .topbar nav.is-open a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(36, 39, 34, 0.1);
+  }
+
+  #root .topbar nav.is-open a:last-child {
+    border-bottom: 0;
+  }
+
+  #root .topbar nav.is-open a::after {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  #root .topContacts > a.topMail {
+    display: none !important;
   }
 }
