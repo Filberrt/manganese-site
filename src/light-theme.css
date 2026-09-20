@@ -8648,8 +8648,15 @@ body,
 }
 
 #root .siteFooter .footerLogo {
-  width: 112px !important;
-  height: 74px !important;
+  width: 136px !important;
+  height: 90px !important;
+  flex: 0 0 136px;
+}
+
+#root #contacts .contactCompanyLogo {
+  width: 132px !important;
+  height: 88px !important;
+  flex: 0 0 132px !important;
 }
 
 @media (max-width: 1100px) {
@@ -8673,5 +8680,12 @@ body,
 
   #root #company .companyHighlights h3 {
     padding-left: 0;
+  }
+
+  #root #contacts .contactCompanyLogo,
+  #root .siteFooter .footerLogo {
+    width: 112px !important;
+    height: 74px !important;
+    flex-basis: 112px !important;
   }
 }
