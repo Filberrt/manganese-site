@@ -7549,3 +7549,712 @@ option {
     display: none !important;
   }
 }
+
+/* Strategy 2026 theme: deep mineral navy with a restrained light-gold accent. */
+:root {
+  color-scheme: dark;
+  color: #f7f8fa;
+  background: #0c1e2f;
+  --strategy-navy: #13293e;
+  --strategy-deep: #0c1e2f;
+  --strategy-panel: #17354f;
+  --strategy-panel-soft: #1f4260;
+  --strategy-accent: #f2d572;
+  --strategy-text: #f7f8fa;
+  --strategy-muted: #afbdc8;
+  --ink: #f7f8fa;
+  --deep: #afbdc8;
+  --graphite: #8fa2b1;
+  --steel: #4a657a;
+  --moss: #6f8291;
+  --acid: #f2d572;
+  --rust: #f2d572;
+  --paper: #f7f8fa;
+  --limestone: #244966;
+  --muted: #afbdc8;
+  --wine: #f2d572;
+  --umber: #244966;
+  --stone: #315570;
+  --sand: #385b75;
+  --line: rgba(222, 232, 239, 0.18);
+  --shadow: 0 24px 60px rgba(4, 15, 25, 0.3);
+  --page-bg: #0c1e2f;
+  --section-bg: #13293e;
+  --surface-bg: #17354f;
+  --surface-muted: #1f4260;
+  --surface-border: rgba(222, 232, 239, 0.16);
+  --surface-shadow: 0 20px 48px rgba(4, 15, 25, 0.24);
+}
+
+html,
+body,
+#root,
+#root .slideDeck {
+  color: var(--strategy-text);
+  background: var(--strategy-deep) !important;
+}
+
+#root .slideDeck {
+  scrollbar-color: var(--strategy-accent) rgba(255, 255, 255, 0.06);
+}
+
+#root .slideDeck::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#root .slideDeck::-webkit-scrollbar-thumb {
+  background: var(--strategy-accent);
+  border-color: var(--strategy-deep);
+}
+
+#root .section:not(.hero),
+#root .companyHistorySlide,
+#root .infrastructureSlide,
+#root .productStorySlide,
+#root .productGallerySlide,
+#root .productPassportPage,
+#root .galleryArchivePage {
+  color: var(--strategy-text) !important;
+  background-color: var(--strategy-navy) !important;
+}
+
+#root #history,
+#root #product,
+#root #greeting,
+#root .productAdvantagesSlide,
+#root .productPassportPage {
+  background-color: #0f2436 !important;
+}
+
+#root #video,
+#root #gallery,
+#root #contacts,
+#root #benefits,
+#root .productProcessSlide,
+#root .productGallerySlide {
+  background-color: var(--strategy-deep) !important;
+}
+
+#root .section:not(.hero) :is(h1, h2, h3, h4),
+#root .companyHistorySlide :is(h2, h3),
+#root .infrastructureSlide :is(h2, h3),
+#root .productStorySlide h2,
+#root .productGallerySlide h2,
+#root .productPassportPage h2,
+#root .galleryArchivePage h1 {
+  color: var(--strategy-text) !important;
+}
+
+#root .section:not(.hero) p:not(.eyebrow),
+#root .companyHistorySlide p,
+#root .infrastructureSlide p,
+#root .productStorySlide p,
+#root .productGallerySlide p,
+#root .productPassportPage p,
+#root .galleryArchivePage p {
+  color: var(--strategy-muted) !important;
+}
+
+#root .eyebrow,
+#root .section:not(.hero) .eyebrow,
+#root .companyHistoryIntro .eyebrow,
+#root .infrastructureIntro .eyebrow,
+#root .productGalleryIntro .eyebrow,
+#root .productDetailList small,
+#root .productSpecRow span,
+#root .contactDirectoryHeader > span {
+  color: var(--strategy-accent) !important;
+}
+
+#root .topbar {
+  color: var(--strategy-text) !important;
+  background: rgba(12, 30, 47, 0.95) !important;
+  border-color: rgba(242, 213, 114, 0.18) !important;
+  box-shadow: 0 16px 40px rgba(2, 11, 19, 0.34) !important;
+  backdrop-filter: blur(18px);
+}
+
+#root .brandLogoOnly .brandLogo {
+  padding: 3px 7px !important;
+  background: rgba(247, 248, 250, 0.94) !important;
+  border-radius: 4px;
+}
+
+#root .topbar nav a {
+  color: var(--strategy-text) !important;
+}
+
+#root .topbar nav a::after {
+  background: var(--strategy-accent) !important;
+}
+
+#root .topContacts > a.topCall,
+#root .topContacts > a.topMail {
+  color: var(--strategy-text) !important;
+  background: rgba(31, 66, 96, 0.46) !important;
+  border-color: rgba(222, 232, 239, 0.18) !important;
+}
+
+#root .topContacts > a:is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root .mobileNavToggle {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-panel-soft) !important;
+  border-color: rgba(222, 232, 239, 0.18) !important;
+}
+
+#root .mobileNavToggle:is(:hover, :focus-visible),
+#root .mobileNavToggle[aria-expanded="true"] {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root .topbar nav.is-open {
+  background: #10273b !important;
+  border-color: rgba(242, 213, 114, 0.2) !important;
+  box-shadow: 0 22px 54px rgba(2, 11, 19, 0.42) !important;
+}
+
+#root .topbar nav.is-open a {
+  border-bottom-color: rgba(222, 232, 239, 0.12) !important;
+}
+
+#root .hero::after {
+  background:
+    linear-gradient(90deg, rgba(6, 20, 32, 0.84) 0%, rgba(10, 29, 45, 0.54) 54%, rgba(10, 29, 45, 0.16) 100%),
+    linear-gradient(0deg, rgba(6, 20, 32, 0.72), rgba(6, 20, 32, 0.08) 58%) !important;
+}
+
+#root .hero .heroFactStrip,
+#root .hero .heroFactStrip article {
+  background: rgba(19, 41, 62, 0.82) !important;
+  border-color: rgba(242, 213, 114, 0.22) !important;
+}
+
+#root .hero .heroFactStrip span {
+  color: var(--strategy-accent) !important;
+}
+
+#root .hero .heroFactStrip strong {
+  color: var(--strategy-text) !important;
+}
+
+#root :is(.primaryButton, .secondaryButton, .primaryAction, .ghostAction, .productBackButton, .galleryMoreButton, .passportContactCta, .floatingWriteCta) {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-panel-soft) !important;
+  border-color: rgba(222, 232, 239, 0.2) !important;
+  box-shadow: 0 12px 30px rgba(2, 11, 19, 0.22) !important;
+}
+
+#root :is(.primaryButton, .secondaryButton, .primaryAction, .ghostAction, .productBackButton, .galleryMoreButton, .passportContactCta, .floatingWriteCta):is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+  box-shadow: 0 14px 34px rgba(242, 213, 114, 0.18) !important;
+}
+
+#root .floatingWriteCta {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root .companyHighlights article,
+#root .companyProof,
+#root .productCardsLarge article,
+#root .productStandalonePage .productModelPanel,
+#root .productStandalonePage .productDetailBody,
+#root .productStandalonePage .productDetailMedia,
+#root .productPassportPage .techPassport,
+#root .productPassportPage .compositionNote,
+#root .contactDirectory,
+#root .contactCard,
+#root .contactLocation {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-panel) !important;
+  border-color: var(--surface-border) !important;
+  box-shadow: var(--surface-shadow) !important;
+}
+
+#root .companyHighlights article,
+#root .productCardsLarge article,
+#root .contactCard,
+#root .contactLocation {
+  border-top-color: rgba(242, 213, 114, 0.46) !important;
+}
+
+#root .companyHighlights :is(strong, h3),
+#root .companyProof :is(strong, h3, dt, dd),
+#root .productCardsLarge strong,
+#root .contactDirectory :is(strong, h3),
+#root .contactCompanyMark strong {
+  color: var(--strategy-text) !important;
+}
+
+#root .companyHighlights p,
+#root .companyProof p,
+#root .productCardsLarge span,
+#root .contactDirectory p,
+#root .contactDirectory small,
+#root .contactCompanyMark :is(span, small) {
+  color: var(--strategy-muted) !important;
+}
+
+#root .companyHistorySlide {
+  background: #0f2436 !important;
+}
+
+#root .companyTimeline li {
+  border-top-color: rgba(222, 232, 239, 0.17) !important;
+}
+
+#root .companyTimeline time,
+#root .infrastructureFacts strong {
+  color: var(--strategy-accent) !important;
+}
+
+#root .historyProductLinks a {
+  color: var(--strategy-text) !important;
+  border-bottom-color: var(--strategy-accent) !important;
+}
+
+#root .historyProductLinks a:is(:hover, :focus-visible) {
+  color: var(--strategy-accent) !important;
+}
+
+#root .infrastructureSlide::before {
+  filter: grayscale(0.2) saturate(0.72) contrast(1.04) !important;
+}
+
+#root .infrastructureSlide::after {
+  background: linear-gradient(90deg, rgba(12, 30, 47, 0.97) 0%, rgba(19, 41, 62, 0.92) 50%, rgba(19, 41, 62, 0.82) 100%) !important;
+}
+
+#root .infrastructureFacts {
+  background: rgba(23, 53, 79, 0.78) !important;
+  border-color: rgba(222, 232, 239, 0.18) !important;
+}
+
+#root .infrastructureFacts article {
+  border-color: rgba(222, 232, 239, 0.18) !important;
+}
+
+#root .infrastructureFacts span,
+#root .infrastructureDepartments p {
+  color: var(--strategy-text) !important;
+}
+
+#root .infrastructureDepartments {
+  border-top-color: var(--strategy-accent) !important;
+}
+
+#root #product .productCardsLarge article > div {
+  background: var(--strategy-panel) !important;
+}
+
+#root #product .productCardsLarge a {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-panel-soft) !important;
+  border-color: rgba(222, 232, 239, 0.2) !important;
+}
+
+#root #product .productCardsLarge a:is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root #video .sectionBackdrop,
+#root #gallery .sectionBackdrop,
+#root #contacts .sectionBackdrop {
+  opacity: 0.12 !important;
+  filter: grayscale(0.25) saturate(0.75) !important;
+}
+
+#root #video .videoPlan span {
+  color: var(--strategy-text) !important;
+  background: rgba(31, 66, 96, 0.72) !important;
+  border-color: rgba(222, 232, 239, 0.14) !important;
+}
+
+#root #video .videoPlan span::before {
+  background: var(--strategy-accent) !important;
+}
+
+#root #video .videoFrame {
+  background: #081927 !important;
+  border-color: rgba(242, 213, 114, 0.22) !important;
+  box-shadow: 0 26px 64px rgba(2, 11, 19, 0.4) !important;
+}
+
+#root .productStandalonePage {
+  background: var(--strategy-deep) !important;
+}
+
+#root .productStandaloneIntro h1,
+#root .productStandalonePage .productModelPanelHeader strong,
+#root .productStandalonePage .productDetailHeader p,
+#root .productStandalonePage .productSpecRow strong,
+#root .productStandalonePage .productDetailList span {
+  color: var(--strategy-text) !important;
+}
+
+#root .productStandalonePage .productModelPanelHeader span,
+#root .productStandalonePage .productDetailList span {
+  color: var(--strategy-muted) !important;
+}
+
+#root .productStandalonePage .productModelViewport,
+#root .productStandalonePage .localModelViewer,
+#root .productStandalonePage .localModelViewer canvas,
+#root .productStandalonePage .productSpecRow,
+#root .productStandalonePage[id="/gypsum-stone"] .productDetailMedia img {
+  background: var(--strategy-panel-soft) !important;
+  border-color: rgba(222, 232, 239, 0.14) !important;
+}
+
+#root .productStandalonePage .productDetailList span,
+#root .productStandalonePage .productDetailList small {
+  border-color: rgba(222, 232, 239, 0.14) !important;
+}
+
+#root .productStorySlide::after,
+#root .productProcessSlide::after,
+#root .productAdvantagesSlide::after {
+  background:
+    linear-gradient(90deg, rgba(12, 30, 47, 0.97) 0%, rgba(19, 41, 62, 0.9) 46%, rgba(19, 41, 62, 0.7) 100%),
+    linear-gradient(180deg, rgba(12, 30, 47, 0.4), rgba(12, 30, 47, 0.78)) !important;
+}
+
+#root .productProcessList {
+  background: rgba(23, 53, 79, 0.8) !important;
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root .productProcessList span {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+}
+
+#root .productProcessList p,
+#root .productAdvantageList p {
+  color: var(--strategy-text) !important;
+}
+
+#root .productAdvantageList li {
+  background: rgba(23, 53, 79, 0.82) !important;
+  border-left-color: var(--strategy-accent) !important;
+}
+
+#root .productAdvantageList svg {
+  color: var(--strategy-accent) !important;
+}
+
+#root .productGallerySlide,
+#root .galleryArchivePage {
+  background: var(--strategy-deep) !important;
+}
+
+#root .productPhotoGrid figure,
+#root .galleryArchiveGrid figure {
+  background: var(--strategy-panel) !important;
+  border-color: rgba(222, 232, 239, 0.13) !important;
+}
+
+#root .productPhotoGrid figcaption,
+#root .companyHistoryPhoto figcaption {
+  color: var(--strategy-deep) !important;
+  background: rgba(242, 213, 114, 0.92) !important;
+}
+
+#root .productPassportPage table,
+#root .productPassportPage :is(th, td) {
+  color: var(--strategy-text) !important;
+  background: transparent !important;
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root .productPassportPage th,
+#root .productPassportPage .passportHead,
+#root .productPassportPage .compositionNote svg {
+  color: var(--strategy-accent) !important;
+}
+
+#root #gallery .galleryGrid h3 {
+  color: var(--strategy-text) !important;
+  background: rgba(12, 30, 47, 0.84) !important;
+  border-left: 3px solid var(--strategy-accent) !important;
+}
+
+#root #greeting.greetingSlide::before {
+  background: linear-gradient(90deg, rgba(242, 213, 114, 0.04), transparent 45%) !important;
+}
+
+#root #greeting .greetingCopy {
+  background: var(--strategy-panel) !important;
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root #greeting .greetingMark::after {
+  border-color: rgba(242, 213, 114, 0.24) !important;
+}
+
+#root #contacts .contactDirectory {
+  background: rgba(19, 41, 62, 0.92) !important;
+}
+
+#root #contacts .contactCard,
+#root #contacts .contactLocation {
+  background: var(--strategy-panel-soft) !important;
+}
+
+#root #contacts .contactIcon {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+}
+
+#root #contacts .contactCard:is(:hover, :focus-visible),
+#root #contacts .contactLocation:is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root #contacts .contactCard:is(:hover, :focus-visible) :is(strong, small),
+#root #contacts .contactLocation:is(:hover, :focus-visible) :is(strong, small) {
+  color: var(--strategy-deep) !important;
+}
+
+#root .siteFooter {
+  color: var(--strategy-text) !important;
+  background: #081927 !important;
+  border-top-color: rgba(242, 213, 114, 0.24) !important;
+}
+
+#root .siteFooter :is(a, strong) {
+  color: var(--strategy-text) !important;
+}
+
+#root .siteFooter :is(p, span, small) {
+  color: var(--strategy-muted) !important;
+}
+
+#root .siteFooter a:is(:hover, :focus-visible) {
+  color: var(--strategy-accent) !important;
+}
+
+/* Consumers: strategy-style market split, without speculative logos or cases. */
+#root #benefits.consumersSlide {
+  display: grid !important;
+  grid-template-columns: minmax(320px, 0.7fr) minmax(640px, 1.3fr) !important;
+  align-items: center;
+  gap: clamp(44px, 6vw, 96px);
+  min-height: 100svh;
+  padding: clamp(112px, 13vh, 148px) max(6vw, 72px) clamp(64px, 8vh, 94px);
+  background: var(--strategy-deep) !important;
+}
+
+#root #benefits.consumersSlide::after {
+  background:
+    linear-gradient(90deg, rgba(12, 30, 47, 0.98) 0%, rgba(12, 30, 47, 0.93) 52%, rgba(12, 30, 47, 0.86) 100%),
+    linear-gradient(180deg, rgba(19, 41, 62, 0.36), rgba(12, 30, 47, 0.72)) !important;
+}
+
+#root #benefits .sectionBackdrop {
+  opacity: 0.11 !important;
+  filter: grayscale(0.35) saturate(0.68) contrast(1.05) !important;
+}
+
+#root #benefits .sectionIntro {
+  width: auto;
+  max-width: 680px;
+  margin: 0;
+}
+
+#root #benefits .sectionIntro h2 {
+  max-width: 10ch;
+  margin: 12px 0 26px;
+  color: var(--strategy-text) !important;
+  font-size: clamp(48px, 5vw, 78px);
+  line-height: 0.98;
+}
+
+#root #benefits.consumersSlide .sectionIntro > p:not(.eyebrow) {
+  max-width: 54ch;
+  color: var(--strategy-muted) !important;
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+.consumerDirectionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-self: center;
+  border-top: 2px solid var(--strategy-accent);
+  border-bottom: 1px solid rgba(222, 232, 239, 0.18);
+}
+
+.consumerDirectionGrid > article {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-width: 0;
+  padding: clamp(26px, 3vw, 42px);
+  background: rgba(23, 53, 79, 0.76);
+  border-right: 1px solid rgba(222, 232, 239, 0.16);
+  transition: background-color 360ms cubic-bezier(0.22, 1, 0.36, 1), transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.consumerDirectionGrid > article:last-child {
+  border-right: 0;
+}
+
+.consumerDirectionGrid > article:is(:hover, :focus-within) {
+  z-index: 1;
+  background: rgba(31, 66, 96, 0.94);
+  transform: translateY(-4px);
+}
+
+.consumerDirectionGrid header {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 112px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(222, 232, 239, 0.16);
+}
+
+.consumerDirectionGrid header > span {
+  color: var(--strategy-accent);
+  font-size: 13px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.consumerDirectionGrid header p {
+  margin: 0 0 8px;
+  color: var(--strategy-accent) !important;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.consumerDirectionGrid h3 {
+  margin: 0;
+  color: var(--strategy-text) !important;
+  font-size: clamp(22px, 2vw, 31px);
+  line-height: 1.08;
+}
+
+.consumerStatus,
+.consumerProspects {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(222, 232, 239, 0.14);
+}
+
+.consumerDirectionGrid small {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--strategy-muted);
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.consumerStatus ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.consumerStatus li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--strategy-text);
+  font-size: 15px;
+  font-weight: 620;
+  line-height: 1.35;
+}
+
+.consumerStatus li::before {
+  position: absolute;
+  top: 0.34em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  content: '';
+  background: var(--strategy-accent);
+}
+
+.consumerStatus > strong {
+  display: block;
+  margin-top: 18px;
+  color: var(--strategy-accent) !important;
+  font-size: 17px;
+  font-weight: 760;
+}
+
+.consumerProspects p {
+  margin: 0;
+  color: var(--strategy-text) !important;
+  font-size: 14px;
+  font-weight: 560;
+  line-height: 1.55;
+}
+
+.consumerDirectionGrid footer {
+  align-self: end;
+  padding-top: 22px;
+  color: var(--strategy-muted);
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  #root #benefits.consumersSlide {
+    grid-template-columns: 1fr !important;
+    gap: 42px;
+    min-height: auto;
+    padding: 108px 24px 72px;
+  }
+
+  #root #benefits .sectionIntro {
+    max-width: 760px;
+  }
+
+  #root #benefits .sectionIntro h2 {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .consumerDirectionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .consumerDirectionGrid > article,
+  .consumerDirectionGrid > article:last-child {
+    border-right: 0;
+    border-bottom: 1px solid rgba(222, 232, 239, 0.16);
+  }
+
+  .consumerDirectionGrid header {
+    min-height: 0;
+  }
+
+  #root .productStorySlide::after,
+  #root .productProcessSlide::after,
+  #root .productAdvantagesSlide::after {
+    background: rgba(12, 30, 47, 0.9) !important;
+  }
+}

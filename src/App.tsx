@@ -118,14 +118,25 @@ const companyDepartments = [
   'Железнодорожный участок',
 ]
 
-const consumerPartners = [
-  ['ЕВРАЗ', 'Металлургия'],
-  ['Цемрос', 'Цементное производство'],
-  ['Аккерманн Цемент', 'Цементное производство'],
-  ['СЛК Цемент', 'Цементное производство'],
-  ['Сибирский цемент', 'Цементное производство'],
-  ['МЦОЗ', 'Цемент и огнеупорные материалы'],
-  ['ГИФАС', 'Промышленное производство'],
+const consumerDirections = [
+  {
+    index: '01',
+    title: 'Цементное направление',
+    product: 'Гипсовый и гипсоангидритовый камень',
+    status: 'Действующие поставки',
+    partners: ['ЦЕМРОС', 'Сибирский цемент', 'Аккерманн Цемент', 'МЦОЗ', 'СЛК Цемент'],
+    note: 'Поставки сырья цементным предприятиям Урала и Сибири.',
+  },
+  {
+    index: '02',
+    title: 'Металлургическое направление',
+    product: 'Марганцовистый известняк',
+    status: 'Действующий покупатель',
+    partners: ['ЕВРАЗ-ВГОК'],
+    metric: 'до 7 000 тонн в месяц',
+    prospects: ['Уральская Сталь', 'ЕВРАЗ: КГОК и Запсиб', 'Северсталь', 'ММК'],
+    note: 'Потенциал расширения поставок для крупных металлургических предприятий.',
+  },
 ]
 
 const documentCards = [
@@ -463,7 +474,7 @@ function RockSample({
       if (isDisposed) return
 
       const scene = new THREE.Scene()
-      scene.background = new THREE.Color('#e2dbce')
+      scene.background = new THREE.Color('#17354f')
 
       const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 100)
       camera.position.set(0.08, 0.1, 3.55)
@@ -473,7 +484,7 @@ function RockSample({
       rendererCanvas = webglRenderer.domElement
       webglRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
       webglRenderer.outputColorSpace = THREE.SRGBColorSpace
-      webglRenderer.setClearColor(new THREE.Color('#e2dbce'), 1)
+      webglRenderer.setClearColor(new THREE.Color('#17354f'), 1)
       webglRenderer.toneMapping = THREE.ACESFilmicToneMapping
       webglRenderer.toneMappingExposure = variant === 'gypsum' ? 0.98 : 1.24
       mount.appendChild(webglRenderer.domElement)
@@ -1484,15 +1495,33 @@ function App() {
         />
         <div className="sectionIntro" data-reveal>
           <p className="eyebrow">Потребители</p>
-          <h2>Поставки для промышленного производства</h2>
-          <p>Компании, указанные в материалах предприятия как потребители минерального сырья. Подробные кейсы и результаты сотрудничества публикуются после согласования.</p>
+          <h2>Два рынка.<br />Одна сырьевая база.</h2>
+          <p>Гипсовый камень поставляется цементным предприятиям, марганцовистый известняк - металлургическим производствам. В блоке разделены действующие поставки и направления развития.</p>
         </div>
-        <div className="partnerGrid" aria-label="Потребители продукции">
-          {consumerPartners.map(([name, sector], index) => (
-            <article data-reveal style={{ '--delay': `${index * 55}ms` } as CSSProperties} key={name}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <h3>{name}</h3>
-              <p>{sector}</p>
+        <div className="consumerDirectionGrid" aria-label="Направления поставок продукции">
+          {consumerDirections.map((direction, index) => (
+            <article data-reveal style={{ '--delay': `${index * 90}ms` } as CSSProperties} key={direction.title}>
+              <header>
+                <span>{direction.index}</span>
+                <div>
+                  <p>{direction.product}</p>
+                  <h3>{direction.title}</h3>
+                </div>
+              </header>
+              <div className="consumerStatus">
+                <small>{direction.status}</small>
+                <ul>
+                  {direction.partners.map((partner) => <li key={partner}>{partner}</li>)}
+                </ul>
+                {direction.metric && <strong>{direction.metric}</strong>}
+              </div>
+              {direction.prospects && (
+                <div className="consumerProspects">
+                  <small>Потенциальные потребители</small>
+                  <p>{direction.prospects.join(' · ')}</p>
+                </div>
+              )}
+              <footer>{direction.note}</footer>
             </article>
           ))}
         </div>
