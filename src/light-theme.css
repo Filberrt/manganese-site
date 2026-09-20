@@ -6858,3 +6858,7 @@ option {
     font-size: 15px !important;
   }
 }
+
+#company.companySlide > div:first-child > .eyebrow {
+  color: var(--wine) !important;
+}
