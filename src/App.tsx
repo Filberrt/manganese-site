@@ -1221,7 +1221,7 @@ function App() {
       <header className="topbar">
         <a className="brand brandLogoOnly" href="#top" aria-label="БашМинералРесурс: на главную">
           <span className="brandLogo">
-            <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+            <img src={asset('logo-bashmineral-transparent.png')} alt="" />
           </span>
           <span className="brandLegalLabel">{company.legalName}</span>
         </a>
@@ -1549,7 +1549,7 @@ function App() {
         style={{ '--greeting-image': `url(${asset('gallery-bmr/AZA07117.jpg')})` } as CSSProperties}
       >
         <div className="greetingMark" aria-hidden="true">
-          <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+          <img src={asset('logo-bashmineral-transparent.png')} alt="" />
           <span>Республика Башкортостан</span>
         </div>
         <div className="greetingCopy" data-reveal>
@@ -1673,7 +1673,7 @@ function App() {
             </p>
             <div className="contactCompanyMark" aria-label={company.name}>
               <span className="contactCompanyLogo">
-                <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+                <img src={asset('logo-bashmineral-transparent.png')} alt="" />
               </span>
               <div>
                 <strong>{company.name}</strong>
@@ -1732,7 +1732,7 @@ function App() {
         <div className="footerMain">
           <div className="footerBrand">
             <span className="footerLogo">
-              <img src={asset('logo-bashmineral-solid-b-v2.png')} alt="" />
+              <img src={asset('logo-bashmineral-transparent.png')} alt="" />
             </span>
             <div>
               <strong>{company.name}</strong>
