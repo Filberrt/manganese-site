@@ -8344,3 +8344,236 @@ body,
   background: var(--strategy-accent) !important;
   border-color: var(--strategy-accent) !important;
 }
+
+/* Final palette sweep: remove legacy wine, beige and warm-gray remnants. */
+#root .hero,
+#root .heroInner,
+#root .heroSummary,
+#root .scrollCue {
+  color: var(--strategy-white) !important;
+}
+
+#root .heroKicker {
+  color: var(--strategy-accent) !important;
+}
+
+#root .heroVideo {
+  color: var(--strategy-white) !important;
+  background-color: var(--strategy-deep) !important;
+}
+
+#root .brandLogoOnly .brandLogo {
+  background: rgba(248, 248, 248, 0.96) !important;
+}
+
+#root .slideNav a {
+  background: rgba(31, 66, 96, 0.62) !important;
+  border-color: rgba(242, 213, 114, 0.42) !important;
+  box-shadow: none !important;
+}
+
+#root .slideNav a:is(:hover, .active) {
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+  box-shadow: 0 0 16px rgba(242, 213, 114, 0.2) !important;
+}
+
+#root .slideNav a span {
+  color: var(--strategy-white) !important;
+  background: rgba(12, 30, 47, 0.94) !important;
+  border-color: rgba(242, 213, 114, 0.24) !important;
+}
+
+#root .sectionBackdrop {
+  background-color: var(--strategy-deep) !important;
+}
+
+#root .companyProofContent,
+#root .companyProofContent :is(.eyebrow, h3, dt, dd) {
+  color: var(--strategy-white) !important;
+}
+
+#root .companyProofContent dl div {
+  border-top-color: rgba(248, 248, 248, 0.3) !important;
+}
+
+#root .productStandaloneIntro {
+  color: var(--strategy-muted) !important;
+}
+
+#root .productDetailPhotoCaption strong {
+  color: var(--strategy-white) !important;
+}
+
+#root .productDetailList,
+#root .contactCard,
+#root .contactLocation,
+#root .topAddress.topMapButton {
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root .contactIcon {
+  border-color: rgba(19, 41, 62, 0.12) !important;
+}
+
+#root #contacts .contactCard,
+#root #contacts .contactLocation {
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root #contacts .contactIcon {
+  border-color: rgba(19, 41, 62, 0.12) !important;
+}
+
+#root .localModelViewer > span {
+  color: var(--strategy-muted) !important;
+  background: rgba(12, 30, 47, 0.72) !important;
+  border-color: rgba(242, 213, 114, 0.2) !important;
+}
+
+#root .productCardsLarge img {
+  background-color: var(--strategy-panel) !important;
+}
+
+#root .productPassportPage .passportHead {
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root #video .videoFrame button {
+  color: var(--strategy-navy) !important;
+  background: var(--strategy-white) !important;
+  border-color: var(--strategy-white) !important;
+}
+
+#root #video .videoFrame button:is(:hover, :focus-visible) {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+#root #greeting .greetingMark {
+  background-color: var(--strategy-panel) !important;
+}
+
+#root #articles .articleGrid article {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-navy) !important;
+  border-color: rgba(19, 41, 62, 0.18) !important;
+}
+
+#root #articles .articleGrid article :is(h3, svg) {
+  color: var(--strategy-text) !important;
+}
+
+#root #articles .articleGrid article > svg {
+  color: var(--strategy-accent) !important;
+}
+
+#root #articles .articleGrid article p {
+  color: var(--strategy-muted) !important;
+}
+
+#root #articles .articleGrid article button {
+  color: var(--strategy-navy) !important;
+  background: var(--strategy-white) !important;
+  border-color: var(--strategy-white) !important;
+}
+
+#root .siteFooter :is(.footerContactItem > a, .footerLocation) {
+  color: var(--strategy-text) !important;
+  background: var(--strategy-panel) !important;
+  border-color: rgba(222, 232, 239, 0.16) !important;
+}
+
+#root .siteFooter .copyContactButton,
+#root .siteFooter .footerLocation strong {
+  color: var(--strategy-accent) !important;
+  background: var(--strategy-panel-soft) !important;
+  border-color: rgba(222, 232, 239, 0.18) !important;
+}
+
+#root .siteFooter .copyContactButton svg {
+  color: var(--strategy-accent) !important;
+  stroke: currentColor !important;
+}
+
+#root .siteFooter .footerMain {
+  border-color: rgba(222, 232, 239, 0.14) !important;
+}
+
+#root .siteFooter :is(.footerContactItem > a, .footerLocation, .copyContactButton):is(:hover, :focus-visible),
+#root .siteFooter .footerLocation:is(:hover, :focus-visible) strong {
+  color: var(--strategy-deep) !important;
+  background: var(--strategy-accent) !important;
+  border-color: var(--strategy-accent) !important;
+}
+
+@media (min-width: 801px) and (max-width: 1560px) {
+  #root .topbar {
+    grid-template-columns: 142px minmax(0, 1fr) minmax(420px, 520px) 46px !important;
+    min-height: 80px !important;
+    gap: 14px !important;
+    padding: 10px 12px !important;
+    overflow: visible !important;
+  }
+
+  #root .brandLogoOnly {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  #root .brandLogoOnly .brandLogo {
+    width: 116px !important;
+    height: 62px !important;
+    padding: 6px 10px !important;
+  }
+
+  #root .topbar nav {
+    display: none !important;
+  }
+
+  #root .topContacts {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  #root .mobileNavToggle {
+    display: inline-flex !important;
+    grid-column: 4;
+    grid-row: 1;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  #root .topbar nav.is-open {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    z-index: 30;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 !important;
+    width: auto !important;
+    padding: 8px;
+    overflow: hidden;
+    background: #10273b !important;
+    border: 1px solid rgba(242, 213, 114, 0.2) !important;
+    box-shadow: 0 22px 54px rgba(2, 11, 19, 0.42) !important;
+  }
+
+  #root .topbar nav.is-open a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(222, 232, 239, 0.12) !important;
+  }
+
+  #root #history .companyHistoryIntro h2 {
+    font-size: clamp(42px, 3.2vw, 50px) !important;
+  }
+}
