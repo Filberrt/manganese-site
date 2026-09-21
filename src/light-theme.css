@@ -8647,6 +8647,16 @@ body,
   transform: none !important;
 }
 
+#root .brandLogoOnly,
+#root .brandLogoOnly .brandLogo {
+  align-self: center !important;
+  place-items: center !important;
+}
+
+#root .brandLogoOnly .brandLogo img {
+  transform: translateY(-7px) !important;
+}
+
 #root .siteFooter .footerLogo {
   width: 136px !important;
   height: 90px !important;
